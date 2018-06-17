@@ -11,17 +11,6 @@ const config = require('../config');
 
 // ## Watch Task
 
-gulp.task('watch', () => {
-
-    //watch express
-    gulp.watch(
-        config.path.server.entry,
-        ['style-watch']
-    );
-
-});
-
-
 gulp.task('serve', function() {
 
     var server = gls.new('app.js');
