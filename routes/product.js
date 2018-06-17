@@ -1,6 +1,3 @@
-'use strict';
-module.exports = {
-    route: (req, res) => {
-        res.send(req.params.productID);
-    }
+exports.product = function(req, res) {
+    res.render('product', { name: 'John' });
 };

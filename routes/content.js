@@ -1,6 +1,3 @@
-'use strict';
-module.exports = {
-    route: (req, res) => {
-        res.send(req.params.contentID);
-    }
+exports.content = function(req, res) {
+    res.render('content', { name: 'John' });
 };
