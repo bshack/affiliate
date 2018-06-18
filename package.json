@@ -6,6 +6,7 @@
     "gulp": "^3.9.1",
     "gulp-live-server": "0.0.31",
     "knex": "^0.14.6",
+    "mariasql": "^0.2.6",
     "mysql": "^2.15.0",
     "mysql2": "^1.5.3",
     "node-jsx": "^0.13.3",
