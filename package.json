@@ -1,12 +1,13 @@
 {
   "dependencies": {
-    "bson-ext": "^2.0.0",
     "express": "^4.16.3",
     "express-react-views": "^0.10.5",
     "express-session": "^1.15.6",
     "gulp": "^3.9.1",
     "gulp-live-server": "0.0.31",
-    "mongodb": "^3.0.10",
+    "knex": "^0.14.6",
+    "mysql": "^2.15.0",
+    "mysql2": "^1.5.3",
     "node-jsx": "^0.13.3",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
