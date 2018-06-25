@@ -10,6 +10,14 @@ const redux = require('redux');
 const thunk = require('redux-thunk').default;
 const nodeJSX = require('node-jsx').install();
 
+const ModelSite = require('./models/site');
+
+let mymodel = new ModelSite(app).model();
+
+console.log(mymodel);
+
+
+
 app.use(session({
     secret: 'fiRfYZy8iCE2eKba8S6XFcZb',
     resave: false,
@@ -35,66 +43,64 @@ app.set('views', './views');
 app.set('view engine', 'jsx');
 app.engine('jsx', require('express-react-views').createEngine({}));
 
-function getSiteData(state = {}, action) {
-  switch (action.type) {
-  case 'GET_SITE_DATA':
-    state = action.data
-    return state;
-  case 'GET_SITE_DATA_ERROR':
-    return state;
-  default:
-    return state;
-  }
-}
+// function getSiteData(state = {}, action) {
+//   switch (action.type) {
+//   case 'GET_SITE_DATA':
+//     state = action.data
+//     return state;
+//   case 'GET_SITE_DATA_ERROR':
+//     return state;
+//   default:
+//     return state;
+//   }
+// }
+//
+// function updateSite(data) {
+//   return {
+//     type: 'GET_SITE_DATA',
+//     data
+//   };
+// }
+//
+// function handleError(hostname, error) {
+//   return {
+//     type: 'GET_SITE_DATA_ERROR',
+//     error
+//   };
+// }
+//
+//
+// function getSite(hostname) {
+//
+//   return function (dispatch, getState) {
+//
+//       return app.get('databaseConnection')
+//           .from('website')
+//           .select('*')
+//           .where({
+//               hostname: hostname
+//           })
+//           .then((data) => {
+//              dispatch(updateSite(data));
+//           })
+//           .catch((error) => {
+//               dispatch(handleError(hostname, error));
+//           });
+//   };
+// }
+//
+// let siteModel = redux.createStore(
+//     getSiteData,
+//     redux.applyMiddleware(thunk)
+// );
 
-function updateSite(data) {
-  return {
-    type: 'GET_SITE_DATA',
-    data
-  };
-}
-
-function handleError(hostname, error) {
-  return {
-    type: 'GET_SITE_DATA_ERROR',
-    error
-  };
-}
-
-
-function getSite(hostname) {
-
-  return function (dispatch, getState) {
-
-      return app.get('databaseConnection')
-          .from('website')
-          .select('*')
-          .where({
-              hostname: hostname
-          })
-          .then((data) => {
-             dispatch(updateSite(data));
-          })
-          .catch((error) => {
-              dispatch(handleError(hostname, error));
-          });
-  };
-}
-
-
-
-
-let siteModel = redux.createStore(
-    getSiteData,
-    redux.applyMiddleware(thunk)
-);
-
-siteModel.subscribe(() =>
-  console.log(siteModel.getState())
+mymodel.subscribe(() =>
+  console.log(mymodel.getState())
 )
 
-siteModel.dispatch(
-  getSite('localhost')
+mymodel.dispatch(
+    //likely should be dispatching here instead
+  mymodel.getSite('localhost')
 ).then(() => {
   console.log('Done!');
 });
