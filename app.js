@@ -4,19 +4,16 @@ const https = require('https');
 const http = require('http');
 const session = require('express-session');
 const app = express();
-const fetch = require('node-fetch');
 const knex = require('knex');
-const redux = require('redux');
-const thunk = require('redux-thunk').default;
 const nodeJSX = require('node-jsx').install();
 
+const routeIndex = require('./routes/index');
+const routeCategory = require('./routes/category');
+const routeProduct = require('./routes/product');
+
 const ModelSite = require('./models/site');
-
-let mymodel = new ModelSite(app).model();
-
-console.log(mymodel);
-
-
+const ModelCategory = require('./models/category');
+const ModelProduct = require('./models/product');
 
 app.use(session({
     secret: 'fiRfYZy8iCE2eKba8S6XFcZb',
@@ -26,6 +23,12 @@ app.use(session({
         secure: true
     }
 }));
+
+app.use(express.static('assets'))
+
+app.set('views', './views');
+app.set('view engine', 'jsx');
+app.engine('jsx', require('express-react-views').createEngine({}));
 
 app.set('databaseConnection', knex({
     //debug: true,
@@ -39,113 +42,13 @@ app.set('databaseConnection', knex({
     }
 }));
 
-app.set('views', './views');
-app.set('view engine', 'jsx');
-app.engine('jsx', require('express-react-views').createEngine({}));
-
-// function getSiteData(state = {}, action) {
-//   switch (action.type) {
-//   case 'GET_SITE_DATA':
-//     state = action.data
-//     return state;
-//   case 'GET_SITE_DATA_ERROR':
-//     return state;
-//   default:
-//     return state;
-//   }
-// }
-//
-// function updateSite(data) {
-//   return {
-//     type: 'GET_SITE_DATA',
-//     data
-//   };
-// }
-//
-// function handleError(hostname, error) {
-//   return {
-//     type: 'GET_SITE_DATA_ERROR',
-//     error
-//   };
-// }
-//
-//
-// function getSite(hostname) {
-//
-//   return function (dispatch, getState) {
-//
-//       return app.get('databaseConnection')
-//           .from('website')
-//           .select('*')
-//           .where({
-//               hostname: hostname
-//           })
-//           .then((data) => {
-//              dispatch(updateSite(data));
-//           })
-//           .catch((error) => {
-//               dispatch(handleError(hostname, error));
-//           });
-//   };
-// }
-//
-// let siteModel = redux.createStore(
-//     getSiteData,
-//     redux.applyMiddleware(thunk)
-// );
-
-mymodel.subscribe(() =>
-  console.log(mymodel.getState())
-)
-
-mymodel.dispatch(
-    //likely should be dispatching here instead
-  mymodel.getSite('localhost')
-).then(() => {
-  console.log('Done!');
-});
-
-
-
-const routeIndex = require('./routes/index');
-const routeCategory = require('./routes/category');
-const routeProduct = require('./routes/product');
-const routeContent = require('./routes/content');
-
-
-
-
-
-app.get('databaseConnection')
-    .from('website')
-    .select('*')
-    .where({
-        hostname: 'localhost'
-    })
-    .then((data) => {
-        //console.log(data);
-    });
-
-app.get('databaseConnection')
-    .select('websitecategory.category')
-    .from('website')
-    .innerJoin('websitecategory', 'website.id', 'websitecategory.website')
-    .where({
-        'website.hostname': 'localhost'
-    })
-    .then((data) => {
-        //console.log(data);
-    });
-
 app.get('/', routeIndex.index);
 
-app.get('/category/:categoryID', routeCategory.category);
+app.get('/category/:categoryID', routeCategory.index);
 
-app.get('/category/:categoryID/product/:productID', routeProduct.product);
-
-app.get('/category/:categoryID/content/:contentID', routeContent.content);
+app.get('/category/:categoryID/product/:productID', routeProduct.index);
 
 https.createServer({
     key: fs.readFileSync('./key.pem'),
     cert: fs.readFileSync('./cert.pem')
-}, app).listen(3000, () => console.log('Example app listening on port 3000!'));
+}, app).listen(3000, () => console.log('https server running on port 3000'));

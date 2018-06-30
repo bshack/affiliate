@@ -1,10 +1,16 @@
 {
   "dependencies": {
+    "bootstrap": "^4.1.1",
     "express": "^4.16.3",
     "express-react-views": "^0.10.5",
     "express-session": "^1.15.6",
     "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^5.0.0",
     "gulp-live-server": "0.0.31",
+    "gulp-notify": "^3.2.0",
+    "gulp-plumber": "^1.2.0",
+    "gulp-sass": "^4.0.1",
+    "gulp-sass-lint": "^1.4.0",
     "knex": "^0.14.6",
     "mariasql": "^0.2.6",
     "mysql": "^2.15.0",
