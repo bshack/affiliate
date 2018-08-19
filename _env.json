@@ -1,0 +1,19 @@
+{
+    "database": {
+        "connection": {
+            "host": "",
+            "user": "",
+            "port": "",
+            "password": "",
+            "database": ""
+        }
+    },
+    "session": {
+        "secret": ""
+    },
+    "ssl": {
+        "key": "",
+        "cert": "",
+        "port": ""
+    }
+}
