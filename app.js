@@ -34,11 +34,11 @@ app.set('databaseConnection', knex({
     //debug: true,
     client: 'mysql',
     connection: {
-        host : '127.0.0.1',
-        user : 'root',
-        port: '8889',
-        password : 'root',
-        database : 'sd'
+        host : 'db-dev01.cxdjbgsmngcn.us-east-1.rds.amazonaws.com',
+        user : 'admin',
+        port: '3306',
+        password : '85488FxQ76DNS608u3552Q6v3Bn8453P2TIRTJZxk',
+        database : 'affiliates'
     }
 }));
 
@@ -51,4 +51,4 @@ app.get('/category/:categoryID/product/:productID', routeProduct.index);
 https.createServer({
     key: fs.readFileSync('./key.pem'),
     cert: fs.readFileSync('./cert.pem')
-}, app).listen(3000, () => console.log('https server running on port 3000'));
+}, app).listen(443, () => console.log('https server running on port 443'));
