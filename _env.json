@@ -5,7 +5,8 @@
             "user": "",
             "port": "",
             "password": "",
-            "database": ""
+            "database": "",
+            "debug": false
         }
     },
     "session": {
