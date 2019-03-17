@@ -34,7 +34,6 @@ app.engine('jsx', require('express-react-views').createEngine({
 }));
 
 app.set('databaseConnection', knex({
-    //debug: true,
     client: 'mysql',
     connection: envConfig.database.connection
 }));

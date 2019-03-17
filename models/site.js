@@ -2,7 +2,7 @@ const redux = require('redux');
 const thunk = require('redux-thunk').default;
 
 (() => {
-    
+
     'use strict';
     module.exports = class {
 
@@ -43,15 +43,15 @@ const thunk = require('redux-thunk').default;
         getOne(params) {
 
           return (dispatch, getState) => {
-
               return this.app.get('databaseConnection')
-                  .from('website')
-                  .select('website.*')
-                  .where({
-                      'website.id': params.id,
-                      'website.hostname': params.hostname
-                  })
-                  .limit(1)
+                  .from('product')
+                  .select('*')
+                  // .select('website.*')
+                  // .where({
+                  //     'website.id': params.id,
+                  //     'website.hostname': params.hostname
+                  // })
+                  // .limit(1)
                   .then((data) => {
                      dispatch(this.handleGetSuccess(data));
                   })

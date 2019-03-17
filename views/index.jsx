@@ -4,8 +4,8 @@ var DefaultLayout = require('../layouts/default.jsx');
 class View extends React.Component {
   render() {
     return (
-      <DefaultLayout title={this.props.name}>
-        <div>Hello {this.props.name}</div>
+      <DefaultLayout title={this.props.title}>
+        <div>Hello {this.props.title}</div>
       </DefaultLayout>
     );
   }
