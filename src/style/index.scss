@@ -1,4 +1,18 @@
 @charset 'UTF-8';
-
 @import '../../node_modules/bootstrap/scss/bootstrap-reboot';
 @import '../../node_modules/bootstrap/scss/bootstrap-grid';
+
+@import 'base/colors';
+
+body {
+
+    background: $white;
+
+    main {
+
+        color: $black;
+        width: 100px;
+
+    }
+
+}

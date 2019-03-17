@@ -1,0 +1,10 @@
+import 'picturefill';
+import foo from './foo';
+import bar from './bar';
+import yo from './yo';
+import '../style/index.scss';
+import '../image/bar.svg';
+import '../image/foo/foo.svg';
+foo();
+bar();
+yo();

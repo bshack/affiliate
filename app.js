@@ -25,11 +25,13 @@ app.use(session({
     }
 }));
 
-app.use(express.static('assets'))
+app.use(express.static('dist'))
 
 app.set('views', './views');
 app.set('view engine', 'jsx');
-app.engine('jsx', require('express-react-views').createEngine({}));
+app.engine('jsx', require('express-react-views').createEngine({
+    transformViews: false
+}));
 
 app.set('databaseConnection', knex({
     //debug: true,
