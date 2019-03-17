@@ -19,7 +19,7 @@ class DefaultLayout extends React.Component {
             <footer>
             &copy;
             </footer>
-            <script src="./script/vendors~index.js" />
+            <script src="./script/vendors-index.js" />
             <script src="./script/index.js" />
         </body>
       </html>

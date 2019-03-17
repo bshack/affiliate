@@ -15,7 +15,9 @@ module.exports = {
     optimization: {
         splitChunks: {
             chunks: 'all',
-        }
+            automaticNameDelimiter: '-',
+        },
+        noEmitOnErrors: true
     },
     entry: {
         index: './src/script/index.js'
@@ -90,7 +92,7 @@ module.exports = {
             chunkFilename: "./style/global.css"
         }),
         new HtmlWebpackPlugin({
-            template: 'src/index.html'
+            template: 'src/toolkit.html'
         })
     ],
     output: {
