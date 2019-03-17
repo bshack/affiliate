@@ -12,6 +12,9 @@ module.exports = {
         port: 9000,
         open: true
     },
+    watchOptions: {
+        ignored: /node_modules/
+    },
     optimization: {
         splitChunks: {
             chunks: 'all',
