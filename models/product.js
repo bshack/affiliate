@@ -16,10 +16,10 @@ const thunk = require('redux-thunk').default;
 
         reducers(state = {}, action) {
             switch (action.type) {
-                case 'GET_SITE_DATA':
+                case 'GET_PRODUCT_DATA':
                     state = action.data
                     return state;
-                case 'GET_SITE_DATA_ERROR':
+                case 'GET_PRODUCT_DATA_ERROR':
                     return state;
                 default:
                     return state;
@@ -28,14 +28,14 @@ const thunk = require('redux-thunk').default;
 
         handleGetSuccess(data) {
             return {
-                type: 'GET_SITE_DATA',
+                type: 'GET_PRODUCT_DATA',
                 data: data
             };
         }
 
         handleGetError(error) {
             return {
-                type: 'GET_SITE_DATA_ERROR',
+                type: 'GET_PRODUCT_DATA_ERROR',
                 data: error
             };
         }
@@ -43,26 +43,22 @@ const thunk = require('redux-thunk').default;
         getOne(params) {
 
           return (dispatch, getState) => {
-
               return this.app.get('databaseConnection')
-                   .select('product.*')
-                   .from('product')
-                   .innerJoin('categoryproduct', 'categoryproduct.product', 'product.id')
-                   .innerJoin('category', 'category.id', 'categoryproduct.category')
-                   .innerJoin('websitecategory', 'websitecategory.category', 'category.id')
-                   .innerJoin('website', 'website.id', 'websitecategory.website')
-                   .where({
-                       'product.id': params.id,
-                       'website.hostname': params.hostname
-                   })
-                   .then((data) => {
-                      dispatch(this.handleGetSuccess(data));
-                   })
-                   .catch((error) => {
-                       dispatch(this.handleGetError(error));
-                   });
-
+                  .from('product')
+                  .select('*')
+                  .where({
+                      id: params.id,
+                      isActive: true
+                  })
+                  .limit(1)
+                  .then((data) => {
+                     dispatch(this.handleGetSuccess(data));
+                  })
+                  .catch((error) => {
+                      dispatch(this.handleGetError(error));
+                  });
           };
+
         }
 
         getAll(params) {
@@ -70,23 +66,17 @@ const thunk = require('redux-thunk').default;
           return (dispatch, getState) => {
 
               return this.app.get('databaseConnection')
-                   .select('product.*')
-                   .from('product')
-                   .innerJoin('categoryproduct', 'categoryproduct.product', 'product.id')
-                   .innerJoin('category', 'category.id', 'categoryproduct.category')
-                   .innerJoin('websitecategory', 'websitecategory.category', 'category.id')
-                   .innerJoin('website', 'website.id', 'websitecategory.website')
-                   .where({
-                       'category.id': params.category,
-                       'website.hostname': params.hostname
-                   })
-                   .then((data) => {
-                      dispatch(this.handleGetSuccess(data));
-                   })
-                   .catch((error) => {
-                       dispatch(this.handleGetError(error));
-                   });
-
+                  .from('product')
+                  .select('*')
+                  .where({
+                      isActive: true
+                  })
+                  .then((data) => {
+                     dispatch(this.handleGetSuccess(data));
+                  })
+                  .catch((error) => {
+                      dispatch(this.handleGetError(error));
+                  });
           };
         }
 

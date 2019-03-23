@@ -1,13 +1,16 @@
 var React = require('react');
-var DefaultLayout = require('../layouts/default.jsx');
 
 class View extends React.Component {
   render() {
     return (
-      <DefaultLayout title={this.props.name}>
-        <div>Hello {this.props.name}</div>
-        <div>{this.props.url}</div>
-      </DefaultLayout>
+      <div className="product col-3">
+        <h2>{this.props.data.title}</h2>
+        <img alt={this.props.data.title} src={
+            "https://s3.us-east-2.amazonaws.com/cdn.shackelforddigital.io/"
+            + this.props.data.seoDirectoryNamePart+ '/' + this.props.data.seoFilenamePart
+            + "-large.jpg"
+        } />
+      </div>
     );
   }
 }

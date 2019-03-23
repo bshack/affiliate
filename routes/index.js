@@ -1,18 +1,17 @@
-const ModelSite = require('../models/site');
+const ModelProduct = require('../models/product');
 
 exports.index = function(req, res) {
 
-    let modelSite = new ModelSite(req.app);
+    let modelProduct = new ModelProduct(req.app);
 
-    modelSite.store.subscribe(() => {
-        res.render('index', modelSite.store.getState()[0]);
+    modelProduct.store.subscribe(() => {
+        res.render('index', {
+            products: modelProduct.store.getState()
+        });
     });
 
-    modelSite.store.dispatch(
-      modelSite.getOne({
-          id: 1,
-          hostname: 'localhost'
-      })
+    modelProduct.store.dispatch(
+      modelProduct.getAll({})
     );
 
 };
