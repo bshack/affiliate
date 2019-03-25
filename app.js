@@ -40,9 +40,9 @@ app.set('databaseConnection', knex({
 
 app.get('/', routeIndex.index);
 
-app.get('/category/:categoryID', routeCategory.index);
-
-app.get('/category/:categoryID/product/:productID', routeProduct.index);
+app.get('/**/index.html', routeCategory.index);
+//
+// app.get('/category/:categoryID/product/:productID', routeProduct.index);
 
 https.createServer({
     key: fs.readFileSync(envConfig.ssl.key),

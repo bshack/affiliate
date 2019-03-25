@@ -1,18 +1,21 @@
-const ModelCategory = require('../models/category');
+const ModelProduct = require('../models/product');
+const path = require("path")
 
 exports.index = function(req, res) {
 
-    let modelCategory = new ModelCategory(req.app);
+    let modelProduct = new ModelProduct(req.app);
+    let productGetParams = {
+        seoDirectoryNamePart: path.dirname(req.path).substr(1)
+    };
 
-    modelCategory.store.subscribe(() => {
-        res.render('category', modelCategory.store.getState()[0]);
+    modelProduct.store.subscribe(() => {
+        res.render('index', {
+            products: modelProduct.store.getState()
+        });
     });
 
-    modelCategory.store.dispatch(
-      modelCategory.getOne({
-          id: 2,
-          hostname: 'localhost'
-      })
+    modelProduct.store.dispatch(
+      modelProduct.getAll(productGetParams)
     );
 
 };

@@ -65,12 +65,18 @@ const thunk = require('redux-thunk').default;
 
           return (dispatch, getState) => {
 
+              let whereData = {
+                   isActive: true
+              };
+
+              if (params.seoDirectoryNamePart) {
+                  whereData.seoDirectoryNamePart = params.seoDirectoryNamePart;
+              }
+
               return this.app.get('databaseConnection')
                   .from('product')
                   .select('*')
-                  .where({
-                      isActive: true
-                  })
+                  .where(whereData)
                   .then((data) => {
                      dispatch(this.handleGetSuccess(data));
                   })
