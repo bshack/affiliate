@@ -11,7 +11,7 @@ exports.index = function(req, res) {
     });
 
     modelProduct.store.dispatch(
-      modelProduct.getAll({})
+        modelProduct.getAll({})
     );
 
 };

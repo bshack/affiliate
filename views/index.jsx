@@ -1,12 +1,12 @@
 var React = require('react');
 var DefaultLayout = require('../layouts/default.jsx');
-var Products = require('./products.jsx');
+var CategoryProducts = require('./categoryProducts.jsx');
 
 class View extends React.Component {
   render() {
     return (
-      <DefaultLayout title={this.props.products[1].title}>
-        <Products data={this.props.products} />
+      <DefaultLayout title='yo'>
+        <CategoryProducts data={this.props.products} />
       </DefaultLayout>
     );
   }
