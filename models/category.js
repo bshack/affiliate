@@ -1,5 +1,48 @@
 const redux = require('redux');
 const thunk = require('redux-thunk').default;
+const _ = require('lodash');
+
+const buildCategoryHierarchy = (data) => {
+    return new Promise((resolve, reject) => {
+
+        // data[1] = { seoDirectoryNamePart: 'shoes/dress' };
+        // data[2] = { seoDirectoryNamePart: 'shoes/dress/wedding' };
+        // data[3] = { seoDirectoryNamePart: 'shoes/basketball' };
+
+        let categoryHierarchy = {};
+        let i;
+
+        for (i = 0; i < data.length; i++) {
+
+            let categoryLevel = {
+                children: {},
+                path: ''
+            };
+
+            let directories = data[i].seoDirectoryNamePart.split('/');
+            let tmp = categoryLevel;
+            let path = '';
+            let ii;
+
+            for (ii = 0, n = directories.length; ii < n; ii++) {
+
+                path = path + '/' + directories[ii];
+                tmp.children[directories[ii]]={
+                    children: {},
+                    path: path
+                };
+                tmp = tmp.children[directories[ii]];
+
+            }
+
+            categoryHierarchy = _.merge(categoryHierarchy, categoryLevel);
+
+        }
+
+        resolve(categoryHierarchy.children);
+
+    })
+};
 
 (() => {
 
@@ -16,10 +59,10 @@ const thunk = require('redux-thunk').default;
 
         reducers(state = {}, action) {
             switch (action.type) {
-                case 'GET_SITE_DATA':
+                case 'GET_CATEGORY_DATA':
                     state = action.data
                     return state;
-                case 'GET_SITE_DATA_ERROR':
+                case 'GET_CATEGORY_DATA_ERROR':
                     return state;
                 default:
                     return state;
@@ -28,14 +71,14 @@ const thunk = require('redux-thunk').default;
 
         handleGetSuccess(data) {
             return {
-                type: 'GET_SITE_DATA',
+                type: 'GET_CATEGORY_DATA',
                 data: data
             };
         }
 
         handleGetError(error) {
             return {
-                type: 'GET_SITE_DATA_ERROR',
+                type: 'GET_CATEGORY_DATA_ERROR',
                 data: error
             };
         }
@@ -43,47 +86,43 @@ const thunk = require('redux-thunk').default;
         getOne(params) {
 
           return (dispatch, getState) => {
-
               return this.app.get('databaseConnection')
-                   .select('category.*')
-                   .from('website')
-                   .innerJoin('websitecategory', 'website.id', 'websitecategory.website')
-                   .innerJoin('category', 'category.id', 'websitecategory.category')
-                   .limit(1)
-                   .where({
-                       'category.id': params.id,
-                       'website.hostname': params.hostname
-                   })
-                   .then((data) => {
-                      dispatch(this.handleGetSuccess(data));
-                   })
-                   .catch((error) => {
-                       dispatch(this.handleGetError(error));
-                   });
-
+                  .from('product')
+                  .distinct('seoDirectoryNamePart')
+                  .select()
+                  .where({
+                       isActive: true
+                  })
+                  .limit(1)
+                  .then((data) => {
+                     dispatch(this.handleGetSuccess(data));
+                  })
+                  .catch((error) => {
+                      dispatch(this.handleGetError(error));
+                  });
           };
+
         }
 
         getAll(params) {
 
-          return (dispatch, getState) => {
+            return (dispatch, getState) => {
+                return this.app.get('databaseConnection')
+                    .from('product')
+                    .distinct('seoDirectoryNamePart')
+                    .select()
+                    .where({
+                         isActive: true
+                    })
+                    .then(buildCategoryHierarchy)
+                    .then((data) => {
+                       dispatch(this.handleGetSuccess(data));
+                    })
+                    .catch((error) => {
+                        dispatch(this.handleGetError(error));
+                    });
+            };
 
-              return this.app.get('databaseConnection')
-                   .select('category.*')
-                   .from('website')
-                   .innerJoin('websitecategory', 'website.id', 'websitecategory.website')
-                   .innerJoin('category', 'websitecategory.category', 'category.id')
-                   .where({
-                       'website.hostname': params.hostname
-                   })
-                   .then((data) => {
-                      dispatch(this.handleGetSuccess(data));
-                   })
-                   .catch((error) => {
-                       dispatch(this.handleGetError(error));
-                   });
-
-          };
         }
 
     };
