@@ -1,3 +1,4 @@
+require('@gouch/to-title-case');
 const redux = require('redux');
 const thunk = require('redux-thunk').default;
 const _ = require('lodash');
@@ -5,18 +6,21 @@ const _ = require('lodash');
 const buildCategoryHierarchy = (data) => {
     return new Promise((resolve, reject) => {
 
-        // data[1] = { seoDirectoryNamePart: 'shoes/dress' };
-        // data[2] = { seoDirectoryNamePart: 'shoes/dress/wedding' };
-        // data[3] = { seoDirectoryNamePart: 'shoes/basketball' };
+        data[1] = { seoDirectoryNamePart: 'shoes/dress' };
+        data[2] = { seoDirectoryNamePart: 'shoes/dress/wedding' };
+        data[3] = { seoDirectoryNamePart: 'shoes/basketball' };
 
+        let categoryData = {
+            paths: {},
+            hierarchy: {}
+        };
         let categoryHierarchy = {};
         let i;
 
         for (i = 0; i < data.length; i++) {
 
             let categoryLevel = {
-                children: {},
-                path: ''
+                children: {}
             };
 
             let directories = data[i].seoDirectoryNamePart.split('/');
@@ -27,10 +31,15 @@ const buildCategoryHierarchy = (data) => {
             for (ii = 0, n = directories.length; ii < n; ii++) {
 
                 path = path + '/' + directories[ii];
-                tmp.children[directories[ii]]={
-                    children: {},
-                    path: path
+                tmp.children[directories[ii]] = {
+                    title: directories[ii].replace(/-/g,' ').toTitleCase(),
+                    path: path,
+                    children: {}
                 };
+
+                categoryData.paths[path] = _.merge(categoryData.paths[path], tmp.children[directories[ii]]);
+                delete categoryData.paths[path].children;
+
                 tmp = tmp.children[directories[ii]];
 
             }
@@ -39,7 +48,11 @@ const buildCategoryHierarchy = (data) => {
 
         }
 
-        resolve(categoryHierarchy.children);
+        categoryData.hierarchy = categoryHierarchy.children;
+
+        console.log(categoryData);
+
+        resolve(categoryData);
 
     })
 };
