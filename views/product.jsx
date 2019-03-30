@@ -64,7 +64,7 @@ class View extends React.Component {
         {productCondition}
         <a href={this.props.data.link}>get the deal now</a>
         <br />
-        <a href={"/" + this.props.data.seoDirectoryNamePart + '/' + this.props.data.seoFilenamePart + ".html"}>offer details</a>
+        <a href={"/" + this.props.data.path + '/' + this.props.data.seoFilenamePart + ".html"}>offer details</a>
         {utilityJSONLD.product(this.props.data)}
       </div>
     );

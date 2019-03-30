@@ -6,9 +6,9 @@ const _ = require('lodash');
 const buildCategoryHierarchy = (data) => {
     return new Promise((resolve, reject) => {
 
-        data[1] = { seoDirectoryNamePart: 'shoes/dress' };
-        data[2] = { seoDirectoryNamePart: 'shoes/dress/wedding' };
-        data[3] = { seoDirectoryNamePart: 'shoes/basketball' };
+        data[1] = { path: 'shoes/dress' };
+        data[2] = { path: 'shoes/dress/wedding' };
+        data[3] = { path: 'shoes/basketball' };
 
         let categoryData = {
             paths: {},
@@ -23,7 +23,7 @@ const buildCategoryHierarchy = (data) => {
                 children: {}
             };
 
-            let directories = data[i].seoDirectoryNamePart.split('/');
+            let directories = data[i].path.split('/');
             let tmp = categoryLevel;
             let path = '';
             let ii;
@@ -101,8 +101,13 @@ const buildCategoryHierarchy = (data) => {
           return (dispatch, getState) => {
               return this.app.get('databaseConnection')
                   .from('product')
-                  .distinct('seoDirectoryNamePart')
-                  .select()
+                  .distinct('path')
+                  .select([
+                      'product.*',
+                      'category.path',
+                      'category.title AS categoryTitle'
+                  ])
+                  .innerJoin('category', 'product.googleProductCategory', 'category.googleid')
                   .where({
                        isActive: true
                   })
@@ -122,8 +127,13 @@ const buildCategoryHierarchy = (data) => {
             return (dispatch, getState) => {
                 return this.app.get('databaseConnection')
                     .from('product')
-                    .distinct('seoDirectoryNamePart')
-                    .select()
+                    .distinct('path')
+                    .select([
+                        'product.*',
+                        'category.path',
+                        'category.title AS categoryTitle'
+                    ])
+                    .innerJoin('category', 'product.googleProductCategory', 'category.googleid')
                     .where({
                          isActive: true
                     })

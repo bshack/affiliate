@@ -45,7 +45,8 @@ const thunk = require('redux-thunk').default;
           return (dispatch, getState) => {
               return this.app.get('databaseConnection')
                   .from('product')
-                  .select('*')
+                  .select()
+                  .innerJoin('category', 'product.googleProductCategory', 'category.googleid')
                   .where({
                       id: params.id,
                       isActive: true
@@ -75,7 +76,8 @@ const thunk = require('redux-thunk').default;
 
               return this.app.get('databaseConnection')
                   .from('product')
-                  .select('*')
+                  .select()
+                  .innerJoin('category', 'product.googleProductCategory', 'category.googleid')
                   .where(whereData)
                   .then((data) => {
                      dispatch(this.handleGetSuccess(data));
