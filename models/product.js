@@ -40,28 +40,6 @@ const thunk = require('redux-thunk').default;
             };
         }
 
-        getOne(params) {
-
-          return (dispatch, getState) => {
-              return this.app.get('databaseConnection')
-                  .from('product')
-                  .select()
-                  .innerJoin('category', 'product.googleProductCategory', 'category.googleid')
-                  .where({
-                      id: params.id,
-                      isActive: true
-                  })
-                  .limit(1)
-                  .then((data) => {
-                     dispatch(this.handleGetSuccess(data));
-                  })
-                  .catch((error) => {
-                      dispatch(this.handleGetError(error));
-                  });
-          };
-
-        }
-
         getAll(params) {
 
           return (dispatch, getState) => {
@@ -70,13 +48,17 @@ const thunk = require('redux-thunk').default;
                    isActive: true
               };
 
-              if (params.seoDirectoryNamePart) {
-                  whereData.seoDirectoryNamePart = params.seoDirectoryNamePart;
+              if (params.path) {
+                  whereData.path = params.path;
               }
 
               return this.app.get('databaseConnection')
                   .from('product')
-                  .select()
+                  .select([
+                      'product.*',
+                      'category.path',
+                      'category.title AS categoryTitle'
+                  ])
                   .innerJoin('category', 'product.googleProductCategory', 'category.googleid')
                   .where(whereData)
                   .then((data) => {

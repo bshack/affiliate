@@ -1,61 +1,6 @@
-require('@gouch/to-title-case');
 const redux = require('redux');
 const thunk = require('redux-thunk').default;
 const _ = require('lodash');
-
-const buildCategoryHierarchy = (data) => {
-    return new Promise((resolve, reject) => {
-
-        data[1] = { path: 'shoes/dress' };
-        data[2] = { path: 'shoes/dress/wedding' };
-        data[3] = { path: 'shoes/basketball' };
-
-        let categoryData = {
-            paths: {},
-            hierarchy: {}
-        };
-        let categoryHierarchy = {};
-        let i;
-
-        for (i = 0; i < data.length; i++) {
-
-            let categoryLevel = {
-                children: {}
-            };
-
-            let directories = data[i].path.split('/');
-            let tmp = categoryLevel;
-            let path = '';
-            let ii;
-
-            for (ii = 0, n = directories.length; ii < n; ii++) {
-
-                path = path + '/' + directories[ii];
-                tmp.children[directories[ii]] = {
-                    title: directories[ii].replace(/-/g,' ').toTitleCase(),
-                    path: path,
-                    children: {}
-                };
-
-                categoryData.paths[path] = _.merge(categoryData.paths[path], tmp.children[directories[ii]]);
-                delete categoryData.paths[path].children;
-
-                tmp = tmp.children[directories[ii]];
-
-            }
-
-            categoryHierarchy = _.merge(categoryHierarchy, categoryLevel);
-
-        }
-
-        categoryData.hierarchy = categoryHierarchy.children;
-
-        console.log(categoryData);
-
-        resolve(categoryData);
-
-    })
-};
 
 (() => {
 
@@ -96,48 +41,12 @@ const buildCategoryHierarchy = (data) => {
             };
         }
 
-        getOne(params) {
-
-          return (dispatch, getState) => {
-              return this.app.get('databaseConnection')
-                  .from('product')
-                  .distinct('path')
-                  .select([
-                      'product.*',
-                      'category.path',
-                      'category.title AS categoryTitle'
-                  ])
-                  .innerJoin('category', 'product.googleProductCategory', 'category.googleid')
-                  .where({
-                       isActive: true
-                  })
-                  .limit(1)
-                  .then((data) => {
-                     dispatch(this.handleGetSuccess(data));
-                  })
-                  .catch((error) => {
-                      dispatch(this.handleGetError(error));
-                  });
-          };
-
-        }
-
         getAll(params) {
 
             return (dispatch, getState) => {
                 return this.app.get('databaseConnection')
-                    .from('product')
-                    .distinct('path')
-                    .select([
-                        'product.*',
-                        'category.path',
-                        'category.title AS categoryTitle'
-                    ])
-                    .innerJoin('category', 'product.googleProductCategory', 'category.googleid')
-                    .where({
-                         isActive: true
-                    })
-                    .then(buildCategoryHierarchy)
+                    .from('category')
+                    .select()
                     .then((data) => {
                        dispatch(this.handleGetSuccess(data));
                     })
