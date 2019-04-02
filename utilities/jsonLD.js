@@ -7,7 +7,8 @@ const moment = require('moment');
 class JSONLD {
 
     product(data) {
-        let cdn = "https://s3.us-east-2.amazonaws.com/cdn.shackelforddigital.io/";
+
+        let cdn = "https://s3.us-east-2.amazonaws.com/cdn.shackelforddigital.io";
         let defaultJSONLD = {
           "@context": "http://schema.org/",
           "@type": "Product",
@@ -28,15 +29,15 @@ class JSONLD {
               availability: {}
           }
       };
-      if (data.seoDirectoryNamePart && data.seoFilenamePart) {
-          defaultProductData.url = (cdn + data.seoDirectoryNamePart + '/' + data.seoFilenamePart + ".html");
+      if (data.path && data.seoFilenamePart) {
+          defaultProductData.url = (cdn + '/' + data.path + '/' + data.seoFilenamePart + ".html");
           defaultProductData.offers.url = defaultProductData.url;
       }
       if (data.title !== '') {
           defaultProductData.name = data.title;
       }
-      if (data.seoDirectoryNamePart && data.seoFilenamePart && data.isImageLinkProcessed) {
-          defaultProductData.image = (cdn + data.seoDirectoryNamePart + '/' + data.seoFilenamePart + "-large@2x.jpg");
+      if (data.path && data.seoFilenamePart && data.isImageLinkProcessed) {
+          defaultProductData.image = (cdn + '/' + data.path + '/' + data.seoFilenamePart + "-large@2x.jpg");
       }
       if (data.description !== '') {
           defaultProductData.description = data.description;
@@ -103,6 +104,68 @@ class JSONLD {
          type="application/ld+json"
          dangerouslySetInnerHTML={{ __html: JSON.stringify(_.extend({}, defaultJSONLD, defaultProductData)) }}
      />
+    }
+
+    siteNavigationElement(data) {
+        let cdn = "https://s3.us-east-2.amazonaws.com/cdn.shackelforddigital.io";
+        let defaultJSONLD = {
+        	"@context": "https://schema.org",
+        	"@graph": []
+        };
+        let recursiveBuilder = (data) => {
+            let siteNavigationElements = [];
+            let key;
+            for (key in data) {
+                siteNavigationElements.push({
+                      "@context": "https://schema.org",
+                      "@type": "SiteNavigationElement",
+                      "name": data[key].title,
+                      "url": cdn + '/' + data[key].path + '/index.html'
+                  });
+                if (_.size(data[key].children)) {
+                    siteNavigationElements = _.unionBy(recursiveBuilder(data[key].children), siteNavigationElements, 'name');
+                }
+            }
+            return siteNavigationElements;
+        };
+        defaultJSONLD['@graph'] = recursiveBuilder(data);
+        return <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(defaultJSONLD) }}
+        />
+
+    }
+
+    breadcrumbs(data) {
+        let cdn = "https://s3.us-east-2.amazonaws.com/cdn.shackelforddigital.io";
+        let defaultJSONLD = {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": []
+        };
+        let recursiveBuilder = (data) => {
+            let itemListElement = [];
+            let position = 1;
+            let key;
+            for (key in data) {
+                itemListElement.push({
+                      "@type": "ListItem",
+                      "position": position,
+                      "item": {
+                          "@id": cdn + '/' + data[key].path + '/index.html',
+                          "name": data[key].title
+                      }
+                  });
+                  position = (position + 1);
+            }
+            return itemListElement;
+        };
+        defaultJSONLD['itemListElement'] = recursiveBuilder(data);
+        return <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(defaultJSONLD) }}
+        />
+
     }
 
 

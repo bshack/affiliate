@@ -1,14 +1,9 @@
-require('@gouch/to-title-case');
 const redux = require('redux');
 const thunk = require('redux-thunk').default;
 const _ = require('lodash');
 
 const getCategoryDetails = (data) => {
     return new Promise((resolve, reject) => {
-
-        data[1] = { path: 'vehicles-and-parts/vehicles/watercraft/yachts' };
-        data[2] = { path: 'toys-and-games/toys/riding-toys/hobby-horses' };
-        data[3] = { path: 'food-beverages-and-tobacco/food-items/bakery' };
 
         let fullPathsList = [];
         let i;
@@ -71,23 +66,17 @@ const getCategoryDetails = (data) => {
             };
         }
 
-        getMainNavigation(params) {
-
-            let whereData = {
-                 isActive: true
-            };
+        getAll(params) {
 
             return (dispatch, getState) => {
                 return this.app.get('databaseConnection')
-                    .from('product')
+                    .from('category')
                     .select([
-                        'category.path',
-                        'category.title AS categoryTitle'
+                        'path'
                     ])
-                    .where(whereData)
-                    .orderBy('category.path', 'asc')
-                    .innerJoin('category', 'product.googleProductCategory', 'category.googleid')
-                    .distinct('category.path')
+                    .where({
+                        path: params.path
+                    })
                     .then(getCategoryDetails)
                     .then((paths) => {
                         return new Promise((resolve, reject) => {
@@ -101,31 +90,11 @@ const getCategoryDetails = (data) => {
                         });
                     })
                     .then((data) => {
-                        return new Promise((resolve, reject) => {
-                            let categoryHierarchy = {};
-                            let i;
-                            for (i = 0; i < data.length; i++) {
-                                let categoryLevel = {
-                                    children: {}
-                                };
-                                let directories = data[i].path.split('/');
-                                let tmp = categoryLevel;
-                                let path = '';
-                                let ii;
-                                for (ii = 0; ii < directories.length; ii++) {
-                                    if (path === '') {
-                                        path = directories[ii];
-                                    } else {
-                                        path = path + '/' + directories[ii];
-                                    }
-                                    tmp.children[directories[ii]] = data[data.findIndex(obj => obj.path === path)];
-                                    tmp.children[directories[ii]].children = {};
-                                    tmp = tmp.children[directories[ii]];
-                                }
-                                categoryHierarchy = _.merge(categoryHierarchy, categoryLevel);
-                            }
-                            resolve(categoryHierarchy.children);
-                        })
+                        data.unshift({
+                            id: 'home',
+                            title: 'Home'
+                        });
+                       return data;
                     })
                     .then((data) => {
                        dispatch(this.handleGetSuccess(data));

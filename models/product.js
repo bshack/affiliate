@@ -48,10 +48,6 @@ const thunk = require('redux-thunk').default;
                    isActive: true
               };
 
-              if (params.path) {
-                  whereData.path = params.path;
-              }
-
               return this.app.get('databaseConnection')
                   .from('product')
                   .select([
@@ -60,7 +56,15 @@ const thunk = require('redux-thunk').default;
                       'category.title AS categoryTitle'
                   ])
                   .innerJoin('category', 'product.googleProductCategory', 'category.googleid')
-                  .where(whereData)
+                    .where((builder) => {
+
+                        if (params.path) {
+                            builder.where(whereData).andWhere('category.path', 'like', '%' + params.path)
+                        } else {
+                            builder.where(whereData)
+                        }
+
+                    })
                   .then((data) => {
                      dispatch(this.handleGetSuccess(data));
                   })

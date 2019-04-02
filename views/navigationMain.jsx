@@ -1,12 +1,15 @@
 var React = require('react');
 var _ = require('lodash');
+const UtilityJSONLD = require('../utilities/jsonLD');
 
-const recursiveBuilder = (data, level) => {
+var utilityJSONLD = new UtilityJSONLD();
+
+const recursiveBuilder = (data) => {
     let key;
     let links = [];
     for (key in data) {
        if (_.size(data[key].children)) {
-           links.push(<li key={data[key].id}><a href={'/' + data[key].path + '/index.html'}>{data[key].title}</a>{recursiveBuilder(data[key].children, (level + 1))}</li>);
+           links.push(<li key={data[key].id}><a href={'/' + data[key].path + '/index.html'}>{data[key].title}</a>{recursiveBuilder(data[key].children)}</li>);
        } else {
            links.push(<li key={data[key].id}><a href={'/' + data[key].path + '/index.html'}>{data[key].title}</a></li>);
        }
@@ -15,14 +18,11 @@ const recursiveBuilder = (data, level) => {
 };
 
 class View extends React.Component {
-
-
-
   render() {
-
     return (
-        <nav className="main">
-            {recursiveBuilder(this.props.data, 1)}
+        <nav>
+            {recursiveBuilder(this.props.data)}
+            {utilityJSONLD.siteNavigationElement(this.props.data)}
         </nav>
     );
   }
