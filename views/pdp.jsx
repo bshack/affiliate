@@ -7,10 +7,11 @@ const Breadcrumbs = require('./breadcrumbs.jsx');
 class View extends React.Component {
   render() {
     return (
-      <DefaultLayout title='category'>
+      <DefaultLayout title={this.props.products[0].title}>
         <NavigationMain data={this.props.navigation} />
         <Breadcrumbs data={this.props.breadcrumbs} />
         <CategoryProducts data={this.props.products} />
+        <CategoryProducts data={this.props.productRecommendations} />
       </DefaultLayout>
     );
   }

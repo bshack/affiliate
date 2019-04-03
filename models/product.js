@@ -44,9 +44,19 @@ const thunk = require('redux-thunk').default;
 
           return (dispatch, getState) => {
 
-              let whereData = {
+              let whereParams = {
                    isActive: true
               };
+
+              let limitParam = 1000;
+
+              if (params.filename) {
+                  whereParams.seoFilenamePart = params.filename;
+              }
+
+              if (params.limit) {
+                  limitParam = params.limit;
+              }
 
               return this.app.get('databaseConnection')
                   .from('product')
@@ -55,15 +65,14 @@ const thunk = require('redux-thunk').default;
                       'category.path',
                       'category.title AS categoryTitle'
                   ])
+                  .limit(limitParam)
                   .innerJoin('category', 'product.googleProductCategory', 'category.googleid')
                     .where((builder) => {
-
-                        if (params.path) {
-                            builder.where(whereData).andWhere('category.path', 'like', '%' + params.path)
+                        if (params.path && !params.filename) {
+                            builder.where(whereParams).andWhere('category.path', 'like', '%' + params.path)
                         } else {
-                            builder.where(whereData)
+                            builder.where(whereParams)
                         }
-
                     })
                   .then((data) => {
                      dispatch(this.handleGetSuccess(data));

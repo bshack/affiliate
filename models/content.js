@@ -16,10 +16,10 @@ const thunk = require('redux-thunk').default;
 
         reducers(state = {}, action) {
             switch (action.type) {
-                case 'GET_CATEGORY_DATA':
+                case 'GET_CONTENT_DATA':
                     state = action.data
                     return state;
-                case 'GET_CATEGORY_DATA_ERROR':
+                case 'GET_CONTENT_DATA_ERROR':
                     return state;
                 default:
                     return state;
@@ -28,24 +28,33 @@ const thunk = require('redux-thunk').default;
 
         handleGetSuccess(data) {
             return {
-                type: 'GET_CATEGORY_DATA',
+                type: 'GET_CONTENT_DATA',
                 data: data
             };
         }
 
         handleGetError(error) {
             return {
-                type: 'GET_CATEGORY_DATA_ERROR',
+                type: 'GET_CONTENT_DATA_ERROR',
                 data: error
             };
         }
 
         getAll(params) {
 
+            let whereParams = {
+                isActive: true
+            };
+
+            if (params.filename) {
+                whereParams.filename = params.filename;
+            }
+
             return (dispatch, getState) => {
                 return this.app.get('databaseConnection')
-                    .from('category')
+                    .from('content')
                     .select()
+                    .where(whereParams)
                     .then((data) => {
                        dispatch(this.handleGetSuccess(data));
                     })

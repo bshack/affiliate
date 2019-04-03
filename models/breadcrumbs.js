@@ -89,6 +89,25 @@ const getCategoryDetails = (data) => {
                                 .catch(reject);
                         });
                     })
+                    .then((categoryData) => {
+                        return new Promise((resolve, reject) => {
+                            this.app.get('databaseConnection')
+                                .from('product')
+                                .select()
+                                .where({
+                                    isActive: true,
+                                    seoFilenamePart: params.filename
+                                })
+                                .then((productData) => {
+                                    categoryData.push({
+                                        title: productData[0].title,
+                                        id: productData[0].seoFilenamePart
+                                    });
+                                    resolve(categoryData);
+                                })
+                                .catch(reject);
+                        });
+                    })
                     .then((data) => {
                         data.unshift({
                             id: 'home',

@@ -10,6 +10,7 @@ const nodeJSX = require('node-jsx').install();
 
 const routeIndex = require('./routes/index');
 const routeCategory = require('./routes/category');
+const routeProduct = require('./routes/product');
 
 app.use(session({
     secret: envConfig.session.secret,
@@ -36,6 +37,8 @@ app.set('databaseConnection', knex({
 app.get('/', routeIndex.index);
 
 app.get('/**/index.html', routeCategory.index);
+
+app.get('/**/*.html', routeProduct.index);
 
 https.createServer({
     key: fs.readFileSync(envConfig.ssl.key),
