@@ -1,17 +1,16 @@
-const React = require('react');
-const DefaultLayout = require('../layouts/default.jsx');
-const CategoryProducts = require('./categoryProducts.jsx');
-const NavigationMain = require('./navigationMain.jsx');
-const Breadcrumbs = require('./breadcrumbs.jsx');
+var React = require('react');
+var Product = require('./product.jsx');
 
 class View extends React.Component {
   render() {
     return (
-      <DefaultLayout title='category'>
-        <NavigationMain data={this.props.navigation} />
-        <Breadcrumbs data={this.props.breadcrumbs} />
-        <CategoryProducts data={this.props.products} />
-      </DefaultLayout>
+        <section className="products container">
+            <div className="row">
+            {this.props.data.map(
+                (product, index) => <Product data={product} key={index}/>
+            )}
+            </div>
+        </section>
     );
   }
 }

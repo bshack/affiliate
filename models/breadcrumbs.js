@@ -91,21 +91,26 @@ const getCategoryDetails = (data) => {
                     })
                     .then((categoryData) => {
                         return new Promise((resolve, reject) => {
-                            this.app.get('databaseConnection')
-                                .from('product')
-                                .select()
-                                .where({
-                                    isActive: true,
-                                    seoFilenamePart: params.filename
-                                })
-                                .then((productData) => {
-                                    categoryData.push({
-                                        title: productData[0].title,
-                                        id: productData[0].seoFilenamePart
-                                    });
-                                    resolve(categoryData);
-                                })
-                                .catch(reject);
+                            if (params.filename) {
+                                this.app.get('databaseConnection')
+                                    .from('product')
+                                    .select()
+                                    .where({
+                                        isActive: true,
+                                        seoFilenamePart: params.filename
+                                    })
+                                    .then((productData) => {
+                                        categoryData.push({
+                                            title: productData[0].title,
+                                            id: productData[0].seoFilenamePart
+                                        });
+                                        resolve(categoryData);
+                                    })
+                                    .catch(reject);
+                            } else {
+                                resolve(categoryData);
+                            }
+
                         });
                     })
                     .then((data) => {

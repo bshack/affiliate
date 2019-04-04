@@ -43,9 +43,17 @@ const thunk = require('redux-thunk').default;
         getAll(params) {
 
             return (dispatch, getState) => {
+
+                let whereParams = {};
+
+                if (params.path) {
+                    whereParams.path = params.path;
+                }
+
                 return this.app.get('databaseConnection')
                     .from('category')
                     .select()
+                    .where(whereParams)
                     .then((data) => {
                        dispatch(this.handleGetSuccess(data));
                     })

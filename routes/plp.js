@@ -10,6 +10,14 @@ exports.index = function(req, res) {
         path: path.dirname(req.path).substr(1)
     };
 
+    let categoryParams = {
+        path: productParams.path
+    };
+
+    let breadcrumbParams = {
+        path: productParams.path
+    };
+
     let modelProduct = new ModelProduct(req.app);
     let modelCategory = new ModelCategory(req.app);
     let modelNavigation = new ModelNavigation(req.app);
@@ -20,19 +28,19 @@ exports.index = function(req, res) {
             modelProduct.getAll(productParams)
         ),
         modelCategory.store.dispatch(
-            modelCategory.getAll({})
+            modelCategory.getAll(categoryParams)
         ),
         modelNavigation.store.dispatch(
             modelNavigation.getMainNavigation({})
         ),
         modelBreadcrumbs.store.dispatch(
-            modelBreadcrumbs.getAll(productParams)
+            modelBreadcrumbs.getAll(breadcrumbParams)
         )
     ]).then(() => {
-        res.render('category', {
+        res.render('plp', {
             navigation: modelNavigation.store.getState(),
             breadcrumbs: modelBreadcrumbs.store.getState(),
-            categories: modelCategory.store.getState(),
+            category: modelCategory.store.getState(),
             products: modelProduct.store.getState()
         });
     });

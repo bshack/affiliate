@@ -9,8 +9,9 @@ const knex = require('knex');
 const nodeJSX = require('node-jsx').install();
 
 const routeIndex = require('./routes/index');
-const routeCategory = require('./routes/category');
-const routeProduct = require('./routes/product');
+const routePLP = require('./routes/plp');
+const routePDP = require('./routes/pdp');
+const routeContent = require('./routes/content');
 
 app.use(session({
     secret: envConfig.session.secret,
@@ -23,7 +24,7 @@ app.use(session({
 
 app.use(express.static('dist'))
 
-app.set('views', './views');
+app.set('views', './layouts');
 app.set('view engine', 'jsx');
 app.engine('jsx', require('express-react-views').createEngine({
     transformViews: false
@@ -34,11 +35,20 @@ app.set('databaseConnection', knex({
     connection: envConfig.database.connection
 }));
 
+//HOME
 app.get('/', routeIndex.index);
-
-app.get('/**/index.html', routeCategory.index);
-
-app.get('/**/*.html', routeProduct.index);
+//CONTENT
+app.get('/contact.html', routeContent.index);
+app.get('/accessibility.html', routeContent.index);
+app.get('/terms-of-service.html', routeContent.index);
+app.get('/privacy-policy.html', routeContent.index);
+app.get('/subscribe.html', routeContent.index);
+app.get('/unsubscribe.html', routeContent.index);
+app.get('/404.html', routeContent.index);
+//PDP
+app.get('/**/index.html', routePLP.index);
+//PLP
+app.get('/**/*.html', routePDP.index);
 
 https.createServer({
     key: fs.readFileSync(envConfig.ssl.key),

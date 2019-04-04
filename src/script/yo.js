@@ -20,7 +20,7 @@ export default function yo() {
 
     ReactDOM.render(
         <HelloMessage />,
-        document.querySelector('main')
+        document.querySelector('.testinject')
     );
 
 }
