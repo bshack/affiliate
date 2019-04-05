@@ -42,31 +42,31 @@ const thunk = require('redux-thunk').default;
 
         getAll(params) {
 
-          return (dispatch, getState) => {
+            return (dispatch, getState) => {
 
-              let whereParams = {
-                   isActive: true
-              };
+                let whereParams = {
+                    isActive: true
+                };
 
-              let limitParam = 1000;
+                let limitParam = 1000;
 
-              if (params.filename) {
-                  whereParams.seoFilenamePart = params.filename;
-              }
+                if (params.filename) {
+                    whereParams.seoFilenamePart = params.filename;
+                }
 
-              if (params.limit) {
-                  limitParam = params.limit;
-              }
+                if (params.limit) {
+                    limitParam = params.limit;
+                }
 
-              return this.app.get('databaseConnection')
-                  .from('product')
-                  .select([
-                      'product.*',
-                      'category.path',
-                      'category.title AS categoryTitle'
-                  ])
-                  .limit(limitParam)
-                  .innerJoin('category', 'product.googleProductCategory', 'category.googleid')
+                return this.app.get('databaseConnection')
+                    .from('product')
+                    .select([
+                        'product.*',
+                        'category.path',
+                        'category.title AS categoryTitle'
+                    ])
+                    .limit(limitParam)
+                    .innerJoin('category', 'product.googleProductCategory', 'category.googleid')
                     .where((builder) => {
                         if (params.path && !params.filename) {
                             builder.where(whereParams).andWhere('category.path', 'like', '%' + params.path)
@@ -74,13 +74,13 @@ const thunk = require('redux-thunk').default;
                             builder.where(whereParams)
                         }
                     })
-                  .then((data) => {
-                     dispatch(this.handleGetSuccess(data));
-                  })
-                  .catch((error) => {
-                      dispatch(this.handleGetError(error));
-                  });
-          };
+                    .then((data) => {
+                        dispatch(this.handleGetSuccess(data));
+                    })
+                    .catch((error) => {
+                        dispatch(this.handleGetError(error));
+                    });
+            };
         }
 
     };

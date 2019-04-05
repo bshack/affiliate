@@ -56,7 +56,7 @@ const thunk = require('redux-thunk').default;
                     .select()
                     .where(whereParams)
                     .then((data) => {
-                       dispatch(this.handleGetSuccess(data));
+                        dispatch(this.handleGetSuccess(data));
                     })
                     .catch((error) => {
                         dispatch(this.handleGetError(error));

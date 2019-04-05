@@ -4,10 +4,10 @@ var Product = require('./product.jsx');
 class View extends React.Component {
   render() {
     return (
-        <section className="products container">
+        <section className="category-products container">
             <div className="row">
             {this.props.data.map(
-                (product, index) => <Product data={product} key={index}/>
+                (product, index) => <div className='col-6 col-lg-3'><Product data={product} key={index} configPublic={this.props.configPublic} /></div>
             )}
             </div>
         </section>

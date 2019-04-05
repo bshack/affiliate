@@ -3,7 +3,7 @@ const React = require('react');
 class View extends React.Component {
   render() {
 
-    let cdn = "//s3.us-east-2.amazonaws.com/cdn.shackelforddigital.io/";
+    let cdn = this.props.configPublic.cdn.origin + '/';
     let slug = '';
     if (this.props.slug) {
         slug = '-' + this.props.slug;

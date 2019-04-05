@@ -1,7 +1,13 @@
+/* MODELS
+ *************************************/
 const ModelContent = require('../models/content');
 const ModelProduct = require('../models/product');
 const ModelCategory = require('../models/category');
 const ModelNavigation = require('../models/navigation');
+
+
+/* ROUTE
+ *************************************/
 
 exports.index = function(req, res) {
 
@@ -29,8 +35,9 @@ exports.index = function(req, res) {
         )
     ]).then(() => {
         res.render('index', {
-            content: modelContent.store.getState(),
+            configPublic: req.app.get('configPublic').store.getState(),
             navigation: modelNavigation.store.getState(),
+            content: modelContent.store.getState(),
             categories: modelCategory.store.getState(),
             products: modelProduct.store.getState()
         });

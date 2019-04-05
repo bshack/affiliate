@@ -118,10 +118,10 @@ const getCategoryDetails = (data) => {
                             id: 'home',
                             title: 'Home'
                         });
-                       return data;
+                        return data;
                     })
                     .then((data) => {
-                       dispatch(this.handleGetSuccess(data));
+                        dispatch(this.handleGetSuccess(data));
                     })
                     .catch((error) => {
                         dispatch(this.handleGetError(error));

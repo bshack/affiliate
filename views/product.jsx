@@ -11,7 +11,7 @@ class View extends React.Component {
 
     let image = '';
     if (this.props.data.isImageLinkProcessed) {
-        image = <Picture data={this.props.data} />
+        image = <Picture data={this.props.data} configPublic={this.props.configPublic} />
     }
 
     let imageAdditional = '';
@@ -52,7 +52,7 @@ class View extends React.Component {
     }
 
     return (
-      <div className="product col-3">
+      <div className="product">
         {image}
         {imageAdditional}
         <h2>{this.props.data.title}</h2>
@@ -65,7 +65,7 @@ class View extends React.Component {
         <a href={this.props.data.link}>get the deal now</a>
         <br />
         <a href={"/" + this.props.data.path + '/' + this.props.data.seoFilenamePart + ".html"}>offer details</a>
-        {utilityJSONLD.product(this.props.data)}
+        {utilityJSONLD.product(this.props.data, this.props.configPublic)}
       </div>
     );
   }

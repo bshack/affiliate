@@ -1,8 +1,17 @@
-const path = require("path");
+const path = require('path');
+
+
+/* MODELS
+ *************************************/
+
 const ModelProduct = require('../models/product');
 const ModelCategory = require('../models/category');
 const ModelNavigation = require('../models/navigation');
 const ModelBreadcrumbs = require('../models/breadcrumbs');
+
+
+/* ROUTE
+ *************************************/
 
 exports.index = function(req, res) {
 
@@ -38,6 +47,7 @@ exports.index = function(req, res) {
         )
     ]).then(() => {
         res.render('plp', {
+            configPublic: req.app.get('configPublic').store.getState(),
             navigation: modelNavigation.store.getState(),
             breadcrumbs: modelBreadcrumbs.store.getState(),
             category: modelCategory.store.getState(),

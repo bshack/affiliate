@@ -1,4 +1,3 @@
-require('@gouch/to-title-case');
 const redux = require('redux');
 const thunk = require('redux-thunk').default;
 const _ = require('lodash');
@@ -6,9 +5,15 @@ const _ = require('lodash');
 const getCategoryDetails = (data) => {
     return new Promise((resolve, reject) => {
 
-        data[1] = { path: 'vehicles-and-parts/vehicles/watercraft/yachts' };
-        data[2] = { path: 'toys-and-games/toys/riding-toys/hobby-horses' };
-        data[3] = { path: 'food-beverages-and-tobacco/food-items/bakery' };
+        data[1] = {
+            path: 'vehicles-and-parts/vehicles/watercraft/yachts'
+        };
+        data[2] = {
+            path: 'toys-and-games/toys/riding-toys/hobby-horses'
+        };
+        data[3] = {
+            path: 'food-beverages-and-tobacco/food-items/bakery'
+        };
 
         let fullPathsList = [];
         let i;
@@ -74,7 +79,7 @@ const getCategoryDetails = (data) => {
         getMainNavigation(params) {
 
             let whereData = {
-                 isActive: true
+                isActive: true
             };
 
             return (dispatch, getState) => {
@@ -128,7 +133,7 @@ const getCategoryDetails = (data) => {
                         })
                     })
                     .then((data) => {
-                       dispatch(this.handleGetSuccess(data));
+                        dispatch(this.handleGetSuccess(data));
                     })
                     .catch((error) => {
                         dispatch(this.handleGetError(error));

@@ -1,5 +1,9 @@
 var React = require('react');
 
+
+/* COMPONENT
+*************************************/
+
 class WrapperLayout extends React.Component {
   render() {
     return (
@@ -38,15 +42,15 @@ class WrapperLayout extends React.Component {
         </head>
         <body>
             <header>
-            logo
+                logo
             </header>
             <div className='testinject'>
             </div>
             <main>
-            {this.props.children}
+                {this.props.children}
             </main>
             <footer>
-            &copy;
+                &copy;
             </footer>
             <script src="/script/vendors-index.js" />
             <script src="/script/index.js" />

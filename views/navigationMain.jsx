@@ -20,7 +20,7 @@ const recursiveBuilder = (data) => {
 class View extends React.Component {
   render() {
     return (
-        <nav>
+        <nav className="main">
             {recursiveBuilder(this.props.data)}
             {utilityJSONLD.siteNavigationElement(this.props.data)}
         </nav>
