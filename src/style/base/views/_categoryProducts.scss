@@ -1,0 +1,20 @@
+%category-products {
+
+    @extend %font-open-sans-regular;
+
+    .image {
+
+        padding-bottom: 100%;
+        position: relative;
+
+        picture,
+        img {
+            left: 0;
+            position: absolute;
+            top: 0;
+            width: 100%;
+        }
+
+    }
+
+}

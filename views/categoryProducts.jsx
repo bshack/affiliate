@@ -7,7 +7,10 @@ class View extends React.Component {
         <section className="category-products container">
             <div className="row">
             {this.props.data.map(
-                (product, index) => <div className='col-6 col-lg-3'><Product data={product} key={index} configPublic={this.props.configPublic} /></div>
+                (product, index) =>
+                    <div className='col-6 col-md-4 col-lg-3'>
+                        <Product data={product} key={index} configPublic={this.props.configPublic} />
+                    </div>
             )}
             </div>
         </section>

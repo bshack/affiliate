@@ -1,0 +1,18 @@
+%button-base-1 {
+
+    @extend %accessibility-outline-1;
+
+    border: 0;
+    border-radius: 0;
+    cursor: pointer;
+    opacity: 0;
+    overflow: hidden;
+    position: relative;
+    transition: opacity $speed-fast ease-in-out;
+
+    &[disabled] {
+        cursor: auto;
+        opacity: .5;
+    }
+
+}

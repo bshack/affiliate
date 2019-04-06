@@ -1,0 +1,58 @@
+// hide text off screen for sighted users and leave accessible for screen readers
+%accessibility-hidden-text-1 {
+    overflow: hidden;
+    text-align: left;
+    text-indent: rem-calc(-5000);
+}
+
+// hide elements off screen for sighted users and leave accessible for screen readers
+%accessibility-hidden-element-1 {
+    clip: rect(0 0 0 0);
+    left: rem-calc(-5000);
+    margin: 0;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+}
+
+// show elements on focus only
+%accessibility-focus-1 {
+
+    @extend %accessibility-hidden-element-1;
+
+    &:focus {
+        clip: auto;
+        left: auto;
+        overflow: visible;
+        position: static;
+    }
+
+}
+
+// show skip to links on focus
+%accessibility-skip-to-element-1 {
+
+    @extend %accessibility-focus-1;
+
+    background-color: $white;
+    display: block;
+    padding: rem-calc(10);
+    text-align: center;
+
+    &:hover,
+    &:focus {
+        text-decoration: underline;
+    }
+
+}
+
+// provide a border around focused elements for visually impaired users
+%accessibility-outline-1 {
+
+    &:focus {
+        outline-color: $black;
+        outline-style: dashed;
+        outline-width: rem-calc(1);
+    }
+
+}

@@ -1,18 +1,98 @@
 @charset 'UTF-8';
-@import '../../node_modules/bootstrap/scss/bootstrap-reboot';
-@import '../../node_modules/bootstrap/scss/bootstrap-grid';
 
-@import 'base/colors';
+@font-face {
+    font-family: 'open_sans_semibolditalic';
+    font-style: normal;
+    font-weight: normal;
+    src: url('../fonts/opensans-semibolditalic-webfont.woff2') format('woff2'),
+    url('../fonts/opensans-semibolditalic-webfont.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'open_sans_semiboldregular';
+    font-style: normal;
+    font-weight: normal;
+    src: url('../fonts/opensans-semibold-webfont.woff2') format('woff2'),
+    url('../fonts/opensans-semibold-webfont.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'open_sansregular';
+    font-style: normal;
+    font-weight: normal;
+    src: url('../fonts/opensans-regular-webfont.woff2') format('woff2'),
+    url('../fonts/opensans-regular-webfont.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'open_sans_lightitalic';
+    font-style: normal;
+    font-weight: normal;
+    src: url('../fonts/opensans-lightitalic-webfont.woff2') format('woff2'),
+    url('../fonts/opensans-lightitalic-webfont.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'open_sans_lightregular';
+    font-style: normal;
+    font-weight: normal;
+    src: url('../fonts/opensans-light-webfont.woff2') format('woff2'),
+    url('../fonts/opensans-light-webfont.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'open_sansitalic';
+    font-style: normal;
+    font-weight: normal;
+    src: url('../fonts/opensans-italic-webfont.woff2') format('woff2'),
+    url('../fonts/opensans-italic-webfont.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'open_sans_extrabolditalic';
+    font-style: normal;
+    font-weight: normal;
+    src: url('../fonts/opensans-extrabolditalic-webfont.woff2') format('woff2'),
+    url('../fonts/opensans-extrabolditalic-webfont.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'open_sans_extraboldregular';
+    font-style: normal;
+    font-weight: normal;
+    src: url('../fonts/opensans-extrabold-webfont.woff2') format('woff2'),
+    url('../fonts/opensans-extrabold-webfont.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'open_sansbold_italic';
+    font-style: normal;
+    font-weight: normal;
+    src: url('../fonts/opensans-bolditalic-webfont.woff2') format('woff2'),
+    url('../fonts/opensans-bolditalic-webfont.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'open_sansbold';
+    font-style: normal;
+    font-weight: normal;
+    src: url('../fonts/opensans-bold-webfont.woff2') format('woff2'),
+    url('../fonts/opensans-bold-webfont.woff') format('woff');
+}
+
+@import 'base/toolkit';
 
 body {
 
     background: $white;
 
     .testinject {
-
         color: $black;
-        width: 100px;
-
+        width: rem-calc(100);
     }
 
+}
+
+.category-products {
+    @extend %category-products;
 }

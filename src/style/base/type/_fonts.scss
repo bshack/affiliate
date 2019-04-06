@@ -1,0 +1,54 @@
+%font-base-1 {
+    color: $black;
+    font-family: sans-serif;
+    font-size: rem-calc(16);
+    // sass-lint:disable no-misspelled-properties
+    font-smoothing: antialiased;
+    // sass-lint:enable no-misspelled-properties
+    font-style: normal;
+    font-weight: normal;
+    line-height: normal;
+    text-decoration: none;
+    text-rendering: optimizeLegibility;
+}
+
+%font-arial-regular {
+
+    @extend %font-base-1;
+
+    font-family: 'arial';
+
+}
+
+%font-arial-italic {
+
+    @extend %font-arial-regular;
+
+    font-style: italic;
+
+}
+
+%font-arial-bold {
+
+    @extend %font-arial-regular;
+
+    font-weight: 700;
+
+}
+
+%font-arial-bold-italic {
+
+    @extend %font-arial-regular;
+
+    font-style: italic;
+    font-weight: 700;
+
+}
+
+%font-open-sans-regular {
+
+    @extend %font-base-1;
+
+    font-family: 'open_sansregular';
+
+}

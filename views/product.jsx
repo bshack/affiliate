@@ -11,12 +11,18 @@ class View extends React.Component {
 
     let image = '';
     if (this.props.data.isImageLinkProcessed) {
-        image = <Picture data={this.props.data} configPublic={this.props.configPublic} />
+        image =
+            <div className="image">
+                <Picture data={this.props.data} configPublic={this.props.configPublic} />
+            </div>
     }
 
     let imageAdditional = '';
     if (this.props.data.isAdditionalImageLinkProcessed) {
-        imageAdditional = <Picture data={this.props.data} slug="additional" />
+        imageAdditional =
+            <div className="image">
+                <Picture data={this.props.data} slug="additional" />
+            </div>
     }
 
     let price = '';
