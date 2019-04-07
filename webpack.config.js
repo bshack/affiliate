@@ -104,10 +104,10 @@ module.exports = {
         new MiniCssExtractPlugin({
             filename: "./style/[name].css",
             chunkFilename: "./style/global.css"
-        }),
-        new HtmlWebpackPlugin({
-            template: 'src/toolkit.html'
         })
+        // new HtmlWebpackPlugin({
+        //     template: 'src/toolkit.html'
+        // })
     ],
     output: {
         path: path.resolve(__dirname, 'dist'),

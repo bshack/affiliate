@@ -1,47 +1,34 @@
 %font-base-1 {
-    color: $black;
     font-family: sans-serif;
-    font-size: rem-calc(16);
     // sass-lint:disable no-misspelled-properties
     font-smoothing: antialiased;
     // sass-lint:enable no-misspelled-properties
     font-style: normal;
     font-weight: normal;
+    hyphens: auto;
     line-height: normal;
     text-decoration: none;
     text-rendering: optimizeLegibility;
 }
 
-%font-arial-regular {
+%font-open-sans-light-regular {
 
     @extend %font-base-1;
 
-    font-family: 'arial';
+    font-family: 'open_sans_lightregular';
+
+    i,
+    em {
+        @extend %font-open-sans-light-italic;
+    }
 
 }
 
-%font-arial-italic {
+%font-open-sans-light-italic {
 
-    @extend %font-arial-regular;
+    @extend %font-base-1;
 
-    font-style: italic;
-
-}
-
-%font-arial-bold {
-
-    @extend %font-arial-regular;
-
-    font-weight: 700;
-
-}
-
-%font-arial-bold-italic {
-
-    @extend %font-arial-regular;
-
-    font-style: italic;
-    font-weight: 700;
+    font-family: 'open_sans_lightitalic';
 
 }
 
@@ -50,5 +37,81 @@
     @extend %font-base-1;
 
     font-family: 'open_sansregular';
+
+    i,
+    em {
+        @extend %font-open-sans-italic;
+    }
+
+}
+
+%font-open-sans-italic {
+
+    @extend %font-base-1;
+
+    font-family: 'open_sansitalic';
+
+}
+
+%font-open-sans-semi-bold-regular {
+
+    @extend %font-base-1;
+
+    font-family: 'open_sans_semiboldregular';
+
+    i,
+    em {
+        @extend %font-open-sans-semi-bold-italic;
+    }
+
+}
+
+%font-open-sans-semi-bold-italic {
+
+    @extend %font-base-1;
+
+    font-family: 'open_sans_semibolditalic';
+
+}
+
+%font-open-sans-bold {
+
+    @extend %font-base-1;
+
+    font-family: 'open_sansbold';
+
+    i,
+    em {
+        @extend %font-open-sans-bold-italic;
+    }
+
+}
+
+%font-open-sans-bold-italic {
+
+    @extend %font-base-1;
+
+    font-family: 'open_sansbold_italic';
+
+}
+
+%font-open-sans-extra-bold-regular {
+
+    @extend %font-base-1;
+
+    font-family: 'open_sans_extraboldregular';
+
+    i,
+    em {
+        @extend %font-open-sans-extra-bold-italic;
+    }
+
+}
+
+%font-open-sans-extra-bold-italic {
+
+    @extend %font-base-1;
+
+    font-family: 'open_sans_extrabolditalic';
 
 }

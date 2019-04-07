@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "main": "app.js",
   "scripts": {
-    "start": "pm2 stop app.js; pm2 start app.js --watch; webpack --watch;",
+    "start": "pm2 stop app.js; pm2 start app.js; webpack --watch;",
     "stop": "pm2 stop app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

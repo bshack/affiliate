@@ -6,3 +6,63 @@
     transition: opacity $speed-fast ease-in-out;
 
 }
+
+%anchor-1 {
+
+    @extend %anchor-base-1;
+    @extend %color-green-1-background;
+    @extend %color-white-1;
+    @extend %font-open-sans-semi-bold-regular;
+
+    @include media-breakpoint-up(md) {
+        font-size: rem-calc(16);
+    }
+
+    align-items: center;
+    display: inline-flex;
+    font-size: rem-calc(14);
+    justify-content: center;
+    min-height: rem-calc(45);
+    padding-left: rem-calc(15);
+    padding-right: rem-calc(15);
+
+    &:focus,
+    &:hover {
+
+        @extend %color-white-1;
+
+        text-decoration: none;
+
+    }
+
+}
+
+%anchor-2 {
+
+    @extend %anchor-base-1;
+    @extend %color-blue-1-background;
+    @extend %color-white-1;
+    @extend %font-open-sans-semi-bold-regular;
+
+    @include media-breakpoint-up(md) {
+        font-size: rem-calc(16);
+    }
+
+    align-items: center;
+    display: inline-flex;
+    font-size: rem-calc(14);
+    justify-content: center;
+    min-height: rem-calc(45);
+    padding-left: rem-calc(15);
+    padding-right: rem-calc(15);
+
+    &:focus,
+    &:hover {
+
+        @extend %color-white-1;
+
+        text-decoration: none;
+
+    }
+
+}

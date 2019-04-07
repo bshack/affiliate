@@ -5,7 +5,7 @@ class View extends React.Component {
   render() {
     return (
         <section className="category-products container">
-            <div className="row">
+            <div className="row no-gutters">
             {this.props.data.map(
                 (product, index) =>
                     <div className='col-6 col-md-4 col-lg-3'>

@@ -13,7 +13,9 @@ class View extends React.Component {
     if (this.props.data.isImageLinkProcessed) {
         image =
             <div className="image">
-                <Picture data={this.props.data} configPublic={this.props.configPublic} />
+                <a href={"/" + this.props.data.path + '/' + this.props.data.seoFilenamePart + ".html"}>
+                    <Picture data={this.props.data} configPublic={this.props.configPublic} />
+                </a>
             </div>
     }
 
@@ -21,20 +23,27 @@ class View extends React.Component {
     if (this.props.data.isAdditionalImageLinkProcessed) {
         imageAdditional =
             <div className="image">
-                <Picture data={this.props.data} slug="additional" />
+                <a href={"/" + this.props.data.path + '/' + this.props.data.seoFilenamePart + ".html"}>
+                    <Picture data={this.props.data} slug="additional" />
+                </a>
             </div>
     }
 
     let price = '';
     if (this.props.data.salePriceUnformatted) {
-        price = <p className="price"><del>{numeral(this.props.data.priceUnformatted).format('$0,0[.]00')} <span>{this.props.data.priceCurrency}</span></del> {numeral(this.props.data.salePriceUnformatted).format('$0,0.00')} <span>{this.props.data.salePriceCurrency}</span></p>
+        price = <p className="price-sale"><del>{numeral(this.props.data.priceUnformatted).format('$0,0[.]00')}</del> {numeral(this.props.data.salePriceUnformatted).format('$0,0.00')} <span>{this.props.data.salePriceCurrency}</span></p>
     } else {
         price = <p className="price">{numeral(this.props.data.priceUnformatted).format('$0,0[.]00')} <span>{this.props.data.priceCurrency}</span></p>
     }
 
-    let brand = '';
-    if (this.props.data.brand !== '') {
-        brand = <p>{this.props.data.brand}</p>
+    let programName = '';
+    if (this.props.data.programName !== '') {
+        programName = <p className="program">from <a href="#">{this.props.data.programName}</a></p>
+    }
+
+    let availability = '';
+    if (this.props.data.availability !== '') {
+        availability = <p>{this.props.data.availability}</p>
     }
 
     let gtin = '';
@@ -48,29 +57,25 @@ class View extends React.Component {
     }
 
     let productCondition = '';
-    if (this.props.data.productCondition !== '') {
+    if (this.props.data.productCondition !== '' && this.props.data.productCondition !== 'new') {
         productCondition = <p>{this.props.data.productCondition}</p>
-    }
-
-    let availability = '';
-    if (this.props.data.availability !== '') {
-        availability = <p>{this.props.data.availability}</p>
     }
 
     return (
       <div className="product">
         {image}
         {imageAdditional}
-        <h2>{this.props.data.title}</h2>
-        {availability}
-        {brand}
-        {gtin}
-        {mpn}
-        {price}
-        {productCondition}
-        <a href={this.props.data.link}>get the deal now</a>
-        <br />
-        <a href={"/" + this.props.data.path + '/' + this.props.data.seoFilenamePart + ".html"}>offer details</a>
+        <div className="detail">
+            <h3>
+                <a href={"/" + this.props.data.path + '/' + this.props.data.seoFilenamePart + ".html"}>{this.props.data.title}</a>
+            </h3>
+            {programName}
+            {productCondition}
+            {price}
+        </div>
+        <div className="cta">
+            <a class="anchor-1" href={this.props.data.link}>get deal now</a>
+        </div>
         {utilityJSONLD.product(this.props.data, this.props.configPublic)}
       </div>
     );

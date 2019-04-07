@@ -1,14 +1,15 @@
 @import '../../../node_modules/bootstrap/scss/bootstrap-reboot';
 @import '../../../node_modules/bootstrap/scss/bootstrap-grid';
+
 @import 'constants/colors';
 @import 'constants/layers';
 @import 'constants/speeds';
-@import 'utilities/accessibility';
 @import 'utilities/functions';
-@import 'utilities/type';
+@import 'utilities/accessibility';
 @import 'elements/anchors';
 @import 'elements/buttons';
 @import 'type/fonts';
 @import 'type/headings';
 @import 'type/text';
 @import 'views/categoryProducts';
+@import 'views/contentStyleGuide';

@@ -36,8 +36,6 @@ class WrapperLayout extends React.Component {
             <meta property="fb:app_id" content="" />
             <link rel="canonical" href="" />
             <link rel="author" href="https://plus.google.com/+" />
-            <link rel="preconnect" href="//fonts.gstatic.com" crossOrigin="true" />
-            <link rel="stylesheet" type="text/css" media="all" href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" />
             <link rel="stylesheet" type="text/css" media="all" href="/style/index.css" />
         </head>
         <body>

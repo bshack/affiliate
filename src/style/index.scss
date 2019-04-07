@@ -84,15 +84,131 @@
 
 body {
 
-    background: $white;
+    background: $color-white-1;
 
     .testinject {
-        color: $black;
+        color: $color-black-1;
         width: rem-calc(100);
     }
 
 }
 
+.anchor-1 {
+    @extend %anchor-1;
+}
+
+.anchor-2 {
+    @extend %anchor-2;
+}
+
 .category-products {
     @extend %category-products;
+}
+
+.color-black-1 {
+    @extend %color-black-1;
+}
+
+.color-black-1-background {
+    @extend %color-black-1-background;
+}
+
+.color-blue-1 {
+    @extend %color-blue-1;
+}
+
+.color-blue-1-background {
+    @extend %color-blue-1-background;
+}
+
+.color-grey-1 {
+    @extend %color-grey-1;
+}
+
+.color-grey-1-background {
+    @extend %color-grey-1-background;
+}
+
+.color-grey-2 {
+    @extend %color-grey-2;
+}
+
+.color-grey-2-background {
+    @extend %color-grey-2-background;
+}
+
+.color-grey-3 {
+    @extend %color-grey-3;
+}
+
+.color-grey-3-background {
+    @extend %color-grey-3-background;
+}
+
+.color-grey-4 {
+    @extend %color-grey-4;
+}
+
+.color-grey-4-background {
+    @extend %color-grey-4-background;
+}
+
+.color-green-1 {
+    @extend %color-green-1;
+}
+
+.color-green-1-background {
+    @extend %color-green-1-background;
+}
+
+.color-white-1 {
+    @extend %color-white-1;
+}
+
+.color-white-1-background {
+    @extend %color-white-1-background;
+}
+
+.content-style-guide {
+    @extend %content-style-guide;
+}
+
+.font-open-sans-light-regular {
+    @extend %font-open-sans-light-regular;
+}
+
+.font-open-sans-light-italic {
+    @extend %font-open-sans-light-italic;
+}
+
+.font-open-sans-regular {
+    @extend %font-open-sans-regular;
+}
+
+.font-open-sans-italic {
+    @extend %font-open-sans-italic;
+}
+
+.font-open-sans-semi-bold-regular {
+    @extend %font-open-sans-semi-bold-regular;
+}
+
+.font-open-sans-semi-bold-italic {
+    @extend %font-open-sans-semi-bold-italic;
+}
+
+.font-open-sans-bold {
+    @extend %font-open-sans-bold;
+}
+
+.font-open-sans-bold-italic {
+    @extend %font-open-sans-bold-italic;
+}
+
+.font-open-sans-extra-bold-regular {
+    @extend %font-open-sans-extra-bold-regular;
+}
+
+.font-open-sans-extra-bold-italic {
+    @extend %font-open-sans-extra-bold-italic;
 }
