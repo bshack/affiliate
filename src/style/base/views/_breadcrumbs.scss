@@ -1,0 +1,42 @@
+%breadcrumbs {
+
+    @include media-breakpoint-up(lg) {
+        display: flex;
+    }
+
+    display: none;
+
+    ul {
+
+        list-style: none;
+        margin: 0 0 rem-calc(30);
+        padding: 0;
+
+        li  {
+
+            @extend %font-open-sans-regular;
+
+            display: inline-flex;
+            font-size: rem-calc(14);
+            margin-right: rem-calc(10);
+
+            &::after {
+                content: '>';
+                margin-left: rem-calc(10);
+            }
+
+            &:last-child {
+
+                margin-right: 0;
+
+                &::after {
+                    content: none;
+                }
+
+            }
+
+        }
+
+    }
+
+}

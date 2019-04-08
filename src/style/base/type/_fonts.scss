@@ -15,7 +15,7 @@
 
     @extend %font-base-1;
 
-    font-family: 'open_sans_lightregular';
+    font-family: 'open_sans_lightregular', Helvetica, sans-serif;
 
     i,
     em {
@@ -28,7 +28,7 @@
 
     @extend %font-base-1;
 
-    font-family: 'open_sans_lightitalic';
+    font-family: 'open_sans_lightitalic', Helvetica, sans-serif;
 
 }
 
@@ -36,7 +36,7 @@
 
     @extend %font-base-1;
 
-    font-family: 'open_sansregular';
+    font-family: 'open_sansregular', Helvetica, sans-serif;
 
     i,
     em {
@@ -49,7 +49,7 @@
 
     @extend %font-base-1;
 
-    font-family: 'open_sansitalic';
+    font-family: 'open_sansitalic', Helvetica, sans-serif;
 
 }
 
@@ -57,7 +57,7 @@
 
     @extend %font-base-1;
 
-    font-family: 'open_sans_semiboldregular';
+    font-family: 'open_sans_semiboldregular', Helvetica, sans-serif;
 
     i,
     em {
@@ -70,7 +70,7 @@
 
     @extend %font-base-1;
 
-    font-family: 'open_sans_semibolditalic';
+    font-family: 'open_sans_semibolditalic', Helvetica, sans-serif;
 
 }
 
@@ -78,7 +78,7 @@
 
     @extend %font-base-1;
 
-    font-family: 'open_sansbold';
+    font-family: 'open_sansbold', Helvetica, sans-serif;
 
     i,
     em {
@@ -91,7 +91,7 @@
 
     @extend %font-base-1;
 
-    font-family: 'open_sansbold_italic';
+    font-family: 'open_sansbold_italic', Helvetica, sans-serif;
 
 }
 
@@ -99,7 +99,7 @@
 
     @extend %font-base-1;
 
-    font-family: 'open_sans_extraboldregular';
+    font-family: 'open_sans_extraboldregular', Helvetica, sans-serif;
 
     i,
     em {
@@ -112,6 +112,6 @@
 
     @extend %font-base-1;
 
-    font-family: 'open_sans_extrabolditalic';
+    font-family: 'open_sans_extrabolditalic', Helvetica, sans-serif;
 
 }

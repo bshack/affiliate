@@ -1,0 +1,165 @@
+%product-detail {
+
+    @extend %color-white-1-background;
+
+    height: 100%;
+    position: relative;
+
+    .images {
+
+        margin-bottom: rem-calc(15);
+
+        .image {
+
+            padding-bottom: 100%;
+            position: relative;
+
+            button {
+                @extend %button-base-1;
+            }
+
+            img,
+            picture {
+                width: 100%;
+            }
+
+            > * {
+                display: block;
+                left: 0;
+                padding: 0;
+                position: absolute;
+                top: 0;
+                width: 100%;
+            }
+
+        }
+
+        nav {
+
+            .image {
+
+                margin-bottom: rem-calc(10);
+
+                > button {
+
+                    border: rem-calc(3) solid $color-grey-1;
+
+                    &.selected {
+                        border-color: $color-black-1;
+                    }
+
+                }
+
+            }
+
+        }
+
+        div {
+
+            .image {
+                margin-left: rem-calc(10);
+            }
+
+        }
+
+    }
+
+    aside {
+
+        h1 {
+
+            @extend %font-open-sans-semi-bold-regular;
+
+            @include media-breakpoint-up(md) {
+                font-size: rem-calc(22);
+            }
+
+            font-size: rem-calc(18);
+            margin-bottom: rem-calc(5);
+
+        }
+
+        .program {
+
+            @extend %font-open-sans-regular;
+
+            @include media-breakpoint-up(md) {
+                font-size: rem-calc(14);
+            }
+
+            font-size: rem-calc(12);
+            margin-bottom: rem-calc(15);
+
+            a {
+
+                @extend %font-open-sans-semi-bold-regular;
+
+                @include media-breakpoint-up(md) {
+                    font-size: rem-calc(16);
+                }
+
+                font-size: rem-calc(14);
+
+            }
+
+        }
+
+        .price {
+
+            @extend %font-open-sans-bold;
+
+            @include media-breakpoint-up(md) {
+                font-size: rem-calc(22);
+            }
+
+            font-size: rem-calc(20);
+            margin-bottom: rem-calc(15);
+
+            span {
+
+                @extend %font-open-sans-regular;
+
+                @include media-breakpoint-up(md) {
+                    font-size: rem-calc(12);
+                }
+
+                font-size: rem-calc(10);
+
+            }
+
+        }
+
+        .brand,
+        .availability,
+        .gtin,
+        .mpn,
+        .condition {
+
+            @extend %font-open-sans-regular;
+
+            @include media-breakpoint-up(md) {
+                font-size: rem-calc(16);
+            }
+
+            font-size: rem-calc(14);
+            margin-bottom: rem-calc(15);
+
+        }
+
+        .anchor-1 {
+
+            @include media-breakpoint-up(lg) {
+                max-width: 75%;
+            }
+
+            @include media-breakpoint-up(xl) {
+                max-width: 50%;
+            }
+
+            margin-bottom: rem-calc(15);
+            width: 100%;
+        }
+
+    }
+
+}

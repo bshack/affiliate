@@ -7,6 +7,7 @@ const React = require('react');
 const WrapperLayout = require('./wrapper.jsx');
 const NavigationMain = require('../views/navigationMain.jsx');
 const Breadcrumbs = require('../views/breadcrumbs.jsx');
+const ProductDetail = require('../views/productDetail.jsx');
 const CategoryProducts = require('../views/categoryProducts.jsx');
 
 
@@ -27,8 +28,8 @@ class View extends React.Component {
         <Breadcrumbs
             data={this.props.breadcrumbs}
             configPublic={this.props.configPublic} />
-        <CategoryProducts
-            data={this.props.products}
+        <ProductDetail
+            data={this.props.products[0]}
             configPublic={this.props.configPublic} />
         <CategoryProducts
             data={this.props.productRecommendations}

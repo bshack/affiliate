@@ -74,7 +74,7 @@ class View extends React.Component {
             {price}
         </div>
         <div className="cta">
-            <a class="anchor-1" href={this.props.data.link}>get deal now</a>
+            <a className="anchor-1" href={this.props.data.link}>get deal now</a>
         </div>
         {utilityJSONLD.product(this.props.data, this.props.configPublic)}
       </div>

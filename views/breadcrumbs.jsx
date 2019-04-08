@@ -25,9 +25,13 @@ const recursiveBuilder = (data) => {
 class View extends React.Component {
   render() {
     return (
-        <nav class="breadcrumbs">
-            {recursiveBuilder(this.props.data)}
-            {utilityJSONLD.breadcrumbs(this.props.data)}
+        <nav className="container breadcrumbs">
+            <div className="row">
+                <div className="col-12">
+                    {recursiveBuilder(this.props.data)}
+                    {utilityJSONLD.breadcrumbs(this.props.data)}
+                </div>
+            </div>
         </nav>
     );
   }

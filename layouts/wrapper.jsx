@@ -1,4 +1,4 @@
-var React = require('react');
+const React = require('react');
 
 
 /* COMPONENT
@@ -47,8 +47,12 @@ class WrapperLayout extends React.Component {
             <main>
                 {this.props.children}
             </main>
-            <footer>
-                &copy;
+            <footer className="container">
+                <div className="row">
+                    <div className="col-12">
+                        &copy; {new Date().getFullYear()}
+                    </div>
+                </div>
             </footer>
             <script src="/script/vendors-index.js" />
             <script src="/script/index.js" />
