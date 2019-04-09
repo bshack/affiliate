@@ -4,6 +4,7 @@ const path = require('path');
 /* MODELS
  *************************************/
 
+const ModelContent = require('../models/content');
 const ModelProduct = require('../models/product');
 const ModelCategory = require('../models/category');
 const ModelNavigation = require('../models/navigation');
@@ -31,6 +32,7 @@ exports.index = function(req, res) {
     let modelCategory = new ModelCategory(req.app);
     let modelNavigation = new ModelNavigation(req.app);
     let modelBreadcrumbs = new ModelBreadcrumbs(req.app);
+    let modelNavigationFooter = new ModelContent(req.app);
 
     Promise.all([
         modelProduct.store.dispatch(
@@ -44,11 +46,21 @@ exports.index = function(req, res) {
         ),
         modelBreadcrumbs.store.dispatch(
             modelBreadcrumbs.getAll(breadcrumbParams)
+        ),
+        modelNavigationFooter.store.dispatch(
+            modelNavigationFooter.getAll({
+                filename: [
+                    'contact',
+                    'terms-of-service',
+                    'privacy-policy'
+                ]
+            })
         )
     ]).then(() => {
         res.render('plp', {
             configPublic: req.app.get('configPublic').store.getState(),
             navigation: modelNavigation.store.getState(),
+            navigationFooter: modelNavigationFooter.store.getState(),
             breadcrumbs: modelBreadcrumbs.store.getState(),
             category: modelCategory.store.getState(),
             products: modelProduct.store.getState()

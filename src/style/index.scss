@@ -227,6 +227,14 @@ body {
     @extend %font-open-sans-extra-bold-italic;
 }
 
+.navigation-footer {
+    @extend %navigation-footer;
+}
+
+.navigation-main {
+    @extend %navigation-main;
+}
+
 .product-detail {
     @extend %product-detail;
 }

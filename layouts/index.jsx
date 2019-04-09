@@ -19,6 +19,7 @@ class View extends React.Component {
       <WrapperLayout
         configPublic={this.props.configPublic}
         title='home'
+        navigationFooter={this.props.navigationFooter}
         >
         <NavigationMain
             data={this.props.navigation}

@@ -21,8 +21,27 @@ class View extends React.Component {
   render() {
     return (
         <nav className="navigation-main">
-            {recursiveBuilder(this.props.data)}
-            {utilityJSONLD.siteNavigationElement(this.props.data)}
+            <div className="container">
+                <div className="row">
+                    <div className="col-12">
+                        <ul>
+                            <li>
+                                <span>Deals</span>
+                                {recursiveBuilder(this.props.data)}
+                                {utilityJSONLD.siteNavigationElement(this.props.data)}
+                            </li>
+                            <li>
+                                <span>Coupons</span>
+                                {recursiveBuilder(this.props.data)}
+                                {utilityJSONLD.siteNavigationElement(this.props.data)}
+                            </li>
+                            <li>
+                                <span>Search</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </nav>
     );
   }

@@ -55,14 +55,14 @@ app.engine('jsx', require('express-react-views').createEngine({
 app.get('/', routeIndex.index);
 
 //content
-app.get('/error-404.html', routeContent.index);
-app.get('/accessibility.html', routeContent.index);
-app.get('/contact.html', routeContent.index);
+app.get('/support.html', routeContent.index);
 app.get('/privacy-policy.html', routeContent.index);
-app.get('/style-guide.html', routeContent.index);
-app.get('/subscribe.html', routeContent.index);
 app.get('/terms-of-service.html', routeContent.index);
+app.get('/manage-subscription.html', routeContent.index);
 app.get('/unsubscribe.html', routeContent.index);
+app.get('/accessibility.html', routeContent.index);
+app.get('/style-guide.html', routeContent.index);
+app.get('/error-404.html', routeContent.index);
 
 //pdp
 app.get('/**/index.html', routePLP.index);

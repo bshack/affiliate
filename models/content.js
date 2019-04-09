@@ -54,7 +54,17 @@ const thunk = require('redux-thunk').default;
                 return this.app.get('databaseConnection')
                     .from('content')
                     .select()
-                    .where(whereParams)
+                    .where((builder) => {
+                        if (whereParams.filename && typeof whereParams.filename === 'object') {
+                            let filenames = whereParams.filename;
+                            delete whereParams.filename;
+                            builder
+                                .whereIn('filename', filenames)
+                                .where(whereParams);
+                        } else {
+                            builder.where(whereParams);
+                        }
+                    })
                     .then((data) => {
                         dispatch(this.handleGetSuccess(data));
                     })

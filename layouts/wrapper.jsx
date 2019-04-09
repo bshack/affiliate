@@ -1,5 +1,7 @@
 const React = require('react');
 
+const NavigationFooter = require('../views/navigationFooter.jsx');
+
 
 /* COMPONENT
 *************************************/
@@ -50,6 +52,9 @@ class WrapperLayout extends React.Component {
             <footer className="container">
                 <div className="row">
                     <div className="col-12">
+                    <NavigationFooter
+                        data={this.props.navigationFooter}
+                        configPublic={this.props.configPublic} />
                         &copy; {new Date().getFullYear()}
                     </div>
                 </div>

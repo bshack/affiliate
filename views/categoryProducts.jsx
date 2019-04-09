@@ -8,7 +8,7 @@ class View extends React.Component {
             <div className="row no-gutters">
             {this.props.data.map(
                 (product, index) =>
-                    <div className='col-6 col-md-4 col-lg-3'>
+                    <div key={index} className='col-6 col-md-4 col-lg-3'>
                         <Product data={product} key={index} configPublic={this.props.configPublic} />
                     </div>
             )}

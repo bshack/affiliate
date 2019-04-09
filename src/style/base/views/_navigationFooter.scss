@@ -1,0 +1,47 @@
+%navigation-footer {
+
+    li {
+        @extend %font-open-sans-regular;
+    }
+
+    @include media-breakpoint-up(md) {
+
+        ul {
+
+            list-style: none;
+            margin: 0;
+            padding: 0;
+
+            li {
+
+                display: inline-flex;
+                margin-right: rem-calc(10);
+
+                &:last-child {
+                    margin-right: 0;
+                }
+
+            }
+
+        }
+
+    }
+
+    @include media-breakpoint-down(sm) {
+
+        ul {
+
+            list-style: none;
+            margin: 0;
+            padding: 0;
+
+            li {
+                display: flex;
+                margin-bottom: rem-calc(10);
+            }
+
+        }
+
+    }
+
+}

@@ -25,6 +25,7 @@ exports.index = function(req, res) {
     let modelCategory = new ModelCategory(req.app);
     let modelNavigation = new ModelNavigation(req.app);
     let modelBreadcrumbs = new ModelBreadcrumbs(req.app);
+    let modelNavigationFooter = new ModelContent(req.app);
 
     Promise.all([
         modelContent.store.dispatch(
@@ -41,11 +42,23 @@ exports.index = function(req, res) {
         ),
         modelBreadcrumbs.store.dispatch(
             modelBreadcrumbs.getAll({})
+        ),
+        modelNavigationFooter.store.dispatch(
+            modelNavigationFooter.getAll({
+                filename: [
+                    'support',
+                    'manage-subscription',
+                    'privacy-policy',
+                    'terms-of-service',
+                    'accessibility'
+                ]
+            })
         )
     ]).then(() => {
         res.render('content', {
             configPublic: req.app.get('configPublic').store.getState(),
             navigation: modelNavigation.store.getState(),
+            navigationFooter: modelNavigationFooter.store.getState(),
             breadcrumbs: modelBreadcrumbs.store.getState(),
             content: modelContent.store.getState(),
             categories: modelCategory.store.getState(),

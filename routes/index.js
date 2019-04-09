@@ -19,6 +19,7 @@ exports.index = function(req, res) {
     let modelProduct = new ModelProduct(req.app);
     let modelCategory = new ModelCategory(req.app);
     let modelNavigation = new ModelNavigation(req.app);
+    let modelNavigationFooter = new ModelContent(req.app);
 
     Promise.all([
         modelContent.store.dispatch(
@@ -32,11 +33,21 @@ exports.index = function(req, res) {
         ),
         modelNavigation.store.dispatch(
             modelNavigation.getMainNavigation({})
+        ),
+        modelNavigationFooter.store.dispatch(
+            modelNavigationFooter.getAll({
+                filename: [
+                    'contact',
+                    'terms-of-service',
+                    'privacy-policy'
+                ]
+            })
         )
     ]).then(() => {
         res.render('index', {
             configPublic: req.app.get('configPublic').store.getState(),
             navigation: modelNavigation.store.getState(),
+            navigationFooter: modelNavigationFooter.store.getState(),
             content: modelContent.store.getState(),
             categories: modelCategory.store.getState(),
             products: modelProduct.store.getState()

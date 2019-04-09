@@ -21,6 +21,7 @@ class View extends React.Component {
         configPublic={this.props.configPublic}
         title={this.props.content[0].metatitle}
         discription={this.props.content[0].metadescription}
+        navigationFooter={this.props.navigationFooter}
         >
         <NavigationMain
             data={this.props.navigation}

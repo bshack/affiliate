@@ -1,0 +1,27 @@
+%navigation-main {
+
+    background-color: $color-black-1;
+
+    .col-12 {
+
+        > ul {
+
+            list-style: none;
+            margin: 0;
+            padding: 0;
+
+            li {
+
+                a {
+                    align-items: center;
+                    display: flex;
+                    min-height: rem-calc(45);
+                }
+
+            }
+
+        }
+
+    }
+
+}
