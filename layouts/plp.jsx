@@ -20,8 +20,9 @@ class View extends React.Component {
       <WrapperLayout
         configPublic={this.props.configPublic}
         title={this.props.category[0].title}
-        discription={this.props.category[0].title}
-        canonical=''
+        discription={this.props.category[0].discription}
+        image={this.props.configPublic.www.origin + this.props.configPublic.social.image}
+        canonical={this.props.configPublic.www.origin + '/' + this.props.category[0].path + '/index.html'}
         navigationFooter={this.props.navigationFooter}
         >
         <NavigationMain

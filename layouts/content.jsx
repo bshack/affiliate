@@ -19,11 +19,12 @@ class View extends React.Component {
   render() {
     return (
       <WrapperLayout
-        configPublic={this.props.configPublic}
-        canonical=''
-        title={this.props.content[0].metatitle}
-        discription={this.props.content[0].metadescription}
-        navigationFooter={this.props.navigationFooter}
+          configPublic={this.props.configPublic}
+          title={this.props.content[0].metatitle}
+          description={this.props.content[0].metadescription}
+          image={this.props.configPublic.www.origin + this.props.configPublic.social.image}
+          canonical={this.props.configPublic.www.origin + '/' + this.props.content[0].filename + '.html'}
+          navigationFooter={this.props.navigationFooter}
         >
         <NavigationMain
             data={this.props.navigationMain}

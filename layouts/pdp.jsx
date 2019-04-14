@@ -22,6 +22,7 @@ class View extends React.Component {
         configPublic={this.props.configPublic}
         title={this.props.products[0].title}
         description={this.props.products[0].description}
+        image={this.props.configPublic.cdn.origin + '/' + this.props.products[0].path + '/' + this.props.products[0].seoFilenamePart + '-social.jpg'}
         canonical={this.props.configPublic.www.origin + '/' + this.props.products[0].path + '/' + this.props.products[0].seoFilenamePart + '.html'}
         navigationFooter={this.props.navigationFooter}
         >
