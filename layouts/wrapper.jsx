@@ -17,27 +17,26 @@ class WrapperLayout extends React.Component {
             <meta name="viewport" content="width=device-width, initial-scale=1" />
             <meta name="format-detection" content="telephone=no,date=no,address=no,email=no,url=no" />
             <meta name="description" content={this.props.description} />
-            <meta name="twitter:card" content="" />
+            <meta name="twitter:card" content="summary_large_image" />
             <meta name="twitter:site" content="" />
-            <meta name="twitter:creator" content="" />
-            <meta name="twitter:url" content="" />
+            <meta name="twitter:url" content={this.props.canonical} />
             <meta name="twitter:title" content={this.props.title} />
             <meta name="twitter:description" content={this.props.description} />
             <meta name="twitter:image" content="" />
+            <meta name="twitter:image:alt" content={this.props.title} />
             <meta property="og:title" content={this.props.title} />
-            <meta property="og:type" content="" />
-            <meta property="og:url" content="" />
+            <meta property="og:type" content="website" />
+            <meta property="og:url" content={this.props.canonical} />
             <meta property="og:image:url" content="" />
             <meta property="og:image:height" content="" />
             <meta property="og:image:width" content="" />
-            <meta property="og:image:alt" content="" />
+            <meta property="og:image:alt" content={this.props.title} />
             <meta property="og:site_name" content="" />
             <meta property="og:description" content={this.props.description} />
             <meta property="og:locale" content="en_US" />
             <meta property="fb:admins" content="" />
             <meta property="fb:app_id" content="" />
-            <link rel="canonical" href="" />
-            <link rel="author" href="https://plus.google.com/+" />
+            <link rel="canonical" href={this.props.canonical} />
             <link rel="stylesheet" type="text/css" media="all" href="/style/index.css" />
         </head>
         <body>

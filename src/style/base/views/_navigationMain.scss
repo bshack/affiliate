@@ -2,17 +2,36 @@
 
     background-color: $color-black-1;
 
+    &.fixed {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: $layer-top;
+    }
+
     .col-12 {
+
+        [aria-expanded='false'] {
+
+            ul {
+                display: none;
+            }
+
+        }
 
         > ul {
 
             list-style: none;
             margin: 0;
             padding: 0;
+            position: relative;
 
-            li {
+            > li {
 
-                a {
+                display: inline-flex;
+                padding: 0 rem-calc(10);
+
+                > a {
                     align-items: center;
                     display: flex;
                     min-height: rem-calc(45);

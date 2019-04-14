@@ -9,6 +9,7 @@ const NavigationMain = require('../views/navigationMain.jsx');
 const Breadcrumbs = require('../views/breadcrumbs.jsx');
 const ProductDetail = require('../views/productDetail.jsx');
 const CategoryProducts = require('../views/categoryProducts.jsx');
+const EmailSignUp = require('../views/emailSignUp.jsx');
 
 
 /* COMPONENT
@@ -20,11 +21,12 @@ class View extends React.Component {
       <WrapperLayout
         configPublic={this.props.configPublic}
         title={this.props.products[0].title}
-        discription=""
+        description={this.props.products[0].description}
+        canonical={this.props.configPublic.www.origin + '/' + this.props.products[0].path + '/' + this.props.products[0].seoFilenamePart + '.html'}
         navigationFooter={this.props.navigationFooter}
         >
         <NavigationMain
-            data={this.props.navigation}
+            data={this.props.navigationMain}
             configPublic={this.props.configPublic} />
         <Breadcrumbs
             data={this.props.breadcrumbs}
@@ -33,7 +35,10 @@ class View extends React.Component {
             data={this.props.products[0]}
             configPublic={this.props.configPublic} />
         <CategoryProducts
+            subtitle='You Also May Like'
             data={this.props.productRecommendations}
+            configPublic={this.props.configPublic} />
+        <EmailSignUp
             configPublic={this.props.configPublic} />
       </WrapperLayout>
     );

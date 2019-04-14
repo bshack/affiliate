@@ -3,7 +3,7 @@ const Picture = require('./picture.jsx');
 const numeral = require('numeral');
 const UtilityJSONLD = require('../utilities/jsonLD');
 
-var utilityJSONLD = new UtilityJSONLD();
+const utilityJSONLD = new UtilityJSONLD();
 
 class View extends React.Component {
 
@@ -75,7 +75,7 @@ class View extends React.Component {
     }
 
     let brand = '';
-    if (this.props.data.brand !== '') {
+    if (this.props.data.brand !== '' && this.props.data.brand !== this.props.data.programName) {
         brand = <p className="brand">{this.props.data.brand}</p>
     }
 

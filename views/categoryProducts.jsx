@@ -3,8 +3,28 @@ var Product = require('./product.jsx');
 
 class View extends React.Component {
   render() {
+
+    let header;
+    if (this.props.subtitle) {
+      header = (
+          <div className='col-12'>
+              <h1>{this.props.title}</h1>
+              <h2>{this.props.subtitle}</h2>
+          </div>
+      )
+    } else {
+      header = (
+          <div className='col-12'>
+              <h1>{this.props.title}</h1>
+          </div>
+      )
+    }
+
     return (
         <section className="category-products container">
+            <div className="row no-gutters">
+                {header}
+            </div>
             <div className="row no-gutters">
             {this.props.data.map(
                 (product, index) =>

@@ -4,17 +4,21 @@ const _ = require('lodash');
 
 const getCategoryDetails = (data) => {
     return new Promise((resolve, reject) => {
-
         data[1] = {
-            path: 'vehicles-and-parts/vehicles/watercraft/yachts'
+            path: 'vehicles-and-parts'
         };
         data[2] = {
-            path: 'toys-and-games/toys/riding-toys/hobby-horses'
+            path: 'vehicles-and-parts/vehicles/watercraft/yachts'
         };
         data[3] = {
+            path: 'toys-and-games/toys/riding-toys/hobby-horses'
+        };
+        data[4] = {
             path: 'food-beverages-and-tobacco/food-items/bakery'
         };
-
+        data[5] = {
+            path: 'food-beverages-and-tobacco/food-items'
+        };
         let fullPathsList = [];
         let i;
         for (i = 0; i < data.length; i++) {
@@ -31,9 +35,7 @@ const getCategoryDetails = (data) => {
             }
 
         }
-
         resolve(fullPathsList);
-
     })
 };
 
@@ -77,17 +79,14 @@ const getCategoryDetails = (data) => {
         }
 
         getMainNavigation(params) {
-
             let whereData = {
                 isActive: true
             };
-
             return (dispatch, getState) => {
                 return this.app.get('databaseConnection')
                     .from('product')
                     .select([
-                        'category.path',
-                        'category.title AS categoryTitle'
+                        'category.path'
                     ])
                     .where(whereData)
                     .orderBy('category.path', 'asc')
@@ -107,7 +106,8 @@ const getCategoryDetails = (data) => {
                     })
                     .then((data) => {
                         return new Promise((resolve, reject) => {
-                            let categoryHierarchy = {};
+                            let categoryAll = {};
+                            let categoryFeatured = {};
                             let i;
                             for (i = 0; i < data.length; i++) {
                                 let categoryLevel = {
@@ -126,10 +126,20 @@ const getCategoryDetails = (data) => {
                                     tmp.children[directories[ii]] = data[data.findIndex(obj => obj.path === path)];
                                     tmp.children[directories[ii]].children = {};
                                     tmp = tmp.children[directories[ii]];
+                                    if (tmp.isFeatured) {
+                                        categoryFeatured[tmp.path] = tmp;
+                                    }
                                 }
-                                categoryHierarchy = _.merge(categoryHierarchy, categoryLevel);
+                                categoryAll = _.merge(categoryAll, categoryLevel);
                             }
-                            resolve(categoryHierarchy.children);
+                            categoryFeatured['asdfsadf'] = {
+                                title: 'All Categories',
+                                path: '',
+                                id: 0,
+                                children: categoryAll.children,
+                                isFeatured: 1
+                            };
+                            resolve(categoryFeatured);
                         })
                     })
                     .then((data) => {

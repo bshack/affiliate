@@ -1,17 +1,33 @@
-var React = require('react');
-var _ = require('lodash');
+const React = require('react');
+const _ = require('lodash');
 const UtilityJSONLD = require('../utilities/jsonLD');
 
-var utilityJSONLD = new UtilityJSONLD();
-
+const utilityJSONLD = new UtilityJSONLD();
+const ctaBuilder = (data) => {
+    if (data.path === '') {
+        return <button type="button" aria-expanded='false'>{data.title}</button>;
+    } else {
+        return <a href={'/' + data.path + '/index.html'}>{data.title}</a>;
+    }
+    return data;
+};
 const recursiveBuilder = (data) => {
     let key;
     let links = [];
     for (key in data) {
        if (_.size(data[key].children)) {
-           links.push(<li key={data[key].id}><a href={'/' + data[key].path + '/index.html'}>{data[key].title}</a>{recursiveBuilder(data[key].children)}</li>);
+           links.push(
+            <li key={data[key].id} aria-expanded='false'>
+                {ctaBuilder(data[key])}
+                {recursiveBuilder(data[key].children)}
+            </li>
+          );
        } else {
-           links.push(<li key={data[key].id}><a href={'/' + data[key].path + '/index.html'}>{data[key].title}</a></li>);
+           links.push(
+               <li key={data[key].id}>
+                    {ctaBuilder(data[key])}
+               </li>
+           );
        }
     }
     return <ul>{links}</ul>;
@@ -24,21 +40,8 @@ class View extends React.Component {
             <div className="container">
                 <div className="row">
                     <div className="col-12">
-                        <ul>
-                            <li>
-                                <span>Deals</span>
-                                {recursiveBuilder(this.props.data)}
-                                {utilityJSONLD.siteNavigationElement(this.props.data)}
-                            </li>
-                            <li>
-                                <span>Coupons</span>
-                                {recursiveBuilder(this.props.data)}
-                                {utilityJSONLD.siteNavigationElement(this.props.data)}
-                            </li>
-                            <li>
-                                <span>Search</span>
-                            </li>
-                        </ul>
+                    {recursiveBuilder(this.props.data)}
+                    {utilityJSONLD.siteNavigationElement(this.props.data)}
                     </div>
                 </div>
             </div>

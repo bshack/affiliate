@@ -3,7 +3,8 @@
 const ModelContent = require('../models/content');
 const ModelProduct = require('../models/product');
 const ModelCategory = require('../models/category');
-const ModelNavigation = require('../models/navigation');
+const ModelNavigationMain = require('../models/navigationMain');
+const ModelNavigationFooter = require('../models/navigationFooter');
 
 
 /* ROUTE
@@ -17,39 +18,44 @@ exports.index = function(req, res) {
 
     let modelContent = new ModelContent(req.app);
     let modelProduct = new ModelProduct(req.app);
+    let modelProductFeatured = new ModelProduct(req.app);
     let modelCategory = new ModelCategory(req.app);
-    let modelNavigation = new ModelNavigation(req.app);
-    let modelNavigationFooter = new ModelContent(req.app);
+    let modelNavigationMain = new ModelNavigationMain(req.app);
+    let modelNavigationFooter = new ModelNavigationFooter(req.app);
 
     Promise.all([
         modelContent.store.dispatch(
             modelContent.getAll(contentParams)
         ),
         modelProduct.store.dispatch(
-            modelProduct.getAll({})
+            modelProduct.getAll({
+                'product.isFeatured': false,
+                limit: 8
+            })
+        ),
+        modelProductFeatured.store.dispatch(
+            modelProductFeatured.getAll({
+                'product.isFeatured': true,
+                limit: 8
+            })
         ),
         modelCategory.store.dispatch(
             modelCategory.getAll({})
         ),
-        modelNavigation.store.dispatch(
-            modelNavigation.getMainNavigation({})
+        modelNavigationMain.store.dispatch(
+            modelNavigationMain.getMainNavigation({})
         ),
         modelNavigationFooter.store.dispatch(
-            modelNavigationFooter.getAll({
-                filename: [
-                    'contact',
-                    'terms-of-service',
-                    'privacy-policy'
-                ]
-            })
+            modelNavigationFooter.getAll()
         )
     ]).then(() => {
         res.render('index', {
             configPublic: req.app.get('configPublic').store.getState(),
-            navigation: modelNavigation.store.getState(),
+            navigationMain: modelNavigationMain.store.getState(),
             navigationFooter: modelNavigationFooter.store.getState(),
             content: modelContent.store.getState(),
             categories: modelCategory.store.getState(),
+            productsFeatured: modelProductFeatured.store.getState(),
             products: modelProduct.store.getState()
         });
     });

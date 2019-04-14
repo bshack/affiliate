@@ -120,14 +120,16 @@ class JSONLD {
             let siteNavigationElements = [];
             let key;
             for (key in data) {
-                siteNavigationElements.push({
-                    "@context": "https://schema.org",
-                    "@type": "SiteNavigationElement",
-                    "name": data[key].title,
-                    "url": cdn + '/' + data[key].path + '/index.html'
-                });
-                if (_.size(data[key].children)) {
-                    siteNavigationElements = _.unionBy(recursiveBuilder(data[key].children), siteNavigationElements, 'name');
+                if (data[key].path !== '') {
+                    siteNavigationElements.push({
+                        "@context": "https://schema.org",
+                        "@type": "SiteNavigationElement",
+                        "name": data[key].title,
+                        "url": cdn + '/' + data[key].path + '/index.html'
+                    });
+                    if (_.size(data[key].children)) {
+                        siteNavigationElements = _.unionBy(recursiveBuilder(data[key].children), siteNavigationElements, 'name');
+                    }
                 }
             }
             return siteNavigationElements;
