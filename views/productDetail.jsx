@@ -9,32 +9,38 @@ class View extends React.Component {
 
   render() {
 
-    let image = '';
-    if (this.props.data.isImageLinkProcessed) {
+    let image;
+    if (this.props.data.isAdditionalImageLinkProcessed) {
+        image =
+            <div className="images row no-gutters">
+                <ul role="tablist" className="col-2">
+                    <li key="main" id="tab-1" role="tab" aria-controls="panel-1" aria-selected="true" tabIndex="0">
+                        <div className="image">
+                            <Picture data={this.props.data} configPublic={this.props.configPublic} />
+                        </div>
+                    </li>
+                    <li key="additional" id="tab-2" role="tab" aria-controls="panel-2" aria-selected="false" tabIndex="-1">
+                        <div className="image">
+                            <Picture data={this.props.data} configPublic={this.props.configPublic} slug="additional" />
+                        </div>
+                    </li>
+                </ul>
+                <div  id="panel-1" aria-labelledby="tab-1" role="tabpanel" aria-hidden="false" className="col-10">
+                    <div className="image">
+                        <Picture data={this.props.data} configPublic={this.props.configPublic} />
+                    </div>
+                </div>
+                <div id="panel-2" aria-labelledby="tab-2" role="tabpanel" aria-hidden="true" className="col-10">
+                    <div className="image">
+                        <Picture data={this.props.data} configPublic={this.props.configPublic} slug="additional" />
+                    </div>
+                </div>
+            </div>;
+    } else {
         image =
             <div className="image">
                 <Picture data={this.props.data} configPublic={this.props.configPublic} />
-            </div>
-    }
-
-    let imageButton = '';
-    if (this.props.data.isImageLinkProcessed) {
-        imageButton =
-            <div className="image">
-                <button className="selected" type="button">
-                    <Picture data={this.props.data} configPublic={this.props.configPublic} />
-                </button>
-            </div>
-    }
-
-    let imageAdditionalButton = '';
-    if (this.props.data.isAdditionalImageLinkProcessed) {
-        imageAdditionalButton =
-            <div className="image">
-                <button type="button">
-                    <Picture data={this.props.data} slug="additional" />
-                </button>
-            </div>
+            </div>;
     }
 
     let price = '';
@@ -75,24 +81,15 @@ class View extends React.Component {
     }
 
     let brand = '';
-    if (this.props.data.brand !== '' && this.props.data.brand !== this.props.data.programName) {
-        brand = <p className="brand">{this.props.data.brand}</p>
+    if (this.props.data.brand !== '' && this.props.data.brand.toLowerCase() !== this.props.data.programName.toLowerCase()) {
+        brand = <p className="brand"><a href="#">{this.props.data.brand}</a></p>
     }
 
     return (
       <section className="product-detail container">
         <div className="row">
             <div className="col-12 col-md-8">
-                <div className="images row no-gutters">
-                    <nav className="col-2">
-                        {imageButton}
-                        {imageButton}
-                        {imageAdditionalButton}
-                    </nav>
-                    <div className="col-10">
-                        {image}
-                    </div>
-                </div>
+                {image}
             </div>
             <aside className="col-12 col-md-4">
                 <h1>

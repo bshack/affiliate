@@ -5,7 +5,6 @@ const https = require('https');
 const nodeJSX = require('node-jsx').install();
 const knex = require('knex');
 
-
 /* MODELS
 *************************************/
 
@@ -15,6 +14,8 @@ const ModelConfig = require('./models/config');
 /* ROUTES
 *************************************/
 
+const routeRobots = require('./routes/robots');
+const routeSitemap = require('./routes/sitemap');
 const routeIndex = require('./routes/index');
 const routeContent = require('./routes/content');
 const routePLP = require('./routes/plp');
@@ -50,6 +51,10 @@ app.engine('jsx', require('express-react-views').createEngine({
 
 /* INIT ROUTES
 *************************************/
+
+//search engines
+app.get('/robots.txt', routeRobots.index);
+app.get('/sitemap.xml', routeSitemap.index);
 
 //home
 app.get('/', routeIndex.index);

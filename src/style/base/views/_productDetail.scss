@@ -5,61 +5,52 @@
     height: 100%;
     position: relative;
 
+    .image {
+
+        padding-bottom: 100%;
+        position: relative;
+
+        img,
+        picture {
+            width: 100%;
+        }
+
+        > * {
+            display: block;
+            left: 0;
+            padding: 0;
+            position: absolute;
+            top: 0;
+            width: 100%;
+        }
+
+    }
+
     .images {
 
         margin-bottom: rem-calc(15);
 
-        .image {
+        [role='tablist'] {
 
-            padding-bottom: 100%;
-            position: relative;
+            list-style: none;
 
-            button {
-                @extend %button-base-1;
-            }
+            [role='tab'] {
 
-            img,
-            picture {
-                width: 100%;
-            }
+                @extend %accessibility-outline-1;
 
-            > * {
-                display: block;
-                left: 0;
-                padding: 0;
-                position: absolute;
-                top: 0;
-                width: 100%;
-            }
+                border: rem-calc(3) solid $color-grey-1;
+                cursor: pointer;
 
-        }
-
-        nav {
-
-            .image {
-
-                margin-bottom: rem-calc(10);
-
-                > button {
-
-                    border: rem-calc(3) solid $color-grey-1;
-
-                    &.selected {
-                        border-color: $color-black-1;
-                    }
-
+                &[aria-selected='true'] {
+                    border: rem-calc(3) solid $color-black-1;
                 }
 
             }
 
         }
 
-        div {
-
-            .image {
-                margin-left: rem-calc(10);
-            }
-
+        [aria-hidden='true'] {
+            display: none;
         }
 
     }
