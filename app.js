@@ -69,10 +69,12 @@ app.get('/accessibility.html', routeContent.index);
 app.get('/style-guide.html', routeContent.index);
 app.get('/error-404.html', routeContent.index);
 
-//pdp
+//plp
+app.get('/brand/:brand/index.html', routePLP.index);
+app.get('/store/:store/index.html', routePLP.index);
 app.get('/**/index.html', routePLP.index);
 
-//plp
+//pdp
 app.get('/**/*.html', routePDP.index);
 
 

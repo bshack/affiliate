@@ -52,7 +52,7 @@ class View extends React.Component {
 
     let programName = '';
     if (this.props.data.programName !== '') {
-        programName = <p className="program">from <a href="#">{this.props.data.programName}</a></p>
+        programName = <p className="program">from <a href={'/store/' + this.props.data.programName + '/index.html'}>{this.props.data.programName}</a></p>
     }
 
     let availability = '';
@@ -81,8 +81,8 @@ class View extends React.Component {
     }
 
     let brand = '';
-    if (this.props.data.brand !== '' && this.props.data.brand.toLowerCase() !== this.props.data.programName.toLowerCase()) {
-        brand = <p className="brand"><a href="#">{this.props.data.brand}</a></p>
+    if (this.props.data.brand !== '') {
+        brand = <p className="brand"><a href={'/brand/' + this.props.data.brand + '/index.html'}>{this.props.data.brand}</a></p>
     }
 
     return (

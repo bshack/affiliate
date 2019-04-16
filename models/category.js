@@ -46,7 +46,19 @@ const thunk = require('redux-thunk').default;
 
                 let whereParams = {};
 
-                if (params.path) {
+                if (params.brand) {
+                    return dispatch(this.handleGetSuccess([
+                        {
+                            title: params.brand
+                        }
+                    ]));
+                } else if (params.programName) {
+                    return dispatch(this.handleGetSuccess([
+                        {
+                            title: params.programName
+                        }
+                    ]));
+                } else if (params.path) {
                     whereParams.path = params.path;
                 }
 

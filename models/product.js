@@ -57,6 +57,14 @@ const moment = require('moment');
                     whereParams.seoFilenamePart = params.filename;
                 }
 
+                if (params.brand) {
+                    whereParams.brand = params.brand;
+                }
+
+                if (params.programName) {
+                    whereParams.programName = params.programName;
+                }
+
                 if (params['product.isFeatured']) {
                     whereParams['product.isFeatured'] = params['product.isFeatured'];
                 }

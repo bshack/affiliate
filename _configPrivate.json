@@ -1,4 +1,5 @@
 {
+    "isProduction": false,
     "database": {
         "connection": {
             "host": "",

@@ -1,8 +1,25 @@
 {
+    "name": "",
+    "description": "",
+    "locale": "",
     "www": {
         "origin": ""
     },
     "cdn": {
         "origin": ""
+    },
+    "social": {
+        "image": "",
+        "facebook": {
+            "app_id": "",
+            "admins": "",
+            "type": "",
+            "imageWidth": 500,
+            "imageHeight": 500
+        },
+        "twitter": {
+            "name": "",
+            "card": ""
+        }
     }
 }

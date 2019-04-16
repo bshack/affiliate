@@ -38,7 +38,7 @@ class View extends React.Component {
 
     let programName = '';
     if (this.props.data.programName !== '') {
-        programName = <p className="program">from <a href="#">{this.props.data.programName}</a></p>
+        programName = <p className="program">from <a href={'/store/' + this.props.data.programName + '/index.html'}>{this.props.data.programName}</a></p>
     }
 
     let availability = '';
