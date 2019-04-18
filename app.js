@@ -21,6 +21,8 @@ const routeContent = require('./routes/content');
 const routePLP = require('./routes/plp');
 const routePDP = require('./routes/pdp');
 
+const routeEmail = require('./routes/email');
+
 
 /* EXPRESS SERVER
 *************************************/
@@ -66,6 +68,7 @@ app.get('/terms-of-service.html', routeContent.index);
 app.get('/manage-subscription.html', routeContent.index);
 app.get('/unsubscribe.html', routeContent.index);
 app.get('/accessibility.html', routeContent.index);
+app.get('/search.html', routeContent.index);
 app.get('/style-guide.html', routeContent.index);
 app.get('/error-404.html', routeContent.index);
 
@@ -76,6 +79,9 @@ app.get('/**/index.html', routePLP.index);
 
 //pdp
 app.get('/**/*.html', routePDP.index);
+
+//email
+app.get('/email', routeEmail.index);
 
 
 /* SERVER STARTUP

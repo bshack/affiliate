@@ -23,7 +23,7 @@ module.exports = {
         noEmitOnErrors: true
     },
     entry: {
-        index: './src/script/index.js'
+        index: './script/index.js'
     },
     module: {
         rules: [{
@@ -64,12 +64,12 @@ module.exports = {
                 }]
             },
             {
-                test: /\.(gif|png|jpe?g|svg)$/i,
+                test: /\.(gif|webp|png|jpe?g|svg)$/i,
                 use: [{
                     loader: 'file-loader',
                     options: {
                         name(file) {
-                            return './' + file.split('src')[1];
+                            return './image' + file.split('image')[1];
                         }
                     }
                 }, {
@@ -99,14 +99,14 @@ module.exports = {
     },
     plugins: [
         new SassLintPlugin({
-            files: './src/style/**'
+            files: './style/**'
         }),
         new MiniCssExtractPlugin({
             filename: "./style/[name].css",
             chunkFilename: "./style/global.css"
         })
         // new HtmlWebpackPlugin({
-        //     template: 'src/toolkit.html'
+        //     template: './toolkit.html'
         // })
     ],
     output: {
