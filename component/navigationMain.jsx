@@ -1,6 +1,6 @@
 const React = require('react');
 const _ = require('lodash');
-const UtilityJSONLD = require('../utilities/jsonLD');
+const UtilityJSONLD = require('../utility/jsonLD');
 
 const utilityJSONLD = new UtilityJSONLD();
 const ctaBuilder = (data) => {

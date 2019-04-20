@@ -1,8 +1,8 @@
-var React = require('react');
-var _ = require('lodash');
-const UtilityJSONLD = require('../utilities/jsonLD');
+const React = require('react');
+const _ = require('lodash');
+const UtilityJSONLD = require('../utility/jsonLD');
 
-var utilityJSONLD = new UtilityJSONLD();
+const utilityJSONLD = new UtilityJSONLD();
 
 const recursiveBuilder = (data) => {
     let dataSize = _.size(data);

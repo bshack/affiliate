@@ -5,8 +5,8 @@ const sm = require('sitemap');
 /* MODELS
  *************************************/
 
-const ModelContent = require('../models/content');
-const ModelProduct = require('../models/product');
+const ModelContent = require('../model/content');
+const ModelProduct = require('../model/product');
 
 
 /* ROUTE

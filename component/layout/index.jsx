@@ -5,10 +5,10 @@ const React = require('react');
 *************************************/
 
 const WrapperLayout = require('./wrapper.jsx');
-const NavigationMain = require('../views/navigationMain.jsx');
-const Breadcrumbs = require('../views/breadcrumbs.jsx');
-const CategoryProducts = require('../views/categoryProducts.jsx');
-const EmailSignUp = require('../views/emailSignUp.jsx');
+const NavigationMain = require('../navigationMain.jsx');
+const Content = require('../content.jsx');
+const CategoryProducts = require('../categoryProducts.jsx');
+const EmailSignUp = require('../emailSignUp.jsx');
 
 
 /* COMPONENT
@@ -19,24 +19,27 @@ class View extends React.Component {
     return (
       <WrapperLayout
         configPublic={this.props.configPublic}
-        title={this.props.category[0].title}
-        discription={this.props.category[0].discription}
+        title={this.props.content[0].metatitle}
+        description={this.props.content[0].metadescription}
         image={this.props.configPublic.www.origin + this.props.configPublic.social.image}
-        canonical={this.props.configPublic.www.origin + '/' + this.props.category[0].path + '/index.html'}
+        canonical={this.props.configPublic.www.origin}
         navigationFooter={this.props.navigationFooter}
         >
         <NavigationMain
             data={this.props.navigationMain}
             configPublic={this.props.configPublic} />
-        <Breadcrumbs
-            data={this.props.breadcrumbs}
+        <Content
+            data={this.props.content}
             configPublic={this.props.configPublic} />
         <CategoryProducts
-            title={this.props.category[0].title}
-            subtitle={this.props.category[0].subtitle}
-            data={this.props.products}
+            title='Featured Deals'
+            data={this.props.productsFeatured}
             configPublic={this.props.configPublic} />
         <EmailSignUp
+            configPublic={this.props.configPublic} />
+        <CategoryProducts
+            title='You Also May Like'
+            data={this.props.products}
             configPublic={this.props.configPublic} />
       </WrapperLayout>
     );

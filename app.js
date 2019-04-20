@@ -8,20 +8,20 @@ const knex = require('knex');
 /* MODELS
 *************************************/
 
-const ModelConfig = require('./models/config');
+const ModelConfig = require('./model/config');
 
 
 /* ROUTES
 *************************************/
 
-const routeRobots = require('./routes/robots');
-const routeSitemap = require('./routes/sitemap');
-const routeIndex = require('./routes/index');
-const routeContent = require('./routes/content');
-const routePLP = require('./routes/plp');
-const routePDP = require('./routes/pdp');
+const routeRobots = require('./route/robots');
+const routeSitemap = require('./route/sitemap');
+const routeIndex = require('./route/index');
+const routeContent = require('./route/content');
+const routePLP = require('./route/plp');
+const routePDP = require('./route/pdp');
 
-const routeEmail = require('./routes/email');
+const routeEmail = require('./route/email');
 
 
 /* EXPRESS SERVER
@@ -31,7 +31,7 @@ const app = express();
 
 app.set('configPrivate', new ModelConfig(require('./configPrivate.json')));
 app.set('configPublic', new ModelConfig(require('./configPublic.json')));
-app.set('views', './layouts');
+app.set('views', './component/layout');
 app.set('view engine', 'jsx');
 app.set('databaseConnection', knex({
     client: 'mysql',

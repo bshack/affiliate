@@ -4,12 +4,12 @@ const path = require('path');
 /* MODELS
  *************************************/
 
-const ModelContent = require('../models/content');
-const ModelProduct = require('../models/product');
-const ModelCategory = require('../models/category');
-const ModelNavigationMain = require('../models/navigationMain');
-const ModelNavigationFooter = require('../models/navigationFooter');
-const ModelBreadcrumbs = require('../models/breadcrumbs');
+const ModelContent = require('../model/content');
+const ModelProduct = require('../model/product');
+const ModelCategory = require('../model/category');
+const ModelNavigationMain = require('../model/navigationMain');
+const ModelNavigationFooter = require('../model/navigationFooter');
+const ModelBreadcrumbs = require('../model/breadcrumbs');
 
 
 /* ROUTE

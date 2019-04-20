@@ -5,11 +5,11 @@ const React = require('react');
 *************************************/
 
 const WrapperLayout = require('./wrapper.jsx');
-const NavigationMain = require('../views/navigationMain.jsx');
-const Breadcrumbs = require('../views/breadcrumbs.jsx');
-const ProductDetail = require('../views/productDetail.jsx');
-const CategoryProducts = require('../views/categoryProducts.jsx');
-const EmailSignUp = require('../views/emailSignUp.jsx');
+const NavigationMain = require('../navigationMain.jsx');
+const Breadcrumbs = require('../breadcrumbs.jsx');
+const ProductDetail = require('../productDetail.jsx');
+const CategoryProducts = require('../categoryProducts.jsx');
+const EmailSignUp = require('../emailSignUp.jsx');
 
 
 /* COMPONENT

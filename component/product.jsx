@@ -1,7 +1,7 @@
 const React = require('react');
 const Picture = require('./picture.jsx');
 const numeral = require('numeral');
-const UtilityJSONLD = require('../utilities/jsonLD');
+const UtilityJSONLD = require('../utility/jsonLD');
 
 var utilityJSONLD = new UtilityJSONLD();
 

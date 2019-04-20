@@ -1,10 +1,15 @@
+const path = require('path');
+
+
 /* MODELS
  *************************************/
-const ModelContent = require('../models/content');
-const ModelProduct = require('../models/product');
-const ModelCategory = require('../models/category');
-const ModelNavigationMain = require('../models/navigationMain');
-const ModelNavigationFooter = require('../models/navigationFooter');
+
+const ModelContent = require('../model/content');
+const ModelProduct = require('../model/product');
+const ModelCategory = require('../model/category');
+const ModelNavigationMain = require('../model/navigationMain');
+const ModelNavigationFooter = require('../model/navigationFooter');
+const ModelBreadcrumbs = require('../model/breadcrumbs');
 
 
 /* ROUTE
@@ -13,14 +18,14 @@ const ModelNavigationFooter = require('../models/navigationFooter');
 exports.index = function(req, res) {
 
     let contentParams = {
-        filename: 'index'
+        filename: path.parse(req.path).name
     };
 
     let modelContent = new ModelContent(req.app);
     let modelProduct = new ModelProduct(req.app);
-    let modelProductFeatured = new ModelProduct(req.app);
     let modelCategory = new ModelCategory(req.app);
     let modelNavigationMain = new ModelNavigationMain(req.app);
+    let modelBreadcrumbs = new ModelBreadcrumbs(req.app);
     let modelNavigationFooter = new ModelNavigationFooter(req.app);
 
     Promise.all([
@@ -29,13 +34,6 @@ exports.index = function(req, res) {
         ),
         modelProduct.store.dispatch(
             modelProduct.getAll({
-                'product.isFeatured': false,
-                limit: 8
-            })
-        ),
-        modelProductFeatured.store.dispatch(
-            modelProductFeatured.getAll({
-                'product.isFeatured': true,
                 limit: 8
             })
         ),
@@ -45,17 +43,20 @@ exports.index = function(req, res) {
         modelNavigationMain.store.dispatch(
             modelNavigationMain.getMainNavigation({})
         ),
+        modelBreadcrumbs.store.dispatch(
+            modelBreadcrumbs.getAll({})
+        ),
         modelNavigationFooter.store.dispatch(
             modelNavigationFooter.getAll()
         )
     ]).then(() => {
-        res.render('index', {
+        res.render('content', {
             configPublic: req.app.get('configPublic').store.getState(),
             navigationMain: modelNavigationMain.store.getState(),
             navigationFooter: modelNavigationFooter.store.getState(),
+            breadcrumbs: modelBreadcrumbs.store.getState(),
             content: modelContent.store.getState(),
             categories: modelCategory.store.getState(),
-            productsFeatured: modelProductFeatured.store.getState(),
             products: modelProduct.store.getState()
         });
     });

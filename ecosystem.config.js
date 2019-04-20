@@ -3,6 +3,6 @@ module.exports = {
     name: "app",
     script: "./app.js",
     watch: true,
-    ignore_watch: ["node_modules", "src", "dist"],
+    ignore_watch: ["node_modules", "dist"],
   }]
 }
