@@ -1,6 +1,6 @@
 const React = require('react');
 
-const NavigationFooter = require('../navigationFooter.jsx');
+const NavigationFooter = require('../template/navigationFooter.jsx');
 
 
 /* COMPONENT

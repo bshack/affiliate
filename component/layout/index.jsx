@@ -5,10 +5,10 @@ const React = require('react');
 *************************************/
 
 const WrapperLayout = require('./wrapper.jsx');
-const NavigationMain = require('../navigationMain.jsx');
-const Content = require('../content.jsx');
-const CategoryProducts = require('../categoryProducts.jsx');
-const EmailSignUp = require('../emailSignUp.jsx');
+const NavigationMain = require('../template/navigationMain.jsx');
+const Content = require('../template/content.jsx');
+const CategoryProducts = require('../template/categoryProducts.jsx');
+const EmailSignUp = require('../template/emailSignUp.jsx');
 
 
 /* COMPONENT
