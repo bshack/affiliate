@@ -21,7 +21,17 @@ class View extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        alert('A name was submitted: ' + this.state.value);
+        let xhr = new xhrRequest();
+        xhr.onreadystatechange = () => {
+            if (xhr.readyState === 4) {
+                console.log(JSON.parse(xhr.response));
+            }
+        }
+        xhr.open('POST', '/email/subscribe');
+        xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
+        xhr.send(JSON.stringify({
+            email: this.state.value
+        }));
     }
 
     render() {
@@ -35,7 +45,7 @@ class View extends React.Component {
                             <input
                                 type="email"
                                 value={this.state.value}
-                                onChange={this.handleChange} 
+                                onChange={this.handleChange}
                                 placeholder="email" />
                             <button type="submit">sign up</button>
                         </form>

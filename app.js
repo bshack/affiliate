@@ -46,6 +46,7 @@ app.use(session({
     }
 }));
 app.use(express.static('dist'))
+app.use(express.json());
 app.engine('jsx', require('express-react-views').createEngine({
     transformViews: false
 }));
@@ -81,7 +82,8 @@ app.get('/**/index.html', routePLP.index);
 app.get('/**/*.html', routePDP.index);
 
 //email
-app.get('/email', routeEmail.index);
+app.post('/email/subscribe', routeEmail.subscribe);
+app.post('/email/unsubscribe', routeEmail.unsubscribe);
 
 
 /* SERVER STARTUP

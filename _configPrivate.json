@@ -17,5 +17,13 @@
         "key": "",
         "cert": "",
         "port": ""
+    },
+    "email": {
+        "apiKey": "",
+        "lists": {
+            "default": {
+                "id": ""
+            }
+        }
     }
 }
