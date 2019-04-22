@@ -20,6 +20,7 @@ const routeIndex = require('./route/index');
 const routeContent = require('./route/content');
 const routePLP = require('./route/plp');
 const routePDP = require('./route/pdp');
+const routeUnsubscribe = require('./route/unsubscribe');
 
 const routeEmail = require('./route/email');
 
@@ -67,11 +68,13 @@ app.get('/support.html', routeContent.index);
 app.get('/privacy-policy.html', routeContent.index);
 app.get('/terms-of-service.html', routeContent.index);
 app.get('/manage-subscription.html', routeContent.index);
-app.get('/unsubscribe.html', routeContent.index);
 app.get('/accessibility.html', routeContent.index);
 app.get('/search.html', routeContent.index);
 app.get('/style-guide.html', routeContent.index);
 app.get('/error-404.html', routeContent.index);
+
+//email marketing
+app.get('/unsubscribe.html', routeUnsubscribe.index);
 
 //plp
 app.get('/brand/:brand/index.html', routePLP.index);
@@ -82,8 +85,8 @@ app.get('/**/index.html', routePLP.index);
 app.get('/**/*.html', routePDP.index);
 
 //email
-app.post('/email/subscribe', routeEmail.subscribe);
-app.post('/email/unsubscribe', routeEmail.unsubscribe);
+app.put('/email/subscribe', routeEmail.subscribe);
+app.patch('/email/unsubscribe', routeEmail.unsubscribe);
 
 
 /* SERVER STARTUP

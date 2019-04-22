@@ -1,10 +1,10 @@
 const React = require('react');
 const ReactDOM = require('react-dom');
-const EmailSignUpTemplate = require('./template/emailSignUp.jsx');
+const EmailUnsubscribeTemplate = require('./template/emailUnsubscribe.jsx');
 
 export default function() {
-    
-    let container = document.querySelector('.email-sign-up');
+
+    let container = document.querySelector('.email-unsubscribe');
 
     if (container) {
         ReactDOM.render(

@@ -4,7 +4,7 @@ const SassLintPlugin = require('sass-lint-webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-    mode: 'production',
+    mode: 'development',
     devtool: 'source-map',
     devServer: {
         contentBase: path.join(__dirname, 'dist'),

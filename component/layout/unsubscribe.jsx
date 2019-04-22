@@ -6,9 +6,7 @@ const React = require('react');
 
 const WrapperLayout = require('./wrapper.jsx');
 const NavigationMain = require('../template/navigationMain.jsx');
-const Content = require('../template/content.jsx');
 const CategoryProducts = require('../template/categoryProducts.jsx');
-const EmailSignUp = require('../template/emailSignUp.jsx');
 const EmailUnsubscribe = require('../template/emailUnsubscribe.jsx');
 
 
@@ -20,8 +18,8 @@ class View extends React.Component {
     return (
       <WrapperLayout
         configPublic={this.props.configPublic}
-        title={this.props.content[0].metatitle}
-        description={this.props.content[0].metadescription}
+        title="Unsubscribe"
+        description="Unsubscribe from email marketing."
         image={this.props.configPublic.www.origin + this.props.configPublic.social.image}
         canonical={this.props.configPublic.www.origin}
         navigationFooter={this.props.navigationFooter}
@@ -29,14 +27,7 @@ class View extends React.Component {
         <NavigationMain
             data={this.props.navigationMain}
             configPublic={this.props.configPublic} />
-        <Content
-            data={this.props.content}
-            configPublic={this.props.configPublic} />
-        <CategoryProducts
-            title='Featured Deals'
-            data={this.props.productsFeatured}
-            configPublic={this.props.configPublic} />
-        <EmailSignUp
+        <EmailUnsubscribe
             configPublic={this.props.configPublic} />
         <CategoryProducts
             title='You Also May Like'

@@ -48,10 +48,14 @@ class View extends React.Component {
                             value: '',
                             isValid: true
                         });
+                    } else {
+                        this.setState({
+                            isValid: false
+                        });
                     }
                 }
             }
-            xhr.open('PUT', '/email/subscribe');
+            xhr.open('PATCH', '/email/unsubscribe');
             xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
             xhr.send(JSON.stringify({
                 email: this.state.value.trim().toLowerCase()
@@ -79,24 +83,24 @@ class View extends React.Component {
 
     render() {
         return (
-            <section className="email-sign-up container">
+            <section className="email-unsubscribe container">
                 <div className="row justify-content-center">
                     <div className="col-10 col-md-8">
-                        <h2>Sign Up For Weekly Deal Emails</h2>
-                        <p>Once a week we will deliver our best deals to you.</p>
+                        <h2>Unsubscribe From Weekly Deal Emails</h2>
+                        <p>Sorry to see you go.</p>
                         <form
-                            id="marketing-email-sign-up"
-                            name="marketing-email-sign-up"
+                            id="marketing-email-unsubscribe"
+                            name="marketing-email-unsubscribe"
                             onSubmit={this.handleSubmit} noValidate
                         >
                             <fieldset>
                                 <legend>provide your email address</legend>
                                 <label
-                                    id="email-sign-up-label"
-                                    htmlFor="email-sign-up">email</label>
+                                    id="email-unsubscribe-label"
+                                    htmlFor="email-unsubscribe">email</label>
                                 <input
-                                    id="email-sign-up"
-                                    name="email-sign-up"
+                                    id="email-unsubscribe"
+                                    name="email-unsubscribe"
                                     type="email"
                                     className={this.state.isValid === false ? 'error' : ''}
                                     value={this.state.value}
@@ -106,13 +110,12 @@ class View extends React.Component {
                                     placeholder="email" />
                                 {this.errorMessage()}
                                 <button
-                                    id="marketing-email-sign-up-submit"
-                                    name="marketing-email-sign-up-submit"
+                                    id="marketing-email-unsubscribe-submit"
+                                    name="marketing-email-unsubscribe-submit"
                                     type="submit"
-                                >sign up</button>
+                                >unsubscribe</button>
                             </fieldset>
                         </form>
-                        <small>Your privacy is important, we won't share your email with anyone.</small>
                     </div>
                 </div>
             </section>

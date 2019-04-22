@@ -20,17 +20,21 @@ exports.subscribe = function(req, res) {
             status : 'subscribed'
         }
     })
-    .then(function (result) {
-        res.header(requestHeader);
-        res.send({
-            success: true
-        });
+    .then((result) => {
+        res.header(requestHeader)
+            .status(result.statusCode)
+            .send({
+                success: true,
+                message: 'subscribed successfully'
+            });
     })
-    .catch(function (err) {
-        res.header(requestHeader);
-        res.send({
-            success: false
-        });
+    .catch((err) => {
+        res.header(requestHeader)
+            .status(err.status)
+            .send({
+                success: false,
+                message: 'sorry there was an error, your email address was not found'
+            });
     });
 
 };
@@ -48,17 +52,21 @@ exports.unsubscribe = function(req, res) {
             status : 'unsubscribed'
         }
     })
-    .then(function (result) {
-        res.header(requestHeader);
-        res.send({
-            success: true
-        });
+    .then((result) => {
+        res.header(requestHeader)
+            .status(result.statusCode)
+            .send({
+                success: true,
+                message: 'subscribed successfully'
+            });
     })
-    .catch(function (err) {
-        res.header(requestHeader);
-        res.send({
-            success: false
-        });
+    .catch((err) => {
+        res.header(requestHeader)
+            .status(err.status)
+            .send({
+                success: false,
+                message: 'sorry there was an error, your email address was not found'
+            });
     });
 
 };
