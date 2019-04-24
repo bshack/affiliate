@@ -46,6 +46,7 @@
     "mysql2": "^1.5.3",
     "node-fetch": "^2.1.2",
     "node-jsx": "^0.13.3",
+    "node-product-catalog-feed": "^1.0.0",
     "node-sass": "^4.11.0",
     "numeral": "^2.0.6",
     "picturefill": "^3.0.3",

@@ -16,6 +16,7 @@ const ModelConfig = require('./model/config');
 
 const routeRobots = require('./route/robots');
 const routeSitemap = require('./route/sitemap');
+const routeMerchant = require('./route/merchant');
 const routeIndex = require('./route/index');
 const routeContent = require('./route/content');
 const routePLP = require('./route/plp');
@@ -59,6 +60,7 @@ app.engine('jsx', require('express-react-views').createEngine({
 //search engines
 app.get('/robots.txt', routeRobots.index);
 app.get('/sitemap.xml', routeSitemap.index);
+app.get('/merchant.xml', routeMerchant.index);
 
 //home
 app.get('/', routeIndex.index);
