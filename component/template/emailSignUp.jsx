@@ -1,4 +1,9 @@
 const React = require('react');
+const Regex = require('../../utility/regex');
+const UtilityAJAX = require('../../utility/ajax');
+
+const regex = new Regex();
+const utilityAJAX = new UtilityAJAX();
 
 class View extends React.Component {
 
@@ -9,12 +14,10 @@ class View extends React.Component {
         this.state = {
             value: '',
             isValid: true,
-            hasErrored: false
+            hasErrored: false,
+            errorMessage: false,
+            successMessage: false
         };
-
-        /*eslint-disable*/
-        this.emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-        /*eslint-enable*/
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -27,11 +30,15 @@ class View extends React.Component {
         });
         if (this.state.hasErrored && !this.isValid()) {
             this.setState({
-                isValid: false
+                isValid: false,
+                errorMessage: false,
+                successMessage: false
             });
         } else {
             this.setState({
-                isValid: true
+                isValid: true,
+                errorMessage: false,
+                successMessage: false
             });
         }
     }
@@ -39,41 +46,57 @@ class View extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
         if (this.isValid()) {
-            let xhr = new XMLHttpRequest();
-            xhr.onreadystatechange = () => {
-                if (xhr.readyState === 4) {
-                    let response = JSON.parse(xhr.response);
-                    if (response.success === true) {
-                        this.setState({
-                            value: '',
-                            isValid: true
-                        });
+            utilityAJAX
+                .request({
+                    method: 'PUT',
+                    url: '/email/subscribe',
+                    params: {
+                        email: this.state.value.trim().toLowerCase()
                     }
-                }
-            }
-            xhr.open('PUT', '/email/subscribe');
-            xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
-            xhr.send(JSON.stringify({
-                email: this.state.value.trim().toLowerCase()
-            }));
+                })
+                .then((data) => {
+                    this.setState({
+                        value: '',
+                        isValid: true,
+                        successMessage: data.message,
+                        errorMessage: false
+                    });
+                })
+                .catch((data) => {
+                    this.setState({
+                        isValid: false,
+                        successMessage: false,
+                        errorMessage: data.message
+                    });
+                });
         } else {
             this.setState({
                 isValid: false,
-                hasErrored: true
+                hasErrored: true,
+                successMessage: false,
+                errorMessage: false
             });
         }
 
     }
 
     isValid() {
-        return this.emailRegex.test(this.state.value);
+        return regex.email.test(this.state.value);
     }
 
-    errorMessage() {
-        if (this.state.isValid) {
-            return '';
-        } else {
-            return <div className="error">please enter a valid email address</div>;
+    message() {
+        if (this.state.isValid === true) {
+            if (this.state.successMessage) {
+                return <div className="success">{this.state.successMessage}</div>;
+            } else {
+                return '';
+            }
+        } else if (this.state.isValid === false) {
+            if (this.state.errorMessage) {
+                return <div className="error">{this.state.errorMessage}</div>;
+            } else {
+                return <div className="error">please enter a valid email address</div>;
+            }
         }
     }
 
@@ -104,7 +127,7 @@ class View extends React.Component {
                                     onKeyUp={this.handleChange}
                                     onInput={this.handleChange}
                                     placeholder="email" />
-                                {this.errorMessage()}
+                                {this.message()}
                                 <button
                                     id="marketing-email-sign-up-submit"
                                     name="marketing-email-sign-up-submit"

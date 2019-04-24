@@ -28,6 +28,7 @@ class View extends React.Component {
             data={this.props.navigationMain}
             configPublic={this.props.configPublic} />
         <EmailUnsubscribe
+            data={this.props.emailUnsubscribe}
             configPublic={this.props.configPublic} />
         <CategoryProducts
             title='You Also May Like'

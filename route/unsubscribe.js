@@ -34,6 +34,9 @@ exports.index = function(req, res) {
         )
     ]).then(() => {
         res.render('unsubscribe', {
+            emailUnsubscribe: {
+                email: req.query.email
+            },
             configPublic: req.app.get('configPublic').store.getState(),
             navigationMain: modelNavigationMain.store.getState(),
             navigationFooter: modelNavigationFooter.store.getState(),
