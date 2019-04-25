@@ -10,15 +10,15 @@ class JSONLD {
 
         let cdn = configPublic.cdn.origin;
         let defaultJSONLD = {
-            "@context": "http://schema.org/",
-            "@type": "Product",
-            "brand": {
-                "@type": "Thing"
+            '@context': 'http://schema.org/',
+            '@type': 'Product',
+            'brand': {
+                '@type': 'Thing'
             },
-            "offers": {
-                "@type": "Offer",
-                "seller": {
-                    "@type": "Organization"
+            'offers': {
+                '@type': 'Offer',
+                'seller': {
+                    '@type': 'Organization'
                 }
             }
         };
@@ -30,14 +30,14 @@ class JSONLD {
             }
         };
         if (data.path && data.seoFilenamePart) {
-            defaultProductData.url = (cdn + '/' + data.path + '/' + data.seoFilenamePart + ".html");
+            defaultProductData.url = (cdn + '/' + data.path + '/' + data.seoFilenamePart + '.html');
             defaultProductData.offers.url = defaultProductData.url;
         }
         if (data.title !== '') {
             defaultProductData.name = data.title;
         }
         if (data.path && data.seoFilenamePart && data.isImageLinkProcessed) {
-            defaultProductData.image = (cdn + '/' + data.path + '/' + data.seoFilenamePart + "-large@2x.jpg");
+            defaultProductData.image = (cdn + '/' + data.path + '/' + data.seoFilenamePart + '-large@2x.jpg');
         }
         if (data.description !== '') {
             defaultProductData.description = data.description;
@@ -61,18 +61,18 @@ class JSONLD {
             defaultProductData.offers.seller.name = data.programName;
         }
         if (data.availability === 'in stock') {
-            defaultProductData.offers.availability = "http://schema.org/InStock";
+            defaultProductData.offers.availability = 'http://schema.org/InStock';
         } else if (data.availability === 'out of stock') {
-            defaultProductData.offers.availability = "http://schema.org/OutOfStock";
+            defaultProductData.offers.availability = 'http://schema.org/OutOfStock';
         } else if (data.availability === 'preorder') {
-            defaultProductData.offers.availability = "http://schema.org/PreOrder";
+            defaultProductData.offers.availability = 'http://schema.org/PreOrder';
         }
         if (data.productCondition === 'new') {
-            defaultProductData.offers.itemCondition = "http://schema.org/NewCondition";
+            defaultProductData.offers.itemCondition = 'http://schema.org/NewCondition';
         } else if (data.productCondition === 'refurbished') {
-            defaultProductData.offers.itemCondition = "http://schema.org/RefurbishedCondition";
+            defaultProductData.offers.itemCondition = 'http://schema.org/RefurbishedCondition';
         } else if (data.productCondition === 'used') {
-            defaultProductData.offers.itemCondition = "http://schema.org/UsedCondition";
+            defaultProductData.offers.itemCondition = 'http://schema.org/UsedCondition';
         }
         if (data.salePriceCurrency) {
             defaultProductData.offers.priceCurrency = data.salePriceCurrency;
@@ -101,20 +101,20 @@ class JSONLD {
         }
 
         return <script
-        type = "application/ld+json"
-        dangerouslySetInnerHTML = {
-            {
-                __html: JSON.stringify(_.extend({}, defaultJSONLD, defaultProductData))
+            type = 'application/ld+json'
+            dangerouslySetInnerHTML = {
+                {
+                    __html: JSON.stringify(_.extend({}, defaultJSONLD, defaultProductData))
+                }
             }
-        }
         />
     }
 
     siteNavigationElement(data) {
-        let cdn = "https://s3.us-east-2.amazonaws.com/cdn.shackelforddigital.io";
+        let cdn = 'https://s3.us-east-2.amazonaws.com/cdn.shackelforddigital.io';
         let defaultJSONLD = {
-            "@context": "https://schema.org",
-            "@graph": []
+            '@context': 'https://schema.org',
+            '@graph': []
         };
         let recursiveBuilder = (data) => {
             let siteNavigationElements = [];
@@ -122,13 +122,14 @@ class JSONLD {
             for (key in data) {
                 if (data[key].path !== '') {
                     siteNavigationElements.push({
-                        "@context": "https://schema.org",
-                        "@type": "SiteNavigationElement",
-                        "name": data[key].title,
-                        "url": cdn + '/' + data[key].path + '/index.html'
+                        '@context': 'https://schema.org',
+                        '@type': 'SiteNavigationElement',
+                        'name': data[key].title,
+                        'url': cdn + '/' + data[key].path + '/index.html'
                     });
                     if (_.size(data[key].children)) {
-                        siteNavigationElements = _.unionBy(recursiveBuilder(data[key].children), siteNavigationElements, 'name');
+                        siteNavigationElements =
+                            _.unionBy(recursiveBuilder(data[key].children), siteNavigationElements, 'name');
                     }
                 }
             }
@@ -136,22 +137,22 @@ class JSONLD {
         };
         defaultJSONLD['@graph'] = recursiveBuilder(data);
         return <script
-        type = "application/ld+json"
-        dangerouslySetInnerHTML = {
-            {
-                __html: JSON.stringify(defaultJSONLD)
+            type = 'application/ld+json'
+            dangerouslySetInnerHTML = {
+                {
+                    __html: JSON.stringify(defaultJSONLD)
+                }
             }
-        }
         />
 
     }
 
     breadcrumbs(data) {
-        let cdn = "https://s3.us-east-2.amazonaws.com/cdn.shackelforddigital.io";
+        let cdn = 'https://s3.us-east-2.amazonaws.com/cdn.shackelforddigital.io';
         let defaultJSONLD = {
-            "@context": "https://schema.org",
-            "@type": "BreadcrumbList",
-            "itemListElement": []
+            '@context': 'https://schema.org',
+            '@type': 'BreadcrumbList',
+            'itemListElement': []
         };
         let recursiveBuilder = (data) => {
             let itemListElement = [];
@@ -159,11 +160,11 @@ class JSONLD {
             let key;
             for (key in data) {
                 itemListElement.push({
-                    "@type": "ListItem",
-                    "position": position,
-                    "item": {
-                        "@id": cdn + '/' + data[key].path + '/index.html',
-                        "name": data[key].title
+                    '@type': 'ListItem',
+                    'position': position,
+                    'item': {
+                        '@id': cdn + '/' + data[key].path + '/index.html',
+                        'name': data[key].title
                     }
                 });
                 position = (position + 1);
@@ -172,17 +173,17 @@ class JSONLD {
         };
         defaultJSONLD['itemListElement'] = recursiveBuilder(data);
         return <script
-        type = "application/ld+json"
-        dangerouslySetInnerHTML = {
-            {
-                __html: JSON.stringify(defaultJSONLD)
+            type = 'application/ld+json'
+            dangerouslySetInnerHTML = {
+                {
+                    __html: JSON.stringify(defaultJSONLD)
+                }
             }
-        }
         />
 
     }
 
 
-};
+}
 
 module.exports = JSONLD;
