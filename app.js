@@ -22,8 +22,8 @@ const routeContent = require('./route/content');
 const routePLP = require('./route/plp');
 const routePDP = require('./route/pdp');
 const routeUnsubscribe = require('./route/unsubscribe');
-
-const routeEmail = require('./route/email');
+const routeServiceEmail = require('./route/service/email');
+const routeServiceProducts = require('./route/service/products');
 
 
 /* EXPRESS SERVER
@@ -86,9 +86,10 @@ app.get('/**/index.html', routePLP.index);
 //pdp
 app.get('/**/*.html', routePDP.index);
 
-//email
-app.put('/email/subscribe', routeEmail.subscribe);
-app.patch('/email/unsubscribe', routeEmail.unsubscribe);
+//services
+app.put('/service/email/subscribe', routeServiceEmail.subscribe);
+app.patch('/service/email/unsubscribe', routeServiceEmail.unsubscribe);
+app.get('/service/products/', routeServiceProducts.get);
 
 
 /* SERVER STARTUP

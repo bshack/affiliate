@@ -1,6 +1,11 @@
+const https = require('https');
 const redux = require('redux');
 const thunk = require('redux-thunk').default;
 const moment = require('moment');
+const fetch = require('node-fetch');
+const request = require('request');
+const fs = require('fs');
+var rp = require('request-promise');
 
 (() => {
 
@@ -44,78 +49,18 @@ const moment = require('moment');
         getAll(params) {
 
             return (dispatch, getState) => {
-
-                let whereParams = {
-                    isActive: true
-                };
-
-                let limitParam = 1000;
-                let skipParam = false;
-                let oldestProductCreationDate = moment(new Date()).subtract(60, 'days').format('YYYY-MM-DD HH:mm:ss');
-
-                if (params.filename) {
-                    whereParams.seoFilenamePart = params.filename;
-                }
-
-                if (params.brand) {
-                    whereParams.brand = params.brand;
-                }
-
-                if (params.programName) {
-                    whereParams.programName = params.programName;
-                }
-
-                if (params['product.isFeatured']) {
-                    whereParams['product.isFeatured'] = params['product.isFeatured'];
-                }
-
-                if (params.limit) {
-                    limitParam = params.limit;
-                }
-
-                if (params.skipFilename) {
-                    skipParam = params.skipFilename;
-                }
-
-                return this.app.get('databaseConnection')
-                    .from('product')
-                    .select([
-                        'product.*',
-                        'category.isFeatured',
-                        'category.path',
-                        'category.title AS categoryTitle'
-                    ])
-                    .limit(limitParam)
-                    .innerJoin('category', 'product.googleProductCategory', 'category.googleid')
-                    .where((builder) => {
-                        if (params.path && !params.filename) {
-                            if (skipParam) {
-                                builder
-                                    .where(whereParams)
-                                    .where('product.timestamp', '>', oldestProductCreationDate)
-                                    .andWhere('category.path', 'like', '%' + params.path)
-                                    .whereNot('product.seoFilenamePart', skipParam);
-                            } else {
-                                builder
-                                    .where(whereParams)
-                                    .where('product.timestamp', '>', oldestProductCreationDate)
-                                    .andWhere('category.path', 'like', '%' + params.path);
-                            }
-                        } else {
-                            builder
-                                .where(whereParams)
-                                .where('product.timestamp', '>', oldestProductCreationDate);
-                        }
-                    })
-                    .orderBy('product.isFeatured', 'desc')
-                    .orderBy('category.isFeatured', 'desc')
-                    .orderBy('product.timestamp', 'desc')
-                    .then((data) => {
-                        dispatch(this.handleGetSuccess(data));
+                return rp({
+                    url : 'https://localhost:3000/service/products/',
+                    json: true,
+                    body: params
+                })
+                    .then((response) => {
+                        dispatch(this.handleGetSuccess(response.data));
                     })
                     .catch((error) => {
                         dispatch(this.handleGetError(error));
                     });
+
             };
         }
 

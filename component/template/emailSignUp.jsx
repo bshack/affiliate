@@ -49,7 +49,7 @@ class View extends React.Component {
             utilityAJAX
                 .request({
                     method: 'PUT',
-                    url: '/email/subscribe',
+                    url: '/service/email/subscribe',
                     params: {
                         email: this.state.value.trim().toLowerCase()
                     }

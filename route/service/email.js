@@ -1,6 +1,6 @@
 const Mailchimp = require('mailchimp-api-v3')
 const crypto = require('crypto');
-const Regex = require('../utility/regex');
+const Regex = require('../../utility/regex');
 
 const regex = new Regex();
 const requestHeader = {

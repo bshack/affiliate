@@ -1,7 +1,7 @@
 @charset 'UTF-8';
 
 @font-face {
-    font-display: swap;
+    font-display: fallback;
     font-family: 'open_sans_semibolditalic';
     font-style: normal;
     font-weight: normal;
@@ -10,7 +10,7 @@
 }
 
 @font-face {
-    font-display: swap;
+    font-display: fallback;
     font-family: 'open_sans_semiboldregular';
     font-style: normal;
     font-weight: normal;
@@ -19,7 +19,7 @@
 }
 
 @font-face {
-    font-display: swap;
+    font-display: fallback;
     font-family: 'open_sansregular';
     font-style: normal;
     font-weight: normal;
@@ -28,7 +28,7 @@
 }
 
 @font-face {
-    font-display: swap;
+    font-display: fallback;
     font-family: 'open_sans_lightitalic';
     font-style: normal;
     font-weight: normal;
@@ -37,7 +37,7 @@
 }
 
 @font-face {
-    font-display: swap;
+    font-display: fallback;
     font-family: 'open_sans_lightregular';
     font-style: normal;
     font-weight: normal;
@@ -46,7 +46,7 @@
 }
 
 @font-face {
-    font-display: swap;
+    font-display: fallback;
     font-family: 'open_sansitalic';
     font-style: normal;
     font-weight: normal;
@@ -55,7 +55,7 @@
 }
 
 @font-face {
-    font-display: swap;
+    font-display: fallback;
     font-family: 'open_sans_extrabolditalic';
     font-style: normal;
     font-weight: normal;
@@ -64,7 +64,7 @@
 }
 
 @font-face {
-    font-display: swap;
+    font-display: fallback;
     font-family: 'open_sans_extraboldregular';
     font-style: normal;
     font-weight: normal;
@@ -73,7 +73,7 @@
 }
 
 @font-face {
-    font-display: swap;
+    font-display: fallback;
     font-family: 'open_sansbold_italic';
     font-style: normal;
     font-weight: normal;
@@ -82,7 +82,7 @@
 }
 
 @font-face {
-    font-display: swap;
+    font-display: fallback;
     font-family: 'open_sansbold';
     font-style: normal;
     font-weight: normal;

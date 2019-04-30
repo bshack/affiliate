@@ -49,7 +49,7 @@ class View extends React.Component {
             utilityAJAX
                 .request({
                     method: 'PATCH',
-                    url: '/email/unsubscribe',
+                    url: '/service/email/unsubscribe',
                     params: {
                         email: this.state.value.trim().toLowerCase()
                     }
