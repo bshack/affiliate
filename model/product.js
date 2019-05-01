@@ -1,11 +1,6 @@
-const https = require('https');
 const redux = require('redux');
 const thunk = require('redux-thunk').default;
-const moment = require('moment');
-const fetch = require('node-fetch');
-const request = require('request');
-const fs = require('fs');
-var rp = require('request-promise');
+const requestPromise = require('request-promise');
 
 (() => {
 
@@ -47,10 +42,9 @@ var rp = require('request-promise');
         }
 
         getAll(params) {
-
             return (dispatch, getState) => {
-                return rp({
-                    url : 'https://localhost:3000/service/products/',
+                return requestPromise({
+                    url : 'https://dev.api.valfoundry.io:3000/service/products/',
                     json: true,
                     body: params
                 })
@@ -60,7 +54,6 @@ var rp = require('request-promise');
                     .catch((error) => {
                         dispatch(this.handleGetError(error));
                     });
-
             };
         }
 

@@ -8,6 +8,9 @@
     "cdn": {
         "origin": ""
     },
+    "api": {
+        "origin": ""
+    },
     "social": {
         "image": "",
         "facebook": {
