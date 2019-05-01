@@ -97,7 +97,8 @@ app.get('/service/products/', routeServiceProducts.get);
 
 https.createServer({
     key: fs.readFileSync(app.get('configPrivate').store.getState().ssl.key),
-    cert: fs.readFileSync(app.get('configPrivate').store.getState().ssl.cert)
+    cert: fs.readFileSync(app.get('configPrivate').store.getState().ssl.cert),
+    ca: [fs.readFileSync(app.get('configPrivate').store.getState().ssl.ca)]
 }, app)
     .listen(app.get('configPrivate').store.getState().ssl.port,
         () => {
