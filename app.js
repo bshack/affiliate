@@ -24,6 +24,11 @@ const routePDP = require('./route/pdp');
 const routeUnsubscribe = require('./route/unsubscribe');
 const routeServiceEmail = require('./route/service/email');
 const routeServiceProducts = require('./route/service/products');
+const routeServiceBreadcrumbs = require('./route/service/breadcrumbs');
+const routeServiceCategories = require('./route/service/category');
+const routeServiceContent = require('./route/service/content');
+const routeServiceNavigationFooter = require('./route/service/navigationFooter');
+const routeServiceNavigationMain = require('./route/service/navigationMain');
 
 
 /* EXPRESS SERVER
@@ -90,7 +95,11 @@ app.get('/**/*.html', routePDP.index);
 app.put('/service/email/subscribe', routeServiceEmail.subscribe);
 app.patch('/service/email/unsubscribe', routeServiceEmail.unsubscribe);
 app.get('/service/products/', routeServiceProducts.get);
-
+app.get('/service/breadcrumbs/', routeServiceBreadcrumbs.get);
+app.get('/service/categories/', routeServiceCategories.get);
+app.get('/service/content/', routeServiceContent.get);
+app.get('/service/navigation/footer/', routeServiceNavigationFooter.get);
+app.get('/service/navigation/main/', routeServiceNavigationMain.get);
 
 /* SERVER STARTUP
 *************************************/

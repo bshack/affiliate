@@ -1,5 +1,6 @@
 const redux = require('redux');
 const thunk = require('redux-thunk').default;
+const requestPromise = require('request-promise');
 
 (() => {
 
@@ -16,10 +17,10 @@ const thunk = require('redux-thunk').default;
 
         reducers(state = {}, action) {
             switch (action.type) {
-                case 'GET_CONTENT_DATA':
+                case 'GET_NAVIGATION_FOOTER_DATA':
                     state = action.data
                     return state;
-                case 'GET_CONTENT_DATA_ERROR':
+                case 'GET_NAVIGATION_FOOTER_DATA_ERROR':
                     return state;
                 default:
                     return state;
@@ -28,40 +29,28 @@ const thunk = require('redux-thunk').default;
 
         handleGetSuccess(data) {
             return {
-                type: 'GET_CONTENT_DATA',
+                type: 'GET_NAVIGATION_FOOTER_DATA',
                 data: data
             };
         }
 
         handleGetError(error) {
             return {
-                type: 'GET_CONTENT_DATA_ERROR',
+                type: 'GET_NAVIGATION_FOOTER_DATA_ERROR',
                 data: error
             };
         }
 
         getAll(params) {
 
-            let whereParams = {
-                'content.isActive': true,
-                'menu-link.isActive': true,
-                'menu.isActive': true
-            };
-
             return (dispatch, getState) => {
-                return this.app.get('databaseConnection')
-                    .from('menu-link')
-                    .join('content', 'menu-link.content', '=', 'content.filename')
-                    .join('menu', 'menu-link.menu', '=', 'menu.name')
-                    .select([
-                        'menu-link.*',
-                        'content.title',
-                        'content.filename'
-                    ])
-                    .where(whereParams)
-                    .orderBy('menu-link.position', 'asc')
-                    .then((data) => {
-                        dispatch(this.handleGetSuccess(data));
+                return requestPromise({
+                    url : 'https://dev.api.valfoundry.io:3000/service/navigation/footer/',
+                    json: true,
+                    body: params
+                })
+                    .then((response) => {
+                        dispatch(this.handleGetSuccess(response.data));
                     })
                     .catch((error) => {
                         dispatch(this.handleGetError(error));

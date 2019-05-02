@@ -27,7 +27,7 @@ exports.index = function(req, res) {
             modelCategory.getAll({})
         ),
         modelNavigationMain.store.dispatch(
-            modelNavigationMain.getMainNavigation({})
+            modelNavigationMain.getAll({})
         ),
         modelNavigationFooter.store.dispatch(
             modelNavigationFooter.getAll()

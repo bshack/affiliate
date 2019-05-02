@@ -1,5 +1,6 @@
 const redux = require('redux');
 const thunk = require('redux-thunk').default;
+const requestPromise = require('request-promise');
 
 (() => {
 
@@ -43,31 +44,13 @@ const thunk = require('redux-thunk').default;
         getAll(params) {
 
             return (dispatch, getState) => {
-
-                let whereParams = {};
-
-                if (params.brand) {
-                    return dispatch(this.handleGetSuccess([
-                        {
-                            title: params.brand
-                        }
-                    ]));
-                } else if (params.programName) {
-                    return dispatch(this.handleGetSuccess([
-                        {
-                            title: params.programName
-                        }
-                    ]));
-                } else if (params.path) {
-                    whereParams.path = params.path;
-                }
-
-                return this.app.get('databaseConnection')
-                    .from('category')
-                    .select()
-                    .where(whereParams)
-                    .then((data) => {
-                        dispatch(this.handleGetSuccess(data));
+                return requestPromise({
+                    url : 'https://dev.api.valfoundry.io:3000/service/categories/',
+                    json: true,
+                    body: params
+                })
+                    .then((response) => {
+                        dispatch(this.handleGetSuccess(response.data));
                     })
                     .catch((error) => {
                         dispatch(this.handleGetError(error));

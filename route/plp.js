@@ -48,7 +48,7 @@ exports.index = function(req, res) {
             modelCategory.getAll(categoryParams)
         ),
         modelNavigationMain.store.dispatch(
-            modelNavigationMain.getMainNavigation({})
+            modelNavigationMain.getAll({})
         ),
         modelBreadcrumbs.store.dispatch(
             modelBreadcrumbs.getAll(breadcrumbParams)

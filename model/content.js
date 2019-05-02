@@ -1,5 +1,6 @@
 const redux = require('redux');
 const thunk = require('redux-thunk').default;
+const requestPromise = require('request-promise');
 
 (() => {
 
@@ -42,31 +43,14 @@ const thunk = require('redux-thunk').default;
 
         getAll(params) {
 
-            let whereParams = {
-                isActive: true
-            };
-
-            if (params.filename) {
-                whereParams.filename = params.filename;
-            }
-
             return (dispatch, getState) => {
-                return this.app.get('databaseConnection')
-                    .from('content')
-                    .select()
-                    .where((builder) => {
-                        if (whereParams.filename && typeof whereParams.filename === 'object') {
-                            let filenames = whereParams.filename;
-                            delete whereParams.filename;
-                            builder
-                                .whereIn('filename', filenames)
-                                .where(whereParams);
-                        } else {
-                            builder.where(whereParams);
-                        }
-                    })
-                    .then((data) => {
-                        dispatch(this.handleGetSuccess(data));
+                return requestPromise({
+                    url : 'https://dev.api.valfoundry.io:3000/service/content/',
+                    json: true,
+                    body: params
+                })
+                    .then((response) => {
+                        dispatch(this.handleGetSuccess(response.data));
                     })
                     .catch((error) => {
                         dispatch(this.handleGetError(error));

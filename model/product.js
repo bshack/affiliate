@@ -49,11 +49,9 @@ const requestPromise = require('request-promise');
                     body: params
                 })
                     .then((response) => {
-                        console.log('response', response);
                         dispatch(this.handleGetSuccess(response.data));
                     })
                     .catch((error) => {
-                        console.log('error', error);
                         dispatch(this.handleGetError(error));
                     });
             };
