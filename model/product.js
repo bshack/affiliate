@@ -1,6 +1,10 @@
 const redux = require('redux');
 const thunk = require('redux-thunk').default;
-const requestPromise = require('request-promise');
+// const requestPromise = require('request-promise');
+const axios = require('axios');
+const UtilityAjax = require('../utility/ajax');
+
+const utilityAjax = new UtilityAjax();
 
 (() => {
 
@@ -17,13 +21,13 @@ const requestPromise = require('request-promise');
 
         reducers(state = {}, action) {
             switch (action.type) {
-                case 'GET_PRODUCT_DATA':
-                    state = action.data
-                    return state;
-                case 'GET_PRODUCT_DATA_ERROR':
-                    return state;
-                default:
-                    return state;
+            case 'GET_PRODUCT_DATA':
+                state = action.data
+                return state;
+            case 'GET_PRODUCT_DATA_ERROR':
+                return state;
+            default:
+                return state;
             }
         }
 
@@ -43,13 +47,11 @@ const requestPromise = require('request-promise');
 
         getAll(params) {
             return (dispatch, getState) => {
-                return requestPromise({
-                    url : 'https://dev.api.valfoundry.io:3000/service/products/',
-                    json: true,
-                    body: params
+                return axios.get('https://dev.api.valfoundry.io:3000/service/products/', {
+                    params: params
                 })
                     .then((response) => {
-                        dispatch(this.handleGetSuccess(response.data));
+                        dispatch(this.handleGetSuccess(response.data.data));
                     })
                     .catch((error) => {
                         dispatch(this.handleGetError(error));

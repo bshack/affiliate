@@ -57,6 +57,14 @@ exports.index = function(req, res) {
             modelNavigationFooter.getAll()
         )
     ]).then(() => {
+        // console.log({
+        //     configPublic: req.app.get('configPublic').store.getState(),
+        //     navigationMain: modelNavigationMain.store.getState(),
+        //     navigationFooter: modelNavigationFooter.store.getState(),
+        //     breadcrumbs: modelBreadcrumbs.store.getState(),
+        //     category: modelCategory.store.getState(),
+        //     products: modelProduct.store.getState()
+        // });
         res.render('plp', {
             configPublic: req.app.get('configPublic').store.getState(),
             navigationMain: modelNavigationMain.store.getState(),

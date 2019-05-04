@@ -1,5 +1,6 @@
 const React = require('react');
 const Product = require('./product.jsx');
+const {connect} = require('react-redux');
 
 class View extends React.Component {
     render() {

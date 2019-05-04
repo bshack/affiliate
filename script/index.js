@@ -11,6 +11,6 @@ import '../image/foo/foo.svg';
 foo();
 bar();
 yo();
-// categoryProducts();
+categoryProducts();
 emailSignUp();
 emailUnsubscribe();
