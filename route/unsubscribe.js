@@ -37,11 +37,11 @@ exports.index = function(req, res) {
             emailUnsubscribe: {
                 email: req.query.email
             },
-            configPublic: req.app.get('configPublic').store.getState(),
-            navigationMain: modelNavigationMain.store.getState(),
-            navigationFooter: modelNavigationFooter.store.getState(),
-            categories: modelCategory.store.getState(),
-            products: modelProduct.store.getState()
+            configPublic: req.app.get('configPublic'),
+            navigationMain: modelNavigationMain,
+            navigationFooter: modelNavigationFooter,
+            categories: modelCategory,
+            products: modelProduct
         });
     });
 

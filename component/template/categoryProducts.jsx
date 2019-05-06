@@ -1,9 +1,10 @@
-const React = require('react');
-const Product = require('./product.jsx');
-const {connect} = require('react-redux');
+import React from 'react';
+import Product from './product.jsx';
+import { connect } from 'react-redux';
 
 class View extends React.Component {
     render() {
+        console.log(this.props.config);
         return (
             <section className="category-products container">
                 <div className="row no-gutters">
@@ -16,7 +17,7 @@ class View extends React.Component {
                     {this.props.data.map(
                         (product, index) =>
                             <div key={index} className='col-6 col-md-4 col-lg-3'>
-                                <Product data={product} key={index} configPublic={this.props.configPublic} />
+                                <Product data={product} key={index} configPublic={this.props.config} />
                             </div>
                     )}
                 </div>
@@ -25,4 +26,15 @@ class View extends React.Component {
     }
 }
 
-module.exports = View;
+const mapStateToProps = (state) => {
+    console.log('config', state.config);
+    return {
+        data: state.data,
+        config: state.config
+    }
+}
+
+export default connect(
+    mapStateToProps,
+    {}
+)(View)

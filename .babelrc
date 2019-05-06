@@ -1,5 +1,8 @@
 {
     "sourceType": "unambiguous",
+    "plugins": [
+        "@babel/plugin-transform-react-jsx"
+    ],
     "presets": [
         [
             "@babel/preset-env",

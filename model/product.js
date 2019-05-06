@@ -1,6 +1,5 @@
 const redux = require('redux');
 const thunk = require('redux-thunk').default;
-// const requestPromise = require('request-promise');
 const axios = require('axios');
 const UtilityAjax = require('../utility/ajax');
 
@@ -51,7 +50,7 @@ const utilityAjax = new UtilityAjax();
                     params: params
                 })
                     .then((response) => {
-                        dispatch(this.handleGetSuccess(response.data.data));
+                        dispatch(this.handleGetSuccess(response.data));
                     })
                     .catch((error) => {
                         dispatch(this.handleGetError(error));

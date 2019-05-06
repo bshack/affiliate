@@ -1,6 +1,6 @@
 const redux = require('redux');
 const thunk = require('redux-thunk').default;
-const requestPromise = require('request-promise');
+const axios = require('axios');
 
 (() => {
 
@@ -42,15 +42,13 @@ const requestPromise = require('request-promise');
         }
 
         getAll(params) {
-
+            
             return (dispatch, getState) => {
-                return requestPromise({
-                    url : 'https://dev.api.valfoundry.io:3000/service/navigation/footer/',
-                    json: true,
-                    body: params
+                return axios.get('https://dev.api.valfoundry.io:3000/service/navigation/footer/', {
+                    params: params
                 })
                     .then((response) => {
-                        dispatch(this.handleGetSuccess(response.data));
+                        dispatch(this.handleGetSuccess(response.data.data));
                     })
                     .catch((error) => {
                         dispatch(this.handleGetError(error));

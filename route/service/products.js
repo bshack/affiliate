@@ -88,6 +88,7 @@ exports.get = function(req, res, next) {
                 .status(200)
                 .send({
                     success: false,
+                    config: req.app.get('configPublic').store.getState(),
                     data: data
                 });
         })
@@ -96,6 +97,7 @@ exports.get = function(req, res, next) {
                 .status(200)
                 .send({
                     success: false,
+                    config: req.app.get('configPublic').store.getState(),
                     message: 'nope'
                 });
         });

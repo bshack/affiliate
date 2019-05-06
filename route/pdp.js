@@ -55,13 +55,13 @@ exports.index = function(req, res) {
         )
     ]).then(() => {
         res.render('pdp', {
-            configPublic: req.app.get('configPublic').store.getState(),
-            navigationMain: modelNavigationMain.store.getState(),
-            navigationFooter: modelNavigationFooter.store.getState(),
-            breadcrumbs: modelBreadcrumbs.store.getState(),
-            categories: modelCategory.store.getState(),
-            products: modelProduct.store.getState(),
-            productRecommendations: modelProductRecommendations.store.getState()
+            configPublic: req.app.get('configPublic'),
+            navigationMain: modelNavigationMain,
+            navigationFooter: modelNavigationFooter,
+            breadcrumbs: modelBreadcrumbs,
+            categories: modelCategory,
+            products: modelProduct,
+            productRecommendations: modelProductRecommendations
         });
     });
 

@@ -5,7 +5,7 @@ const path = require('path');
  *************************************/
 
 const ModelContent = require('../model/content');
-const ModelProduct = require('../model/product');
+import ModelProduct from '../model/product';
 const ModelCategory = require('../model/category');
 const ModelNavigationMain = require('../model/navigationMain');
 const ModelNavigationFooter = require('../model/navigationFooter');
@@ -66,12 +66,12 @@ exports.index = function(req, res) {
         //     products: modelProduct.store.getState()
         // });
         res.render('plp', {
-            configPublic: req.app.get('configPublic').store.getState(),
-            navigationMain: modelNavigationMain.store.getState(),
-            navigationFooter: modelNavigationFooter.store.getState(),
-            breadcrumbs: modelBreadcrumbs.store.getState(),
-            category: modelCategory.store.getState(),
-            products: modelProduct.store.getState()
+            configPublic: req.app.get('configPublic'),
+            navigationMain: modelNavigationMain,
+            navigationFooter: modelNavigationFooter,
+            breadcrumbs: modelBreadcrumbs,
+            category: modelCategory,
+            products: modelProduct
         });
     });
 

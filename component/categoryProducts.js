@@ -1,8 +1,9 @@
-const React = require('react');
-const ReactDOM = require('react-dom');
-const {Provider} = require('react-redux');
-const Store = require('../model/product');
-const CategoryProductsTemplate = require('./template/categoryProducts.jsx');
+import React from 'react';
+import ReactDOM from 'react-dom';
+import CategoryProductsTemplate from './template/categoryProducts.jsx';
+import {Provider} from 'react-redux';
+import Store from '../model/product';
+
 const store = new Store();
 
 export default function() {

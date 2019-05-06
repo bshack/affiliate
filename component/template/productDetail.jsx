@@ -1,7 +1,7 @@
-const React = require('react');
-const Picture = require('./picture.jsx');
-const numeral = require('numeral');
-const UtilityJSONLD = require('../../utility/jsonLD');
+import React from 'react';
+import Picture from './picture.jsx';
+import numeral from 'numeral';
+import UtilityJSONLD from '../../utility/jsonLD';
 
 const utilityJSONLD = new UtilityJSONLD();
 

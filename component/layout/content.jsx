@@ -19,28 +19,28 @@ class View extends React.Component {
   render() {
     return (
       <WrapperLayout
-          configPublic={this.props.configPublic}
-          title={this.props.content[0].metatitle}
-          description={this.props.content[0].metadescription}
-          image={this.props.configPublic.www.origin + this.props.configPublic.social.image}
-          canonical={this.props.configPublic.www.origin + '/' + this.props.content[0].filename + '.html'}
-          navigationFooter={this.props.navigationFooter}
+          configPublic={this.props.configPublic.store.getState()}
+          title={this.props.content.store.getState()[0].metatitle}
+          description={this.props.content.store.getState()[0].metadescription}
+          image={this.props.configPublic.store.getState().www.origin + this.props.configPublic.store.getState().social.image}
+          canonical={this.props.configPublic.store.getState().www.origin + '/' + this.props.content.store.getState()[0].filename + '.html'}
+          navigationFooter={this.props.navigationFooter.store.getState()}
         >
         <NavigationMain
-            data={this.props.navigationMain}
-            configPublic={this.props.configPublic} />
+            data={this.props.navigationMain.store.getState()}
+            configPublic={this.props.configPublic.store.getState()} />
         <Breadcrumbs
-            data={this.props.breadcrumbs}
-            configPublic={this.props.configPublic} />
+            data={this.props.breadcrumbs.store.getState()}
+            configPublic={this.props.configPublic.store.getState()} />
         <Content
-            data={this.props.content}
-            configPublic={this.props.configPublic} />
+            data={this.props.content.store.getState()}
+            configPublic={this.props.configPublic.store.getState()} />
         <EmailSignUp
-            configPublic={this.props.configPublic} />
+            configPublic={this.props.configPublic.store.getState()} />
         <CategoryProducts
             subtitle='You Also May Like'
-            data={this.props.products}
-            configPublic={this.props.configPublic} />
+            data={this.props.products.store.getState()}
+            configPublic={this.props.configPublic.store.getState()} />
       </WrapperLayout>
     );
   }

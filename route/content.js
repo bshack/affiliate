@@ -51,13 +51,13 @@ exports.index = function(req, res) {
         )
     ]).then(() => {
         res.render('content', {
-            configPublic: req.app.get('configPublic').store.getState(),
-            navigationMain: modelNavigationMain.store.getState(),
-            navigationFooter: modelNavigationFooter.store.getState(),
-            breadcrumbs: modelBreadcrumbs.store.getState(),
-            content: modelContent.store.getState(),
-            categories: modelCategory.store.getState(),
-            products: modelProduct.store.getState()
+            configPublic: req.app.get('configPublic'),
+            navigationMain: modelNavigationMain,
+            navigationFooter: modelNavigationFooter,
+            breadcrumbs: modelBreadcrumbs,
+            content: modelContent,
+            categories: modelCategory,
+            products: modelProduct
         });
     });
 

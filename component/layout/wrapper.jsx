@@ -8,7 +8,6 @@ const NavigationFooter = require('../template/navigationFooter.jsx');
 
 class WrapperLayout extends React.Component {
   render() {
-
       let descriptionSEO;
       let descriptionSocial;
       if (this.props.description && this.props.description !== '') {
