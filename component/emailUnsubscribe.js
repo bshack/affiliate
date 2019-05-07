@@ -1,7 +1,7 @@
-const React = require('react');
-const ReactDOM = require('react-dom');
-const EmailUnsubscribeTemplate = require('./template/emailUnsubscribe.jsx');
-const UtilityString = require('../utility/string');
+import React from 'react';
+import ReactDOM from 'react-dom';
+import EmailUnsubscribeTemplate from './template/emailUnsubscribe.jsx';
+import UtilityString from '../utility/string';
 
 const utilityString = new UtilityString();
 

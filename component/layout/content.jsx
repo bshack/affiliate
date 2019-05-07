@@ -1,16 +1,15 @@
-const React = require('react');
-
+import React from 'react';
+import { Provider } from 'react-redux';
 
 /* VIEWS
 *************************************/
 
-const WrapperLayout = require('./wrapper.jsx');
-const NavigationMain = require('../template/navigationMain.jsx');
-const Breadcrumbs = require('../template/breadcrumbs.jsx');
-const CategoryProducts = require('../template/categoryProducts.jsx');
-const Content = require('../template/content.jsx');
-const EmailSignUp = require('../template/emailSignUp.jsx');
-
+import WrapperLayout from './wrapper.jsx';
+import NavigationMain from '../template/navigationMain.jsx';
+import Breadcrumbs from '../template/breadcrumbs.jsx';
+import Content from '../template/content.jsx';
+import CategoryProducts from '../template/categoryProducts.jsx';
+import EmailSignUp from '../template/emailSignUp.jsx';
 
 /* COMPONENT
 *************************************/
@@ -37,13 +36,14 @@ class View extends React.Component {
             configPublic={this.props.configPublic.store.getState()} />
         <EmailSignUp
             configPublic={this.props.configPublic.store.getState()} />
-        <CategoryProducts
-            subtitle='You Also May Like'
-            data={this.props.products.store.getState()}
-            configPublic={this.props.configPublic.store.getState()} />
+        <Provider store={this.props.products.store}>
+            <CategoryProducts
+                subtitle='You Also May Like'
+                subtitle={this.props.categories.store.getState()[0].subtitle} />
+        </Provider>
       </WrapperLayout>
     );
   }
 }
 
-module.exports = View;
+export default View;

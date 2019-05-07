@@ -1,15 +1,14 @@
-const React = require('react');
+import React from 'react';
+import { Provider } from 'react-redux';
 
 /* VIEWS
 *************************************/
 
 import WrapperLayout from './wrapper.jsx';
-const NavigationMain = require('../template/navigationMain.jsx');
-const Breadcrumbs = require('../template/breadcrumbs.jsx');
+import NavigationMain from '../template/navigationMain.jsx';
+import Breadcrumbs from '../template/breadcrumbs.jsx';
 import CategoryProducts from '../template/categoryProducts.jsx';
-const EmailSignUp = require('../template/emailSignUp.jsx');
-import { Provider } from 'react-redux';
-
+import EmailSignUp from '../template/emailSignUp.jsx';
 
 /* COMPONENT
 *************************************/
@@ -43,4 +42,4 @@ class View extends React.Component {
   }
 }
 
-module.exports = View;
+export default View;

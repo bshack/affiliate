@@ -1,7 +1,5 @@
-const React = require('react');
-
-const NavigationFooter = require('../template/navigationFooter.jsx');
-
+import React from 'react';
+import NavigationFooter from '../template/navigationFooter.jsx';
 
 /* COMPONENT
 *************************************/
@@ -75,4 +73,4 @@ class WrapperLayout extends React.Component {
   }
 }
 
-module.exports = WrapperLayout;
+export default WrapperLayout;

@@ -1,4 +1,4 @@
-const React = require('react');
+import React from 'react';
 
 class View extends React.Component {
     render() {
@@ -122,4 +122,4 @@ class View extends React.Component {
     }
 }
 
-module.exports = View;
+export default View;

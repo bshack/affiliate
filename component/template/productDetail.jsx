@@ -112,4 +112,4 @@ class View extends React.Component {
   }
 }
 
-module.exports = View;
+export default View;

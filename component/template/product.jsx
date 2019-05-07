@@ -1,9 +1,9 @@
-const React = require('react');
-const Picture = require('./picture.jsx');
-const numeral = require('numeral');
-const UtilityJSONLD = require('../../utility/jsonLD');
+import React from 'react';
+import numeral from 'numeral';
+import UtilityJSONLD from '../../utility/jsonLD';
+import Picture from './picture.jsx';
 
-var utilityJSONLD = new UtilityJSONLD();
+const utilityJSONLD = new UtilityJSONLD();
 
 class View extends React.Component {
 
@@ -87,4 +87,4 @@ class View extends React.Component {
     }
 }
 
-module.exports = View;
+export default View;

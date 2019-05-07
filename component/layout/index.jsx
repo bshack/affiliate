@@ -1,16 +1,15 @@
-const React = require('react');
-
+import React from 'react';
+import { Provider } from 'react-redux';
 
 /* VIEWS
 *************************************/
 
-const WrapperLayout = require('./wrapper.jsx');
-const NavigationMain = require('../template/navigationMain.jsx');
-const Content = require('../template/content.jsx');
-const CategoryProducts = require('../template/categoryProducts.jsx');
-const EmailSignUp = require('../template/emailSignUp.jsx');
-const EmailUnsubscribe = require('../template/emailUnsubscribe.jsx');
-
+import WrapperLayout from './wrapper.jsx';
+import NavigationMain from '../template/navigationMain.jsx';
+import Content from '../template/content.jsx';
+import CategoryProducts from '../template/categoryProducts.jsx';
+import EmailSignUp from '../template/emailSignUp.jsx';
+import EmailUnsubscribe from '../template/emailUnsubscribe.jsx';
 
 /* COMPONENT
 *************************************/
@@ -32,19 +31,21 @@ class View extends React.Component {
         <Content
             data={this.props.content.store.getState()}
             configPublic={this.props.configPublic.store.getState()} />
-        <CategoryProducts
-            title='Featured Deals'
-            data={this.props.productsFeatured.store.getState()}
-            configPublic={this.props.configPublic.store.getState()} />
+        <Provider store={this.props.productsFeatured.store}>
+            <CategoryProducts
+                title='Featured Deals'
+                subtitle={this.props.categories.store.getState()[0].subtitle} />
+        </Provider>
         <EmailSignUp
             configPublic={this.props.configPublic.store.getState()} />
-        <CategoryProducts
-            title='You Also May Like'
-            data={this.props.products.store.getState()}
-            configPublic={this.props.configPublic.store.getState()} />
+        <Provider store={this.props.productsFeatured.store}>
+            <CategoryProducts
+                title='You Also May Like'
+                subtitle={this.props.categories.store.getState()[0].subtitle} />
+        </Provider>
       </WrapperLayout>
     );
   }
 }
 
-module.exports = View;
+export default View;

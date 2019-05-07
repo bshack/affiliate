@@ -1,6 +1,6 @@
-const React = require('react');
-const Regex = require('../../utility/regex');
-const UtilityAJAX = require('../../utility/ajax');
+import React from 'react';
+import Regex from '../../utility/regex';
+import UtilityAJAX from '../../utility/ajax';
 
 const regex = new Regex();
 const utilityAJAX = new UtilityAJAX();
@@ -143,4 +143,4 @@ class View extends React.Component {
     }
 }
 
-module.exports = View;
+export default View;

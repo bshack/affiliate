@@ -1,10 +1,10 @@
 /* MODELS
  *************************************/
-const ModelProduct = require('../model/product');
-const ModelCategory = require('../model/category');
-const ModelNavigationMain = require('../model/navigationMain');
-const ModelNavigationFooter = require('../model/navigationFooter');
 
+import ModelProduct from '../model/product';
+import ModelCategory from '../model/category';
+import ModelNavigationMain from '../model/navigationMain';
+import ModelNavigationFooter from '../model/navigationFooter';
 
 /* ROUTE
  *************************************/

@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 
 class View extends React.Component {
     render() {
-        console.log(this.props.config);
         return (
             <section className="category-products container">
                 <div className="row no-gutters">
@@ -27,7 +26,6 @@ class View extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-    console.log('config', state.config);
     return {
         data: state.data,
         config: state.config
@@ -37,4 +35,4 @@ const mapStateToProps = (state) => {
 export default connect(
     mapStateToProps,
     {}
-)(View)
+)(View);

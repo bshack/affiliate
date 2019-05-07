@@ -2,8 +2,7 @@
 /* MODELS
  *************************************/
 
-const ModelProduct = require('../model/product');
-
+import ModelProduct from '../model/product';
 
 /* ROUTE
  *************************************/
@@ -20,7 +19,7 @@ exports.index = function(req, res) {
             })
         )
     ]).then(() => {
-        let products = modelProduct.store.getState();
+        let products = modelProduct.store.getState().data;
         let i;
         let items = [];
         for (i = 0; i < products.length; i++) {

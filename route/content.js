@@ -1,16 +1,14 @@
-const path = require('path');
-
+import path from 'path';
 
 /* MODELS
  *************************************/
 
-const ModelContent = require('../model/content');
-const ModelProduct = require('../model/product');
-const ModelCategory = require('../model/category');
-const ModelNavigationMain = require('../model/navigationMain');
-const ModelNavigationFooter = require('../model/navigationFooter');
-const ModelBreadcrumbs = require('../model/breadcrumbs');
-
+import ModelContent from '../model/content';
+import ModelProduct from '../model/product';
+import ModelCategory from '../model/category';
+import ModelNavigationMain from '../model/navigationMain';
+import ModelNavigationFooter from '../model/navigationFooter';
+import ModelBreadcrumbs from '../model/breadcrumbs';
 
 /* ROUTE
  *************************************/

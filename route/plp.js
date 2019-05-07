@@ -1,15 +1,14 @@
-const path = require('path');
-
+import path from 'path';
 
 /* MODELS
  *************************************/
 
-const ModelContent = require('../model/content');
+import ModelContent from '../model/content';
 import ModelProduct from '../model/product';
-const ModelCategory = require('../model/category');
-const ModelNavigationMain = require('../model/navigationMain');
-const ModelNavigationFooter = require('../model/navigationFooter');
-const ModelBreadcrumbs = require('../model/breadcrumbs');
+import ModelCategory from '../model/category';
+import ModelNavigationMain from '../model/navigationMain';
+import ModelNavigationFooter from '../model/navigationFooter';
+import ModelBreadcrumbs from '../model/breadcrumbs';
 
 
 /* ROUTE
@@ -57,14 +56,6 @@ exports.index = function(req, res) {
             modelNavigationFooter.getAll()
         )
     ]).then(() => {
-        // console.log({
-        //     configPublic: req.app.get('configPublic').store.getState(),
-        //     navigationMain: modelNavigationMain.store.getState(),
-        //     navigationFooter: modelNavigationFooter.store.getState(),
-        //     breadcrumbs: modelBreadcrumbs.store.getState(),
-        //     category: modelCategory.store.getState(),
-        //     products: modelProduct.store.getState()
-        // });
         res.render('plp', {
             configPublic: req.app.get('configPublic'),
             navigationMain: modelNavigationMain,

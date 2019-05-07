@@ -1,6 +1,6 @@
-const React = require('react');
-const ReactDOM = require('react-dom');
-const EmailSignUpTemplate = require('./template/emailSignUp.jsx');
+import React from 'react';
+import ReactDOM from 'react-dom';
+import EmailSignUpTemplate from './template/emailSignUp.jsx';
 
 export default function() {
 

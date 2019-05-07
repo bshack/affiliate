@@ -1,13 +1,13 @@
-const React = require('react');
-
+import React from 'react';
+import { Provider } from 'react-redux';
 
 /* VIEWS
 *************************************/
 
-const WrapperLayout = require('./wrapper.jsx');
-const NavigationMain = require('../template/navigationMain.jsx');
-const CategoryProducts = require('../template/categoryProducts.jsx');
-const EmailUnsubscribe = require('../template/emailUnsubscribe.jsx');
+import WrapperLayout from './wrapper.jsx';
+import NavigationMain from '../template/navigationMain.jsx';
+import CategoryProducts from '../template/categoryProducts.jsx';
+import EmailUnsubscribe from '../template/emailUnsubscribe.jsx';
 
 /* COMPONENT
 *************************************/
@@ -29,13 +29,13 @@ class View extends React.Component {
         <EmailUnsubscribe
             data={this.props.emailUnsubscribe}
             configPublic={this.props.configPublic.store.getState()} />
-        <CategoryProducts
-            title='You Also May Like'
-            data={this.props.products.store.getState()}
-            configPublic={this.props.configPublic.store.getState()} />
+        <Provider store={this.props.products.store}>
+            <CategoryProducts
+                title='You Also May Like' />
+        </Provider>
       </WrapperLayout>
     );
   }
 }
 
-module.exports = View;
+export default View;

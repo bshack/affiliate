@@ -1,12 +1,10 @@
-const path = require('path');
-const sm = require('sitemap');
-
+import sm from 'sitemap';
 
 /* MODELS
  *************************************/
 
-const ModelContent = require('../model/content');
-const ModelProduct = require('../model/product');
+import ModelContent from '../model/content';
+import ModelProduct from '../model/product';
 
 
 /* ROUTE
@@ -33,7 +31,7 @@ exports.index = function(req, res) {
         let urls = [];
         let configPublic = req.app.get('configPublic').store.getState();
         let contentPages = modelContent.store.getState();
-        let productPages = modelProduct.store.getState();
+        let productPages = modelProduct.store.getState().data;
         let categoryPages = [];
         let brandPages = [];
         let storePages = [];

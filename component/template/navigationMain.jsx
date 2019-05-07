@@ -1,6 +1,6 @@
-const React = require('react');
-const _ = require('lodash');
-const UtilityJSONLD = require('../../utility/jsonLD');
+import React from 'react';
+import _ from 'lodash';
+import UtilityJSONLD from '../../utility/jsonLD';
 
 const utilityJSONLD = new UtilityJSONLD();
 const ctaBuilder = (data) => {
@@ -50,4 +50,4 @@ class View extends React.Component {
   }
 }
 
-module.exports = View;
+export default View;
