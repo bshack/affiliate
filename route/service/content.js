@@ -1,10 +1,11 @@
 const responseHeader = {
-    'Content-Type': 'application/json;charset=utf-8'
+    'Content-Type': 'application/json;charset=utf-8',
+    'Access-Control-Allow-Origin': '*'
 };
 
 exports.get = function(req, res, next) {
 
-    let params = req.body;
+    let params = req.query;
     let whereParams = {
         isActive: true
     };

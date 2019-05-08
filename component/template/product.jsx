@@ -14,7 +14,7 @@ class View extends React.Component {
             image =
                 <div className='image'>
                     <a href={'/' + this.props.data.path + '/' + this.props.data.seoFilenamePart + '.html'}>
-                        <Picture data={this.props.data} configPublic={this.props.configPublic} />
+                        <Picture data={this.props.data} config={this.props.config} />
                     </a>
                 </div>
         }
@@ -81,7 +81,7 @@ class View extends React.Component {
                 <div className='cta'>
                     <a className='anchor-1' href={this.props.data.link}>get deal now</a>
                 </div>
-                {utilityJSONLD.product(this.props.data, this.props.configPublic)}
+                {utilityJSONLD.product(this.props.data, this.props.config)}
             </div>
         );
     }

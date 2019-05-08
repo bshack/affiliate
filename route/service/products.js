@@ -6,7 +6,7 @@ const requestHeader = {
 
 exports.get = function(req, res, next) {
 
-    let params = req.body;
+    let params = req.query;
 
     let whereParams = {
         isActive: true
@@ -37,8 +37,8 @@ exports.get = function(req, res, next) {
         whereParams.programName = params.programName;
     }
 
-    if (params['product.isFeatured']) {
-        whereParams['product.isFeatured'] = params['product.isFeatured'];
+    if (params['product.isFeatured'] === 'true' || params['product.isFeatured'] === true) {
+        whereParams['product.isFeatured'] = true;
     }
 
     if (params.limit && (parseInt(params.limit, 10) <= limitParam)) {
@@ -86,20 +86,12 @@ exports.get = function(req, res, next) {
         .then((data) => {
             res.header(requestHeader)
                 .status(200)
-                .send({
-                    success: false,
-                    config: req.app.get('configPublic').store.getState(),
-                    data: data
-                });
+                .send(data);
         })
         .catch((error) => {
             res.header(requestHeader)
-                .status(200)
-                .send({
-                    success: false,
-                    config: req.app.get('configPublic').store.getState(),
-                    message: 'nope'
-                });
+                .status(404)
+                .send(error);
         });
 
 };

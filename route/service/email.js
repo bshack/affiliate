@@ -4,7 +4,8 @@ const Regex = require('../../utility/regex');
 
 const regex = new Regex();
 const requestHeader = {
-    'Content-Type': 'application/json;charset=utf-8'
+    'Content-Type': 'application/json;charset=utf-8',
+    'Access-Control-Allow-Origin': '*'
 };
 const makeMD5Hash = (string) => {
     return crypto.createHash('md5').update(string).digest('hex');

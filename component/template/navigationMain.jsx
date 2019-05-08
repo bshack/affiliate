@@ -1,6 +1,7 @@
 import React from 'react';
 import _ from 'lodash';
 import UtilityJSONLD from '../../utility/jsonLD';
+import {connect} from 'react-redux';
 
 const utilityJSONLD = new UtilityJSONLD();
 const ctaBuilder = (data) => {
@@ -50,4 +51,13 @@ class View extends React.Component {
   }
 }
 
-export default View;
+const mapStateToProps = (state) => {
+    return {
+        data: state.data.navigationMain
+    }
+}
+
+export default connect(
+    mapStateToProps,
+    {}
+)(View);

@@ -1,4 +1,5 @@
 import React from 'react';
+import {connect} from 'react-redux';
 
 class View extends React.Component {
   render() {
@@ -12,4 +13,13 @@ class View extends React.Component {
   }
 }
 
-export default View;
+const mapStateToProps = (state) => {
+    return {
+        data: state.data.content
+    }
+}
+
+export default connect(
+    mapStateToProps,
+    {}
+)(View);

@@ -1,5 +1,6 @@
 const responseHeader = {
-    'Content-Type': 'application/json;charset=utf-8'
+    'Content-Type': 'application/json;charset=utf-8',
+    'Access-Control-Allow-Origin': '*'
 };
 const _ = require('lodash');
 const getCategoryDetails = (data) => {
@@ -41,7 +42,7 @@ const getCategoryDetails = (data) => {
 
 exports.get = function(req, res, next) {
 
-    let params = req.body;
+    let params = req.query;
 
     let whereData = {
         isActive: true

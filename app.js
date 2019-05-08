@@ -30,6 +30,8 @@ const routeServiceContent = require('./route/service/content');
 const routeServiceNavigationFooter = require('./route/service/navigationFooter');
 const routeServiceNavigationMain = require('./route/service/navigationMain');
 
+const routeServicePageIndex = require('./route/service/pageIndex');
+
 
 /* EXPRESS SERVER
 *************************************/
@@ -100,6 +102,7 @@ app.get('/service/categories/', routeServiceCategories.get);
 app.get('/service/content/', routeServiceContent.get);
 app.get('/service/navigation/footer/', routeServiceNavigationFooter.get);
 app.get('/service/navigation/main/', routeServiceNavigationMain.get);
+app.get('/service/page/index/', routeServicePageIndex.get);
 
 /* SERVER STARTUP
 *************************************/
