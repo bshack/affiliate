@@ -31,7 +31,10 @@ const routeServiceNavigationFooter = require('./route/service/navigationFooter')
 const routeServiceNavigationMain = require('./route/service/navigationMain');
 
 const routeServicePageIndex = require('./route/service/pageIndex');
-
+const routeServicePageContent = require('./route/service/pageContent');
+const routeServicePagePLP = require('./route/service/pagePLP');
+const routeServicePagePDP = require('./route/service/pagePDP');
+const routeServicePageUnsubscribe = require('./route/service/pageUnsubscribe');
 
 /* EXPRESS SERVER
 *************************************/
@@ -103,6 +106,10 @@ app.get('/service/content/', routeServiceContent.get);
 app.get('/service/navigation/footer/', routeServiceNavigationFooter.get);
 app.get('/service/navigation/main/', routeServiceNavigationMain.get);
 app.get('/service/page/index/', routeServicePageIndex.get);
+app.get('/service/page/content/', routeServicePageContent.get);
+app.get('/service/page/plp/', routeServicePagePLP.get);
+app.get('/service/page/pdp/', routeServicePagePDP.get);
+app.get('/service/page/unsubscribe/', routeServicePageUnsubscribe.get);
 
 /* SERVER STARTUP
 *************************************/

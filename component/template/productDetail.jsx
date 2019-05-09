@@ -2,6 +2,7 @@ import React from 'react';
 import Picture from './picture.jsx';
 import numeral from 'numeral';
 import UtilityJSONLD from '../../utility/jsonLD';
+import {connect} from 'react-redux';
 
 const utilityJSONLD = new UtilityJSONLD();
 
@@ -16,30 +17,30 @@ class View extends React.Component {
                 <ul role="tablist" className="col-2">
                     <li key="main" id="tab-1" role="tab" aria-controls="panel-1" aria-selected="true" tabIndex="0">
                         <div className="image">
-                            <Picture data={this.props.data} configPublic={this.props.configPublic} />
+                            <Picture data={this.props.data} config={this.props.config} />
                         </div>
                     </li>
                     <li key="additional" id="tab-2" role="tab" aria-controls="panel-2" aria-selected="false" tabIndex="-1">
                         <div className="image">
-                            <Picture data={this.props.data} configPublic={this.props.configPublic} slug="additional" />
+                            <Picture data={this.props.data} config={this.props.config} slug="additional" />
                         </div>
                     </li>
                 </ul>
                 <div  id="panel-1" aria-labelledby="tab-1" role="tabpanel" aria-hidden="false" className="col-10">
                     <div className="image">
-                        <Picture data={this.props.data} configPublic={this.props.configPublic} />
+                        <Picture data={this.props.data} config={this.props.config} />
                     </div>
                 </div>
                 <div id="panel-2" aria-labelledby="tab-2" role="tabpanel" aria-hidden="true" className="col-10">
                     <div className="image">
-                        <Picture data={this.props.data} configPublic={this.props.configPublic} slug="additional" />
+                        <Picture data={this.props.data} config={this.props.config} slug="additional" />
                     </div>
                 </div>
             </div>;
     } else {
         image =
             <div className="image">
-                <Picture data={this.props.data} configPublic={this.props.configPublic} />
+                <Picture data={this.props.data} config={this.props.config} />
             </div>;
     }
 
@@ -106,10 +107,20 @@ class View extends React.Component {
                 {mpn}
             </aside>
         </div>
-        {utilityJSONLD.product(this.props.data, this.props.configPublic)}
+        {utilityJSONLD.product(this.props.data, this.props.config)}
       </section>
     );
   }
 }
 
-export default View;
+const mapStateToProps = (state) => {
+    return {
+        data: state.data.products[0],
+        config: state.data.config
+    }
+}
+
+export default connect(
+    mapStateToProps,
+    {}
+)(View);

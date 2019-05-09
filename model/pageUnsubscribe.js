@@ -14,10 +14,10 @@ export default class {
 
     reducers(state = {}, action) {
         switch (action.type) {
-            case 'GET_INDEX_DATA':
+            case 'GET_UNSUBSCRIBE_DATA':
                 state = action.data
                 return state;
-            case 'GET_INDEX_DATA_ERROR':
+            case 'GET_UNSUBSCRIBE_DATA_ERROR':
                 return state;
             default:
                 return state;
@@ -26,21 +26,21 @@ export default class {
 
     handleGetSuccess(data) {
         return {
-            type: 'GET_INDEX_DATA',
+            type: 'GET_UNSUBSCRIBE_DATA',
             data: data
         };
     }
 
     handleGetError(error) {
         return {
-            type: 'GET_INDEX_DATA_ERROR',
+            type: 'GET_UNSUBSCRIBE_DATA_ERROR',
             data: error
         };
     }
 
     getAll(params) {
         return (dispatch, getState) => {
-            return axios.get('https://dev.api.valfoundry.io:3000/service/page/index/', {
+            return axios.get('https://dev.api.valfoundry.io:3000/service/page/unsubscribe/', {
                 params: params
             })
                 .then((response) => {

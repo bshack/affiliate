@@ -46,6 +46,9 @@ const utilityAjax = new UtilityAjax();
 
         getAll(params) {
             return (dispatch, getState) => {
+                if (typeof params === 'string') {
+                    params = JSON.parse(params);
+                }
                 return axios.get('https://dev.api.valfoundry.io:3000/service/products/', {
                     params: params
                 })

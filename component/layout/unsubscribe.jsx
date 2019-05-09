@@ -6,8 +6,10 @@ import { Provider } from 'react-redux';
 
 import WrapperLayout from './wrapper.jsx';
 import NavigationMain from '../template/navigationMain.jsx';
-import CategoryProducts from '../template/categoryProducts.jsx';
+import Breadcrumbs from '../template/breadcrumbs.jsx';
 import EmailUnsubscribe from '../template/emailUnsubscribe.jsx';
+import FeaturedProducts from '../template/featuredProducts.jsx';
+
 
 /* COMPONENT
 *************************************/
@@ -15,25 +17,14 @@ import EmailUnsubscribe from '../template/emailUnsubscribe.jsx';
 class View extends React.Component {
   render() {
     return (
-      <WrapperLayout
-        configPublic={this.props.configPublic.store.getState()}
-        title="Unsubscribe"
-        description="Unsubscribe from email marketing."
-        image={this.props.configPublic.store.getState().www.origin + this.props.configPublic.store.getState().social.image}
-        canonical={this.props.configPublic.store.getState().www.origin}
-        navigationFooter={this.props.navigationFooter.store.getState()}
-        >
-        <NavigationMain
-            data={this.props.navigationMain.store.getState()}
-            configPublic={this.props.configPublic.store.getState()} />
-        <EmailUnsubscribe
-            data={this.props.emailUnsubscribe}
-            configPublic={this.props.configPublic.store.getState()} />
-        <Provider store={this.props.products.store}>
-            <CategoryProducts
-                title='You Also May Like' />
+        <Provider store={this.props.modelPageUnsubscribe.store}>
+            <WrapperLayout>
+                <NavigationMain />
+                <Breadcrumbs />
+                <EmailUnsubscribe />
+                <FeaturedProducts />
+            </WrapperLayout>
         </Provider>
-      </WrapperLayout>
     );
   }
 }

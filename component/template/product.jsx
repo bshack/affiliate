@@ -8,7 +8,6 @@ const utilityJSONLD = new UtilityJSONLD();
 class View extends React.Component {
 
     render() {
-
         let image = '';
         if (this.props.data.isImageLinkProcessed) {
             image =

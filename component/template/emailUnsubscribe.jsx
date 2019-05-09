@@ -1,6 +1,7 @@
 import React from 'react';
 import Regex from '../../utility/regex';
 import UtilityAJAX from '../../utility/ajax';
+import {connect} from 'react-redux';
 
 const regex = new Regex();
 const utilityAJAX = new UtilityAJAX();
@@ -142,4 +143,13 @@ class View extends React.Component {
     }
 }
 
-export default View;
+const mapStateToProps = (state) => {
+    return {
+        data: state.data.unsubscribe
+    }
+}
+
+export default connect(
+    mapStateToProps,
+    {}
+)(View);

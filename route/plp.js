@@ -3,28 +3,18 @@ import path from 'path';
 /* MODELS
  *************************************/
 
-import ModelContent from '../model/content';
-import ModelProduct from '../model/product';
-import ModelCategory from '../model/category';
-import ModelNavigationMain from '../model/navigationMain';
-import ModelNavigationFooter from '../model/navigationFooter';
-import ModelBreadcrumbs from '../model/breadcrumbs';
-
+import ModelPagePLP from '../model/pagePLP';
 
 /* ROUTE
  *************************************/
 
 exports.index = function(req, res) {
 
+    let modelPagePLP = new ModelPagePLP(req.app);
+    let pathData = path.parse(req.path);
     let productParams = {};
     let categoryParams = {};
     let breadcrumbParams = {};
-    let modelProduct = new ModelProduct(req.app);
-    let modelCategory = new ModelCategory(req.app);
-    let modelNavigationMain = new ModelNavigationMain(req.app);
-    let modelBreadcrumbs = new ModelBreadcrumbs(req.app);
-    let modelNavigationFooter = new ModelNavigationFooter(req.app);
-
     if (req.params.store) {
         productParams.programName = req.params.store;
         categoryParams.programName = productParams.programName;
@@ -40,29 +30,16 @@ exports.index = function(req, res) {
     }
 
     Promise.all([
-        modelProduct.store.dispatch(
-            modelProduct.getAll(productParams)
-        ),
-        modelCategory.store.dispatch(
-            modelCategory.getAll(categoryParams)
-        ),
-        modelNavigationMain.store.dispatch(
-            modelNavigationMain.getAll({})
-        ),
-        modelBreadcrumbs.store.dispatch(
-            modelBreadcrumbs.getAll(breadcrumbParams)
-        ),
-        modelNavigationFooter.store.dispatch(
-            modelNavigationFooter.getAll()
+        modelPagePLP.store.dispatch(
+            modelPagePLP.getAll({
+                product: productParams,
+                category: categoryParams,
+                breadcrumbs: breadcrumbParams
+            })
         )
     ]).then(() => {
         res.render('plp', {
-            configPublic: req.app.get('configPublic'),
-            navigationMain: modelNavigationMain,
-            navigationFooter: modelNavigationFooter,
-            breadcrumbs: modelBreadcrumbs,
-            category: modelCategory,
-            products: modelProduct
+            modelPagePLP: modelPagePLP
         });
     });
 
