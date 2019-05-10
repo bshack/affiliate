@@ -5,12 +5,13 @@ import path from 'path';
 
 import StorePagePDP from '../store/page/pdp';
 
+let storePagePDP = new StorePagePDP();
+
 /* ROUTE
  *************************************/
 
 exports.index = function(req, res) {
-
-    let storePagePDP = new StorePagePDP(req.app);
+    
     let pathData = path.parse(req.path);
 
     Promise.all([

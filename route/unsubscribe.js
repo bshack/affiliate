@@ -3,12 +3,12 @@
 
 import StorePageUnsubscribe from '../store/page/unsubscribe';
 
+let storePageUnsubscribe = new StorePageUnsubscribe();
+
 /* ROUTE
  *************************************/
 
 exports.index = function(req, res) {
-
-    let storePageUnsubscribe = new StorePageUnsubscribe(req.app);
 
     Promise.all([
         storePageUnsubscribe.store.dispatch(

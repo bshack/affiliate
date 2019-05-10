@@ -4,8 +4,7 @@ import axios from 'axios';
 
 export default class {
 
-    constructor(app) {
-        this.app = app;
+    constructor() {
         this.store = createStore(
             this.reducers,
             applyMiddleware(thunk)

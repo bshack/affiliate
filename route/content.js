@@ -5,13 +5,13 @@ import path from 'path';
 
 import StorePageContent from '../store/page/content';
 
+let storePageContent = new StorePageContent();
+
 /* ROUTE
  *************************************/
 
 exports.index = function(req, res) {
-
-    let storePageContent = new StorePageContent(req.app);
-
+    
     Promise.all([
         storePageContent.store.dispatch(
             storePageContent.getAll({

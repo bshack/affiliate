@@ -3,12 +3,12 @@
 
 import StorePageIndex from '../store/page/index';
 
+let storePageIndex = new StorePageIndex();
+
 /* ROUTE
  *************************************/
 
 exports.index = function(req, res) {
-
-    let storePageIndex = new StorePageIndex(req.app);
 
     Promise.all([
         storePageIndex.store.dispatch(

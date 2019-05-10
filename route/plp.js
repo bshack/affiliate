@@ -5,17 +5,18 @@ import path from 'path';
 
 import StorePagePLP from '../store/page/plp';
 
+let storePagePLP = new StorePagePLP();
+
 /* ROUTE
  *************************************/
 
 exports.index = function(req, res) {
 
-    let storePagePLP = new StorePagePLP(req.app);
     let pathData = path.parse(req.path);
     let productParams = {};
     let categoryParams = {};
     let breadcrumbParams = {};
-    
+
     if (req.params.store) {
         productParams.programName = req.params.store;
         categoryParams.programName = productParams.programName;
