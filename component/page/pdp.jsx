@@ -4,12 +4,12 @@ import { Provider } from 'react-redux';
 /* VIEWS
 *************************************/
 
-import WrapperLayout from './wrapper.jsx';
+import LayoutWrapper from '../layout/wrapper.jsx';
 import NavigationMain from '../template/navigationMain.jsx';
 import Breadcrumbs from '../template/breadcrumbs.jsx';
-import EmailUnsubscribe from '../template/emailUnsubscribe.jsx';
-import FeaturedProducts from '../template/featuredProducts.jsx';
-
+import ProductDetail from '../template/productDetail.jsx';
+import RecommendationProducts from '../template/recommendationProducts.jsx';
+import EmailSignUp from '../template/emailSignUp.jsx';
 
 /* COMPONENT
 *************************************/
@@ -17,13 +17,14 @@ import FeaturedProducts from '../template/featuredProducts.jsx';
 class View extends React.Component {
   render() {
     return (
-        <Provider store={this.props.modelPageUnsubscribe.store}>
-            <WrapperLayout>
+        <Provider store={this.props.storePagePDP.store}>
+            <LayoutWrapper>
                 <NavigationMain />
                 <Breadcrumbs />
-                <EmailUnsubscribe />
-                <FeaturedProducts />
-            </WrapperLayout>
+                <ProductDetail />
+                <RecommendationProducts />
+                <EmailSignUp />
+            </LayoutWrapper>
         </Provider>
     );
   }

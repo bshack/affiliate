@@ -3,8 +3,8 @@ import sm from 'sitemap';
 /* MODELS
  *************************************/
 
-import ModelContent from '../model/content';
-import ModelProduct from '../model/product';
+import StoreContent from '../store/content';
+import StoreProduct from '../store/product';
 
 
 /* ROUTE
@@ -12,17 +12,17 @@ import ModelProduct from '../model/product';
 
 exports.index = function(req, res) {
 
-    let modelContent = new ModelContent(req.app);
-    let modelProduct = new ModelProduct(req.app);
+    let storeContent = new StoreContent(req.app);
+    let storeProduct = new StoreProduct(req.app);
 
     Promise.all([
-        modelContent.store.dispatch(
-            modelContent.getAll({
+        storeContent.store.dispatch(
+            storeContent.getAll({
                 isActive: true
             })
         ),
-        modelProduct.store.dispatch(
-            modelProduct.getAll({
+        storeProduct.store.dispatch(
+            storeProduct.getAll({
                 isActive: true
             })
         )
@@ -30,8 +30,8 @@ exports.index = function(req, res) {
 
         let urls = [];
         let configPublic = req.app.get('configPublic').store.getState();
-        let contentPages = modelContent.store.getState();
-        let productPages = modelProduct.store.getState().data;
+        let contentPages = storeContent.store.getState();
+        let productPages = storeProduct.store.getState().data;
         let categoryPages = [];
         let brandPages = [];
         let storePages = [];

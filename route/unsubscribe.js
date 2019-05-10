@@ -1,24 +1,24 @@
 /* MODELS
  *************************************/
 
-import ModelPageUnsubscribe from '../model/pageUnsubscribe';
+import StorePageUnsubscribe from '../store/page/unsubscribe';
 
 /* ROUTE
  *************************************/
 
 exports.index = function(req, res) {
 
-    let modelPageUnsubscribe = new ModelPageUnsubscribe(req.app);
+    let storePageUnsubscribe = new StorePageUnsubscribe(req.app);
 
     Promise.all([
-        modelPageUnsubscribe.store.dispatch(
-            modelPageUnsubscribe.getAll({
+        storePageUnsubscribe.store.dispatch(
+            storePageUnsubscribe.getAll({
                 email: req.query.email
             })
         )
     ]).then(() => {
         res.render('unsubscribe', {
-            modelPageUnsubscribe: modelPageUnsubscribe
+            storePageUnsubscribe: storePageUnsubscribe
         });
     });
 

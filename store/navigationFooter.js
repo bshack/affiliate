@@ -1,6 +1,5 @@
 const redux = require('redux');
 const thunk = require('redux-thunk').default;
-const axios = require('axios');
 
 (() => {
 
@@ -42,17 +41,33 @@ const axios = require('axios');
         }
 
         getAll(params) {
-            
+
             return (dispatch, getState) => {
-                return axios.get('https://dev.api.valfoundry.io:3000/service/navigation/footer/', {
-                    params: params
-                })
-                    .then((response) => {
-                        dispatch(this.handleGetSuccess(response.data.data));
+
+                let whereParams = {
+                    'content.isActive': true,
+                    'menu-link.isActive': true,
+                    'menu.isActive': true
+                };
+
+                return this.app.get('databaseConnection')
+                    .from('menu-link')
+                    .join('content', 'menu-link.content', '=', 'content.filename')
+                    .join('menu', 'menu-link.menu', '=', 'menu.name')
+                    .select([
+                        'menu-link.*',
+                        'content.title',
+                        'content.filename'
+                    ])
+                    .where(whereParams)
+                    .orderBy('menu-link.position', 'asc')
+                    .then((data) => {
+                        dispatch(this.handleGetSuccess(data));
                     })
                     .catch((error) => {
                         dispatch(this.handleGetError(error));
                     });
+
             };
 
         }

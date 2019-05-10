@@ -14,10 +14,10 @@ export default class {
 
     reducers(state = {}, action) {
         switch (action.type) {
-            case 'GET_PLP_DATA':
+            case 'GET_CONTENT_DATA':
                 state = action.data
                 return state;
-            case 'GET_PLP_DATA_ERROR':
+            case 'GET_CONTENT_DATA_ERROR':
                 return state;
             default:
                 return state;
@@ -26,21 +26,21 @@ export default class {
 
     handleGetSuccess(data) {
         return {
-            type: 'GET_PLP_DATA',
+            type: 'GET_CONTENT_DATA',
             data: data
         };
     }
 
     handleGetError(error) {
         return {
-            type: 'GET_PLP_DATA_ERROR',
+            type: 'GET_CONTENT_DATA_ERROR',
             data: error
         };
     }
 
     getAll(params) {
         return (dispatch, getState) => {
-            return axios.get('https://dev.api.valfoundry.io:3000/service/page/plp/', {
+            return axios.get('https://dev.api.valfoundry.io:3000/service/page/content', {
                 params: params
             })
                 .then((response) => {

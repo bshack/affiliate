@@ -4,7 +4,7 @@ import {Provider} from 'react-redux';
 /* VIEWS
 *************************************/
 
-import WrapperLayout from './wrapper.jsx';
+import LayoutWrapper from '../layout/wrapper.jsx';
 import NavigationMain from '../template/navigationMain.jsx';
 import Breadcrumbs from '../template/breadcrumbs.jsx';
 import Content from '../template/content.jsx';
@@ -17,14 +17,14 @@ import EmailSignUp from '../template/emailSignUp.jsx';
 class View extends React.Component {
   render() {
     return (
-        <Provider store={this.props.modelPageContent.store}>
-            <WrapperLayout>
+        <Provider store={this.props.storePageContent.store}>
+            <LayoutWrapper>
                 <NavigationMain />
                 <Breadcrumbs />
                 <Content />
                 <EmailSignUp />
                 <FeaturedProducts />
-            </WrapperLayout>
+            </LayoutWrapper>
         </Provider>
     );
   }

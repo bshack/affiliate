@@ -50,14 +50,12 @@ exports.subscribe = function(req, res) {
         });
 
     } else {
-
         res.header(requestHeader)
-            .status(result.statusCode)
+            .status(res.statusCode)
             .send({
                 success: false,
                 message: subscribeFailureMessage
             });
-
     }
 
 };

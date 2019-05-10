@@ -1,7 +1,6 @@
 'use strict';
 
 class AJAX {
-
     request(settings) {
         return new Promise((resolve, reject) => {
             let xhr = new XMLHttpRequest();

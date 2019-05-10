@@ -1,22 +1,22 @@
 /* MODELS
  *************************************/
 
-import ModelPageIndex from '../model/pageIndex';
+import StorePageIndex from '../store/page/index';
 
 /* ROUTE
  *************************************/
 
 exports.index = function(req, res) {
 
-    let modelPageIndex = new ModelPageIndex(req.app);
+    let storePageIndex = new StorePageIndex(req.app);
 
     Promise.all([
-        modelPageIndex.store.dispatch(
-            modelPageIndex.getAll()
+        storePageIndex.store.dispatch(
+            storePageIndex.getAll()
         )
     ]).then(() => {
         res.render('index', {
-            modelPageIndex: modelPageIndex
+            storePageIndex: storePageIndex
         });
     });
 

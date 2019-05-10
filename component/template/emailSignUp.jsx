@@ -1,9 +1,8 @@
 import React from 'react';
 import Regex from '../../utility/regex';
-import UtilityAJAX from '../../utility/ajax';
+import axios from 'axios';
 
 const regex = new Regex();
-const utilityAJAX = new UtilityAJAX();
 
 class View extends React.Component {
 
@@ -46,14 +45,10 @@ class View extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
         if (this.isValid()) {
-            utilityAJAX
-                .request({
-                    method: 'PUT',
-                    url: '/service/email/subscribe',
-                    params: {
-                        email: this.state.value.trim().toLowerCase()
-                    }
-                })
+
+            return axios.put('/service/email/subscribe', {
+                email: this.state.value.trim().toLowerCase()
+            })
                 .then((data) => {
                     this.setState({
                         value: '',
@@ -62,11 +57,11 @@ class View extends React.Component {
                         errorMessage: false
                     });
                 })
-                .catch((data) => {
+                .catch((error) => {
                     this.setState({
                         isValid: false,
                         successMessage: false,
-                        errorMessage: data.message
+                        errorMessage: error.message
                     });
                 });
         } else {

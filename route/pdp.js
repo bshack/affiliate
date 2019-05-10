@@ -3,19 +3,19 @@ import path from 'path';
 /* MODELS
  *************************************/
 
-import ModelPagePDP from '../model/pagePDP';
+import StorePagePDP from '../store/page/pdp';
 
 /* ROUTE
  *************************************/
 
 exports.index = function(req, res) {
 
-    let modelPagePDP = new ModelPagePDP(req.app);
+    let storePagePDP = new StorePagePDP(req.app);
     let pathData = path.parse(req.path);
 
     Promise.all([
-        modelPagePDP.store.dispatch(
-            modelPagePDP.getAll({
+        storePagePDP.store.dispatch(
+            storePagePDP.getAll({
                 product: {
                     path: pathData.dir.substr(1),
                     filename: pathData.name
@@ -29,7 +29,7 @@ exports.index = function(req, res) {
         )
     ]).then(() => {
         res.render('pdp', {
-            modelPagePDP: modelPagePDP
+            storePagePDP: storePagePDP
         });
     });
 

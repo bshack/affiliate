@@ -8,8 +8,7 @@ const knex = require('knex');
 /* MODELS
 *************************************/
 
-const ModelConfig = require('./model/config');
-
+const StoreConfig = require('./store/config');
 
 /* ROUTES
 *************************************/
@@ -23,27 +22,21 @@ const routePLP = require('./route/plp');
 const routePDP = require('./route/pdp');
 const routeUnsubscribe = require('./route/unsubscribe');
 const routeServiceEmail = require('./route/service/email');
-const routeServiceProducts = require('./route/service/products');
-const routeServiceBreadcrumbs = require('./route/service/breadcrumbs');
-const routeServiceCategories = require('./route/service/category');
-const routeServiceContent = require('./route/service/content');
-const routeServiceNavigationFooter = require('./route/service/navigationFooter');
-const routeServiceNavigationMain = require('./route/service/navigationMain');
 
-const routeServicePageIndex = require('./route/service/pageIndex');
-const routeServicePageContent = require('./route/service/pageContent');
-const routeServicePagePLP = require('./route/service/pagePLP');
-const routeServicePagePDP = require('./route/service/pagePDP');
-const routeServicePageUnsubscribe = require('./route/service/pageUnsubscribe');
+const routeServicePageIndex = require('./route/service/page/index');
+const routeServicePageContent = require('./route/service/page/content');
+const routeServicePagePLP = require('./route/service/page/plp');
+const routeServicePagePDP = require('./route/service/page/pdp');
+const routeServicePageUnsubscribe = require('./route/service/page/unsubscribe');
 
 /* EXPRESS SERVER
 *************************************/
 
 const app = express();
 
-app.set('configPrivate', new ModelConfig(require('./configPrivate.json')));
-app.set('configPublic', new ModelConfig(require('./configPublic.json')));
-app.set('views', './component/layout');
+app.set('configPrivate', new StoreConfig(require('./configPrivate.json')));
+app.set('configPublic', new StoreConfig(require('./configPublic.json')));
+app.set('views', './component/page');
 app.set('view engine', 'jsx');
 app.set('databaseConnection', knex({
     client: 'mysql',
@@ -99,17 +92,11 @@ app.get('/**/*.html', routePDP.index);
 //services
 app.put('/service/email/subscribe', routeServiceEmail.subscribe);
 app.patch('/service/email/unsubscribe', routeServiceEmail.unsubscribe);
-app.get('/service/products/', routeServiceProducts.get);
-app.get('/service/breadcrumbs/', routeServiceBreadcrumbs.get);
-app.get('/service/categories/', routeServiceCategories.get);
-app.get('/service/content/', routeServiceContent.get);
-app.get('/service/navigation/footer/', routeServiceNavigationFooter.get);
-app.get('/service/navigation/main/', routeServiceNavigationMain.get);
-app.get('/service/page/index/', routeServicePageIndex.get);
-app.get('/service/page/content/', routeServicePageContent.get);
-app.get('/service/page/plp/', routeServicePagePLP.get);
-app.get('/service/page/pdp/', routeServicePagePDP.get);
-app.get('/service/page/unsubscribe/', routeServicePageUnsubscribe.get);
+app.get('/service/page/index', routeServicePageIndex.get);
+app.get('/service/page/content', routeServicePageContent.get);
+app.get('/service/page/plp', routeServicePagePLP.get);
+app.get('/service/page/pdp', routeServicePagePDP.get);
+app.get('/service/page/unsubscribe', routeServicePageUnsubscribe.get);
 
 /* SERVER STARTUP
 *************************************/

@@ -6,10 +6,10 @@ const responseHeader = {
 /* MODELS
  *************************************/
 
- import ModelProduct from '../../model/product';
- import ModelCategory from '../../model/category';
- import ModelNavigationMain from '../../model/navigationMain';
- import ModelNavigationFooter from '../../model/navigationFooter';
+ import StoreProduct from '../../../store/product';
+ import StoreCategory from '../../../store/category';
+ import StoreNavigationMain from '../../../store/navigationMain';
+ import StoreNavigationFooter from '../../../store/navigationFooter';
 
 
 /* ROUTE
@@ -17,26 +17,26 @@ const responseHeader = {
 
 exports.get = function(req, res) {
 
-    let modelProduct = new ModelProduct(req.app);
-    let modelCategory = new ModelCategory(req.app);
-    let modelNavigationMain = new ModelNavigationMain(req.app);
-    let modelNavigationFooter = new ModelNavigationFooter(req.app);
+    let storeProduct = new StoreProduct(req.app);
+    let storeCategory = new StoreCategory(req.app);
+    let storeNavigationMain = new StoreNavigationMain(req.app);
+    let storeNavigationFooter = new StoreNavigationFooter(req.app);
 
     Promise.all([
-        modelProduct.store.dispatch(
-            modelProduct.getAll({
+        storeProduct.store.dispatch(
+            storeProduct.getAll({
                 'product.isFeatured': false,
                 limit: 8
             })
         ),
-        modelCategory.store.dispatch(
-            modelCategory.getAll({})
+        storeCategory.store.dispatch(
+            storeCategory.getAll({})
         ),
-        modelNavigationMain.store.dispatch(
-            modelNavigationMain.getAll({})
+        storeNavigationMain.store.dispatch(
+            storeNavigationMain.getAll({})
         ),
-        modelNavigationFooter.store.dispatch(
-            modelNavigationFooter.getAll()
+        storeNavigationFooter.store.dispatch(
+            storeNavigationFooter.getAll()
         )
     ])
     .then(() => {
@@ -54,10 +54,10 @@ exports.get = function(req, res) {
                     email: req.query.email
                 },
                 configPublic: req.app.get('configPublic'),
-                navigationMain: modelNavigationMain.store.getState(),
-                navigationFooter: modelNavigationFooter.store.getState(),
-                categories: modelCategory.store.getState(),
-                productsFeatured: modelProduct.store.getState()
+                navigationMain: storeNavigationMain.store.getState(),
+                navigationFooter: storeNavigationFooter.store.getState(),
+                categories: storeCategory.store.getState(),
+                productsFeatured: storeProduct.store.getState()
             });
     })
     .catch((error) => {

@@ -2,24 +2,24 @@
 /* MODELS
  *************************************/
 
-import ModelProduct from '../model/product';
+import StoreProduct from '../store/product';
 
 /* ROUTE
  *************************************/
 
 exports.index = function(req, res) {
 
-    let modelProduct = new ModelProduct(req.app);
+    let storeProduct = new StoreProduct(req.app);
     let configPublic = req.app.get('configPublic').store.getState();
 
     Promise.all([
-        modelProduct.store.dispatch(
-            modelProduct.getAll({
+        storeProduct.store.dispatch(
+            storeProduct.getAll({
                 isActive: true
             })
         )
     ]).then(() => {
-        let products = modelProduct.store.getState().data;
+        let products = storeProduct.store.getState().data;
         let i;
         let items = [];
         for (i = 0; i < products.length; i++) {

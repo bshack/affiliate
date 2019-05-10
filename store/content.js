@@ -1,6 +1,5 @@
 const redux = require('redux');
 const thunk = require('redux-thunk').default;
-const axios = require('axios');
 
 (() => {
 
@@ -43,15 +42,36 @@ const axios = require('axios');
 
         getAll(params) {
             return (dispatch, getState) => {
-                return axios.get('https://dev.api.valfoundry.io:3000/service/content/', {
-                    params: params
-                })
-                    .then((response) => {
-                        dispatch(this.handleGetSuccess(response.data.data));
+
+                let whereParams = {
+                    isActive: true
+                };
+
+                if (params.filename) {
+                    whereParams.filename = params.filename;
+                }
+
+                return this.app.get('databaseConnection')
+                    .from('content')
+                    .select()
+                    .where((builder) => {
+                        if (whereParams.filename && typeof whereParams.filename === 'object') {
+                            let filenames = whereParams.filename;
+                            delete whereParams.filename;
+                            builder
+                                .whereIn('filename', filenames)
+                                .where(whereParams);
+                        } else {
+                            builder.where(whereParams);
+                        }
+                    })
+                    .then((data) => {
+                        dispatch(this.handleGetSuccess(data));
                     })
                     .catch((error) => {
                         dispatch(this.handleGetError(error));
                     });
+
             };
         }
 

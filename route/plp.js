@@ -3,18 +3,19 @@ import path from 'path';
 /* MODELS
  *************************************/
 
-import ModelPagePLP from '../model/pagePLP';
+import StorePagePLP from '../store/page/plp';
 
 /* ROUTE
  *************************************/
 
 exports.index = function(req, res) {
 
-    let modelPagePLP = new ModelPagePLP(req.app);
+    let storePagePLP = new StorePagePLP(req.app);
     let pathData = path.parse(req.path);
     let productParams = {};
     let categoryParams = {};
     let breadcrumbParams = {};
+    
     if (req.params.store) {
         productParams.programName = req.params.store;
         categoryParams.programName = productParams.programName;
@@ -30,8 +31,8 @@ exports.index = function(req, res) {
     }
 
     Promise.all([
-        modelPagePLP.store.dispatch(
-            modelPagePLP.getAll({
+        storePagePLP.store.dispatch(
+            storePagePLP.getAll({
                 product: productParams,
                 category: categoryParams,
                 breadcrumbs: breadcrumbParams
@@ -39,7 +40,7 @@ exports.index = function(req, res) {
         )
     ]).then(() => {
         res.render('plp', {
-            modelPagePLP: modelPagePLP
+            storePagePLP: storePagePLP
         });
     });
 

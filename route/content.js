@@ -3,24 +3,24 @@ import path from 'path';
 /* MODELS
  *************************************/
 
-import ModelPageContent from '../model/pageContent';
+import StorePageContent from '../store/page/content';
 
 /* ROUTE
  *************************************/
 
 exports.index = function(req, res) {
 
-    let modelPageContent = new ModelPageContent(req.app);
+    let storePageContent = new StorePageContent(req.app);
 
     Promise.all([
-        modelPageContent.store.dispatch(
-            modelPageContent.getAll({
+        storePageContent.store.dispatch(
+            storePageContent.getAll({
                 filename: path.parse(req.path).name
             })
         )
     ]).then(() => {
         res.render('content', {
-            modelPageContent: modelPageContent
+            storePageContent: storePageContent
         });
     });
 
