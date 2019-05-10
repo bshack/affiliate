@@ -35,6 +35,9 @@ module.exports = {
                     loader: 'babel-loader',
                 }, {
                     loader: 'eslint-loader',
+                    options: {
+                        fix: true
+                    }
                 }]
             },
             {

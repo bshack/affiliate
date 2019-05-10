@@ -1,16 +1,3 @@
 import 'picturefill';
-import foo from './foo';
-import bar from './bar';
-import yo from './yo';
-import categoryProducts from '../component/categoryProducts';
-import emailSignUp from '../component/emailSignUp';
-import emailUnsubscribe from '../component/emailUnsubscribe';
-import '../style/index.scss';
-import '../image/bar.svg';
-import '../image/foo/foo.svg';
-foo();
-bar();
-yo();
-// categoryProducts();
-emailSignUp();
-emailUnsubscribe();
+import pageIndex from '../component/index.js';
+pageIndex();

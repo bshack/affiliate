@@ -16,7 +16,7 @@ exports.index = function(req, res) {
         )
     ]).then(() => {
         res.render('index', {
-            storePageIndex: storePageIndex
+            store: storePageIndex.store
         });
     });
 
