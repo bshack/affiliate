@@ -1,6 +1,8 @@
+import configPrivate from '../configPrivate.json';
+
 exports.index = function(req, res) {
 
-    res.header('Content-Type', 'text/plain;charset=utf-8');
+    res.header(configPrivate.header.text);
 
     if (req.app.get('configPrivate').store.getState().isProduction) {
         res.send(

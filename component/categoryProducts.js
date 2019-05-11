@@ -3,8 +3,9 @@ import ReactDOM from 'react-dom';
 import CategoryProductsTemplate from './template/categoryProducts.jsx';
 import {Provider} from 'react-redux';
 import Store from '../model/product';
+import config from '../configPublic.json';
 
-const store = new Store();
+const storePage = new StorePage(config);
 
 export default function() {
 

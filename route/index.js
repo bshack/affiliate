@@ -2,8 +2,13 @@
  *************************************/
 
 import StorePage from '../store/page/index';
+import config from '../configPublic.json';
+import configPrivate from '../configPrivate.json';
 
-let storePage = new StorePage();
+// serverside should access the api on a private network
+config.api.origin = configPrivate.api.origin;
+
+let storePage = new StorePage(config);
 
 /* ROUTE
  *************************************/

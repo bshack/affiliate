@@ -1,12 +1,9 @@
-const Mailchimp = require('mailchimp-api-v3')
-const crypto = require('crypto');
-const Regex = require('../../utility/regex');
+import Mailchimp from 'mailchimp-api-v3';
+import Regex from '../../utility/regex';
+import crypto from 'crypto';
+import configPrivate from '../../configPrivate.json';
 
 const regex = new Regex();
-const responseHeader = {
-    'Content-Type': 'application/json;charset=utf-8',
-    'Access-Control-Allow-Origin': '*'
-};
 const makeMD5Hash = (string) => {
     return crypto.createHash('md5').update(string).digest('hex');
 }
@@ -33,7 +30,7 @@ exports.subscribe = function(req, res) {
             }
         })
         .then((result) => {
-            res.header(responseHeader)
+            res.header(configPrivate.header.json)
                 .status(result.statusCode)
                 .send({
                     success: true,
@@ -41,7 +38,7 @@ exports.subscribe = function(req, res) {
                 });
         })
         .catch((err) => {
-            res.header(responseHeader)
+            res.header(configPrivate.header.json)
                 .status(err.status)
                 .send({
                     success: false,
@@ -50,7 +47,7 @@ exports.subscribe = function(req, res) {
         });
 
     } else {
-        res.header(responseHeader)
+        res.header(configPrivate.header.json)
             .status(res.statusCode)
             .send({
                 success: false,
@@ -77,7 +74,7 @@ exports.unsubscribe = function(req, res) {
             }
         })
         .then((result) => {
-            res.header(responseHeader)
+            res.header(configPrivate.header.json)
                 .status(result.statusCode)
                 .send({
                     success: true,
@@ -85,7 +82,7 @@ exports.unsubscribe = function(req, res) {
                 });
         })
         .catch((err) => {
-            res.header(responseHeader)
+            res.header(configPrivate.header.json)
                 .status(err.status)
                 .send({
                     success: false,
@@ -95,7 +92,7 @@ exports.unsubscribe = function(req, res) {
 
     } else {
 
-        res.header(responseHeader)
+        res.header(configPrivate.header.json)
             .status(result.statusCode)
             .send({
                 success: false,

@@ -4,7 +4,8 @@ import axios from 'axios';
 
 export default class {
 
-    constructor() {
+    constructor(config) {
+        this.config = config;
         this.store = createStore(
             this.reducers,
             applyMiddleware(thunk)
@@ -39,7 +40,7 @@ export default class {
 
     getAll(params) {
         return (dispatch, getState) => {
-            return axios.get('https://dev.api.valfoundry.io:3000/service/page/index', {
+            return axios.get(this.config.api.origin + '/service/page/index', {
                 params: params
             })
                 .then((response) => {

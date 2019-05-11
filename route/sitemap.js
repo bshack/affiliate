@@ -1,4 +1,5 @@
 import sm from 'sitemap';
+import configPrivate from '../configPrivate.json';
 
 /* MODELS
  *************************************/
@@ -109,7 +110,7 @@ exports.index = function(req, res) {
             }
         }
 
-        res.header('Content-Type', 'application/xml;charset=utf-8');
+        res.header(configPrivate.header.xml);
         res.send(sm.createSitemap ({
             urls: urls
         }).toString());

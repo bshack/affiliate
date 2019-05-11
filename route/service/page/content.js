@@ -1,4 +1,5 @@
 import configPublic from '../../../configPublic.json';
+import configPrivate from '../../../configPrivate.json';
 
 /* MODELS
  *************************************/
@@ -9,14 +10,6 @@ import StoreCategory from '../../../store/category';
 import StoreNavigationMain from '../../../store/navigation/main';
 import StoreNavigationFooter from '../../../store/navigation/footer';
 import StoreBreadcrumbs from '../../../store/breadcrumbs';
-
-/* CONSTANTS
- *************************************/
-
-const responseHeader = {
-    'Content-Type': 'application/json;charset=utf-8',
-    'Access-Control-Allow-Origin': '*'
-};
 
 /* ROUTE
  *************************************/
@@ -57,7 +50,7 @@ exports.get = function(req, res) {
         )
     ])
     .then(() => {
-        res.header(responseHeader)
+        res.header(configPrivate.header.json)
             .status(200)
             .send({
                 config: configPublic,
@@ -76,7 +69,7 @@ exports.get = function(req, res) {
             });
     })
     .catch((error) => {
-        res.header(responseHeader)
+        res.header(configPrivate.header.json)
             .status(500)
             .send(error);
     });

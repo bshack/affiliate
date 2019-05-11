@@ -3,8 +3,9 @@ import ReactDOM from 'react-dom';
 import PageIndex from './page/index.jsx';
 import {Provider} from 'react-redux';
 import StorePage from '../store/page/index';
+import config from '../configPublic.json';
 
-const storePage = new StorePage();
+const storePage = new StorePage(config);
 
 export default function() {
 

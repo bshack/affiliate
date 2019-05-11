@@ -19,6 +19,9 @@
         "ca": "",
         "port": ""
     },
+    "api": {
+        "origin": ""
+    },
     "email": {
         "apiKey": "",
         "lists": {
@@ -26,5 +29,10 @@
                 "id": ""
             }
         }
+    },
+    "header": {
+        "json": {},
+        "xml": {},
+        "text": {}
     }
 }
