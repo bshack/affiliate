@@ -13,10 +13,10 @@ export default class {
 
     reducers(state = {}, action) {
         switch (action.type) {
-            case 'GET_CATEGORY_DATA':
+            case 'GET_NAVIGATION_FOOTER_DATA':
                 state = action.data
                 return state;
-            case 'GET_CATEGORY_DATA_ERROR':
+            case 'GET_NAVIGATION_FOOTER_DATA_ERROR':
                 return state;
             default:
                 return state;
@@ -25,43 +25,39 @@ export default class {
 
     handleGetSuccess(data) {
         return {
-            type: 'GET_CATEGORY_DATA',
+            type: 'GET_NAVIGATION_FOOTER_DATA',
             data: data
         };
     }
 
     handleGetError(error) {
         return {
-            type: 'GET_CATEGORY_DATA_ERROR',
+            type: 'GET_NAVIGATION_FOOTER_DATA_ERROR',
             data: error
         };
     }
 
     getAll(params) {
+
         return (dispatch, getState) => {
 
-            let whereParams = {};
-
-            if (params.brand) {
-                return dispatch(this.handleGetSuccess([
-                    {
-                        title: params.brand
-                    }
-                ]));
-            } else if (params.programName) {
-                return dispatch(this.handleGetSuccess([
-                    {
-                        title: params.programName
-                    }
-                ]));
-            } else if (params.path) {
-                whereParams.path = params.path;
-            }
+            let whereParams = {
+                'content.isActive': true,
+                'menu-link.isActive': true,
+                'menu.isActive': true
+            };
 
             return this.app.get('databaseConnection')
-                .from('category')
-                .select()
+                .from('menu-link')
+                .join('content', 'menu-link.content', '=', 'content.filename')
+                .join('menu', 'menu-link.menu', '=', 'menu.name')
+                .select([
+                    'menu-link.*',
+                    'content.title',
+                    'content.filename'
+                ])
                 .where(whereParams)
+                .orderBy('menu-link.position', 'asc')
                 .then((data) => {
                     dispatch(this.handleGetSuccess(data));
                 })

@@ -17,7 +17,7 @@ import FeaturedProducts from '../template/featuredProducts.jsx';
 class View extends React.Component {
   render() {
     return (
-        <Provider store={this.props.storePageUnsubscribe.store}>
+        <Provider store={this.props.StorePage.store}>
             <LayoutWrapper>
                 <NavigationMain />
                 <Breadcrumbs />

@@ -1,6 +1,6 @@
 exports.index = function(req, res) {
 
-    res.header('Content-Type', 'text/plain');
+    res.header('Content-Type', 'text/plain;charset=utf-8');
 
     if (req.app.get('configPrivate').store.getState().isProduction) {
         res.send(

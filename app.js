@@ -4,11 +4,7 @@ const express = require('express');
 const session = require('express-session');
 const https = require('https');
 const knex = require('knex');
-
-/* MODELS
-*************************************/
-
-const StoreConfig = require('./store/config');
+const configPrivate = require('./configPrivate.json');
 
 /* ROUTES
 *************************************/
@@ -22,7 +18,6 @@ const routePLP = require('./route/plp');
 const routePDP = require('./route/pdp');
 const routeUnsubscribe = require('./route/unsubscribe');
 const routeServiceEmail = require('./route/service/email');
-
 const routeServicePageIndex = require('./route/service/page/index');
 const routeServicePageContent = require('./route/service/page/content');
 const routeServicePagePLP = require('./route/service/page/plp');
@@ -34,16 +29,15 @@ const routeServicePageUnsubscribe = require('./route/service/page/unsubscribe');
 
 const app = express();
 
-app.set('configPrivate', new StoreConfig(require('./configPrivate.json')));
-app.set('configPublic', new StoreConfig(require('./configPublic.json')));
+app.disable('x-powered-by');
 app.set('views', './component/page');
 app.set('view engine', 'jsx');
 app.set('databaseConnection', knex({
     client: 'mysql',
-    connection: app.get('configPrivate').store.getState().database.connection
+    connection: configPrivate.database.connection
 }));
 app.use(session({
-    secret: app.get('configPrivate').store.getState().session.secret,
+    secret: configPrivate.session.secret,
     resave: false,
     saveUninitialized: true,
     cookie: {
@@ -102,12 +96,12 @@ app.get('/service/page/unsubscribe', routeServicePageUnsubscribe.get);
 *************************************/
 
 https.createServer({
-    key: fs.readFileSync(app.get('configPrivate').store.getState().ssl.key),
-    cert: fs.readFileSync(app.get('configPrivate').store.getState().ssl.cert),
-    ca: [fs.readFileSync(app.get('configPrivate').store.getState().ssl.ca)]
+    key: fs.readFileSync(configPrivate.ssl.key),
+    cert: fs.readFileSync(configPrivate.ssl.cert),
+    ca: [fs.readFileSync(configPrivate.ssl.ca)]
 }, app)
-    .listen(app.get('configPrivate').store.getState().ssl.port,
+    .listen(configPrivate.ssl.port,
         () => {
-            console.log('https server running on port ' + app.get('configPrivate').store.getState().ssl.port)
+            console.log('https server running on port ' + configPrivate.ssl.port)
         })
     .on('error', console.log);

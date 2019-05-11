@@ -3,9 +3,9 @@ import path from 'path';
 /* MODELS
  *************************************/
 
-import StorePagePLP from '../store/page/plp';
+import StorePage from '../store/page/plp';
 
-let storePagePLP = new StorePagePLP();
+let storePage = new StorePage();
 
 /* ROUTE
  *************************************/
@@ -32,8 +32,8 @@ exports.index = function(req, res) {
     }
 
     Promise.all([
-        storePagePLP.store.dispatch(
-            storePagePLP.getAll({
+        storePage.store.dispatch(
+            storePage.getAll({
                 product: productParams,
                 category: categoryParams,
                 breadcrumbs: breadcrumbParams
@@ -41,7 +41,7 @@ exports.index = function(req, res) {
         )
     ]).then(() => {
         res.render('plp', {
-            storePagePLP: storePagePLP
+            storePage: storePage
         });
     });
 

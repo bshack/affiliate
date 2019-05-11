@@ -59,7 +59,7 @@ exports.index = function(req, res) {
 </item>`
             )
         }
-        res.header('Content-Type', 'application/xml');
+        res.header('Content-Type', 'application/xml;charset=utf-8');
         res.send(
 `<?xml version="1.0" encoding="UTF-8" ?>
 <rss xmlns:g="http://base.google.com/ns/1.0" version="2.0">

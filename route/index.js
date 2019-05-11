@@ -1,9 +1,9 @@
 /* MODELS
  *************************************/
 
-import StorePageIndex from '../store/page/index';
+import StorePage from '../store/page/index';
 
-let storePageIndex = new StorePageIndex();
+let storePage = new StorePage();
 
 /* ROUTE
  *************************************/
@@ -11,12 +11,12 @@ let storePageIndex = new StorePageIndex();
 exports.index = function(req, res) {
 
     Promise.all([
-        storePageIndex.store.dispatch(
-            storePageIndex.getAll()
+        storePage.store.dispatch(
+            storePage.getAll()
         )
     ]).then(() => {
         res.render('index', {
-            store: storePageIndex.store
+            store: storePage.store
         });
     });
 

@@ -28,7 +28,7 @@ class View extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        data: state.data.productRecommendations,
+        data: state.data.productRecommendation,
         config: state.data.config
     }
 }

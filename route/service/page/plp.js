@@ -1,18 +1,22 @@
-const responseHeader = {
-    'Content-Type': 'application/json;charset=utf-8',
-    'Access-Control-Allow-Origin': '*'
-};
-
 import path from 'path';
+import configPublic from '../../../configPublic.json';
 
 /* MODELS
  *************************************/
 
 import StoreProduct from '../../../store/product';
 import StoreCategory from '../../../store/category';
-import StoreNavigationMain from '../../../store/navigationMain';
-import StoreNavigationFooter from '../../../store/navigationFooter';
+import StoreNavigationMain from '../../../store/navigation/main';
+import StoreNavigationFooter from '../../../store/navigation/footer';
 import StoreBreadcrumbs from '../../../store/breadcrumbs';
+
+/* CONSTANTS
+ *************************************/
+
+const responseHeader = {
+    'Content-Type': 'application/json;charset=utf-8',
+    'Access-Control-Allow-Origin': '*'
+};
 
 /* ROUTE
  *************************************/
@@ -46,7 +50,7 @@ exports.get = function(req, res) {
         res.header(responseHeader)
             .status(200)
             .send({
-                config: req.app.get('configPublic').store.getState(),
+                config: configPublic,
                 meta: {
                     title: 'yo title',
                     description: 'yo description',
@@ -56,9 +60,9 @@ exports.get = function(req, res) {
                 configPublic: req.app.get('configPublic'),
                 navigationMain: storeNavigationMain.store.getState(),
                 navigationFooter: storeNavigationFooter.store.getState(),
-                breadcrumbs: storeBreadcrumbs.store.getState(),
+                breadcrumb: storeBreadcrumbs.store.getState(),
                 category: storeCategory.store.getState(),
-                products: storeProduct.store.getState({})
+                product: storeProduct.store.getState({})
             });
     })
     .catch((error) => {

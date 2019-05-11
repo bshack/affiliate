@@ -3,15 +3,15 @@ import path from 'path';
 /* MODELS
  *************************************/
 
-import StorePageContent from '../store/page/content';
+import StorePage from '../store/page/content';
 
-let storePageContent = new StorePageContent();
+let storePage = new StorePage();
 
 /* ROUTE
  *************************************/
 
 exports.index = function(req, res) {
-    
+
     Promise.all([
         storePageContent.store.dispatch(
             storePageContent.getAll({
@@ -20,7 +20,7 @@ exports.index = function(req, res) {
         )
     ]).then(() => {
         res.render('content', {
-            storePageContent: storePageContent
+            storePage: storePage
         });
     });
 

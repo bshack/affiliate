@@ -115,7 +115,7 @@ class View extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        data: state.data.products[0],
+        data: state.data.product[0],
         config: state.data.config
     }
 }

@@ -109,7 +109,7 @@ exports.index = function(req, res) {
             }
         }
 
-        res.header('Content-Type', 'application/xml');
+        res.header('Content-Type', 'application/xml;charset=utf-8');
         res.send(sm.createSitemap ({
             urls: urls
         }).toString());

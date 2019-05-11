@@ -1,6 +1,7 @@
 import React from 'react';
 import _ from 'lodash';
 import UtilityJSONLD from '../../utility/jsonLD';
+import {connect} from 'react-redux';
 
 const utilityJSONLD = new UtilityJSONLD();
 
@@ -37,4 +38,14 @@ class View extends React.Component {
   }
 }
 
-export default View;
+const mapStateToProps = (state) => {
+    return {
+        data: state.data.breadcrumb,
+        config: state.data.config
+    }
+}
+
+export default connect(
+    mapStateToProps,
+    {}
+)(View);

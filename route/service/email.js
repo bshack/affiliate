@@ -3,7 +3,7 @@ const crypto = require('crypto');
 const Regex = require('../../utility/regex');
 
 const regex = new Regex();
-const requestHeader = {
+const responseHeader = {
     'Content-Type': 'application/json;charset=utf-8',
     'Access-Control-Allow-Origin': '*'
 };
@@ -33,7 +33,7 @@ exports.subscribe = function(req, res) {
             }
         })
         .then((result) => {
-            res.header(requestHeader)
+            res.header(responseHeader)
                 .status(result.statusCode)
                 .send({
                     success: true,
@@ -41,7 +41,7 @@ exports.subscribe = function(req, res) {
                 });
         })
         .catch((err) => {
-            res.header(requestHeader)
+            res.header(responseHeader)
                 .status(err.status)
                 .send({
                     success: false,
@@ -50,7 +50,7 @@ exports.subscribe = function(req, res) {
         });
 
     } else {
-        res.header(requestHeader)
+        res.header(responseHeader)
             .status(res.statusCode)
             .send({
                 success: false,
@@ -77,7 +77,7 @@ exports.unsubscribe = function(req, res) {
             }
         })
         .then((result) => {
-            res.header(requestHeader)
+            res.header(responseHeader)
                 .status(result.statusCode)
                 .send({
                     success: true,
@@ -85,7 +85,7 @@ exports.unsubscribe = function(req, res) {
                 });
         })
         .catch((err) => {
-            res.header(requestHeader)
+            res.header(responseHeader)
                 .status(err.status)
                 .send({
                     success: false,
@@ -95,7 +95,7 @@ exports.unsubscribe = function(req, res) {
 
     } else {
 
-        res.header(requestHeader)
+        res.header(responseHeader)
             .status(result.statusCode)
             .send({
                 success: false,

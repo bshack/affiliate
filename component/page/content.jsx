@@ -17,7 +17,7 @@ import EmailSignUp from '../template/emailSignUp.jsx';
 class View extends React.Component {
   render() {
     return (
-        <Provider store={this.props.storePageContent.store}>
+        <Provider store={this.props.StorePage.store}>
             <LayoutWrapper>
                 <NavigationMain />
                 <Breadcrumbs />

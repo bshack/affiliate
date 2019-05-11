@@ -3,20 +3,20 @@ import path from 'path';
 /* MODELS
  *************************************/
 
-import StorePagePDP from '../store/page/pdp';
+import StorePage from '../store/page/pdp';
 
-let storePagePDP = new StorePagePDP();
+let storePage = new StorePage();
 
 /* ROUTE
  *************************************/
 
 exports.index = function(req, res) {
-    
+
     let pathData = path.parse(req.path);
 
     Promise.all([
-        storePagePDP.store.dispatch(
-            storePagePDP.getAll({
+        storePage.store.dispatch(
+            storePage.getAll({
                 product: {
                     path: pathData.dir.substr(1),
                     filename: pathData.name
@@ -30,7 +30,7 @@ exports.index = function(req, res) {
         )
     ]).then(() => {
         res.render('pdp', {
-            storePagePDP: storePagePDP
+            storePage: storePage
         });
     });
 
