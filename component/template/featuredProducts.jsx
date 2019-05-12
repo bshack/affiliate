@@ -7,12 +7,15 @@ class View extends React.Component {
     render() {
         return (
             <section className="category-products container">
-                <div className="row no-gutters">
-                    <div className='col-12'>
-                        <h1>{this.props.title}</h1>
-                        {this.props.subtitle? <h2>{this.props.subtitle}</h2> : ''}
-                    </div>
-                </div>
+                {
+                    this.props.category?
+                        <div className="row no-gutters">
+                            <div className='col-12'>
+                                {this.props.category[0].title? <h1>{this.props.category[0].title}</h1> : null}
+                                {this.props.category[0].subtitle? <h2>{this.props.category[0].subtitle}</h2> : null}
+                            </div>
+                        </div> : null
+                }
                 <div className="products row no-gutters">
                     {this.props.data.map(
                         (product, index) =>
@@ -29,6 +32,7 @@ class View extends React.Component {
 const mapStateToProps = (state) => {
     return {
         data: state.data.productFeatured,
+        category: state.data.category,
         config: state.data.config
     }
 }

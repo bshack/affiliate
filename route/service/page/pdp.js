@@ -6,7 +6,6 @@ import configPrivate from '../../../configPrivate.json';
  *************************************/
 
 import StoreProduct from '../../../store/product';
-import StoreCategory from '../../../store/category';
 import StoreNavigationMain from '../../../store/navigation/main';
 import StoreNavigationFooter from '../../../store/navigation/footer';
 import StoreBreadcrumbs from '../../../store/breadcrumbs';
@@ -21,26 +20,22 @@ exports.get = function(req, res) {
     let productRecommendationsParams = req.query.recommendations;
     let storeProduct = new StoreProduct(req.app);
     let storeProductRecommendations = new StoreProduct(req.app);
-    let storeCategory = new StoreCategory(req.app);
     let storeNavigationMain = new StoreNavigationMain(req.app);
     let storeBreadcrumbs = new StoreBreadcrumbs(req.app);
     let storeNavigationFooter = new StoreNavigationFooter(req.app);
 
     Promise.all([
         storeProduct.store.dispatch(
-            storeProduct.getAll(productParams)
+            storeProduct.getAll(JSON.parse(productParams))
         ),
         storeProductRecommendations.store.dispatch(
-            storeProductRecommendations.getAll(productRecommendationsParams)
-        ),
-        storeCategory.store.dispatch(
-            storeCategory.getAll({})
+            storeProductRecommendations.getAll(JSON.parse(productRecommendationsParams))
         ),
         storeNavigationMain.store.dispatch(
             storeNavigationMain.getAll({})
         ),
         storeBreadcrumbs.store.dispatch(
-            storeBreadcrumbs.getAll(productParams)
+            storeBreadcrumbs.getAll(JSON.parse(productParams))
         ),
         storeNavigationFooter.store.dispatch(
             storeNavigationFooter.getAll()
@@ -60,7 +55,6 @@ exports.get = function(req, res) {
                 navigationMain: storeNavigationMain.store.getState(),
                 navigationFooter: storeNavigationFooter.store.getState(),
                 breadcrumb: storeBreadcrumbs.store.getState(),
-                category: storeCategory.store.getState(),
                 product: storeProduct.store.getState(),
                 productRecommendation: storeProductRecommendations.store.getState()
             });

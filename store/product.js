@@ -58,6 +58,10 @@ export default class {
                 whereParams.id = parseInt(params.id);
             }
 
+            if (params.path) {
+                whereParams.path = params.path;
+            }
+
             if (params.filename) {
                 whereParams.seoFilenamePart = params.filename;
             }
@@ -93,18 +97,18 @@ export default class {
                 .limit(limitParam)
                 .innerJoin('category', 'product.googleProductCategory', 'category.googleid')
                 .where((builder) => {
-                    if (params.path && !params.filename) {
+                    if (whereParams.path && !whereParams.seoFilenamePart) {
                         if (skipParam) {
                             builder
                                 .where(whereParams)
                                 .where('product.timestamp', '>', oldestProductCreationDate)
-                                .andWhere('category.path', 'like', '%' + params.path)
+                                .andWhere('category.path', 'like', '%' + whereParams.path)
                                 .whereNot('product.seoFilenamePart', skipParam);
                         } else {
                             builder
                                 .where(whereParams)
                                 .where('product.timestamp', '>', oldestProductCreationDate)
-                                .andWhere('category.path', 'like', '%' + params.path);
+                                .andWhere('category.path', 'like', '%' + whereParams.path);
                         }
                     } else {
                         builder

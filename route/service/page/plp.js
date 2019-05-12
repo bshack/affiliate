@@ -24,16 +24,16 @@ exports.get = function(req, res) {
 
     Promise.all([
         storeProduct.store.dispatch(
-            storeProduct.getAll(req.query.product)
+            storeProduct.getAll(JSON.parse(req.query.product))
         ),
         storeCategory.store.dispatch(
-            storeCategory.getAll(req.query.category)
+            storeCategory.getAll(JSON.parse(req.query.category))
         ),
         storeNavigationMain.store.dispatch(
             storeNavigationMain.getAll({})
         ),
         storeBreadcrumbs.store.dispatch(
-            storeBreadcrumbs.getAll(req.query.breadcrumbs)
+            storeBreadcrumbs.getAll(JSON.parse(req.query.breadcrumbs))
         ),
         storeNavigationFooter.store.dispatch(
             storeNavigationFooter.getAll()

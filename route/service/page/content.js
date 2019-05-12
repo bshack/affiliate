@@ -6,7 +6,6 @@ import configPrivate from '../../../configPrivate.json';
 
 import StoreContent from '../../../store/content';
 import StoreProduct from '../../../store/product';
-import StoreCategory from '../../../store/category';
 import StoreNavigationMain from '../../../store/navigation/main';
 import StoreNavigationFooter from '../../../store/navigation/footer';
 import StoreBreadcrumbs from '../../../store/breadcrumbs';
@@ -22,7 +21,6 @@ exports.get = function(req, res) {
 
     let storeContent = new StoreContent(req.app);
     let storeProduct = new StoreProduct(req.app);
-    let storeCategory = new StoreCategory(req.app);
     let storeNavigationMain = new StoreNavigationMain(req.app);
     let storeBreadcrumbs = new StoreBreadcrumbs(req.app);
     let storeNavigationFooter = new StoreNavigationFooter(req.app);
@@ -35,9 +33,6 @@ exports.get = function(req, res) {
             storeProduct.getAll({
                 limit: 8
             })
-        ),
-        storeCategory.store.dispatch(
-            storeCategory.getAll({})
         ),
         storeNavigationMain.store.dispatch(
             storeNavigationMain.getAll({})
@@ -64,7 +59,6 @@ exports.get = function(req, res) {
                 navigationFooter: storeNavigationFooter.store.getState(),
                 breadcrumb: storeBreadcrumbs.store.getState(),
                 content: storeContent.store.getState(),
-                category: storeCategory.store.getState(),
                 productFeatured: storeProduct.store.getState()
             });
     })

@@ -18,12 +18,19 @@ module.exports = {
     optimization: {
         splitChunks: {
             chunks: 'all',
-            automaticNameDelimiter: '-',
+            name: 'global',
         },
         noEmitOnErrors: true
     },
+    node: {
+        path: true
+    },
     entry: {
-        index: './script/index.js'
+        index: './script/index.js',
+        content: './script/content.js',
+        plp: './script/plp.js',
+        pdp: './script/pdp.js',
+        unsubscribe: './script/unsubscribe.js'
     },
     module: {
         rules: [{

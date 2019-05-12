@@ -66,39 +66,29 @@ export default class {
     getAll(params) {
 
         return (dispatch, getState) => {
-            if (params.programName) {
-                res.header(responseHeader)
-                    .status(200)
-                    .send({
-                        success: true,
-                        data: [
-                            {
-                                id: 'home',
-                                title: 'Home'
-                            },
-                            {
-                                id: params.programName,
-                                title: params.programName
-                            }
-                        ]
-                    });
-            } else if (params.brand) {
 
-                res.header(responseHeader)
-                    .status(200)
-                    .send({
-                        success: true,
-                        data: [
-                            {
-                                id: 'home',
-                                title: 'Home'
-                            },
-                            {
-                                id: params.brand,
-                                title: params.brand
-                            }
-                        ]
-                    });
+            if (params.programName) {
+                dispatch(this.handleGetSuccess([
+                    {
+                        id: 'home',
+                        title: 'Home'
+                    },
+                    {
+                        id: params.programName,
+                        title: params.programName
+                    }
+                ]));
+            } else if (params.brand) {
+                dispatch(this.handleGetSuccess([
+                    {
+                        id: 'home',
+                        title: 'Home'
+                    },
+                    {
+                        id: params.brand,
+                        title: params.brand
+                    }
+                ]));
             } else {
                 return this.app.get('databaseConnection')
                     .from('category')

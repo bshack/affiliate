@@ -46,7 +46,7 @@ exports.index = function(req, res) {
         )
     ]).then(() => {
         res.render('plp', {
-            storePage: storePage
+            store: storePage.store
         });
     });
 

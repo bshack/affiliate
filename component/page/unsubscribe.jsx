@@ -14,19 +14,17 @@ import FeaturedProducts from '../template/featuredProducts.jsx';
 /* COMPONENT
 *************************************/
 
-class View extends React.Component {
-  render() {
-    return (
-        <Provider store={this.props.StorePage.store}>
-            <LayoutWrapper>
-                <NavigationMain />
-                <Breadcrumbs />
-                <EmailUnsubscribe />
-                <FeaturedProducts />
-            </LayoutWrapper>
-        </Provider>
-    );
-  }
+export default class View extends React.Component {
+    render() {
+        return (
+            <Provider store={this.props.store}>
+                <LayoutWrapper jsFile='unsubscribe'>
+                    <NavigationMain />
+                    <Breadcrumbs />
+                    <EmailUnsubscribe />
+                    <FeaturedProducts />
+                </LayoutWrapper>
+            </Provider>
+        );
+    }
 }
-
-export default View;

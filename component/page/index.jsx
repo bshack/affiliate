@@ -15,20 +15,31 @@ import EmailUnsubscribe from '../template/emailUnsubscribe.jsx';
 /* COMPONENT
 *************************************/
 
-class View extends React.Component {
+export default class View extends React.Component {
     render() {
         return (
             <Provider store={this.props.store}>
-                <LayoutWrapper>
-                    <NavigationMain />
-                    <Content />
-                    <FeaturedProducts />
-                    <EmailSignUp />
-                    <CategoryProducts />
-                </LayoutWrapper>
+                {
+                    this.props.includeWrapper === false?
+                        <div>
+                            <NavigationMain />
+                            <Content />
+                            <FeaturedProducts />
+                            <EmailSignUp />
+                            <CategoryProducts />
+                        </div>
+                        :
+                        <LayoutWrapper jsFile='index'>
+                            <div>
+                                <NavigationMain />
+                                <Content />
+                                <FeaturedProducts />
+                                <EmailSignUp />
+                                <CategoryProducts />
+                            </div>
+                        </LayoutWrapper>
+                }
             </Provider>
         );
     }
 }
-
-export default View;

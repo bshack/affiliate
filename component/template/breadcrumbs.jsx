@@ -14,9 +14,17 @@ const recursiveBuilder = (data) => {
         if (dataSize === count) {
             links.push(<li key={data[key].id}>{data[key].title}</li>);
         } else if (data[key].id === 'home') {
-            links.push(<li key={data[key].id}><a href={'/'}>{data[key].title}</a></li>);
+            links.push(
+                <li key={data[key].id}><a href={'/'}>
+                    {data[key].title}</a>
+                </li>
+            );
         } else {
-            links.push(<li key={data[key].id}><a href={'/' + data[key].path + '/index.html'}>{data[key].title}</a></li>);
+            links.push(
+                <li key={data[key].id}>
+                    <a href={'/' + data[key].path + '/index.html'}>{data[key].title}</a>
+                </li>
+            );
         }
         count = (count + 1);
     }
@@ -24,18 +32,18 @@ const recursiveBuilder = (data) => {
 };
 
 class View extends React.Component {
-  render() {
-    return (
-        <nav className="container breadcrumbs">
-            <div className="row">
-                <div className="col-12">
-                    {recursiveBuilder(this.props.data)}
-                    {utilityJSONLD.breadcrumbs(this.props.data)}
+    render() {
+        return (
+            <nav className="container breadcrumbs">
+                <div className="row">
+                    <div className="col-12">
+                        {recursiveBuilder(this.props.data)}
+                        {utilityJSONLD.breadcrumbs(this.props.data)}
+                    </div>
                 </div>
-            </div>
-        </nav>
-    );
-  }
+            </nav>
+        );
+    }
 }
 
 const mapStateToProps = (state) => {

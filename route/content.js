@@ -18,14 +18,14 @@ let storePage = new StorePage(config);
 exports.index = function(req, res) {
 
     Promise.all([
-        storePageContent.store.dispatch(
-            storePageContent.getAll({
+        storePage.store.dispatch(
+            storePage.getAll({
                 filename: path.parse(req.path).name
             })
         )
     ]).then(() => {
         res.render('content', {
-            storePage: storePage
+            store: storePage.store
         });
     });
 

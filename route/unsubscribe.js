@@ -23,7 +23,7 @@ exports.index = function(req, res) {
         )
     ]).then(() => {
         res.render('unsubscribe', {
-            storePage: storePage
+            store: storePage.store
         });
     });
 

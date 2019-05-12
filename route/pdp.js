@@ -35,7 +35,7 @@ exports.index = function(req, res) {
         )
     ]).then(() => {
         res.render('pdp', {
-            storePage: storePage
+            store: storePage.store
         });
     });
 

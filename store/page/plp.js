@@ -14,13 +14,13 @@ export default class {
 
     reducers(state = {}, action) {
         switch (action.type) {
-            case 'GET_PLP_DATA':
-                state = action.data
-                return state;
-            case 'GET_PLP_DATA_ERROR':
-                return state;
-            default:
-                return state;
+        case 'GET_PLP_DATA':
+            state = action.data
+            return state;
+        case 'GET_PLP_DATA_ERROR':
+            return state;
+        default:
+            return state;
         }
     }
 
@@ -40,6 +40,7 @@ export default class {
 
     getAll(params) {
         return (dispatch, getState) => {
+            
             return axios.get(this.config.api.origin + '/service/page/plp', {
                 params: params
             })
@@ -53,4 +54,4 @@ export default class {
 
     }
 
-};
+}

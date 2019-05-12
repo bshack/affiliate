@@ -1,25 +1,29 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Page from './page/index.jsx';
+import Page from './page/unsubscribe.jsx';
 import {Provider} from 'react-redux';
-import StorePage from '../store/page/index';
+import StorePage from '../store/page/unsubscribe';
+import UtilityString from '../utility/string';
 import config from '../configPublic.json';
 
 const storePage = new StorePage(config);
+const utilityString = new UtilityString();
 
 export default function() {
 
-    let container = document.querySelector('main');
+    let container = document.querySelector('html');
 
     Promise.all([
         storePage.store.dispatch(
-            storePage.getAll({})
+            storePage.getAll({
+                email: utilityString.getQueryStringParamater('email', window.location.href)
+            })
         )
     ])
         .then(()=>{
             if (container) {
                 ReactDOM.hydrate(
-                    <Page store={storePage.store} includeWrapper={false} />,
+                    <Page store={storePage.store}/>,
                     container
                 );
             }

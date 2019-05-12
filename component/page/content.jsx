@@ -14,20 +14,18 @@ import EmailSignUp from '../template/emailSignUp.jsx';
 /* COMPONENT
 *************************************/
 
-class View extends React.Component {
-  render() {
-    return (
-        <Provider store={this.props.StorePage.store}>
-            <LayoutWrapper>
-                <NavigationMain />
-                <Breadcrumbs />
-                <Content />
-                <EmailSignUp />
-                <FeaturedProducts />
-            </LayoutWrapper>
-        </Provider>
-    );
-  }
+export default class View extends React.Component {
+    render() {
+        return (
+            <Provider store={this.props.store}>
+                <LayoutWrapper jsFile='content'>
+                    <NavigationMain />
+                    <Breadcrumbs />
+                    <Content />
+                    <EmailSignUp />
+                    <FeaturedProducts />
+                </LayoutWrapper>
+            </Provider>
+        );
+    }
 }
-
-export default View;

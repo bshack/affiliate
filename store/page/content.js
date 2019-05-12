@@ -14,13 +14,13 @@ export default class {
 
     reducers(state = {}, action) {
         switch (action.type) {
-            case 'GET_CONTENT_DATA':
-                state = action.data
-                return state;
-            case 'GET_CONTENT_DATA_ERROR':
-                return state;
-            default:
-                return state;
+        case 'GET_CONTENT_DATA':
+            state = action.data
+            return state;
+        case 'GET_CONTENT_DATA_ERROR':
+            return state;
+        default:
+            return state;
         }
     }
 
@@ -53,4 +53,4 @@ export default class {
 
     }
 
-};
+}

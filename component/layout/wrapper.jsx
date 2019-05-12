@@ -48,26 +48,28 @@ class WrapperLayout extends React.Component {
                     <link rel="stylesheet" type="text/css" media="all" href="/style/index.css" />
                 </head>
                 <body>
-                    <header>
-                logo
-                    </header>
-                    <div className='testinject'>
-                    </div>
-                    <main>
-                        {this.props.children}
-                    </main>
-                    <footer className="container">
-                        <div className="row">
-                            <div className="col-12">
-                                <NavigationFooter
-                                    data={this.props.data.navigationFooter}
-                                    configPublic={this.props.data.config} />
-                        &copy; {new Date().getFullYear()}
-                            </div>
+                    <div id="wrapper">
+                        <header>
+                            logo
+                        </header>
+                        <div className='testinject'>
                         </div>
-                    </footer>
-                    <script src="/script/vendors-index.js" />
-                    <script src="/script/index.js" />
+                        <main>
+                            {this.props.children}
+                        </main>
+                        <footer className="container">
+                            <div className="row">
+                                <div className="col-12">
+                                    <NavigationFooter
+                                        data={this.props.data.navigationFooter}
+                                        configPublic={this.props.data.config} />
+                            &copy; {new Date().getFullYear()}
+                                </div>
+                            </div>
+                        </footer>
+                    </div>
+                    <script src="/script/global.js" />
+                    <script src={'/script/' + this.props.jsFile + '.js'} />
                 </body>
             </html>
         );

@@ -31,11 +31,11 @@ class View extends React.Component {
         let price = '';
         if (this.props.data.salePriceUnformatted) {
             price = <p className='price-sale'><del>{numeral(this.props.data.priceUnformatted)
-                .format('$0,0[.]00')}</del> {numeral(this.props.data.salePriceUnformatted)
-                .format('$0,0.00')} <span>{this.props.data.salePriceCurrency}</span></p>
+                .format('$0,0[.]00')}</del> <span>{numeral(this.props.data.salePriceUnformatted)
+                .format('$0,0.00')}</span> <span>{this.props.data.salePriceCurrency}</span></p>
         } else {
-            price = <p className='price'>{numeral(this.props.data.priceUnformatted)
-                .format('$0,0[.]00')} <span>{this.props.data.priceCurrency}</span></p>
+            price = <p className='price'><span>{numeral(this.props.data.priceUnformatted)
+                .format('$0,0[.]00')}</span> <span>{this.props.data.priceCurrency}</span></p>
         }
 
         let programName = '';
