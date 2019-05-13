@@ -46,7 +46,8 @@ exports.index = function(req, res) {
         )
     ]).then(() => {
         res.render('plp', {
-            store: storePage.store
+            store: storePage.store,
+            fullDocumentRender: true
         });
     });
 

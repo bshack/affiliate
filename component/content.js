@@ -10,7 +10,7 @@ const storePage = new StorePage(config);
 
 export default function() {
 
-    let container = document.querySelector('html');
+    let container = document.querySelector('#app');
 
     Promise.all([
         storePage.store.dispatch(
@@ -22,7 +22,7 @@ export default function() {
         .then(()=>{
             if (container) {
                 ReactDOM.hydrate(
-                    <Page store={storePage.store} includeWrapper={false} />,
+                    <Page store={storePage.store} />,
                     container
                 );
             }

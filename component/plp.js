@@ -10,7 +10,7 @@ const storePage = new StorePage(config);
 
 export default function() {
 
-    let container = document.querySelector('html');
+    let container = document.querySelector('#app');
     let pathName = window.location.pathname;
 
     let productParams = {};
@@ -43,7 +43,7 @@ export default function() {
         .then(()=>{
             if (container) {
                 ReactDOM.hydrate(
-                    <Page store={storePage.store} includeWrapper={false} />,
+                    <Page store={storePage.store} />,
                     container
                 );
             }

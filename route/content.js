@@ -25,7 +25,8 @@ exports.index = function(req, res) {
         )
     ]).then(() => {
         res.render('content', {
-            store: storePage.store
+            store: storePage.store,
+            fullDocumentRender: true
         });
     });
 

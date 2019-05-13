@@ -23,7 +23,8 @@ exports.index = function(req, res) {
         )
     ]).then(() => {
         res.render('unsubscribe', {
-            store: storePage.store
+            store: storePage.store,
+            fullDocumentRender: true
         });
     });
 

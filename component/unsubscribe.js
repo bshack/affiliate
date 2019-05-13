@@ -11,7 +11,7 @@ const utilityString = new UtilityString();
 
 export default function() {
 
-    let container = document.querySelector('html');
+    let container = document.querySelector('#app');
 
     Promise.all([
         storePage.store.dispatch(
