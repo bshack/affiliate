@@ -5,6 +5,8 @@ const session = require('express-session');
 const https = require('https');
 const knex = require('knex');
 const configPrivate = require('./configPrivate.json');
+const utilityCache = require('./utility/cache');
+utilityCache.flush();
 
 /* ROUTES
 *************************************/

@@ -44,7 +44,7 @@ class WrapperLayout extends React.Component {
                     <meta property="og:locale" content={this.props.data.config.locale} />
                     <meta property="fb:admins" content={this.props.data.config.social.facebook.admins} />
                     <meta property="fb:app_id" content={this.props.data.config.social.facebook.app_id} />
-                    <link rel="icon" type="image/x-icon" href={this.props.data.config.favicon}>
+                    <link rel="icon" type="image/x-icon" href={this.props.data.config.favicon} />
                     <link rel="canonical" href={this.props.data.canonical} />
                     <link rel="stylesheet" type="text/css" media="all" href="/style/index.css" />
                 </head>
