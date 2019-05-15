@@ -11,10 +11,6 @@ import StoreNavigationMain from '../../../store/navigation/main';
 import StoreNavigationFooter from '../../../store/navigation/footer';
 import StoreBreadcrumbs from '../../../store/breadcrumbs';
 
-/* CACHE
- *************************************/
-
-const utilityCache = require('../../../utility/cache');
 
 /* ROUTE
  *************************************/
@@ -25,81 +21,55 @@ exports.get = function(req, res) {
         filename: req.query.filename
     };
 
-    let key = utilityCache.makeKey(_.extend({
-        page: 'content'
-    }, contentParams));
+    let storeContent = new StoreContent(req.app);
+    let storeProduct = new StoreProduct(req.app);
+    let storeNavigationMain = new StoreNavigationMain(req.app);
+    let storeBreadcrumbs = new StoreBreadcrumbs(req.app);
+    let storeNavigationFooter = new StoreNavigationFooter(req.app);
 
-    utilityCache
-        .getJSON(key)
-        .then((data) => {
-            if (data) {
+    Promise.all([
+        storeContent.store.dispatch(
+            storeContent.getAll(contentParams)
+        ),
+        storeProduct.store.dispatch(
+            storeProduct.getAll({
+                limit: 8
+            })
+        ),
+        storeNavigationMain.store.dispatch(
+            storeNavigationMain.getAll({})
+        ),
+        storeBreadcrumbs.store.dispatch(
+            storeBreadcrumbs.getAll({})
+        ),
+        storeNavigationFooter.store.dispatch(
+            storeNavigationFooter.getAll()
+        )
+    ])
+    .then(() => {
 
-                res.header(configPrivate.header.json)
-                    .status(200)
-                    .send(data);
+        let storeContentData = storeContent.store.getState();
 
-            } else {
-
-                let storeContent = new StoreContent(req.app);
-                let storeProduct = new StoreProduct(req.app);
-                let storeNavigationMain = new StoreNavigationMain(req.app);
-                let storeBreadcrumbs = new StoreBreadcrumbs(req.app);
-                let storeNavigationFooter = new StoreNavigationFooter(req.app);
-
-                Promise.all([
-                    storeContent.store.dispatch(
-                        storeContent.getAll(contentParams)
-                    ),
-                    storeProduct.store.dispatch(
-                        storeProduct.getAll({
-                            limit: 8
-                        })
-                    ),
-                    storeNavigationMain.store.dispatch(
-                        storeNavigationMain.getAll({})
-                    ),
-                    storeBreadcrumbs.store.dispatch(
-                        storeBreadcrumbs.getAll({})
-                    ),
-                    storeNavigationFooter.store.dispatch(
-                        storeNavigationFooter.getAll()
-                    )
-                ])
-                .then(() => {
-
-                    let responseData = {
-                        config: configPublic,
-                        meta: {
-                            title: 'yo title',
-                            description: 'yo description',
-                            image: 'yo image',
-                            canonical: 'yo canonical'
-                        },
-                        navigationMain: storeNavigationMain.store.getState(),
-                        navigationFooter: storeNavigationFooter.store.getState(),
-                        breadcrumb: storeBreadcrumbs.store.getState(),
-                        content: storeContent.store.getState(),
-                        productFeatured: storeProduct.store.getState()
-                    };
-
-                    utilityCache
-                        .setJSON(key, responseData)
-                        .then((data) => {
-                            res.header(configPrivate.header.json)
-                                .status(200)
-                                .send(responseData);
-                        })
-                        .catch((error) => {
-                            console.error(data);
-                        });
-
-                })
-                .catch((error) => {
-                    res.header(configPrivate.header.json)
-                        .status(500)
-                        .send(error);
-                });
-                
-            }
-        });
+        res.header(configPrivate.header.json)
+            .status(200)
+            .send({
+                config: configPublic,
+                meta: {
+                    title: storeContentData[0].metatitle + ' - ' + configPublic.name,
+                    description: storeContentData[0].metadescription,
+                    image: configPublic.social.image,
+                    canonical: configPublic.www.origin + '/' +  storeContentData[0].filename + '.html'
+                },
+                navigationMain: storeNavigationMain.store.getState(),
+                navigationFooter: storeNavigationFooter.store.getState(),
+                breadcrumb: storeBreadcrumbs.store.getState(),
+                content: storeContentData,
+                productFeatured: storeProduct.store.getState()
+            });
+    })
+    .catch((error) => {
+        res.header(configPrivate.header.json)
+            .status(404)
+            .send(error);
+    });
 };

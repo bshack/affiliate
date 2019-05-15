@@ -1,13 +1,31 @@
 'use strict';
 import redis from 'redis';
+import apicache from 'apicache';
 import crypto from 'crypto';
 
 const client = redis.createClient();
+const routeCacher = apicache.options({
+    debug: false,
+    defaultDuration: '1 hour',
+    redisClient: client,
+    enabled: false,
+    statusCodes: {
+        exclude: [404, 403, 500],
+    }
+}).middleware;
 
 class Cache {
 
     constructor() {
         client.on('error', console.error);
+    }
+
+    routeCacher(time) {
+        if (time) {
+            return routeCacher(time);
+        } else {
+            return routeCacher();
+        }
     }
 
     flush() {

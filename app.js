@@ -2,11 +2,11 @@ require("@babel/register");
 const fs = require('fs');
 const express = require('express');
 const session = require('express-session');
+const compression = require('compression');
 const https = require('https');
 const knex = require('knex');
 const configPrivate = require('./configPrivate.json');
 const utilityCache = require('./utility/cache');
-utilityCache.flush();
 
 /* ROUTES
 *************************************/
@@ -46,6 +46,7 @@ app.use(session({
         secure: true
     }
 }));
+app.use(compression());
 app.use(express.static('dist'))
 app.use(express.json());
 app.engine('jsx', require('express-react-views').createEngine({
@@ -62,36 +63,36 @@ app.get('/sitemap.xml', routeSitemap.index);
 app.get('/merchant.xml', routeMerchant.index);
 
 //home
-app.get('/', routeIndex.index);
+app.get('/', utilityCache.routeCacher(), routeIndex.index);
 
 //content
-app.get('/support.html', routeContent.index);
-app.get('/privacy-policy.html', routeContent.index);
-app.get('/terms-of-service.html', routeContent.index);
-app.get('/manage-subscription.html', routeContent.index);
-app.get('/accessibility.html', routeContent.index);
-app.get('/search.html', routeContent.index);
-app.get('/style-guide.html', routeContent.index);
-app.get('/error-404.html', routeContent.index);
+app.get('/support.html', utilityCache.routeCacher(), routeContent.index);
+app.get('/privacy-policy.html', utilityCache.routeCacher(), routeContent.index);
+app.get('/terms-of-service.html', utilityCache.routeCacher(), routeContent.index);
+app.get('/manage-subscription.html', utilityCache.routeCacher(), routeContent.index);
+app.get('/accessibility.html', utilityCache.routeCacher(), routeContent.index);
+app.get('/search.html', utilityCache.routeCacher(), routeContent.index);
+app.get('/style-guide.html', utilityCache.routeCacher(), routeContent.index);
+app.get('/error-404.html', utilityCache.routeCacher(), routeContent.index);
 
 //email marketing
-app.get('/unsubscribe.html', routeUnsubscribe.index);
+app.get('/unsubscribe.html', utilityCache.routeCacher(), routeUnsubscribe.index);
 
 //plp
-app.get('/brand/:brand/index.html', routePLP.index);
-app.get('/store/:store/index.html', routePLP.index);
-app.get('/**/index.html', routePLP.index);
+app.get('/brand/:brand/index.html', utilityCache.routeCacher(), routePLP.index);
+app.get('/store/:store/index.html', utilityCache.routeCacher(), routePLP.index);
+app.get('/**/index.html', utilityCache.routeCacher(), routePLP.index);
 
 //pdp
-app.get('/**/*.html', routePDP.index);
+app.get('/**/*.html', utilityCache.routeCacher(), routePDP.index);
 
 //services
 app.put('/service/email/subscribe', routeServiceEmail.subscribe);
 app.patch('/service/email/unsubscribe', routeServiceEmail.unsubscribe);
-app.get('/service/page/index', routeServicePageIndex.get);
-app.get('/service/page/content', routeServicePageContent.get);
-app.get('/service/page/plp', routeServicePagePLP.get);
-app.get('/service/page/pdp', routeServicePagePDP.get);
+app.get('/service/page/index', utilityCache.routeCacher(), routeServicePageIndex.get);
+app.get('/service/page/content', utilityCache.routeCacher(), routeServicePageContent.get);
+app.get('/service/page/plp', utilityCache.routeCacher(), routeServicePagePLP.get);
+app.get('/service/page/pdp', utilityCache.routeCacher(), routeServicePagePDP.get);
 app.get('/service/page/unsubscribe', routeServicePageUnsubscribe.get);
 
 /* SERVER STARTUP
