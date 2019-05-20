@@ -1,4 +1,3 @@
-'use strict';
 import redis from 'redis';
 import apicache from 'apicache';
 import crypto from 'crypto';

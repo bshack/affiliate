@@ -1,8 +1,6 @@
-'use strict';
-
-const React = require('react');
-const _ = require('lodash');
-const moment = require('moment');
+import React from 'react';
+import _ from 'lodash';
+import moment from 'moment';
 
 class JSONLD {
 
@@ -186,4 +184,4 @@ class JSONLD {
 
 }
 
-module.exports = JSONLD;
+export default JSONLD;

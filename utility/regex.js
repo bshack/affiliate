@@ -1,5 +1,3 @@
-'use strict';
-
 class Regex {
     constructor(height, width) {
         /*eslint-disable*/
@@ -8,4 +6,4 @@ class Regex {
     }
 }
 
-module.exports = Regex;
+export default Regex;

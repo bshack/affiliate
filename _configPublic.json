@@ -12,6 +12,10 @@
         "origin": ""
     },
     "favicon": "",
+    "static": {
+        "directory": "dist",
+        "version": ""
+    },
     "social": {
         "image": "",
         "facebook": {

@@ -1,5 +1,3 @@
-'use strict';
-
 class String {
 
     getQueryStringParamater(name, url) {
@@ -19,4 +17,4 @@ class String {
 
 }
 
-module.exports = String;
+export default String;

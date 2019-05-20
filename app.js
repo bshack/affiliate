@@ -6,7 +6,18 @@ const compression = require('compression');
 const https = require('https');
 const knex = require('knex');
 const configPrivate = require('./configPrivate.json');
+const configPublic = require('./configPublic.json');
 const utilityCache = require('./utility/cache');
+const UtilityFile = require('./utility/file');
+const staticAssetDirectory = __dirname + '/' + configPublic.static.directory;
+
+/* SETUP VERSIONED ASSET DIRECTORY
+*************************************/
+
+utilityFile = new UtilityFile();
+
+utilityFile.updateStaticAssetVersion(staticAssetDirectory);
+
 
 /* ROUTES
 *************************************/
@@ -47,7 +58,7 @@ app.use(session({
     }
 }));
 app.use(compression());
-app.use(express.static('dist'))
+app.use(express.static(staticAssetDirectory));
 app.use(express.json());
 app.engine('jsx', require('express-react-views').createEngine({
     transformViews: false

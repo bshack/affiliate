@@ -68,7 +68,7 @@ module.exports = {
                     loader: 'file-loader',
                     options: {
                         name: '[name].[ext]',
-                        outputPath: './font/',
+                        outputPath: './[hash]/font/',
                         publicPath: '../font/'
                     }
                 }]
@@ -78,9 +78,9 @@ module.exports = {
                 use: [{
                     loader: 'file-loader',
                     options: {
-                        name(file) {
-                            return './image' + file.split('image')[1];
-                        }
+                        name: '[name].[ext]',
+                        outputPath: './[hash]/image/',
+                        publicPath: '../image/'
                     }
                 }, {
                     loader: 'image-webpack-loader',
@@ -112,8 +112,8 @@ module.exports = {
             files: './style/**'
         }),
         new MiniCssExtractPlugin({
-            filename: "./style/[name].css",
-            chunkFilename: "./style/global.css"
+            filename: "./[hash]/style/[name].css",
+            chunkFilename: "./[hash]/style/global.css"
         })
         // new HtmlWebpackPlugin({
         //     template: './toolkit.html'
@@ -121,6 +121,6 @@ module.exports = {
     ],
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: './script/[name].js'
+        filename: './[hash]/script/[name].js'
     }
 };
