@@ -31,13 +31,13 @@ class WrapperLayout extends React.Component {
                     <meta name="twitter:url" content={this.props.data.meta.canonical} />
                     <meta name="twitter:title" content={this.props.data.meta.title} />
                     <meta name="twitter:description" content={descriptionSocial} />
-                    <meta name="twitter:image" content={"/" + this.props.data.config.static.version
+                    <meta name="twitter:image" content={'/' + this.props.data.config.static.version
                         + this.props.data.meta.image} />
                     <meta name="twitter:image:alt" content={this.props.data.meta.title} />
                     <meta property="og:title" content={this.props.data.meta.title} />
                     <meta property="og:type" content={this.props.data.config.social.facebook.type} />
                     <meta property="og:url" content={this.props.data.meta.canonical} />
-                    <meta property="og:image:url" content={"/" + this.props.data.config.static.version
+                    <meta property="og:image:url" content={'/' + this.props.data.config.static.version
                         + this.props.data.meta.image} />
                     <meta property="og:image:height" content={this.props.data.config.social.facebook.imageHeight} />
                     <meta property="og:image:width" content={this.props.data.config.social.facebook.imageWidth} />
@@ -47,18 +47,18 @@ class WrapperLayout extends React.Component {
                     <meta property="og:locale" content={this.props.data.config.locale} />
                     <meta property="fb:admins" content={this.props.data.config.social.facebook.admins} />
                     <meta property="fb:app_id" content={this.props.data.config.social.facebook.app_id} />
-                    <link rel="icon" type="image/x-icon" href={"/" + this.props.data.config.static.version
+                    <link rel="icon" type="image/x-icon" href={'/' + this.props.data.config.static.version
                         + this.props.data.config.favicon} />
                     <link rel="canonical" href={this.props.data.meta.canonical} />
-                    <link rel="stylesheet" type="text/css" media="all" href={"/"
-                        + this.props.data.config.static.version + "/style/index.css"} />
+                    <link rel="stylesheet" type="text/css" media="all" href={'/'
+                        + this.props.data.config.static.version + '/style/index.css'} />
                 </head>
                 <body>
                     <div id="app">
                         {this.props.children}
                     </div>
-                    <script src={"/" + this.props.data.config.static.version + "/script/global.js"} />
-                    <script src={"/" + this.props.data.config.static.version
+                    <script src={'/' + this.props.data.config.static.version + '/script/global.js'} />
+                    <script src={'/' + this.props.data.config.static.version
                         + '/script/' + this.props.jsFile + '.js'} />
                 </body>
             </html>

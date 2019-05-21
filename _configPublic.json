@@ -1,33 +1,33 @@
 {
-    "name": "",
-    "description": "",
-    "locale": "",
+    "name": "Val Foundry",
+    "description": "We know what the deal is.",
+    "locale": "en-US",
     "www": {
-        "origin": ""
+        "origin": "https://dev.valfoundry.io:3000"
     },
     "cdn": {
-        "origin": ""
+        "origin": "https://s3.us-east-2.amazonaws.com/cdn.shackelforddigital.io"
     },
     "api": {
-        "origin": ""
+        "origin": "https://dev.valfoundry.io:3000"
     },
-    "favicon": "",
+    "favicon": "image/favicon.png",
     "static": {
         "directory": "dist",
         "version": ""
     },
     "social": {
-        "image": "",
+        "image": "image/social.png",
         "facebook": {
-            "app_id": "",
-            "admins": "",
-            "type": "",
+            "app_id": "2323223",
+            "admins": "asdfasdf",
+            "type": "website",
             "imageWidth": 500,
             "imageHeight": 500
         },
         "twitter": {
-            "name": "",
-            "card": ""
+            "name": "Val Foundry",
+            "card": "website"
         }
     }
 }

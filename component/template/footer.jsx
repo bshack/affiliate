@@ -5,13 +5,16 @@ import NavigationFooter from './navigationFooter.jsx';
 class View extends React.Component {
     render() {
         return (
-            <footer className="container">
-                <div className="row">
-                    <div className="col-12">
-                        <NavigationFooter
-                            data={this.props.navigationFooter}
-                            configPublic={this.props.config} />
-                        {String.fromCharCode(169) + ' ' + (new Date().getFullYear())}
+            <footer>
+                <div className="container">
+                    <div className="row">
+                        <div className="col-12">
+                            <NavigationFooter
+                                data={this.props.navigationFooter}
+                                configPublic={this.props.config} />
+                            <small>{String.fromCharCode(169) + ' ' + (new Date().getFullYear()) +
+                                ' ' + this.props.config.name}</small>
+                        </div>
                     </div>
                 </div>
             </footer>

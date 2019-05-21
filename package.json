@@ -4,9 +4,9 @@
   "version": "1.0.0",
   "main": "app.js",
   "scripts": {
-    "start": "pm2 stop app.js; pm2 start app.js; webpack;",
-    "watch": "pm2 stop app.js; pm2 start app.js --watch; webpack --watch;",
-    "stop": "pm2 stop app.js",
+    "start": "pm2 stop 0 --watch; webpack --env.production=true; pm2 start app.js;",
+    "watch": "pm2 stop 0 --watch; webpack; pm2 start app.js --watch; webpack --watch;",
+    "stop": "pm2 stop 0 --watch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
