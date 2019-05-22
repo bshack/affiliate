@@ -31,6 +31,7 @@ const routePLP = require('./route/plp');
 const routePDP = require('./route/pdp');
 const routeUnsubscribe = require('./route/unsubscribe');
 const routeServiceEmail = require('./route/service/email');
+const routeServiceSearch = require('./route/service/search');
 const routeServicePageIndex = require('./route/service/page/index');
 const routeServicePageContent = require('./route/service/page/content');
 const routeServicePagePLP = require('./route/service/page/plp');
@@ -98,6 +99,7 @@ app.get('/**/index.html', utilityCache.routeCacher(), routePLP.index);
 app.get('/**/*.html', utilityCache.routeCacher(), routePDP.index);
 
 //services
+app.get('/service/search', utilityCache.routeCacher(), routeServiceSearch.get);
 app.put('/service/email/subscribe', routeServiceEmail.subscribe);
 app.patch('/service/email/unsubscribe', routeServiceEmail.unsubscribe);
 app.get('/service/page/index', utilityCache.routeCacher(), routeServicePageIndex.get);
