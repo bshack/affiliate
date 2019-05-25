@@ -1,6 +1,11 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import config from '../../configPublic.json';
+import Search from './search.jsx';
+import StoreSearch from '../../store/page/search';
+import {Provider} from 'react-redux';
 
+const storeSearch = new StoreSearch(config);
 
 class View extends React.Component {
     render() {
@@ -11,13 +16,9 @@ class View extends React.Component {
                         <div className="col-3">
                             {this.props.config.name}
                         </div>
-                        <div className="col-8">
-                            <fieldset>
-                                <label htmlFor="search">search</label>
-                                <input id="search" type="search" placeholder="search" />
-                                <button type="submit">search</button>
-                            </fieldset>
-                        </div>
+                        <Provider store={storeSearch.store}>
+                            <Search />
+                        </Provider>
                         <div className="col-1" />
                     </div>
                 </div>
