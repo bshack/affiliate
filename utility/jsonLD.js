@@ -1,12 +1,13 @@
 import React from 'react';
 import _ from 'lodash';
 import moment from 'moment';
+import config from '../configPublic';
 
 class JSONLD {
 
-    product(data, configPublic) {
+    product(data) {
 
-        let cdn = configPublic.cdn.origin;
+        let cdn = config.cdn.origin;
         let defaultJSONLD = {
             '@context': 'http://schema.org/',
             '@type': 'Product',

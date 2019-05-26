@@ -51,13 +51,11 @@ exports.get = function(req, res) {
         res.header(configPrivate.header.json)
             .status(200)
             .send({
-                config: configPublic,
                 meta: {
                     title: storeCategoryData[0].title + ' - ' + configPublic.name,
                     image: configPublic.social.image,
                     canonical: configPublic.www.origin + '/' + storeCategoryData[0].path + '/index.html'
                 },
-                configPublic: req.app.get('configPublic'),
                 navigationMain: storeNavigationMain.store.getState(),
                 navigationFooter: storeNavigationFooter.store.getState(),
                 breadcrumb: storeBreadcrumbs.store.getState(),

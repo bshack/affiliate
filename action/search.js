@@ -1,13 +1,17 @@
 import axios from 'axios';
-export const GET_SEARCH_DATA = 'GET_SEARCH_DATA';
-export const GET_SEARCH_DATA_ERROR = 'LOAD_SEARCH_ERROR';
-export const loadSearchResults = (params) => dispatch => {
-    return axios.get('https://dev.valfoundry.io:3000/service/search', {
+import config from '../configPublic';
+
+const endPoint = config.api.origin + '/service/search';
+
+export const GET_DATA = 'GET_DATA';
+export const GET_DATA_ERROR = 'GET_DATA_ERROR';
+export const queryBrandsStores = (params) => dispatch => {
+    return axios.get(endPoint, {
         params: params
     })
         .then((response) => {
             dispatch({
-                type: GET_SEARCH_DATA,
+                type: GET_DATA,
                 data: {
                     data: response.data,
                     config: {}
@@ -16,7 +20,7 @@ export const loadSearchResults = (params) => dispatch => {
         })
         .catch((error) => {
             dispatch({
-                type: GET_SEARCH_DATA_ERROR,
+                type: GET_DATA_ERROR,
                 data: error
             });
         });

@@ -53,7 +53,6 @@ exports.get = function(req, res) {
         res.header(configPrivate.header.json)
             .status(200)
             .send({
-                config: configPublic,
                 meta: {
                     title: storeContentData[0].metatitle + ' - ' + configPublic.name,
                     description: storeContentData[0].metadescription,

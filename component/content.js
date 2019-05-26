@@ -4,9 +4,8 @@ import Page from './page/content.jsx';
 import {Provider} from 'react-redux';
 import StorePage from '../store/page/content';
 import path from 'path';
-import config from '../configPublic.json';
 
-const storePage = new StorePage(config);
+const storePage = new StorePage();
 
 export default function() {
 

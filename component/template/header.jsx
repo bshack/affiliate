@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import config from '../../configPublic.json';
+import config from '../../configPublic';
 import Search from './search.jsx';
 import StoreSearch from '../../store/page/search';
 import {Provider} from 'react-redux';
@@ -14,7 +14,7 @@ class View extends React.Component {
                 <div className="container">
                     <div className="row">
                         <div className="col-3">
-                            {this.props.config.name}
+                            {config.name}
                         </div>
                         <Provider store={storeSearch.store}>
                             <Search />

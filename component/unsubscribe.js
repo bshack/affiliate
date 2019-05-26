@@ -4,9 +4,8 @@ import Page from './page/unsubscribe.jsx';
 import {Provider} from 'react-redux';
 import StorePage from '../store/page/unsubscribe';
 import UtilityString from '../utility/string';
-import config from '../configPublic.json';
 
-const storePage = new StorePage(config);
+const storePage = new StorePage();
 const utilityString = new UtilityString();
 
 export default function() {

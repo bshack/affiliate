@@ -1,9 +1,10 @@
 import React from 'react';
+import config from '../../configPublic';
 
 class View extends React.Component {
     render() {
 
-        let cdn = this.props.config.cdn.origin + '/';
+        let cdn = config.cdn.origin + '/';
         let slug = '';
         if (this.props.slug) {
             slug = '-' + this.props.slug;

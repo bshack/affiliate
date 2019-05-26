@@ -1,4 +1,3 @@
-import configPublic from '../../configPublic.json';
 import configPrivate from '../../configPrivate.json';
 
 /* MODELS
@@ -25,7 +24,6 @@ exports.get = function(req, res) {
         )
     ])
     .then(() => {
-        console.log('display data');
         res.header(configPrivate.header.json)
             .status(200)
             .send(storeSearch.store.getState());

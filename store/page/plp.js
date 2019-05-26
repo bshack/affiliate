@@ -1,11 +1,13 @@
 import {createStore, applyMiddleware} from 'redux';
 import thunk from 'redux-thunk';
 import axios from 'axios';
+import config from '../../configPublic';
+
+const endPoint = config.api.origin + '/service/page/plp';
 
 export default class {
 
-    constructor(config) {
-        this.config = config;
+    constructor() {
         this.store = createStore(
             this.reducers,
             applyMiddleware(thunk)
@@ -40,8 +42,8 @@ export default class {
 
     getAll(params) {
         return (dispatch, getState) => {
-            
-            return axios.get(this.config.api.origin + '/service/page/plp', {
+
+            return axios.get(endPoint, {
                 params: params
             })
                 .then((response) => {
