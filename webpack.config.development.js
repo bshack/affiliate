@@ -1,7 +1,9 @@
 const webpack = require('webpack');
 const path = require('path');
+const chalk = require('chalk');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const SassLintPlugin = require('sass-lint-webpack');
+const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 
 module.exports = {
     mode: 'development',
@@ -14,8 +16,9 @@ module.exports = {
     },
     watchOptions: {
         ignored: [
-            './node_modules',
-            './dist'
+            'node_modules',
+            'dist',
+            './configPublic.json'
         ]
     },
     optimization: {
@@ -111,6 +114,10 @@ module.exports = {
         ]
     },
     plugins: [
+        new ProgressBarPlugin({
+            format: '  build [:bar] ' + chalk.green.bold(':percent') + ' (:elapsed seconds)',
+            clear: false
+        }),
         // new webpack.IgnorePlugin({
         //     resourceRegExp: /configPublic.json/,
         //     contextRegExp: /./

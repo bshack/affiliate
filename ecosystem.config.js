@@ -5,7 +5,8 @@ module.exports = {
     watch: true,
     ignore_watch: [
         "./node_modules",
-        "./dist"
+        "./dist",
+        "newrelic_agent.log"
     ],
   }]
 }

@@ -56,6 +56,7 @@ class WrapperLayout extends React.Component {
                         + config.static.version + '/style/index.css'} />
                 </head>
                 <body>
+                    <h1>hi!2</h1>
                     <div id="app">
                         {this.props.children}
                     </div>

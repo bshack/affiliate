@@ -1,4 +1,5 @@
-require("@babel/register");
+//require('newrelic');
+require('@babel/register');
 const fs = require('fs');
 const express = require('express');
 const session = require('express-session');
