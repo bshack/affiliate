@@ -1,6 +1,7 @@
 import {createStore, applyMiddleware} from 'redux';
 import thunk from 'redux-thunk';
 import _ from 'lodash';
+import reducerStandard from '../reducer/standard';
 
 const getCategoryDetails = (data) => {
     return new Promise((resolve, reject) => {
@@ -32,33 +33,21 @@ export default class {
     constructor(app) {
         this.app = app;
         this.store = createStore(
-            this.reducers,
+            reducerStandard,
             applyMiddleware(thunk)
         );
     }
 
-    reducers(state = {}, action) {
-        switch (action.type) {
-            case 'GET_BREADCRUMBS_DATA':
-                state = action.data
-                return state;
-            case 'GET_BREADCRUMBS_DATA_ERROR':
-                return state;
-            default:
-                return state;
-        }
-    }
-
     handleGetSuccess(data) {
         return {
-            type: 'GET_BREADCRUMBS_DATA',
+            type: 'GET_DATA',
             data: data
         };
     }
 
     handleGetError(error) {
         return {
-            type: 'GET_BREADCRUMBS_DATA_ERROR',
+            type: 'GET_DATA_ERROR',
             data: error
         };
     }

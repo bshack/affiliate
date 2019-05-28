@@ -1,39 +1,28 @@
 import {createStore, applyMiddleware} from 'redux';
 import thunk from 'redux-thunk';
 import moment from 'moment';
+import reducerStandard from '../reducer/standard';
 
 export default class {
 
     constructor(app) {
         this.app = app;
         this.store = createStore(
-            this.reducers,
+            reducerStandard,
             applyMiddleware(thunk)
         );
     }
 
-    reducers(state = {}, action) {
-        switch (action.type) {
-        case 'GET_PRODUCT_DATA':
-            state = action.data
-            return state;
-        case 'GET_PRODUCT_DATA_ERROR':
-            return state;
-        default:
-            return state;
-        }
-    }
-
     handleGetSuccess(data) {
         return {
-            type: 'GET_PRODUCT_DATA',
+            type: 'GET_DATA',
             data: data
         };
     }
 
     handleGetError(error) {
         return {
-            type: 'GET_PRODUCT_DATA_ERROR',
+            type: 'GET_DATA_ERROR',
             data: error
         };
     }
@@ -102,13 +91,13 @@ export default class {
                             builder
                                 .where(whereParams)
                                 .where('product.timestamp', '>', oldestProductCreationDate)
-                                .andWhere('category.path', 'like', '%' + whereParams.path)
+                                .orWhere('path', 'like', '%' + whereParams.path)
                                 .whereNot('product.seoFilenamePart', skipParam);
                         } else {
                             builder
                                 .where(whereParams)
                                 .where('product.timestamp', '>', oldestProductCreationDate)
-                                .andWhere('category.path', 'like', '%' + whereParams.path);
+                                .orWhere('path', 'like', '%' + whereParams.path);
                         }
                     } else {
                         builder

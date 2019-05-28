@@ -50,7 +50,7 @@ class WrapperLayout extends React.Component {
                     <meta property="fb:admins" content={config.social.facebook.admins} />
                     <meta property="fb:app_id" content={config.social.facebook.app_id} />
                     <link rel="icon" type="image/x-icon" href={'/' + config.static.version
-                        + config.favicon} />
+                        + '/' + config.favicon} />
                     <link rel="canonical" href={this.props.data.meta.canonical} />
                     <link rel="stylesheet" type="text/css" media="all" href={'/'
                         + config.static.version + '/style/index.css'} />

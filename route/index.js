@@ -14,7 +14,7 @@ let storePage = new StorePage(config);
  *************************************/
 
 exports.index = function(req, res) {
-    
+
     Promise.all([
         storePage.store.dispatch(
             storePage.getAll()

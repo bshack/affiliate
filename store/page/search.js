@@ -1,11 +1,11 @@
 import {createStore, applyMiddleware} from 'redux';
 import thunk from 'redux-thunk';
-import reducerSearch from '../../reducer/search';
+import reducerStandard from '../../reducer/standard';
 
 export default class {
     constructor() {
         this.store = createStore(
-            reducerSearch,
+            reducerStandard,
             {
                 data: {
                     brands: [],

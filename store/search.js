@@ -1,5 +1,6 @@
 import {createStore, applyMiddleware} from 'redux';
 import thunk from 'redux-thunk';
+import reducerStandard from '../reducer/standard';
 
 const resultLimit = 10;
 
@@ -8,7 +9,7 @@ export default class {
     constructor(app) {
         this.app = app;
         this.store = createStore(
-            this.reducers,
+            reducerStandard,
             applyMiddleware(thunk)
         );
     }
@@ -49,28 +50,16 @@ export default class {
         });
     }
 
-    reducers(state = {}, action) {
-        switch (action.type) {
-            case 'GET_CONTENT_DATA':
-                state = action.data
-                return state;
-            case 'GET_CONTENT_DATA_ERROR':
-                return state;
-            default:
-                return state;
-        }
-    }
-
     handleGetSuccess(data) {
         return {
-            type: 'GET_CONTENT_DATA',
+            type: 'GET_DATA',
             data: data
         };
     }
 
     handleGetError(error) {
         return {
-            type: 'GET_CONTENT_DATA_ERROR',
+            type: 'GET_DATA_ERROR',
             data: error
         };
     }

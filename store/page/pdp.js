@@ -2,6 +2,7 @@ import {createStore, applyMiddleware} from 'redux';
 import thunk from 'redux-thunk';
 import axios from 'axios';
 import config from '../../configPublic';
+import reducerStandard from '../../reducer/standard';
 
 const endPoint = config.api.origin + '/service/page/pdp';
 
@@ -9,33 +10,21 @@ export default class {
 
     constructor() {
         this.store = createStore(
-            this.reducers,
+            reducerStandard,
             applyMiddleware(thunk)
         );
     }
 
-    reducers(state = {}, action) {
-        switch (action.type) {
-        case 'GET_PDP_DATA':
-            state = action.data
-            return state;
-        case 'GET_PDP_DATA_ERROR':
-            return state;
-        default:
-            return state;
-        }
-    }
-
     handleGetSuccess(data) {
         return {
-            type: 'GET_PDP_DATA',
+            type: 'GET_DATA',
             data: data
         };
     }
 
     handleGetError(error) {
         return {
-            type: 'GET_PDP_DATA_ERROR',
+            type: 'GET_DATA_ERROR',
             data: error
         };
     }
