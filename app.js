@@ -20,6 +20,12 @@ utilityFile = new UtilityFile();
 utilityFile.updateStaticAssetVersion(staticAssetDirectory);
 
 
+/* CLEAR BACKEND CACHE IF NOT ENABLED
+*************************************/
+
+utilityCache.initialize();
+
+
 /* ROUTES
 *************************************/
 

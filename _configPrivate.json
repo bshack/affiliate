@@ -10,6 +10,9 @@
             "debug": false
         }
     },
+    "cache": {
+        "isEnabled": false
+    },
     "session": {
         "secret": ""
     },

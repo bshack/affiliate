@@ -2,6 +2,7 @@ import React from 'react';
 import numeral from 'numeral';
 import UtilityJSONLD from '../../utility/jsonLD';
 import Picture from './picture.jsx';
+import LazyLoad from 'react-lazy-load';
 
 const utilityJSONLD = new UtilityJSONLD();
 
@@ -13,7 +14,14 @@ class View extends React.Component {
             image =
                 <div className='image'>
                     <a href={'/' + this.props.data.path + '/' + this.props.data.seoFilenamePart + '.html'}>
-                        <Picture data={this.props.data} config={this.props.config} />
+                        {
+                            this.props.isLazy?
+                                <LazyLoad offset={1000}>
+                                    <Picture data={this.props.data} config={this.props.config} />
+                                </LazyLoad>
+                                :
+                                <Picture data={this.props.data} config={this.props.config} />
+                        }
                     </a>
                 </div>
         }
@@ -23,7 +31,14 @@ class View extends React.Component {
             imageAdditional =
                 <div className='image'>
                     <a href={'/' + this.props.data.path + '/' + this.props.data.seoFilenamePart + '.html'}>
-                        <Picture data={this.props.data} slug='additional' />
+                        {
+                            this.props.isLazy?
+                                <LazyLoad offset={400}>
+                                    <Picture data={this.props.data} slug='additional' />
+                                </LazyLoad>
+                                :
+                                <Picture data={this.props.data} slug='additional' />
+                        }
                     </a>
                 </div>
         }
@@ -65,23 +80,42 @@ class View extends React.Component {
         }
 
         return (
-            <div className='product'>
-                {image}
-                {imageAdditional}
-                <div className='detail'>
-                    <h3>
-                        <a href={'/' + this.props.data.path + '/'
+            this.props.isLazy?
+                <div className='product'>
+                    {image}
+                    {imageAdditional}
+                    <div className='detail'>
+                        <h3>
+                            <a href={'/' + this.props.data.path + '/'
                             + this.props.data.seoFilenamePart + '.html'}>{this.props.data.title}</a>
-                    </h3>
-                    {programName}
-                    {productCondition}
-                    {price}
+                        </h3>
+                        {programName}
+                        {productCondition}
+                        {price}
+                    </div>
+                    <div className='cta'>
+                        <a className='anchor-1' href={this.props.data.link}>get deal now</a>
+                    </div>
+                    {utilityJSONLD.product(this.props.data, this.props.config)}
                 </div>
-                <div className='cta'>
-                    <a className='anchor-1' href={this.props.data.link}>get deal now</a>
+                :
+                <div className='product'>
+                    {image}
+                    {imageAdditional}
+                    <div className='detail'>
+                        <h3>
+                            <a href={'/' + this.props.data.path + '/'
+                            + this.props.data.seoFilenamePart + '.html'}>{this.props.data.title}</a>
+                        </h3>
+                        {programName}
+                        {productCondition}
+                        {price}
+                    </div>
+                    <div className='cta'>
+                        <a className='anchor-1' href={this.props.data.link}>get deal now</a>
+                    </div>
+                    {utilityJSONLD.product(this.props.data, this.props.config)}
                 </div>
-                {utilityJSONLD.product(this.props.data, this.props.config)}
-            </div>
         );
     }
 }

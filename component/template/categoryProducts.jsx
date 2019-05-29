@@ -3,9 +3,7 @@ import Product from './product.jsx';
 import {connect} from 'react-redux';
 
 class View extends React.Component {
-
     render() {
-
         return (
             <section className="category-products container">
                 {
@@ -21,7 +19,7 @@ class View extends React.Component {
                     {this.props.data.map(
                         (product, index) =>
                             <div key={index} className='col-6 col-md-4 col-lg-3'>
-                                <Product data={product} key={index} config={this.props.config} />
+                                <Product isLazy={(index > 12)? true : false} data={product} key={index} />
                             </div>
                     )}
                 </div>
