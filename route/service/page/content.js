@@ -40,7 +40,7 @@ exports.get = function(req, res) {
             storeNavigationMain.getAll({})
         ),
         storeBreadcrumbs.store.dispatch(
-            storeBreadcrumbs.getAll({})
+            storeBreadcrumbs.getAll(contentParams)
         ),
         storeNavigationFooter.store.dispatch(
             storeNavigationFooter.getAll()

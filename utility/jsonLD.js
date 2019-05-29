@@ -6,8 +6,6 @@ import config from '../configPublic';
 class JSONLD {
 
     product(data) {
-
-        let cdn = config.cdn.origin;
         let defaultJSONLD = {
             '@context': 'http://schema.org/',
             '@type': 'Product',
@@ -29,14 +27,15 @@ class JSONLD {
             }
         };
         if (data.path && data.seoFilenamePart) {
-            defaultProductData.url = (cdn + '/' + data.path + '/' + data.seoFilenamePart + '.html');
+            defaultProductData.url = (config.www.origin + '/' + data.path + '/' + data.seoFilenamePart + '.html');
             defaultProductData.offers.url = defaultProductData.url;
         }
         if (data.title !== '') {
             defaultProductData.name = data.title;
         }
         if (data.path && data.seoFilenamePart && data.isImageLinkProcessed) {
-            defaultProductData.image = (cdn + '/' + data.path + '/' + data.seoFilenamePart + '-large@2x.jpg');
+            defaultProductData.image = (config.www.origin + '/' +
+                data.path + '/' + data.seoFilenamePart + '-large@2x.jpg');
         }
         if (data.description !== '') {
             defaultProductData.description = data.description;
@@ -110,7 +109,6 @@ class JSONLD {
     }
 
     siteNavigationElement(data) {
-        let cdn = 'https://s3.us-east-2.amazonaws.com/cdn.shackelforddigital.io';
         let defaultJSONLD = {
             '@context': 'https://schema.org',
             '@graph': []
@@ -124,7 +122,7 @@ class JSONLD {
                         '@context': 'https://schema.org',
                         '@type': 'SiteNavigationElement',
                         'name': data[key].title,
-                        'url': cdn + '/' + data[key].path + '/index.html'
+                        'url': config.www.origin + '/' + data[key].path + '/index.html'
                     });
                     if (_.size(data[key].children)) {
                         siteNavigationElements =
@@ -147,7 +145,6 @@ class JSONLD {
     }
 
     breadcrumbs(data) {
-        let cdn = 'https://s3.us-east-2.amazonaws.com/cdn.shackelforddigital.io';
         let defaultJSONLD = {
             '@context': 'https://schema.org',
             '@type': 'BreadcrumbList',
@@ -162,7 +159,8 @@ class JSONLD {
                     '@type': 'ListItem',
                     'position': position,
                     'item': {
-                        '@id': cdn + '/' + data[key].path + '/index.html',
+                        '@id': config.www.origin + '/' + (data[key].path? data[key].path +
+                                '/index.html' : data[key].url + '.html'),
                         'name': data[key].title
                     }
                 });

@@ -5,8 +5,8 @@ class View extends React.Component {
     render() {
         return (
             <section className="content container">
-                <div className="row">
-                    <div className={'col-12 content-'
+                <div className="row justify-content-center">
+                    <div className={'col-12 col-md-10 content-'
                         + this.props.data[0].filename}
                     dangerouslySetInnerHTML={{__html: this.props.data[0].content}} />
                 </div>
