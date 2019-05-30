@@ -3,6 +3,8 @@ import thunk from 'redux-thunk';
 import moment from 'moment';
 import reducerStandard from '../reducer/standard';
 
+const productMaxDaysOld = 360;
+
 export default class {
 
     constructor(app) {
@@ -37,7 +39,7 @@ export default class {
             let offsetParam = 0;
             let limitParam = 1000;
             let skipParam = false;
-            let oldestProductCreationDate = moment(new Date()).subtract(60, 'days').format('YYYY-MM-DD HH:mm:ss');
+            let oldestProductCreationDate = moment(new Date()).subtract(productMaxDaysOld, 'days').format('YYYY-MM-DD HH:mm:ss');
 
             if (params.offset && (parseInt(params.offset, 10) > offsetParam)) {
                 offsetParam = parseInt(params.offset, 10);
