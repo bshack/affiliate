@@ -4,44 +4,65 @@ import UtilityJSONLD from '../../utility/jsonLD';
 import {connect} from 'react-redux';
 
 const utilityJSONLD = new UtilityJSONLD();
-const ctaBuilder = (data) => {
-    if (data.path === '') {
-        return <button type="button" aria-expanded='false'>{data.title}</button>;
-    } else {
-        return <a href={'/' + data.path + '/index.html'}>{data.title}</a>;
-    }
-};
-const recursiveBuilder = (data) => {
-    let key;
-    let links = [];
-    for (key in data) {
-        if (_.size(data[key].children)) {
-            links.push(
-                <li key={data[key].id} aria-expanded='false'>
-                    {ctaBuilder(data[key])}
-                    {recursiveBuilder(data[key].children)}
-                </li>
-            );
+
+class View extends React.PureComponent {
+
+    openCategoryMenu(e) {
+        e.preventDefault();
+        if (this.props.state.data.isCategoryMenuOpen) {
+            this.props.state.data.isCategoryMenuOpen = false;
         } else {
-            links.push(
-                <li key={data[key].id}>
-                    {ctaBuilder(data[key])}
-                </li>
-            );
+            this.props.state.data.isCategoryMenuOpen = true;
+        }
+        this.props.dispatch({
+            type: 'GET_DATA',
+            data: _.extend({}, this.props.state)
+        });
+    }
+
+    ctaBuilder(data) {
+        if (data.path === '') {
+            return <button
+                className={this.props.state.data.isCategoryMenuOpen? 'open' : null}
+                type="button"
+                aria-expanded='false'
+                onClick={this.openCategoryMenu.bind(this)}
+            >{data.title}</button>;
+        } else {
+            return <a href={'/' + data.path + '/index.html'}>{data.title}</a>;
         }
     }
-    return <ul>{links}</ul>;
-};
 
-class View extends React.Component {
+    recursiveBuilder(data) {
+        let key;
+        let links = [];
+        for (key in data) {
+            if (_.size(data[key].children)) {
+                links.push(
+                    <li key={data[key].id} aria-expanded='false'>
+                        {this.ctaBuilder(data[key])}
+                        {this.recursiveBuilder(data[key].children)}
+                    </li>
+                );
+            } else {
+                links.push(
+                    <li key={data[key].id}>
+                        {this.ctaBuilder(data[key])}
+                    </li>
+                );
+            }
+        }
+        return <ul>{links}</ul>;
+    }
+
     render() {
         return (
             <nav className="navigation-main">
                 <div className="container">
                     <div className="row">
                         <div className="col-12">
-                            {recursiveBuilder(this.props.data)}
-                            {utilityJSONLD.siteNavigationElement(this.props.data)}
+                            {this.recursiveBuilder(this.props.state.data.navigationMain)}
+                            {utilityJSONLD.siteNavigationElement(this.props.state.data.navigationMain)}
                         </div>
                     </div>
                 </div>
@@ -52,11 +73,10 @@ class View extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        data: state.data.navigationMain
+        state: state
     }
 }
 
 export default connect(
-    mapStateToProps,
-    {}
+    mapStateToProps
 )(View);

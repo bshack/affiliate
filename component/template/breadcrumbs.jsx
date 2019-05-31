@@ -31,7 +31,7 @@ const recursiveBuilder = (data) => {
     return <ul>{links}</ul>;
 };
 
-class View extends React.Component {
+class View extends React.PureComponent {
     render() {
         return (
             <nav className="container breadcrumbs">
@@ -54,6 +54,5 @@ const mapStateToProps = (state) => {
 }
 
 export default connect(
-    mapStateToProps,
-    {}
+    mapStateToProps
 )(View);

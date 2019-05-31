@@ -6,7 +6,7 @@ import {connect} from 'react-redux';
 
 const utilityJSONLD = new UtilityJSONLD();
 
-class View extends React.Component {
+class View extends React.PureComponent {
 
     render() {
 
@@ -133,6 +133,5 @@ const mapStateToProps = (state) => {
 }
 
 export default connect(
-    mapStateToProps,
-    {}
+    mapStateToProps
 )(View);

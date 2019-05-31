@@ -2,7 +2,7 @@ import React from 'react';
 import Product from './product.jsx';
 import {connect} from 'react-redux';
 
-class View extends React.Component {
+class View extends React.PureComponent {
 
     render() {
         return (
@@ -34,6 +34,5 @@ const mapStateToProps = (state) => {
 }
 
 export default connect(
-    mapStateToProps,
-    {}
+    mapStateToProps
 )(View);

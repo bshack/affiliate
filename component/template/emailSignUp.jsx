@@ -4,7 +4,7 @@ import axios from 'axios';
 
 const regex = new Regex();
 
-class View extends React.Component {
+class View extends React.PureComponent {
 
     constructor(props) {
 

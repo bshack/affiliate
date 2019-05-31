@@ -15,7 +15,7 @@ import Footer from '../template/footer.jsx';
 /* COMPONENT
 *************************************/
 
-export default class View extends React.Component {
+export default class View extends React.PureComponent {
     render() {
         return (
             <Provider store={this.props.store}>

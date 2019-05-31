@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 
-class View extends React.Component {
+class View extends React.PureComponent {
     render() {
         return (
             <section className="content container">
@@ -22,6 +22,5 @@ const mapStateToProps = (state) => {
 }
 
 export default connect(
-    mapStateToProps,
-    {}
+    mapStateToProps
 )(View);

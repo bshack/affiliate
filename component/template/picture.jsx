@@ -1,9 +1,8 @@
 import React from 'react';
 import config from '../../configPublic';
 
-class View extends React.Component {
+class View extends React.PureComponent {
     render() {
-
         let cdn = config.cdn.origin + '/';
         let slug = '';
         if (this.props.slug) {

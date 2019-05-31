@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {queryBrandsStores} from '../../action/search';
 
-class View extends React.Component {
+class View extends React.PureComponent {
     searchResults(data) {
 
         let brandRows = [];

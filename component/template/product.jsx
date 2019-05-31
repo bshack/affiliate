@@ -6,7 +6,7 @@ import LazyLoad from 'react-lazy-load';
 
 const utilityJSONLD = new UtilityJSONLD();
 
-class View extends React.Component {
+class View extends React.PureComponent {
 
     render() {
         let image = '';

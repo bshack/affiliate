@@ -2,7 +2,7 @@ import React from 'react';
 import Product from './product.jsx';
 import {connect} from 'react-redux';
 
-class View extends React.Component {
+class View extends React.PureComponent {
     render() {
         return (
             <section className="category-products container">
@@ -37,6 +37,5 @@ const mapStateToProps = (state) => {
 }
 
 export default connect(
-    mapStateToProps,
-    {}
+    mapStateToProps
 )(View);

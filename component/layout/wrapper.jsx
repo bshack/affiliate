@@ -7,7 +7,7 @@ import config from '../../configPublic';
 /* COMPONENT
 *************************************/
 
-class WrapperLayout extends React.Component {
+class WrapperLayout extends React.PureComponent {
     render() {
         let descriptionSEO;
         let descriptionSocial;
@@ -76,6 +76,5 @@ const mapStateToProps = (state) => {
 }
 
 export default connect(
-    mapStateToProps,
-    {}
+    mapStateToProps
 )(WrapperLayout);

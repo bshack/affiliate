@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import NavigationFooter from './navigationFooter.jsx';
 import config from '../../configPublic';
 
-class View extends React.Component {
+class View extends React.PureComponent {
     render() {
         return (
             <footer>
@@ -11,7 +11,7 @@ class View extends React.Component {
                     <div className="row">
                         <div className="col-12">
                             <NavigationFooter
-                                data={this.props.navigationFooter}
+                                data={this.props.state.data.navigationFooter}
                                 configPublic={config} />
                             <small>{String.fromCharCode(169) + ' ' + (new Date().getFullYear()) +
                                 ' ' + config.name}</small>
@@ -25,12 +25,10 @@ class View extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        navigationFooter: state.data.navigationFooter,
-        config: state.data.config
+        state: state
     }
 }
 
 export default connect(
-    mapStateToProps,
-    {}
+    mapStateToProps
 )(View);
