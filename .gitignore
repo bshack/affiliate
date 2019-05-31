@@ -1,6 +1,7 @@
 .DS_Store
 node_modules
 .remote-sync.json
+newrelic_agent.log
 configPrivate.json
 configPublic.json
 dist
