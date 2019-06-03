@@ -1,0 +1,63 @@
+%header {
+
+    padding: rem-calc(10) 0;
+
+    a {
+
+        @extend %accessibility-hidden-text-1;
+        @extend %accessibility-outline-1;
+
+        @include media-breakpoint-up(sm) {
+            background-image: url('../image/logo-desktop-tagline.svg');
+            height: rem-calc(60);
+            width: rem-calc(280);
+        }
+
+        background-image: url('../image/logo-mobile.svg');
+        background-repeat: no-repeat;
+        display: inline-block;
+        height: rem-calc(45);
+        width: rem-calc(52);
+
+    }
+
+    nav {
+
+        display: flex;
+        justify-content: space-between;
+
+        .menu {
+            background-image: url('../image/menu.svg');
+        }
+
+        .search {
+            background-image: url('../image/search.svg');
+        }
+
+        .menu,
+        .search {
+
+            @extend %accessibility-hidden-text-1;
+            @extend %accessibility-outline-1;
+
+            @include media-breakpoint-up(sm) {
+                display: none;
+            }
+
+            appearance: none;
+            background-position: center;
+            background-repeat: no-repeat;
+            border: 0;
+            height: rem-calc(45);
+            padding: 0;
+            width: rem-calc(45);
+
+            &.open {
+                background-image: url('../image/close.svg');
+            }
+
+        }
+
+    }
+
+}

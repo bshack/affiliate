@@ -3,14 +3,15 @@ import {connect} from 'react-redux';
 import NavigationFooter from '../template/navigationFooter.jsx';
 import config from '../../configPublic';
 
-
 /* COMPONENT
 *************************************/
 
 class WrapperLayout extends React.PureComponent {
     render() {
+
         let descriptionSEO;
         let descriptionSocial;
+
         if (this.props.data.meta.description && this.props.data.meta.description !== '') {
             descriptionSEO = <meta name="description" content={this.props.data.meta.description} />;
             descriptionSocial = this.props.data.meta.description;
@@ -56,7 +57,6 @@ class WrapperLayout extends React.PureComponent {
                         + config.static.version + '/style/index.css'} />
                 </head>
                 <body>
-                    <h1>hi!2</h1>
                     <div id="app">
                         {this.props.children}
                     </div>

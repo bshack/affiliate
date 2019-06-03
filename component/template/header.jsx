@@ -1,36 +1,38 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import config from '../../configPublic';
-import Search from './search.jsx';
-import StoreSearch from '../../store/page/search';
-import {Provider} from 'react-redux';
 import _ from 'lodash';
 
-const storeSearch = new StoreSearch(config);
-
 class View extends React.PureComponent {
+
     openMainMenu(e) {
         e.preventDefault();
+        let menuState = {
+            data: {
+                isSearchMenuOpen: false
+            }
+        };
         if (this.props.state.data.isMainMenuOpen) {
-            this.props.state.data.isMainMenuOpen = false;
+            menuState.data.isMainMenuOpen = false;
         } else {
-            this.props.state.data.isMainMenuOpen = true;
+            menuState.data.isMainMenuOpen = true;
         }
         this.props.dispatch({
-            type: 'GET_DATA',
-            data: _.extend({}, this.props.state)
+            type: 'UPDATE_DATA',
+            data: menuState
         });
     }
-    
+
     openSearchMenu(e) {
         e.preventDefault();
         if (this.props.state.data.isSearchMenuOpen) {
             this.props.state.data.isSearchMenuOpen = false;
         } else {
             this.props.state.data.isSearchMenuOpen = true;
+            this.props.state.data.isMainMenuOpen = false;
         }
         this.props.dispatch({
-            type: 'GET_DATA',
+            type: 'UPDATE_DATA',
             data: _.extend({}, this.props.state)
         });
     }
@@ -40,25 +42,43 @@ class View extends React.PureComponent {
             <header>
                 <div className="container">
                     <div className="row">
-                        <div className="col-3">
-                            <button className={'hamburger hamburger--squeeze' +
-                                (this.props.state.data.isMainMenuOpen? ' is-active' : '')} type="button"
-                            onClick={this.openMainMenu.bind(this)}>
-                                <span className="hamburger-box">
-                                    <span className="hamburger-inner"></span>
-                                </span>
-                            </button>
-                            {config.name}
-                            <button className={'search' +
-                                (this.props.state.data.isSearchMenuOpen? ' open' : '')} type="button"
-                            onClick={this.openSearchMenu.bind(this)}>
-                                search
-                            </button>
-                        </div>
-                        <Provider store={storeSearch.store}>
-                            <Search />
-                        </Provider>
-                        <div className="col-1" />
+                        <nav className="col-12">
+                            {(this.props.state.data.isMainMenuOpen?
+                                <button
+                                    className='menu open'
+                                    type="button"
+                                    onClick={this.openMainMenu.bind(this)}
+                                >
+                                    close main menu
+                                </button>
+                                :
+                                <button
+                                    className='menu'
+                                    type="button"
+                                    onClick={this.openMainMenu.bind(this)}
+                                >
+                                    open main menu
+                                </button>
+                            )}
+                            <a href="/">{config.name}, click to go to hompeage</a>
+                            {(this.props.state.data.isSearchMenuOpen?
+                                <button
+                                    className='search open'
+                                    type="button"
+                                    onClick={this.openSearchMenu.bind(this)}
+                                >
+                                    close search menu
+                                </button>
+                                :
+                                <button
+                                    className='search'
+                                    type="button"
+                                    onClick={this.openSearchMenu.bind(this)}
+                                >
+                                    open search menu
+                                </button>
+                            )}
+                        </nav>
                     </div>
                 </div>
             </header>

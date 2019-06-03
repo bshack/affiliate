@@ -227,6 +227,10 @@ body {
     @extend %font-open-sans-extra-bold-italic;
 }
 
+header {
+    @extend %header;
+}
+
 .navigation-footer {
     @extend %navigation-footer;
 }
