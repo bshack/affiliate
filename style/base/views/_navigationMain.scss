@@ -1,6 +1,15 @@
 %navigation-main {
 
+    @include media-breakpoint-up(sm) {
+        display: block;
+    }
+
     background-color: $color-black-1;
+    display: none;
+
+    &.open {
+        display: block;
+    }
 
     &.fixed {
         position: fixed;

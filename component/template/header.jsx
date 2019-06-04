@@ -5,6 +5,12 @@ import _ from 'lodash';
 
 class View extends React.PureComponent {
 
+    componentDidMount() {
+        if (typeof Image === 'function') {
+            new Image().src = config.www.origin + '/' + config.static.version + '/image/close.svg';
+        }
+    }
+
     openMainMenu(e) {
         e.preventDefault();
         let menuState = {
@@ -42,25 +48,33 @@ class View extends React.PureComponent {
             <header>
                 <div className="container">
                     <div className="row">
-                        <nav className="col-12">
+                        <nav className="col-12" aria-label="toolbar">
                             {(this.props.state.data.isMainMenuOpen?
                                 <button
-                                    className='menu open'
+                                    id="navigation-main-toggle"
+                                    aria-expanded="true"
+                                    aria-haspopup="true"
+                                    aria-controls="navigation-main"
+                                    className="menu open"
                                     type="button"
                                     onClick={this.openMainMenu.bind(this)}
                                 >
-                                    close main menu
+                                    main menu
                                 </button>
                                 :
                                 <button
-                                    className='menu'
+                                    id="navigation-main-toggle"
+                                    aria-expanded="false"
+                                    aria-haspopup="true"
+                                    aria-controls="navigation-main"
+                                    className="menu"
                                     type="button"
                                     onClick={this.openMainMenu.bind(this)}
                                 >
-                                    open main menu
+                                    main menu
                                 </button>
                             )}
-                            <a href="/">{config.name}, click to go to hompeage</a>
+                            <a href="/">{config.name}</a>
                             {(this.props.state.data.isSearchMenuOpen?
                                 <button
                                     className='search open'

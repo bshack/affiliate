@@ -23,44 +23,37 @@ const storeSearch = new StoreSearch(config);
 *************************************/
 
 export default class View extends React.PureComponent {
+
+    pageContent() {
+        return <div id="wrapper">
+            <Header />
+            <Provider store={storeSearch.store}>
+                <Search />
+            </Provider>
+            <NavigationMain />
+            <main id="main-content">
+                <Content />
+                <FeaturedProducts />
+                <EmailSignUp />
+                <CategoryProducts />
+            </main>
+            <Footer />
+        </div>;
+    }
+
     render() {
         return (
             <Provider store={this.props.store}>
                 {
                     this.props.fullDocumentRender === true?
                         <LayoutWrapper jsFile='index'>
-                            <div id="wrapper">
-                                <Header />
-                                <Provider store={storeSearch.store}>
-                                    <Search />
-                                </Provider>
-                                <main>
-                                    <NavigationMain />
-                                    <Content />
-                                    <FeaturedProducts />
-                                    <EmailSignUp />
-                                    <CategoryProducts />
-                                </main>
-                                <Footer />
-                            </div>
+                            {this.pageContent()}
                         </LayoutWrapper>
                         :
-                        <div id="wrapper">
-                            <Header />
-                            <Provider store={storeSearch.store}>
-                                <Search />
-                            </Provider>
-                            <main>
-                                <NavigationMain />
-                                <Content />
-                                <FeaturedProducts />
-                                <EmailSignUp />
-                                <CategoryProducts />
-                            </main>
-                            <Footer />
-                        </div>
+                        this.pageContent()
                 }
             </Provider>
         );
     }
+
 }

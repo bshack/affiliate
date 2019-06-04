@@ -10,7 +10,7 @@ class File {
         let newData;
 
         directories = directories.sort(function(a, b) {
-           return fs.statSync(staticAssetDirectory + '/' + a).mtime.getTime() -
+            return fs.statSync(staticAssetDirectory + '/' + a).mtime.getTime() -
                   fs.statSync(staticAssetDirectory + '/' + b).mtime.getTime();
         });
 

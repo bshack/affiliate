@@ -57,6 +57,7 @@ class WrapperLayout extends React.PureComponent {
                         + config.static.version + '/style/index.css'} />
                 </head>
                 <body>
+                    <a class="accessibility-skip-to-element" href="#main-content">skip to content</a>
                     <div id="app">
                         {this.props.children}
                     </div>

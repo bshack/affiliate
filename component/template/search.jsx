@@ -49,11 +49,11 @@ class View extends React.PureComponent {
     }
     render() {
         return (
-            <fieldset className="search">
+            <fieldset className={'navigation-search' + (this.props.state.data.isSearchMenuOpen? ' open' : '' )}>
                 <label htmlFor="brand-store-search">search</label>
                 <input id="brand-store-search" type="search" placeholder="search" onInput={this.search.bind(this)} />
                 <button type="submit">search</button>
-                {this.searchResults(this.props.data)}
+                {this.searchResults(this.props.state.data)}
             </fieldset>
         );
     }
@@ -61,8 +61,7 @@ class View extends React.PureComponent {
 
 const mapStateToProps = (state) => {
     return {
-        config: state.config,
-        data: state.data
+        state: state
     }
 }
 

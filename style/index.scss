@@ -103,6 +103,10 @@ body {
 
 }
 
+.accessibility-skip-to-element {
+    @extend %accessibility-skip-to-element-1;
+}
+
 .anchor-1 {
     @extend %anchor-1;
 }
@@ -237,6 +241,10 @@ header {
 
 .navigation-main {
     @extend %navigation-main;
+}
+
+.navigation-search {
+    @extend %navigation-search;
 }
 
 .product-detail {

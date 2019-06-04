@@ -1,0 +1,15 @@
+%navigation-search {
+
+    @include media-breakpoint-up(sm) {
+
+        display: block;
+
+    }
+
+    display: none;
+
+    &.open {
+        display: block;
+    }
+
+}

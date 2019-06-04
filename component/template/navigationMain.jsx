@@ -29,7 +29,7 @@ class View extends React.PureComponent {
                 onClick={this.openCategoryMenu.bind(this)}
             >{data.title}</button>;
         } else {
-            return <a href={'/' + data.path + '/index.html'}>{data.title}</a>;
+            return <a href={'/' + data.path + '/index.html'} role="menuitem">{data.title}</a>;
         }
     }
 
@@ -46,7 +46,7 @@ class View extends React.PureComponent {
                 );
             } else {
                 links.push(
-                    <li key={data[key].id}>
+                    <li key={data[key].id} role="none">
                         {this.ctaBuilder(data[key])}
                     </li>
                 );
@@ -57,7 +57,12 @@ class View extends React.PureComponent {
 
     render() {
         return (
-            <nav className="navigation-main">
+            <nav
+                id="navigation-main"
+                className={'navigation-main' + (this.props.state.data.isMainMenuOpen? ' open' : '' )} 
+                role="menu"
+                aria-labelledby="navigation-main-toggle"
+            >
                 <div className="container">
                     <div className="row">
                         <div className="col-12">
