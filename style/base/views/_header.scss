@@ -1,7 +1,15 @@
 %header {
 
-    padding: rem-calc(10) 0;
+    @include media-breakpoint-only(xs) {
+        padding: rem-calc(10) 0;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 1000;
+    }
 
+    background-color: $color-white-1;
+    
     a {
 
         @extend %accessibility-hidden-text-1;

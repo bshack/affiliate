@@ -6,7 +6,7 @@ import config from '../../configPublic';
 class View extends React.PureComponent {
     render() {
         return (
-            <footer>
+            <footer className={(this.props.state.data.isMainContentHidden? 'd-none d-sm-block' : 'd-block')}>
                 <div className="container">
                     <div className="row">
                         <div className="col-12">

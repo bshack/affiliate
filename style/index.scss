@@ -250,3 +250,7 @@ header {
 .product-detail {
     @extend %product-detail;
 }
+
+.wrapper {
+    @extend %wrapper;
+}

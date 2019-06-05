@@ -1,5 +1,6 @@
 import React from 'react';
 import {Provider} from 'react-redux';
+import {connect} from 'react-redux';
 import config from '../../configPublic';
 
 /* VIEWS
@@ -7,31 +8,29 @@ import config from '../../configPublic';
 
 import LayoutWrapper from '../layout/wrapper.jsx';
 import Header from '../template/header.jsx';
-import Search from '../template/search.jsx';
 import NavigationMain from '../template/navigationMain.jsx';
+import NavigationSearch from '../template/navigationSearch.jsx';
 import Content from '../template/content.jsx';
 import FeaturedProducts from '../template/featuredProducts.jsx';
 import CategoryProducts from '../template/categoryProducts.jsx';
 import EmailSignUp from '../template/emailSignUp.jsx';
 import EmailUnsubscribe from '../template/emailUnsubscribe.jsx';
 import Footer from '../template/footer.jsx';
-import StoreSearch from '../../store/page/search';
-
-const storeSearch = new StoreSearch(config);
 
 /* COMPONENT
 *************************************/
 
-export default class View extends React.PureComponent {
+class View extends React.PureComponent {
 
     pageContent() {
-        return <div id="wrapper">
+        return <div className="wrapper">
             <Header />
-            <Provider store={storeSearch.store}>
-                <Search />
-            </Provider>
+            <NavigationSearch />
             <NavigationMain />
-            <main id="main-content">
+            <main
+                id="main-content"
+                className={(this.props.state.data.isMainContentHidden? 'd-none d-sm-block' : 'd-block')}
+            >
                 <Content />
                 <FeaturedProducts />
                 <EmailSignUp />
@@ -57,3 +56,13 @@ export default class View extends React.PureComponent {
     }
 
 }
+
+const mapStateToProps = (state) => {
+    return {
+        state: state
+    }
+}
+
+export default connect(
+    mapStateToProps
+)(View);

@@ -59,7 +59,8 @@ class View extends React.PureComponent {
         return (
             <nav
                 id="navigation-main"
-                className={'navigation-main' + (this.props.state.data.isMainMenuOpen? ' open' : '' )} 
+                className={'navigation-main' +
+                    (this.props.state.data.isMainMenuOpen? ' d-block' : ' d-none d-sm-block' )}
                 role="menu"
                 aria-labelledby="navigation-main-toggle"
             >

@@ -32,17 +32,19 @@
 // show skip to links on focus
 %accessibility-skip-to-element-1 {
 
-    @extend %accessibility-focus-1;
-    @extend %accessibility-outline-1;
+    @extend %accessibility-hidden-element-1;
 
-    display: block;
-    padding: rem-calc(10);
-    text-align: center;
-
-    &:hover,
-    &:focus {
-        text-decoration: underline;
-    }
+    // @extend %accessibility-focus-1;
+    // @extend %accessibility-outline-1;
+    //
+    // display: block;
+    // padding: rem-calc(10);
+    // text-align: center;
+    //
+    // &:hover,
+    // &:focus {
+    //     text-decoration: underline;
+    // }
 
 }
 

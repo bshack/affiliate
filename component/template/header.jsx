@@ -20,8 +20,10 @@ class View extends React.PureComponent {
         };
         if (this.props.state.data.isMainMenuOpen) {
             menuState.data.isMainMenuOpen = false;
+            menuState.data.isMainContentHidden = false;
         } else {
             menuState.data.isMainMenuOpen = true;
+            menuState.data.isMainContentHidden = true;
         }
         this.props.dispatch({
             type: 'UPDATE_DATA',
@@ -31,15 +33,22 @@ class View extends React.PureComponent {
 
     openSearchMenu(e) {
         e.preventDefault();
+        let menuState = {
+            data: {
+                isMainMenuOpen: false
+            }
+        };
         if (this.props.state.data.isSearchMenuOpen) {
-            this.props.state.data.isSearchMenuOpen = false;
+            menuState.data.isSearchMenuOpen = false;
+            menuState.data.isMainContentHidden = false;
         } else {
-            this.props.state.data.isSearchMenuOpen = true;
-            this.props.state.data.isMainMenuOpen = false;
+            menuState.data.isSearchMenuOpen = true;
+            menuState.data.isMainContentHidden = true;
         }
+        console.log(menuState);
         this.props.dispatch({
             type: 'UPDATE_DATA',
-            data: _.extend({}, this.props.state)
+            data: menuState
         });
     }
 
