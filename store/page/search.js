@@ -9,7 +9,8 @@ export default class {
             {
                 data: {
                     brands: [],
-                    programs: []
+                    programs: [],
+                    products: []
                 }
             },
             applyMiddleware(thunk)

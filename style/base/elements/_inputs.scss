@@ -1,0 +1,10 @@
+%input-1 {
+
+    @extend %accessibility-outline-1;
+
+    appearance: none;
+    border: rem-calc(1) solid $color-black-1;
+    min-height: rem-calc(45);
+    padding: 0 rem-calc(15);
+
+}

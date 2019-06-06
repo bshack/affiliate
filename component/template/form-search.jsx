@@ -8,22 +8,28 @@ class View extends React.PureComponent {
         let brandRows = [];
         let brandIndex;
         for (brandIndex = 0; brandIndex < data.brands.length; brandIndex++) {
-            brandRows.push(<li key={brandIndex}>{data.brands[brandIndex].brand}</li>);
+            brandRows.push(<li key={brandIndex}><a href="/">{data.brands[brandIndex].brand}</a></li>);
         }
 
         let storeRows = [];
         let storeIndex;
         for (storeIndex = 0; storeIndex < data.programs.length; storeIndex++) {
-            storeRows.push(<li key={storeIndex}>{data.programs[storeIndex].programName}</li>);
+            storeRows.push(<li key={storeIndex}><a href="/">{data.programs[storeIndex].programName}</a></li>);
         }
 
-        if (!brandRows.length && !storeRows.length) {
+        let productRows = [];
+        let productIndex;
+        for (productIndex = 0; productIndex < data.products.length; productIndex++) {
+            productRows.push(<li key={productIndex}><a href="/">{data.products[productIndex].title}</a></li>);
+        }
+
+        if (!brandRows.length && !storeRows.length && !productRows.length) {
             return null;
         } else {
             return <div className="results">
                 {brandRows.length?
                     <div className="brands">
-                        <span>Brands</span>
+                        <strong>Brands</strong>
                         <ul>
                             {brandRows}
                         </ul>
@@ -31,9 +37,17 @@ class View extends React.PureComponent {
                 }
                 {storeRows.length?
                     <div className="stores">
-                        <span>Stores</span>
+                        <strong>Stores</strong>
                         <ul>
                             {storeRows}
+                        </ul>
+                    </div> : null
+                }
+                {productRows.length?
+                    <div className="products">
+                        <strong>Products</strong>
+                        <ul>
+                            {productRows}
                         </ul>
                     </div> : null
                 }
@@ -41,24 +55,33 @@ class View extends React.PureComponent {
         }
 
     }
-    search(e) {
+    onInputSearch(e) {
         e.preventDefault();
         this.props.queryBrandsStores({
             q: e.target.value
         });
     }
+    onSubmitSearch(e) {
+        e.preventDefault();
+        this.props.queryBrandsStores({
+            q: e.target.querySelector('#brand-store-search').value
+        });
+    }
     render() {
         return (
-            <form>
+            <form
+                className="form-search"
+                onSubmit={this.onSubmitSearch.bind(this)}
+            >
                 <fieldset>
-                    <label htmlFor="brand-store-search">search</label>
+                    <label htmlFor="brand-store-search" className="accessibility-hidden-element">search for ba</label>
                     <input
                         id="brand-store-search"
                         type="search"
-                        placeholder="search"
-                        onInput={this.search.bind(this)}
+                        placeholder="search brands, stores &amp; products"
+                        onInput={this.onInputSearch.bind(this)}
                     />
-                    <button type="submit">search</button>
+                    <button type="submit" className="accessibility-hidden-element">search</button>
                     {this.searchResults(this.props.state.data)}
                 </fieldset>
             </form>

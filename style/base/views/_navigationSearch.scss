@@ -3,9 +3,7 @@
     @include media-breakpoint-only(xs) {
         background-color: $color-white-1;
         height: 100%;
-        position: fixed;
         width: 100%;
-        z-index: 1000;
     }
 
 }

@@ -7,7 +7,8 @@ class View extends React.PureComponent {
 
     componentDidMount() {
         if (typeof Image === 'function') {
-            new Image().src = config.www.origin + '/' + config.static.version + '/image/close.svg';
+            new Image().src = config.www.origin + '/' + config.static.version + '/image/menu-white.svg';
+            new Image().src = config.www.origin + '/' + config.static.version + '/image/search-white.svg';
         }
     }
 
@@ -45,7 +46,6 @@ class View extends React.PureComponent {
             menuState.data.isSearchMenuOpen = true;
             menuState.data.isMainContentHidden = true;
         }
-        console.log(menuState);
         this.props.dispatch({
             type: 'UPDATE_DATA',
             data: menuState

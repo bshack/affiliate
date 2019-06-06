@@ -1,0 +1,35 @@
+%form-search {
+
+    padding: rem-calc(15);
+
+    input {
+
+        @extend %input-1;
+
+        width: 100%;
+
+    }
+
+    .results {
+        
+        padding: rem-calc(15) 0;
+
+        ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        a {
+
+            @extend %anchor-base-1;
+
+            align-items: center;
+            display: flex;
+            min-height: rem-calc(45);
+
+        }
+
+    }
+
+}

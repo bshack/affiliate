@@ -107,6 +107,10 @@ body {
     @extend %accessibility-skip-to-element-1;
 }
 
+.accessibility-hidden-element {
+    @extend %accessibility-hidden-element-1;
+}
+
 .anchor-1 {
     @extend %anchor-1;
 }
@@ -231,9 +235,18 @@ body {
     @extend %font-open-sans-extra-bold-italic;
 }
 
+.form-search {
+    @extend %form-search;
+}
+
 header {
     @extend %header;
 }
+
+.input-1 {
+    @extend %input-1;
+}
+
 
 .navigation-footer {
     @extend %navigation-footer;
