@@ -37,6 +37,7 @@ const routeContent = require('./route/content');
 const routePLP = require('./route/plp');
 const routePDP = require('./route/pdp');
 const routeUnsubscribe = require('./route/unsubscribe');
+const routeStyle = require('./route/style');
 const routeServiceEmail = require('./route/service/email');
 const routeServiceSearch = require('./route/service/search');
 const routeServicePageIndex = require('./route/service/page/index');
@@ -44,6 +45,7 @@ const routeServicePageContent = require('./route/service/page/content');
 const routeServicePagePLP = require('./route/service/page/plp');
 const routeServicePagePDP = require('./route/service/page/pdp');
 const routeServicePageUnsubscribe = require('./route/service/page/unsubscribe');
+const routeServicePageStyle = require('./route/service/page/style');
 
 /* EXPRESS SERVER
 *************************************/
@@ -91,7 +93,6 @@ app.get('/terms-of-service.html', utilityCache.routeCacher(), routeContent.index
 app.get('/manage-subscription.html', utilityCache.routeCacher(), routeContent.index);
 app.get('/accessibility.html', utilityCache.routeCacher(), routeContent.index);
 app.get('/search.html', utilityCache.routeCacher(), routeContent.index);
-app.get('/style-guide.html', utilityCache.routeCacher(), routeContent.index);
 app.get('/error-404.html', utilityCache.routeCacher(), routeContent.index);
 
 //email marketing
@@ -105,6 +106,9 @@ app.get('/**/index.html', utilityCache.routeCacher(), routePLP.index);
 //pdp
 app.get('/**/*.html', utilityCache.routeCacher(), routePDP.index);
 
+//style guide
+app.get('/style.html', utilityCache.routeCacher(), routeStyle.index);
+
 //services
 app.get('/service/search', utilityCache.routeCacher(), routeServiceSearch.get);
 app.put('/service/email/subscribe', routeServiceEmail.subscribe);
@@ -114,6 +118,8 @@ app.get('/service/page/content', utilityCache.routeCacher(), routeServicePageCon
 app.get('/service/page/plp', utilityCache.routeCacher(), routeServicePagePLP.get);
 app.get('/service/page/pdp', utilityCache.routeCacher(), routeServicePagePDP.get);
 app.get('/service/page/unsubscribe', routeServicePageUnsubscribe.get);
+app.get('/service/page/style', utilityCache.routeCacher(), routeServicePageStyle.get);
+
 
 /* SERVER STARTUP
 *************************************/

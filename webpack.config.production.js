@@ -36,7 +36,8 @@ module.exports = {
         content: './script/content.js',
         plp: './script/plp.js',
         pdp: './script/pdp.js',
-        unsubscribe: './script/unsubscribe.js'
+        unsubscribe: './script/unsubscribe.js',
+        style: './script/style.js'
     },
     module: {
         rules: [{
