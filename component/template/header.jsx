@@ -45,6 +45,9 @@ class View extends React.PureComponent {
         } else {
             menuState.data.isSearchMenuOpen = true;
             menuState.data.isMainContentHidden = true;
+            window.setTimeout(() => {
+                document.querySelector('#site-search-q').focus();
+            }, 100);
         }
         this.props.dispatch({
             type: 'UPDATE_DATA',

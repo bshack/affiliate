@@ -1,6 +1,7 @@
 %header {
 
     @include media-breakpoint-only(xs) {
+        border-bottom: rem-calc(1) solid $color-black-1;
         padding: rem-calc(10) 0;
         position: fixed;
         top: 0;
@@ -8,8 +9,11 @@
         z-index: 1000;
     }
 
+    @include media-breakpoint-up(sm) {
+        padding: rem-calc(20) 0;
+    }
+
     background-color: $color-white-1;
-    border-bottom: rem-calc(1) solid $color-black-1;
 
     a {
 
@@ -18,8 +22,7 @@
 
         @include media-breakpoint-up(sm) {
             background-image: url('../image/logo-desktop-tagline.svg');
-            height: rem-calc(60);
-            width: rem-calc(280);
+            width: rem-calc(240);
         }
 
         background-image: url('../image/logo-mobile.svg');

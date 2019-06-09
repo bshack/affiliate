@@ -5,13 +5,13 @@
     input {
 
         @extend %input-1;
-
+        
         width: 100%;
 
     }
 
     .results {
-        
+
         padding: rem-calc(15) 0;
 
         ul {

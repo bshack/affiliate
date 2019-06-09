@@ -22,6 +22,12 @@ class View extends React.PureComponent {
         });
     }
 
+    componentDidMount() {
+        if (this.props.state.data.isSearchMenuOpen) {
+            console.log('focus');
+        }
+    }
+
     render() {
         return (
             <section className={'navigation-search' +

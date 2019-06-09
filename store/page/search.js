@@ -8,6 +8,7 @@ export default class {
             reducerStandard,
             {
                 data: {
+                    query: '',
                     brands: [],
                     programs: [],
                     products: []

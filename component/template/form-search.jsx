@@ -3,33 +3,53 @@ import {connect} from 'react-redux';
 import {queryBrandsStores} from '../../action/search';
 
 class View extends React.PureComponent {
-    searchResults(data) {
-
+    searchResults() {
         let brandRows = [];
         let brandIndex;
-        for (brandIndex = 0; brandIndex < data.brands.length; brandIndex++) {
-            brandRows.push(<li key={brandIndex}><a href="/">{data.brands[brandIndex].brand}</a></li>);
+        for (brandIndex = 0; brandIndex < this.props.state.data.brands.length; brandIndex++) {
+            brandRows.push(
+                <li key={brandIndex}>
+                    <a
+                        href={'/brand/' + this.props.state.data.brands[brandIndex].brand + '/index.html'}
+                    >{this.props.state.data.brands[brandIndex].brand}</a>
+                </li>
+            );
         }
 
         let storeRows = [];
         let storeIndex;
-        for (storeIndex = 0; storeIndex < data.programs.length; storeIndex++) {
-            storeRows.push(<li key={storeIndex}><a href="/">{data.programs[storeIndex].programName}</a></li>);
+        for (storeIndex = 0; storeIndex < this.props.state.data.programs.length; storeIndex++) {
+            storeRows.push(
+                <li key={storeIndex}>
+                    <a
+                        href={'/store/' + this.props.state.data.programs[storeIndex].programName + '/index.html'}
+                    >{this.props.state.data.programs[storeIndex].programName}</a>
+                </li>
+            );
         }
 
         let productRows = [];
         let productIndex;
-        for (productIndex = 0; productIndex < data.products.length; productIndex++) {
-            productRows.push(<li key={productIndex}><a href="/">{data.products[productIndex].title}</a></li>);
+        for (productIndex = 0; productIndex < this.props.state.data.products.length; productIndex++) {
+            productRows.push(
+                <li key={productIndex}>
+                    <a
+                        href={'/' + this.props.state.data.products[productIndex].path +
+                            '/' + this.props.state.data.products[productIndex].seoFilenamePart + '.html'}
+                    >{this.props.state.data.products[productIndex].title}</a></li>);
         }
 
-        if (!brandRows.length && !storeRows.length && !productRows.length) {
-            return null;
+        if (this.props.state.data.query !== '' && !brandRows.length && !storeRows.length && !productRows.length) {
+            return <div className="results">
+                <p>No results found for <strong>&quot;{this.props.state.data.query}&quot;</strong>.</p>
+            </div>;
+        } else if (!brandRows.length && !storeRows.length && !productRows.length) {
+            return <div className="results"></div>;
         } else {
             return <div className="results">
                 {brandRows.length?
                     <div className="brands">
-                        <strong>Brands</strong>
+                        <strong>brands</strong>
                         <ul>
                             {brandRows}
                         </ul>
@@ -37,7 +57,7 @@ class View extends React.PureComponent {
                 }
                 {storeRows.length?
                     <div className="stores">
-                        <strong>Stores</strong>
+                        <strong>stores</strong>
                         <ul>
                             {storeRows}
                         </ul>
@@ -45,7 +65,7 @@ class View extends React.PureComponent {
                 }
                 {productRows.length?
                     <div className="products">
-                        <strong>Products</strong>
+                        <strong>products</strong>
                         <ul>
                             {productRows}
                         </ul>
@@ -76,9 +96,10 @@ class View extends React.PureComponent {
                 <fieldset>
                     <label htmlFor="brand-store-search" className="accessibility-hidden-element">search for ba</label>
                     <input
-                        id="brand-store-search"
+                        id="site-search-q"
+                        name="site-search-q"
                         type="search"
-                        placeholder="search brands, stores &amp; products"
+                        placeholder="search for brands, stores &amp; products"
                         onInput={this.onInputSearch.bind(this)}
                     />
                     <button type="submit" className="accessibility-hidden-element">search</button>

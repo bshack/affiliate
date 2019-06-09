@@ -54,11 +54,16 @@ export default class {
         return new Promise((resolve, reject) => {
             this.app.get('databaseConnection')
                 .from('product')
-                .select(['title'])
-                .where('title', 'like', '%' + query + '%')
-                .groupBy('title')
+                .select([
+                    'product.title',
+                    'product.seoFilenamePart',
+                    'category.path'
+                ])
+                .where('product.title', 'like', '%' + query + '%')
+                .innerJoin('category', 'product.googleProductCategory', 'category.googleid')
+                .groupBy('product.title')
                 .limit(resultLimit)
-                .orderBy('title', 'desc')
+                .orderBy('product.title', 'desc')
                 .then((data) => {
                     resolve(data);
                 })
@@ -100,6 +105,7 @@ export default class {
             ])
                 .then((data) => {
                     dispatch(this.handleGetSuccess({
+                        query: whereParams.q || '',
                         brands: data[0],
                         programs: data[1],
                         products: data[2]
