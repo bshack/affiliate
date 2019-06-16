@@ -7,4 +7,19 @@
     min-height: rem-calc(45);
     padding: 0 rem-calc(15);
 
+    // sass-lint:disable no-vendor-prefixes
+
+    &::-webkit-search-cancel-button {
+        @extend %accessibility-hidden-element-1;
+    }
+
+    &::-webkit-search-decoration,
+    &::-webkit-search-cancel-button,
+    &::-webkit-search-results-button,
+    &::-webkit-search-results-decoration {
+        appearance: none;
+    }
+
+    // sass-lint:enable no-vendor-prefixes
+
 }

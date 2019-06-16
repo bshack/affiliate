@@ -1,11 +1,53 @@
 %form-search {
 
+    @keyframes spin {
+
+        100% {
+            transform: rotate(360deg);
+        }
+
+    }
+
     padding: rem-calc(15);
+
+    &.loading {
+
+        fieldset {
+
+            &::after {
+                animation: spin $speed-medium linear infinite;
+                display: block;
+            }
+
+        }
+
+    }
+
+    fieldset {
+
+        position: relative;
+
+        &::after {
+            background-image: url('../image/loader.svg');
+            background-repeat: no-repeat;
+            background-size: rem-calc(30) rem-calc(30);
+            content: '';
+            display: none;
+            height: rem-calc(30);
+            position: absolute;
+            right: rem-calc(7.5);
+            top: rem-calc(7.5);
+            width: rem-calc(30);
+        }
+
+    }
 
     input {
 
         @extend %input-1;
 
+        appearance: none;
+        display: block;
         width: 100%;
 
     }

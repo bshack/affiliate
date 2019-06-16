@@ -90,8 +90,8 @@ class View extends React.PureComponent {
     render() {
         return (
             <form
-                className="form-search"
                 onSubmit={this.onSubmitSearch.bind(this)}
+                className={'form-search' + (this.props.state.isLoading? ' loading' : '')}
             >
                 <fieldset>
                     <label htmlFor="brand-store-search" className="accessibility-hidden-element">search for ba</label>

@@ -14,12 +14,15 @@ export default class {
         );
     }
 
-    searchBrands(query) {
+    searchBrands(params) {
         return new Promise((resolve, reject) => {
             this.app.get('databaseConnection')
                 .from('product')
                 .select(['brand'])
-                .where('brand', 'like', '%' + query + '%')
+                .where('brand', 'like', '%' + params.q + '%')
+                .where({
+                    isActive: params.isActive
+                })
                 .groupBy('brand')
                 .limit(resultLimit)
                 .orderBy('brand', 'desc')
@@ -32,12 +35,15 @@ export default class {
         });
     }
 
-    searchPrograms(query) {
+    searchPrograms(params) {
         return new Promise((resolve, reject) => {
             this.app.get('databaseConnection')
                 .from('product')
                 .select(['programName'])
-                .where('programName', 'like', '%' + query + '%')
+                .where('programName', 'like', '%' + params.q + '%')
+                .where({
+                    isActive: params.isActive
+                })
                 .groupBy('programName')
                 .limit(resultLimit)
                 .orderBy('programName', 'desc')
@@ -50,7 +56,7 @@ export default class {
         });
     }
 
-    searchProducts(query) {
+    searchProducts(params) {
         return new Promise((resolve, reject) => {
             this.app.get('databaseConnection')
                 .from('product')
@@ -59,7 +65,10 @@ export default class {
                     'product.seoFilenamePart',
                     'category.path'
                 ])
-                .where('product.title', 'like', '%' + query + '%')
+                .where('product.title', 'like', '%' + params.q + '%')
+                .where({
+                    'product.isActive': params.isActive
+                })
                 .innerJoin('category', 'product.googleProductCategory', 'category.googleid')
                 .groupBy('product.title')
                 .limit(resultLimit)
@@ -99,9 +108,9 @@ export default class {
             }
 
             return Promise.all([
-                this.searchBrands(whereParams.q),
-                this.searchPrograms(whereParams.q),
-                this.searchProducts(whereParams.q)
+                this.searchBrands(whereParams),
+                this.searchPrograms(whereParams),
+                this.searchProducts(whereParams)
             ])
                 .then((data) => {
                     dispatch(this.handleGetSuccess({
