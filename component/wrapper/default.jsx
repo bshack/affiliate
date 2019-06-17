@@ -54,7 +54,7 @@ class WrapperLayout extends React.PureComponent {
                         + '/' + config.favicon} />
                     <link rel="canonical" href={this.props.data.meta.canonical} />
                     <link rel="stylesheet" type="text/css" media="all" href={'/'
-                        + config.static.version + '/style/index.css'} />
+                        + config.static.version + '/style/global.css'} />
                 </head>
                 <body>
                     <a className="accessibility-skip-to-element" href="#main-content">skip to content</a>

@@ -1,3 +1,4 @@
+import '../style/index.scss';
 import 'picturefill';
 import React from 'react';
 import ReactDOM from 'react-dom';

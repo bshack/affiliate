@@ -1,8 +1,8 @@
 $font-family-sans-serif: 'open_sansregular', 'Helvetica Neue', Arial, sans-serif !default;
 
+@import 'type/fontFace';
 @import '../../node_modules/bootstrap/scss/bootstrap-reboot';
 @import '../../node_modules/bootstrap/scss/bootstrap-grid';
-
 @import 'constant/color';
 @import 'constant/layer';
 @import 'constant/speed';
