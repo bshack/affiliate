@@ -32,12 +32,12 @@ module.exports = {
         path: true
     },
     entry: {
-        index: './script/index.js',
-        content: './script/content.js',
-        plp: './script/plp.js',
-        pdp: './script/pdp.js',
-        unsubscribe: './script/unsubscribe.js',
-        style: './script/style.js'
+        index: './entry/index.js',
+        content: './entry/content.js',
+        plp: './entry/plp.js',
+        pdp: './entry/pdp.js',
+        unsubscribe: './entry/unsubscribe.js',
+        style: './entry/style.js'
     },
     module: {
         rules: [{

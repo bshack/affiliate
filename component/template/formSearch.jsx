@@ -1,8 +1,16 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {queryBrandsStores} from '../../action/search';
+import config from '../../configPublic';
 
 class View extends React.PureComponent {
+
+    componentDidMount() {
+        if (typeof Image === 'function') {
+            new Image().src = config.www.origin + '/' + config.static.version + '/image/loader.svg';
+        }
+    }
+
     searchResults() {
         let brandRows = [];
         let brandIndex;

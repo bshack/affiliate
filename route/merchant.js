@@ -1,4 +1,5 @@
 import configPrivate from '../configPrivate.json';
+import config from '../configPublic.json';
 
 /* MODELS
  *************************************/
@@ -11,7 +12,6 @@ import StoreProduct from '../store/product';
 exports.index = function(req, res) {
 
     let storeProduct = new StoreProduct(req.app);
-    let configPublic = req.app.get('configPublic').store.getState();
 
     Promise.all([
         storeProduct.store.dispatch(
@@ -20,7 +20,7 @@ exports.index = function(req, res) {
             })
         )
     ]).then(() => {
-        let products = storeProduct.store.getState().data;
+        let products = storeProduct.store.getState();
         let i;
         let items = [];
         for (i = 0; i < products.length; i++) {
@@ -28,9 +28,9 @@ exports.index = function(req, res) {
 `<item>
 <g:id><![CDATA[` + products[i].id + `]]></g:id>
 <title><![CDATA[` + products[i].title + `]]></title>
-<link><![CDATA[` + configPublic.www.origin + '/' + products[i].path + '/' + products[i].seoFilenamePart + '.html' + `]]></link>
+<link><![CDATA[` + config.www.origin + '/' + products[i].path + '/' + products[i].seoFilenamePart + '.html' + `]]></link>
 <description><![CDATA[` + products[i].description + `]]></description>
-<g:image_link><![CDATA[` + configPublic.cdn.origin + '/' + products[i].path + '/' + products[i].seoFilenamePart + '-source.jpg' + `]]></g:image_link>
+<g:image_link><![CDATA[` + config.cdn.origin + '/' + products[i].path + '/' + products[i].seoFilenamePart + '-source.jpg' + `]]></g:image_link>
 <g:availability><![CDATA[` + products[i].availability + `]]></g:availability>
 <g:price><![CDATA[` + products[i].price + `]]></g:price>
 <g:sale_price><![CDATA[` + products[i].salePrice + `]]></g:sale_price>
@@ -65,9 +65,9 @@ exports.index = function(req, res) {
 `<?xml version="1.0" encoding="UTF-8" ?>
 <rss xmlns:g="http://base.google.com/ns/1.0" version="2.0">
 <channel>
-<title><![CDATA[` + configPublic.name + `]]></title>
-<link><![CDATA[` + configPublic.www.origin + `]]></link>
-<description><![CDATA[` + configPublic.description + `]]></description>
+<title><![CDATA[` + config.name + `]]></title>
+<link><![CDATA[` + config.www.origin + `]]></link>
+<description><![CDATA[` + config.description + `]]></description>
 ` + items.join(
 `
 `

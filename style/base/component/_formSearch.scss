@@ -16,7 +16,7 @@
 
             &::after {
                 animation: spin $speed-medium linear infinite;
-                display: block;
+                opacity: 1;
             }
 
         }
@@ -32,11 +32,13 @@
             background-repeat: no-repeat;
             background-size: rem-calc(30) rem-calc(30);
             content: '';
-            display: none;
             height: rem-calc(30);
+            opacity: 0;
             position: absolute;
             right: rem-calc(7.5);
             top: rem-calc(7.5);
+            transition: opacity $speed-fast ease-in;
+            transition-delay: $speed-medium;
             width: rem-calc(30);
         }
 

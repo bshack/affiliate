@@ -1,5 +1,6 @@
 import sm from 'sitemap';
 import configPrivate from '../configPrivate.json';
+import config from '../configPublic.json';
 
 /* MODELS
  *************************************/
@@ -30,9 +31,8 @@ exports.index = function(req, res) {
     ]).then(() => {
 
         let urls = [];
-        let configPublic = req.app.get('configPublic').store.getState();
         let contentPages = storeContent.store.getState();
-        let productPages = storeProduct.store.getState().data;
+        let productPages = storeProduct.store.getState();
         let categoryPages = [];
         let brandPages = [];
         let storePages = [];
@@ -41,7 +41,7 @@ exports.index = function(req, res) {
         let i;
         for (i = 0; i < contentPages.length; i++) {
             urls.push({
-                url: configPublic.www.origin + '/' + contentPages[i].filename + '.html'
+                url: config.www.origin + '/' + contentPages[i].filename + '.html'
             });
         }
 
@@ -49,22 +49,22 @@ exports.index = function(req, res) {
         let ii;
         for (ii = 0; ii < productPages.length; ii++) {
 
-            let categoryUrl = configPublic.www.origin + '/' + productPages[ii].path + '/index.html';
-            let storeUrl = configPublic.www.origin + '/store/' + productPages[ii].programName + '/index.html';
-            let brandUrl = configPublic.www.origin + '/brand/' + productPages[ii].brand + '/index.html';
+            let categoryUrl = config.www.origin + '/' + productPages[ii].path + '/index.html';
+            let storeUrl = config.www.origin + '/store/' + productPages[ii].programName + '/index.html';
+            let brandUrl = config.www.origin + '/brand/' + productPages[ii].brand + '/index.html';
             let record = {
-                url: configPublic.www.origin + '/' + productPages[ii].path + '/' + productPages[ii].seoFilenamePart + '.html',
+                url: config.www.origin + '/' + productPages[ii].path + '/' + productPages[ii].seoFilenamePart + '.html',
                 img: []
             }
             if (productPages[ii].isImageLinkProcessed) {
                 record.img.push({
-                    url: configPublic.cdn.origin + '/' + productPages[ii].path + '/' + productPages[ii].seoFilenamePart + '-source.jpg',
+                    url: config.cdn.origin + '/' + productPages[ii].path + '/' + productPages[ii].seoFilenamePart + '-source.jpg',
                     title: productPages[ii].title
                 });
             }
             if (productPages[ii].isAdditionalImageLinkProcessed) {
                 record.img.push({
-                    url: configPublic.cdn.origin + '/' + productPages[ii].path + '/' + productPages[ii].seoFilenamePart + '-additional-source.jpg',
+                    url: config.cdn.origin + '/' + productPages[ii].path + '/' + productPages[ii].seoFilenamePart + '-additional-source.jpg',
                     title: productPages[ii].title
                 });
             }

@@ -6,7 +6,7 @@ import config from '../../configPublic';
 /* VIEWS
 *************************************/
 
-import LayoutWrapper from '../layout/wrapper.jsx';
+import WrapperDefault from '../wrapper/default.jsx';
 import Header from '../template/header.jsx';
 import NavigationMain from '../template/navigationMain.jsx';
 import NavigationSearch from '../template/navigationSearch.jsx';
@@ -42,9 +42,9 @@ class View extends React.PureComponent {
             <Provider store={this.props.store}>
                 {
                     this.props.fullDocumentRender === true?
-                        <LayoutWrapper jsFile='plp'>
+                        <WrapperDefault jsFile='plp'>
                             {this.pageContent()}
-                        </LayoutWrapper>
+                        </WrapperDefault>
                         :
                         this.pageContent()
                 }

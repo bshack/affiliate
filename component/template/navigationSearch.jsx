@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {Provider} from 'react-redux';
-import SearchForm from './form-search.jsx';
+import SearchForm from './formSearch.jsx';
 import StoreSearch from '../../store/page/search';
 import config from '../../configPublic';
 
