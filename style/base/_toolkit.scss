@@ -13,14 +13,15 @@ $font-family-sans-serif: 'open_sansregular', 'Helvetica Neue', Arial, sans-serif
 @import 'element/input';
 @import 'type/font';
 @import 'type/heading';
+@import 'type/label';
 @import 'type/text';
 @import 'component/breadcrumbs';
 @import 'component/categoryProducts';
-@import 'component/contentStyleGuide';
 @import 'component/formSearch';
 @import 'component/header';
 @import 'component/navigationFooter';
 @import 'component/navigationMain';
 @import 'component/navigationSearch';
 @import 'component/productDetail';
+@import 'component/styleGuide';
 @import 'component/wrapper';

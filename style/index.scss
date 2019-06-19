@@ -30,72 +30,60 @@ body {
     @extend %category-products;
 }
 
-.color-black-1 {
-    @extend %color-black-1;
+.color-background-black-1 {
+    @extend %color-background-black-1;
 }
 
-.color-black-1-background {
-    @extend %color-black-1-background;
+.color-background-blue-1 {
+    @extend %color-background-blue-1;
 }
 
-.color-blue-1 {
-    @extend %color-blue-1;
+.color-background-blue-2 {
+    @extend %color-background-blue-2;
 }
 
-.color-blue-1-background {
-    @extend %color-blue-1-background;
+.color-background-blue-3 {
+    @extend %color-background-blue-3;
 }
 
-.color-grey-1 {
-    @extend %color-grey-1;
+.color-background-grey-1 {
+    @extend %color-background-grey-1;
 }
 
-.color-grey-1-background {
-    @extend %color-grey-1-background;
+.color-background-grey-2 {
+    @extend %color-background-grey-2;
 }
 
-.color-grey-2 {
-    @extend %color-grey-2;
+.color-background-grey-3 {
+    @extend %color-background-grey-3;
 }
 
-.color-grey-2-background {
-    @extend %color-grey-2-background;
+.color-background-green-1 {
+    @extend %color-background-green-1;
 }
 
-.color-grey-3 {
-    @extend %color-grey-3;
+.color-background-green-2 {
+    @extend %color-background-green-2;
 }
 
-.color-grey-3-background {
-    @extend %color-grey-3-background;
+.color-background-pink-1 {
+    @extend %color-background-pink-1;
 }
 
-.color-grey-4 {
-    @extend %color-grey-4;
+.color-background-purple-1 {
+    @extend %color-background-purple-1;
 }
 
-.color-grey-4-background {
-    @extend %color-grey-4-background;
+.color-background-purple-2 {
+    @extend %color-background-purple-2;
 }
 
-.color-green-1 {
-    @extend %color-green-1;
+.color-background-yellow-1 {
+    @extend %color-background-yellow-1;
 }
 
-.color-green-1-background {
-    @extend %color-green-1-background;
-}
-
-.color-white-1 {
-    @extend %color-white-1;
-}
-
-.color-white-1-background {
-    @extend %color-white-1-background;
-}
-
-.content-style-guide {
-    @extend %content-style-guide;
+.color-background-white-1 {
+    @extend %color-background-white-1;
 }
 
 .font-open-sans-light-regular {
@@ -142,6 +130,22 @@ body {
     @extend %form-search;
 }
 
+.gradient-background-1 {
+    @extend %gradient-background-1;
+}
+
+.gradient-background-2 {
+    @extend %gradient-background-2;
+}
+
+.gradient-background-3 {
+    @extend %gradient-background-3;
+}
+
+.gradient-background-4 {
+    @extend %gradient-background-4;
+}
+
 header {
     @extend %header;
 }
@@ -150,6 +154,9 @@ header {
     @extend %input-1;
 }
 
+.label-style-standard {
+    @extend %label-style-standard;
+}
 
 .navigation-footer {
     @extend %navigation-footer;
@@ -165,6 +172,42 @@ header {
 
 .product-detail {
     @extend %product-detail;
+}
+
+.style-guide {
+    @extend %style-guide;
+}
+
+.text-size-xxsmall {
+    @extend %text-size-xxsmall;
+}
+
+.text-size-xsmall {
+    @extend %text-size-xsmall;
+}
+
+.text-size-small {
+    @extend %text-size-small;
+}
+
+.text-size-medium {
+    @extend %text-size-medium;
+}
+
+.text-size-large {
+    @extend %text-size-large;
+}
+
+.text-size-xlarge {
+    @extend %text-size-xlarge;
+}
+
+.text-size-xxlarge {
+    @extend %text-size-xxlarge;
+}
+
+.text-style-standard {
+    @extend %text-style-standard;
 }
 
 .wrapper {

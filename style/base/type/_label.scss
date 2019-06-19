@@ -1,0 +1,18 @@
+%label-style-standard {
+
+    @extend %font-open-sans-semi-bold-regular;
+    @extend %text-size-small;
+
+    color: $color-black-1;
+
+    i,
+    em {
+        @extend %font-open-sans-semi-bold-italic;
+    }
+
+    b,
+    strong {
+        @extend %font-open-sans-semi-bold-regular;
+    }
+
+}

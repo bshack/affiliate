@@ -10,8 +10,7 @@
 %anchor-1 {
 
     @extend %anchor-base-1;
-    @extend %color-green-1-background;
-    @extend %color-white-1;
+    @extend %color-background-green-1;
     @extend %font-open-sans-semi-bold-regular;
 
     @include media-breakpoint-up(md) {
@@ -19,6 +18,7 @@
     }
 
     align-items: center;
+    color: $color-white-1;
     display: inline-flex;
     font-size: rem-calc(14);
     justify-content: center;
@@ -30,8 +30,7 @@
     &:focus,
     &:hover {
 
-        @extend %color-white-1;
-
+        color: $color-white-1;
         text-decoration: none;
 
     }
@@ -41,8 +40,7 @@
 %anchor-2 {
 
     @extend %anchor-base-1;
-    @extend %color-blue-1-background;
-    @extend %color-white-1;
+    @extend %color-background-blue-1;
     @extend %font-open-sans-semi-bold-regular;
 
     @include media-breakpoint-up(md) {
@@ -50,6 +48,7 @@
     }
 
     align-items: center;
+    color: $color-white-1;
     display: inline-flex;
     font-size: rem-calc(14);
     justify-content: center;
@@ -61,8 +60,7 @@
     &:focus,
     &:hover {
 
-        @extend %color-white-1;
-
+        color: $color-white-1;
         text-decoration: none;
 
     }

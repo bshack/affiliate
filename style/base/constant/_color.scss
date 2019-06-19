@@ -1,72 +1,86 @@
 $color-black-1: #1c1c1c;
-$color-blue-1: #06f;
-$color-grey-1: #f2f2f2;
-$color-grey-2: #ccc;
-$color-grey-3: #999;
-$color-grey-4: #666;
-$color-green-1: #679300;
+$color-blue-1: #14e8d5;
+$color-blue-2: #2ab1ce;
+$color-blue-3: #00b9f0;
+$color-grey-1: #444;
+$color-grey-2: #afafaf;
+$color-grey-3: #e2e2e2;
+$color-green-1: #00ff9c;
+$color-green-2: #11d37f;
+$color-pink-1: #ff3c91;
+$color-purple-1: #964bff;
+$color-purple-2: #6428a0;
+$color-yellow-1: #fff25f;
 $color-white-1: #fff;
 
-%color-black-1 {
-    color: $color-black-1;
+%gradient-background-1 {
+    background: linear-gradient(45deg, $color-blue-1 0%, $color-purple-1 90%, $color-purple-1 100%);
 }
 
-%color-black-1-background {
+%gradient-background-2 {
+    background: linear-gradient(45deg, $color-green-1 0%, $color-blue-3 90%, $color-blue-3 100%);
+}
+
+%gradient-background-3 {
+    background: linear-gradient(45deg, $color-yellow-1 0%, $color-pink-1 90%, $color-pink-1 100%);
+}
+
+%gradient-background-4 {
+    background: linear-gradient(45deg, $color-purple-2 0%, $color-blue-2 90%, $color-blue-2 100%);
+}
+
+%color-background-black-1 {
     background-color: $color-black-1;
 }
 
-%color-blue-1 {
-    color: $color-blue-1;
-}
-
-%color-blue-1-background {
+%color-background-blue-1 {
     background-color: $color-blue-1;
 }
 
-%color-grey-1 {
-    color: $color-grey-1;
+%color-background-blue-2 {
+    background-color: $color-blue-2;
 }
 
-%color-grey-1-background {
+%color-background-blue-3 {
+    background-color: $color-blue-3;
+}
+
+%color-background-grey-1 {
     background-color: $color-grey-1;
 }
 
-%color-grey-2 {
-    color: $color-grey-2;
-}
-
-%color-grey-2-background {
+%color-background-grey-2 {
     background-color: $color-grey-2;
 }
 
-%color-grey-3 {
-    color: $color-grey-3;
-}
-
-%color-grey-3-background {
+%color-background-grey-3 {
     background-color: $color-grey-3;
 }
 
-%color-grey-4 {
-    color: $color-grey-4;
-}
-
-%color-grey-4-background {
-    background-color: $color-grey-4;
-}
-
-%color-green-1 {
-    color: $color-green-1;
-}
-
-%color-green-1-background {
+%color-background-green-1 {
     background-color: $color-green-1;
 }
 
-%color-white-1 {
-    color: $color-white-1;
+%color-background-green-2 {
+    background-color: $color-green-2;
 }
 
-%color-white-1-background {
+%color-background-pink-1 {
+    background-color: $color-pink-1;
+}
+
+%color-background-purple-1 {
+    background-color: $color-purple-1;
+}
+
+%color-background-purple-2 {
+    background-color: $color-purple-2;
+}
+
+%color-background-yellow-1 {
+    background-color: $color-yellow-1;
+}
+
+%color-background-white-1 {
     background-color: $color-white-1;
 }
