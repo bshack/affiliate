@@ -2,6 +2,7 @@ $color-black-1: #1c1c1c;
 $color-blue-1: #14e8d5;
 $color-blue-2: #2ab1ce;
 $color-blue-3: #00b9f0;
+$color-blue-4: #007bff;
 $color-grey-1: #444;
 $color-grey-2: #afafaf;
 $color-grey-3: #e2e2e2;
@@ -43,6 +44,10 @@ $color-white-1: #fff;
 
 %color-background-blue-3 {
     background-color: $color-blue-3;
+}
+
+%color-background-blue-4 {
+    background-color: $color-blue-4;
 }
 
 %color-background-grey-1 {

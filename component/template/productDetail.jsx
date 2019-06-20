@@ -112,7 +112,7 @@ class View extends React.PureComponent {
                         {price}
                         {availability}
                         {productCondition}
-                        <a className="anchor-1" href={this.props.data.link}>get deal now</a>
+                        <a className="anchor-2" href={this.props.data.link}>get deal now</a>
                         {brand}
                         {description}
                         {gtin}

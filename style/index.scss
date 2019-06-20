@@ -14,8 +14,8 @@ body {
     @extend %accessibility-hidden-element-1;
 }
 
-.anchor-1 {
-    @extend %anchor-1;
+.anchor-standard {
+    @extend %anchor-standard;
 }
 
 .anchor-2 {
@@ -44,6 +44,10 @@ body {
 
 .color-background-blue-3 {
     @extend %color-background-blue-3;
+}
+
+.color-background-blue-4 {
+    @extend %color-background-blue-4;
 }
 
 .color-background-grey-1 {
@@ -84,6 +88,10 @@ body {
 
 .color-background-white-1 {
     @extend %color-background-white-1;
+}
+
+.copy-style-standard {
+    @extend %copy-style-standard;
 }
 
 .font-open-sans-light-regular {
@@ -150,12 +158,168 @@ header {
     @extend %header;
 }
 
+.heading-1 {
+    @extend %heading-1;
+}
+
+.heading-2 {
+    @extend %heading-2;
+}
+
+.heading-3 {
+    @extend %heading-3;
+}
+
+.heading-4 {
+    @extend %heading-4;
+}
+
 .input-1 {
     @extend %input-1;
 }
 
 .label-style-standard {
     @extend %label-style-standard;
+}
+
+.margin-xxsmall {
+    @extend %margin-xxsmall;
+}
+
+.margin-xsmall {
+    @extend %margin-xsmall;
+}
+
+.margin-small {
+    @extend %margin-small;
+}
+
+.margin-medium {
+    @extend %margin-medium;
+}
+
+.margin-large {
+    @extend %margin-large;
+}
+
+.margin-xlarge {
+    @extend %margin-xlarge;
+}
+
+.margin-xxlarge {
+    @extend %margin-xxlarge;
+}
+
+.margin-bottom-xxsmall {
+    @extend %margin-bottom-xxsmall;
+}
+
+.margin-bottom-xsmall {
+    @extend %margin-bottom-xsmall;
+}
+
+.margin-bottom-small {
+    @extend %margin-bottom-small;
+}
+
+.margin-bottom-medium {
+    @extend %margin-bottom-medium;
+}
+
+.margin-bottom-large {
+    @extend %margin-bottom-large;
+}
+
+.margin-bottom-xlarge {
+    @extend %margin-bottom-xlarge;
+}
+
+.margin-bottom-xxlarge {
+    @extend %margin-bottom-xxlarge;
+}
+
+.margin-left-xxsmall {
+    @extend %margin-left-xxsmall;
+}
+
+.margin-left-xsmall {
+    @extend %margin-left-xsmall;
+}
+
+.margin-left-small {
+    @extend %margin-left-small;
+}
+
+.margin-left-medium {
+    @extend %margin-left-medium;
+}
+
+.margin-left-large {
+    @extend %margin-left-large;
+}
+
+.margin-left-xlarge {
+    @extend %margin-left-xlarge;
+}
+
+.margin-left-xxlarge {
+    @extend %margin-left-xxlarge;
+}
+
+.margin-right-xxsmall {
+    @extend %margin-right-xxsmall;
+}
+
+.margin-right-xsmall {
+    @extend %margin-right-xsmall;
+}
+
+.margin-right-small {
+    @extend %margin-right-small;
+}
+
+.margin-right-medium {
+    @extend %margin-right-medium;
+}
+
+.margin-right-large {
+    @extend %margin-right-large;
+}
+
+.margin-right-xlarge {
+    @extend %margin-right-xlarge;
+}
+
+.margin-right-xxlarge {
+    @extend %margin-right-xxlarge;
+}
+
+.margin-top-xxsmall {
+    @extend %margin-top-xxsmall;
+}
+
+.margin-top-xsmall {
+    @extend %margin-top-xsmall;
+}
+
+.margin-top-small {
+    @extend %margin-top-small;
+}
+
+.margin-top-medium {
+    @extend %margin-top-medium;
+}
+
+.margin-top-large {
+    @extend %margin-top-large;
+}
+
+.margin-top-xlarge {
+    @extend %margin-top-xlarge;
+}
+
+.margin-top-xxlarge {
+    @extend %margin-top-xxlarge;
 }
 
 .navigation-footer {
@@ -168,6 +332,146 @@ header {
 
 .navigation-search {
     @extend %navigation-search;
+}
+
+.padding-xxsmall {
+    @extend %padding-xxsmall;
+}
+
+.padding-xsmall {
+    @extend %padding-xsmall;
+}
+
+.padding-small {
+    @extend %padding-small;
+}
+
+.padding-medium {
+    @extend %padding-medium;
+}
+
+.padding-large {
+    @extend %padding-large;
+}
+
+.padding-xlarge {
+    @extend %padding-xlarge;
+}
+
+.padding-xxlarge {
+    @extend %padding-xxlarge;
+}
+
+.padding-bottom-xxsmall {
+    @extend %padding-bottom-xxsmall;
+}
+
+.padding-bottom-xsmall {
+    @extend %padding-bottom-xsmall;
+}
+
+.padding-bottom-small {
+    @extend %padding-bottom-small;
+}
+
+.padding-bottom-medium {
+    @extend %padding-bottom-medium;
+}
+
+.padding-bottom-large {
+    @extend %padding-bottom-large;
+}
+
+.padding-bottom-xlarge {
+    @extend %padding-bottom-xlarge;
+}
+
+.padding-bottom-xxlarge {
+    @extend %padding-bottom-xxlarge;
+}
+
+.padding-left-xxsmall {
+    @extend %padding-left-xxsmall;
+}
+
+.padding-left-xsmall {
+    @extend %padding-left-xsmall;
+}
+
+.padding-left-small {
+    @extend %padding-left-small;
+}
+
+.padding-left-medium {
+    @extend %padding-left-medium;
+}
+
+.padding-left-large {
+    @extend %padding-left-large;
+}
+
+.padding-left-xlarge {
+    @extend %padding-left-xlarge;
+}
+
+.padding-left-xxlarge {
+    @extend %padding-left-xxlarge;
+}
+
+.padding-right-xxsmall {
+    @extend %padding-right-xxsmall;
+}
+
+.padding-right-xsmall {
+    @extend %padding-right-xsmall;
+}
+
+.padding-right-small {
+    @extend %padding-right-small;
+}
+
+.padding-right-medium {
+    @extend %padding-right-medium;
+}
+
+.padding-right-large {
+    @extend %padding-right-large;
+}
+
+.padding-right-xlarge {
+    @extend %padding-right-xlarge;
+}
+
+.padding-right-xxlarge {
+    @extend %padding-right-xxlarge;
+}
+
+.padding-top-xxsmall {
+    @extend %padding-top-xxsmall;
+}
+
+.padding-top-xsmall {
+    @extend %padding-top-xsmall;
+}
+
+.padding-top-small {
+    @extend %padding-top-small;
+}
+
+.padding-top-medium {
+    @extend %padding-top-medium;
+}
+
+.padding-top-large {
+    @extend %padding-top-large;
+}
+
+.padding-top-xlarge {
+    @extend %padding-top-xlarge;
+}
+
+.padding-top-xxlarge {
+    @extend %padding-top-xxlarge;
 }
 
 .product-detail {
@@ -204,10 +508,6 @@ header {
 
 .text-size-xxlarge {
     @extend %text-size-xxlarge;
-}
-
-.text-style-standard {
-    @extend %text-style-standard;
 }
 
 .wrapper {

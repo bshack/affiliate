@@ -1,12 +1,29 @@
 %style-guide {
 
     .swatch {
+
+        @extend %margin-bottom-xsmall;
+
         padding-bottom: 100%;
         width: 100%;
 
         &.color-background-white-1 {
             border: rem-calc(1) solid $color-grey-3;
         }
+
+    }
+
+    .graphic,
+    .icon {
+
+        @extend %margin-bottom-xsmall;
+
+        width: 100%;
+
+        &.reverse {
+            background-color: $color-grey-2;
+        }
+
 
     }
 

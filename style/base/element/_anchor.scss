@@ -7,32 +7,17 @@
 
 }
 
-%anchor-1 {
+%anchor-standard {
 
     @extend %anchor-base-1;
-    @extend %color-background-green-1;
-    @extend %font-open-sans-semi-bold-regular;
 
-    @include media-breakpoint-up(md) {
-        font-size: rem-calc(16);
-    }
+    color: $color-blue-4;
+    text-decoration: none;
 
-    align-items: center;
-    color: $color-white-1;
-    display: inline-flex;
-    font-size: rem-calc(14);
-    justify-content: center;
-    min-height: rem-calc(45);
-    padding-left: rem-calc(15);
-    padding-right: rem-calc(15);
-    text-transform: uppercase;
-
-    &:focus,
-    &:hover {
-
-        color: $color-white-1;
-        text-decoration: none;
-
+    &:hover,
+    &:focus {
+        color: $color-blue-4;
+        text-decoration: underline;
     }
 
 }
@@ -40,21 +25,21 @@
 %anchor-2 {
 
     @extend %anchor-base-1;
-    @extend %color-background-blue-1;
+    @extend %color-background-green-2;
     @extend %font-open-sans-semi-bold-regular;
+    @extend %text-size-medium;
 
     @include media-breakpoint-up(md) {
         font-size: rem-calc(16);
     }
 
     align-items: center;
+    border-radius: rem-calc(10);
     color: $color-white-1;
     display: inline-flex;
-    font-size: rem-calc(14);
     justify-content: center;
     min-height: rem-calc(45);
-    padding-left: rem-calc(15);
-    padding-right: rem-calc(15);
+    padding: 0 $spacing-medium;
     text-transform: uppercase;
 
     &:focus,

@@ -5,12 +5,14 @@ $font-family-sans-serif: 'open_sansregular', 'Helvetica Neue', Arial, sans-serif
 @import '../../node_modules/bootstrap/scss/bootstrap-grid';
 @import 'constant/color';
 @import 'constant/layer';
+@import 'constant/spacing';
 @import 'constant/speed';
 @import 'utility/function';
 @import 'utility/accessibility';
 @import 'element/anchor';
 @import 'element/button';
 @import 'element/input';
+@import 'type/copy';
 @import 'type/font';
 @import 'type/heading';
 @import 'type/label';

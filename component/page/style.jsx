@@ -29,10 +29,10 @@ class View extends React.PureComponent {
             >
                 <Breadcrumbs />
                 <section className="container style-guide">
-                    <div className="row">
+                    <div className="row margin-bottom-large">
                         <div className="col-12">
-                            <h1>Style Guide</h1>
-                            <h2>Fonts</h2>
+                            <h1 className="heading-1 margin-bottom-medium">Style Guide</h1>
+                            <h2 className="heading-2 margin-bottom-medium">Fonts</h2>
                             <p>
                                 <span
                                     className="font-open-sans-light-regular text-size-xxlarge"
@@ -152,8 +152,11 @@ class View extends React.PureComponent {
                                     Open Sans Extra Bold Italic - font-open-sans-extra-bold-italic
                                 </span>
                             </p>
-
-                            <h2>Text Sizes</h2>
+                        </div>
+                    </div>
+                    <div className="row margin-bottom-large">
+                        <div className="col-12">
+                            <h2 className="heading-2 margin-bottom-medium">Text Sizes</h2>
 
                             <p>
                                 <span
@@ -239,20 +242,71 @@ class View extends React.PureComponent {
                                 </span>
                             </p>
 
-                            <h2>Text Styles</h2>
+                        </div>
+                    </div>
+                    <div className="row margin-bottom-large">
+                        <div className="col-12">
+                            <h2 className="heading-2 margin-bottom-medium">Heading Styles</h2>
                             <p>
-                                <span
-                                    className="text-style-standard"
-                                >
-                                        The quick brown fox jumps <em>over the</em>
+                                <span className="heading-1">
+                                    The quick brown fox jumps over the lazy dog
                                 </span>
                                 <br />
                                 <span className="label-style-standard">
-                                    standard - text-style-standard
+                                    heading 1 - heading-1
                                 </span>
                             </p>
-
-                            <h2>Label Styles</h2>
+                            <p>
+                                <span className="heading-2">
+                                    The quick brown fox jumps over the lazy dog
+                                </span>
+                                <br />
+                                <span className="label-style-standard">
+                                    heading 2 - heading-2
+                                </span>
+                            </p>
+                            <p>
+                                <span className="heading-3">
+                                    The quick brown fox jumps over the lazy dog
+                                </span>
+                                <br />
+                                <span className="label-style-standard">
+                                    heading 3 - heading-3
+                                </span>
+                            </p>
+                            <p>
+                                <span className="heading-4">
+                                    The quick brown fox jumps over the lazy dog
+                                </span>
+                                <br />
+                                <span className="label-style-standard">
+                                    heading 4 - heading-4
+                                </span>
+                            </p>
+                        </div>
+                    </div>
+                    <div className="row margin-bottom-large">
+                        <div className="col-12">
+                            <h2 className="heading-2 margin-bottom-medium">Copy Styles</h2>
+                            <p>
+                                <span className="copy-style-standard">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus commodo
+                                    velit <a href="javascript:void(0);">vitae quam consecte</a> tur egestas. Proin
+                                    in lacus metus. Vivamus <em>tincidunt tellus in pretium</em> vulputate. Ut
+                                    mattis tortor e t enim tempus bibendum. Quisque id nisi vel libero tempus
+                                    cursus. Sed nisi nibh, viverra id quam qui s, scelerisque mollis dui.
+                                    <strong> Pellentesque consequat</strong> nec ex<sup>1</sup> ut facilisis.
+                                </span>
+                                <br />
+                                <span className="label-style-standard">
+                                    standard - copy-style-standard
+                                </span>
+                            </p>
+                        </div>
+                    </div>
+                    <div className="row margin-bottom-large">
+                        <div className="col-12">
+                            <h2 className="heading-2 margin-bottom-medium">Label Styles</h2>
                             <p>
                                 <span
                                     className="label-style-standard"
@@ -264,125 +318,218 @@ class View extends React.PureComponent {
                                     standard - text-style-standard
                                 </span>
                             </p>
-
-                            <h2>Colors</h2>
+                        </div>
+                    </div>
+                    <div className="row margin-bottom-large">
+                        <div className="col-12">
+                            <h2 className="heading-2 margin-bottom-medium">Colors</h2>
                             <h3>Primary</h3>
-                            <div className="row">
-                                <div className="col-2">
+                            <div className="row margin-bottom-medium">
+                                <div className="col-6 col-md-4 col-lg-3 col-xl-2">
                                     <div className="swatch color-background-blue-1"></div>
                                     <p className="label-style-standard">
-                                        blue-1 <em>#14e8d5</em>
+                                        blue-1 (#14e8d5)
                                     </p>
                                 </div>
-                                <div className="col-2">
+                                <div className="col-6 col-md-4 col-lg-3 col-xl-2">
                                     <div className="swatch color-background-green-2"></div>
                                     <p className="label-style-standard">
-                                        green-2 <em>#11d37f</em>
+                                        green-2 (#11d37f)
                                     </p>
                                 </div>
-                                <div className="col-2">
+                                <div className="col-6 col-md-4 col-lg-3 col-xl-2">
                                     <div className="swatch color-background-pink-1"></div>
                                     <p className="label-style-standard">
-                                        pink-1 <em>#ff3c91</em>
+                                        pink-1 (#ff3c91)
                                     </p>
                                 </div>
-                                <div className="col-2">
+                                <div className="col-6 col-md-4 col-lg-3 col-xl-2">
                                     <div className="swatch color-background-purple-1"></div>
                                     <p className="label-style-standard">
-                                        purple-1 <em>#964bff</em>
+                                        purple-1 (#964bff)
                                     </p>
                                 </div>
-                                <div className="col-2">
+                                <div className="col-6 col-md-4 col-lg-3 col-xl-2">
                                     <div className="swatch color-background-yellow-1"></div>
                                     <p className="label-style-standard">
-                                        yellow-1 <em>#fff25f</em>
+                                        yellow-1 (#fff25f)
                                     </p>
                                 </div>
                             </div>
                             <h3>Secondary</h3>
-                            <div className="row">
-                                <div className="col-2">
+                            <div className="row margin-bottom-medium">
+                                <div className="col-6 col-md-4 col-lg-3 col-xl-2">
                                     <div className="swatch color-background-blue-2"></div>
                                     <p className="label-style-standard">
-                                        blue-2 <em>#2ab1ce</em>
+                                        blue-2 (#2ab1ce)
                                     </p>
                                 </div>
-                                <div className="col-2">
+                                <div className="col-6 col-md-4 col-lg-3 col-xl-2">
                                     <div className="swatch color-background-blue-3"></div>
                                     <p className="label-style-standard">
-                                        blue-3 <em>#00b9f0</em>
+                                        blue-3 (#00b9f0)
                                     </p>
                                 </div>
-                                <div className="col-2">
+                                <div className="col-6 col-md-4 col-lg-3 col-xl-2">
                                     <div className="swatch color-background-green-1"></div>
                                     <p className="label-style-standard">
-                                        green-1 <em>#00ff9c</em>
+                                        green-1 (#00ff9c)
                                     </p>
                                 </div>
-                                <div className="col-2">
+                                <div className="col-6 col-md-4 col-lg-3 col-xl-2">
                                     <div className="swatch color-background-purple-2"></div>
                                     <p className="label-style-standard">
-                                        purple-2 <em>#6428a0</em>
+                                        purple-2 (#6428a0)
                                     </p>
                                 </div>
                             </div>
                             <h3>Teritiary</h3>
-                            <div className="row">
-                                <div className="col-2">
+                            <div className="row margin-bottom-medium">
+                                <div className="col-6 col-md-4 col-lg-3 col-xl-2">
                                     <div className="swatch color-background-grey-1"></div>
                                     <p className="label-style-standard">
-                                        grey-1 <em>#444</em>
+                                        grey-1 (#444)
                                     </p>
                                 </div>
-                                <div className="col-2">
+                                <div className="col-6 col-md-4 col-lg-3 col-xl-2">
                                     <div className="swatch color-background-grey-2"></div>
                                     <p className="label-style-standard">
-                                        grey-2 <em>#afafaf</em>
+                                        grey-2 (#afafaf)
                                     </p>
                                 </div>
-                                <div className="col-2">
+                                <div className="col-6 col-md-4 col-lg-3 col-xl-2">
                                     <div className="swatch color-background-grey-3"></div>
                                     <p className="label-style-standard">
-                                        grey-3 <em>#e2e2e2</em>
+                                        grey-3 (#e2e2e2)
                                     </p>
                                 </div>
                             </div>
                             <h3>Other</h3>
                             <div className="row">
-                                <div className="col-2">
+                                <div className="col-6 col-md-4 col-lg-3 col-xl-2">
                                     <div className="swatch color-background-black-1"></div>
                                     <p className="label-style-standard">
-                                        black-1 <em>#1c1c1c</em>
+                                        black-1 (#1c1c1c)
                                     </p>
                                 </div>
-                                <div className="col-2">
+                                <div className="col-6 col-md-4 col-lg-3 col-xl-2">
+                                    <div className="swatch color-background-blue-4"></div>
+                                    <p className="label-style-standard">
+                                        blue-4 (#007bff)
+                                    </p>
+                                </div>
+                                <div className="col-6 col-md-4 col-lg-3 col-xl-2">
                                     <div className="swatch color-background-white-1"></div>
                                     <p className="label-style-standard">
-                                        white-1 <em>#fff</em>
+                                        white-1 (#fff)
                                     </p>
                                 </div>
-                                <div className="col-2">
+                                <div className="col-6 col-md-4 col-lg-3 col-xl-2">
                                     <div className="swatch gradient-background-1"></div>
                                     <p className="label-style-standard">gradient-1</p>
                                 </div>
-                                <div className="col-2">
+                                <div className="col-6 col-md-4 col-lg-3 col-xl-2">
                                     <div className="swatch gradient-background-2"></div>
                                     <p className="label-style-standard">gradient-2</p>
                                 </div>
-                                <div className="col-2">
+                                <div className="col-6 col-md-4 col-lg-3 col-xl-2">
                                     <div className="swatch gradient-background-3"></div>
                                     <p className="label-style-standard">gradient-3</p>
                                 </div>
-                                <div className="col-2">
+                                <div className="col-6 col-md-4 col-lg-3 col-xl-2">
                                     <div className="swatch gradient-background-4"></div>
                                     <p className="label-style-standard">gradient-4</p>
                                 </div>
                             </div>
-                            <h2>Anchors</h2>
-                            <p>anchor-1</p>
-                            <a className="anchor-1" href="javascript:void(0);">get the deal now</a>
-                            <p>anchor-2</p>
-                            <a className="anchor-2" href="javascript:void(0);">offer details</a>
+                        </div>
+                    </div>
+                    <div className="row margin-bottom-large">
+                        <div className="col-12">
+                            <h2 className="heading-2 margin-bottom-medium">Anchors</h2>
+
+                            <p>
+                                <a className="anchor-standard" href="javascript:void(0);">click here</a>
+                                <br />
+                                <span className="label-style-standard">
+                                    standard - anchor-standard
+                                </span>
+                            </p>
+
+                            <p>
+                                <a className="anchor-2" href="javascript:void(0);">get the deal now</a>
+                                <br />
+                                <span className="label-style-standard">
+                                    anchor 2 - anchor-2
+                                </span>
+                            </p>
+
+                        </div>
+                    </div>
+                    <div className="row margin-bottom-large">
+                        <div className="col-12">
+                            <h2 className="heading-2 margin-bottom-medium">Images</h2>
+                            <h3>Graphics</h3>
+                            <div className="row margin-bottom-medium">
+                                <div className="col-6 col-md-4 col-lg-3 col-xl-2">
+                                    <a href="./default/image/loader.svg" target="_blank">
+                                        <img className="graphic" alt="loader.svg" src="./default/image/loader.svg" />
+                                    </a>
+                                    <p className="label-style-standard">
+                                        loader.svg
+                                    </p>
+                                </div>
+                                <div className="col-6 col-md-4 col-lg-3 col-xl-2">
+                                    <a href="./default/image/logo-desktop-tagline.svg" target="_blank">
+                                        <img
+                                            className="graphic"
+                                            alt="logo-desktop-tagline.svg"
+                                            src="./default/image/logo-desktop-tagline.svg"
+                                        />
+                                    </a>
+                                    <p className="label-style-standard">
+                                        logo-desktop-tagline.svg
+                                    </p>
+                                </div>
+                                <div className="col-6 col-md-4 col-lg-3 col-xl-2">
+                                    <a href="./default/image/logo-mobile.svg" target="_blank">
+                                        <img
+                                            className="graphic"
+                                            alt="logo-mobile.svg"
+                                            src="./default/image/logo-mobile.svg"
+                                        />
+                                    </a>
+                                    <p className="label-style-standard">
+                                        logo-mobile.svg
+                                    </p>
+                                </div>
+                            </div>
+                            <h3>Icons</h3>
+                            <div className="row margin-bottom-medium">
+                                <div className="col-6 col-md-4 col-lg-3 col-xl-2">
+                                    <a href="./default/image/menu-black.svg" target="_blank">
+                                        <img
+                                            className="icon"
+                                            alt="menu-black.svg"
+                                            src="./default/image/menu-black.svg"
+                                        />
+                                    </a>
+                                    <p className="label-style-standard">
+                                        menu-black.svg
+                                    </p>
+                                </div>
+                                <div className="col-6 col-md-4 col-lg-3 col-xl-2">
+                                    <a href="./default/image/menu-white.svg" target="_blank">
+                                        <img
+                                            className="icon reverse"
+                                            alt="menu-white.svg"
+                                            src="./default/image/menu-white.svg"
+                                        />
+                                    </a>
+                                    <p className="label-style-standard">
+                                        menu-white.svg
+                                    </p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </section>

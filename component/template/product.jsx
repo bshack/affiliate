@@ -94,7 +94,7 @@ class View extends React.PureComponent {
                         {price}
                     </div>
                     <div className='cta'>
-                        <a className='anchor-1' href={this.props.data.link}>get deal now</a>
+                        <a className='anchor-2' href={this.props.data.link}>get deal now</a>
                     </div>
                     {utilityJSONLD.product(this.props.data, this.props.config)}
                 </div>
@@ -112,7 +112,7 @@ class View extends React.PureComponent {
                         {price}
                     </div>
                     <div className='cta'>
-                        <a className='anchor-1' href={this.props.data.link}>get deal now</a>
+                        <a className='anchor-2' href={this.props.data.link}>get deal now</a>
                     </div>
                     {utilityJSONLD.product(this.props.data, this.props.config)}
                 </div>

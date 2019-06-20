@@ -1,3 +1,35 @@
-%heading-base-1 {
-    margin: 0;
+%heading-1 {
+
+    @extend %font-open-sans-semi-bold-regular;
+    @extend %text-size-xlarge;
+
+    color: $color-black-1;
+
+}
+
+%heading-2 {
+
+    @extend %font-open-sans-semi-bold-regular;
+    @extend %text-size-large;
+
+    color: $color-black-1;
+
+}
+
+%heading-3 {
+
+    @extend %font-open-sans-semi-bold-regular;
+    @extend %text-size-medium;
+
+    color: $color-black-1;
+
+}
+
+%heading-4 {
+
+    @extend %font-open-sans-semi-bold-regular;
+    @extend %text-size-small;
+
+    color: $color-black-1;
+
 }
