@@ -1,7 +1,7 @@
 %heading-1 {
 
     @extend %font-open-sans-semi-bold-regular;
-    @extend %text-size-xlarge;
+    @extend %font-size-xlarge;
 
     color: $color-black-1;
 
@@ -10,7 +10,7 @@
 %heading-2 {
 
     @extend %font-open-sans-semi-bold-regular;
-    @extend %text-size-large;
+    @extend %font-size-large;
 
     color: $color-black-1;
 
@@ -19,7 +19,7 @@
 %heading-3 {
 
     @extend %font-open-sans-semi-bold-regular;
-    @extend %text-size-medium;
+    @extend %font-size-medium;
 
     color: $color-black-1;
 
@@ -28,7 +28,7 @@
 %heading-4 {
 
     @extend %font-open-sans-semi-bold-regular;
-    @extend %text-size-small;
+    @extend %font-size-small;
 
     color: $color-black-1;
 

@@ -115,3 +115,31 @@
     font-family: 'open_sans_extrabolditalic', Helvetica, sans-serif;
 
 }
+
+%font-size-xxsmall {
+    font-size: rem-calc(10);
+}
+
+%font-size-xsmall {
+    font-size: rem-calc(12);
+}
+
+%font-size-small {
+    font-size: rem-calc(14);
+}
+
+%font-size-medium {
+    font-size: rem-calc(16);
+}
+
+%font-size-large {
+    font-size: rem-calc(18);
+}
+
+%font-size-xlarge {
+    font-size: rem-calc(20);
+}
+
+%font-size-xxlarge {
+    font-size: rem-calc(22);
+}

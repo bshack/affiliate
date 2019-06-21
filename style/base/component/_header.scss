@@ -1,7 +1,9 @@
 %header {
 
+    @extend %color-background-white-2;
+
     @include media-breakpoint-only(xs) {
-        border-bottom: rem-calc(1) solid $color-black-1;
+        border-bottom: rem-calc(1) solid $color-grey-3;
         padding: rem-calc(10) 0;
         position: fixed;
         top: 0;
@@ -12,8 +14,6 @@
     @include media-breakpoint-up(sm) {
         padding: rem-calc(20) 0;
     }
-
-    background-color: $color-white-1;
 
     a {
 

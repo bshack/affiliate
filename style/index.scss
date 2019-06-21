@@ -30,64 +30,132 @@ body {
     @extend %category-products;
 }
 
+.color-black-1 {
+    @extend %color-black-1;
+}
+
 .color-background-black-1 {
     @extend %color-background-black-1;
+}
+
+.color-blue-1 {
+    @extend %color-blue-1;
 }
 
 .color-background-blue-1 {
     @extend %color-background-blue-1;
 }
 
+.color-blue-2 {
+    @extend %color-blue-2;
+}
+
 .color-background-blue-2 {
     @extend %color-background-blue-2;
+}
+
+.color-blue-3 {
+    @extend %color-blue-3;
 }
 
 .color-background-blue-3 {
     @extend %color-background-blue-3;
 }
 
+.color-blue-4 {
+    @extend %color-blue-4;
+}
+
 .color-background-blue-4 {
     @extend %color-background-blue-4;
+}
+
+.color-grey-1 {
+    @extend %color-grey-1;
 }
 
 .color-background-grey-1 {
     @extend %color-background-grey-1;
 }
 
+.color-grey-2 {
+    @extend %color-grey-2;
+}
+
 .color-background-grey-2 {
     @extend %color-background-grey-2;
+}
+
+.color-grey-3 {
+    @extend %color-grey-3;
 }
 
 .color-background-grey-3 {
     @extend %color-background-grey-3;
 }
 
+.color-green-1 {
+    @extend %color-green-1;
+}
+
 .color-background-green-1 {
     @extend %color-background-green-1;
+}
+
+.color-green-2 {
+    @extend %color-green-2;
 }
 
 .color-background-green-2 {
     @extend %color-background-green-2;
 }
 
+.color-pink-1 {
+    @extend %color-pink-1;
+}
+
 .color-background-pink-1 {
     @extend %color-background-pink-1;
+}
+
+.color-purple-1 {
+    @extend %color-purple-1;
 }
 
 .color-background-purple-1 {
     @extend %color-background-purple-1;
 }
 
+.color-purple-2 {
+    @extend %color-purple-2;
+}
+
 .color-background-purple-2 {
     @extend %color-background-purple-2;
+}
+
+.color-yellow-1 {
+    @extend %color-yellow-1;
 }
 
 .color-background-yellow-1 {
     @extend %color-background-yellow-1;
 }
 
+.color-white-1 {
+    @extend %color-white-1;
+}
+
 .color-background-white-1 {
     @extend %color-background-white-1;
+}
+
+.color-white-2 {
+    @extend %color-white-2;
+}
+
+.color-background-white-2 {
+    @extend %color-background-white-2;
 }
 
 .copy-style-standard {
@@ -482,32 +550,32 @@ header {
     @extend %style-guide;
 }
 
-.text-size-xxsmall {
-    @extend %text-size-xxsmall;
+.font-size-xxsmall {
+    @extend %font-size-xxsmall;
 }
 
-.text-size-xsmall {
-    @extend %text-size-xsmall;
+.font-size-xsmall {
+    @extend %font-size-xsmall;
 }
 
-.text-size-small {
-    @extend %text-size-small;
+.font-size-small {
+    @extend %font-size-small;
 }
 
-.text-size-medium {
-    @extend %text-size-medium;
+.font-size-medium {
+    @extend %font-size-medium;
 }
 
-.text-size-large {
-    @extend %text-size-large;
+.font-size-large {
+    @extend %font-size-large;
 }
 
-.text-size-xlarge {
-    @extend %text-size-xlarge;
+.font-size-xlarge {
+    @extend %font-size-xlarge;
 }
 
-.text-size-xxlarge {
-    @extend %text-size-xxlarge;
+.font-size-xxlarge {
+    @extend %font-size-xxlarge;
 }
 
 .wrapper {

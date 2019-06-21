@@ -7,7 +7,8 @@
         padding-bottom: 100%;
         width: 100%;
 
-        &.color-background-white-1 {
+        &.color-background-white-1,
+        &.color-background-white-2 {
             border: rem-calc(1) solid $color-grey-3;
         }
 

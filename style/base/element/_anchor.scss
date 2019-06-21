@@ -3,7 +3,7 @@
     @extend %accessibility-outline-1;
 
     cursor: pointer;
-    transition: opacity $speed-fast ease-in-out;
+    transition: background-color $speed-fast ease-in-out;
 
 }
 
@@ -27,7 +27,7 @@
     @extend %anchor-base-1;
     @extend %color-background-green-2;
     @extend %font-open-sans-semi-bold-regular;
-    @extend %text-size-medium;
+    @extend %font-size-medium;
 
     @include media-breakpoint-up(md) {
         font-size: rem-calc(16);
@@ -44,10 +44,8 @@
 
     &:focus,
     &:hover {
-
         color: $color-white-1;
         text-decoration: none;
-
     }
 
 }
