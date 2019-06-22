@@ -3,9 +3,15 @@
     @extend %accessibility-outline-1;
 
     appearance: none;
-    border: rem-calc(1) solid $color-black-1;
+    border: rem-calc(1) solid $color-grey-2;
+    color: $color-black-1;
     min-height: rem-calc(45);
     padding: 0 rem-calc(15);
+
+    &::placeholder {
+        color: $color-grey-1;
+        opacity: 1;
+    }
 
     // sass-lint:disable no-vendor-prefixes
 

@@ -48,7 +48,7 @@ class View extends React.PureComponent {
         }
 
         if (this.props.state.data.query !== '' && !brandRows.length && !storeRows.length && !productRows.length) {
-            return <div className="results">
+            return <div className="results-empty">
                 <p>No results found for <strong>&quot;{this.props.state.data.query}&quot;</strong>.</p>
             </div>;
         } else if (!brandRows.length && !storeRows.length && !productRows.length) {
@@ -102,7 +102,10 @@ class View extends React.PureComponent {
                 className={'form-search' + (this.props.state.isLoading? ' loading' : '')}
             >
                 <fieldset>
-                    <label htmlFor="brand-store-search" className="accessibility-hidden-element">search for ba</label>
+                    <label
+                        htmlFor="brand-store-search"
+                        className="accessibility-hidden-element"
+                    >search for brands, stores &amp; products</label>
                     <input
                         id="site-search-q"
                         name="site-search-q"
