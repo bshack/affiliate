@@ -1,0 +1,44 @@
+%email-sign-up {
+
+    color: $color-white-1;
+    text-align: center;
+
+    .row {
+        @extend %gradient-background-1;
+        @extend %padding-bottom-large;
+        @extend %padding-top-large;
+    }
+
+    h2 {
+        @extend %heading-1;
+    }
+
+    p {
+
+        @extend %copy-style-standard;
+
+        color: $color-white-1;
+
+    }
+
+    fieldset {
+        @extend %margin-bottom-medium;
+    }
+
+    legend {
+        @extend %heading-3;
+    }
+
+    label {
+        @extend %accessibility-hidden-element-1;
+    }
+
+    input {
+        @extend %input-1;
+    }
+
+    small {
+        @extend %font-size-small;
+    }
+
+}

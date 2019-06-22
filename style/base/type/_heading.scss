@@ -1,35 +1,19 @@
 %heading-1 {
-
     @extend %font-open-sans-semi-bold-regular;
-    @extend %font-size-xlarge;
-
-    color: $color-black-1;
-
+    @extend %font-size-xxlarge;
 }
 
 %heading-2 {
-
     @extend %font-open-sans-semi-bold-regular;
     @extend %font-size-large;
-
-    color: $color-black-1;
-
 }
 
 %heading-3 {
-
     @extend %font-open-sans-semi-bold-regular;
     @extend %font-size-medium;
-
-    color: $color-black-1;
-
 }
 
 %heading-4 {
-
     @extend %font-open-sans-semi-bold-regular;
     @extend %font-size-small;
-
-    color: $color-black-1;
-
 }

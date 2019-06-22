@@ -162,6 +162,10 @@ body {
     @extend %copy-style-standard;
 }
 
+.email-sign-up  {
+    @extend %email-sign-up;
+}
+
 footer {
     @extend %footer;
 }
