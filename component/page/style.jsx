@@ -444,7 +444,7 @@ class View extends React.PureComponent {
                                 </span>
                                 <br />
                                 <span className="label-style-standard">
-                                    standard<br />text-style-standard
+                                    standard<br />label-style-standard
                                 </span>
                             </p>
                         </div>

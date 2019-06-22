@@ -1,0 +1,27 @@
+%footer {
+
+    .row {
+
+        @extend %padding-bottom-large;
+
+        border-top: rem-calc(1) solid $color-grey-3;
+
+    }
+
+    small {
+
+        @extend %font-open-sans-regular;
+        @extend %font-size-small;
+
+        @include media-breakpoint-down(sm) {
+
+            align-items: center;
+            display: flex;
+            justify-content: center;
+            min-height: rem-calc(45);
+
+        }
+
+    }
+
+}

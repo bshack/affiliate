@@ -162,6 +162,10 @@ body {
     @extend %copy-style-standard;
 }
 
+footer {
+    @extend %footer;
+}
+
 .font-open-sans-light-regular {
     @extend %font-open-sans-light-regular;
 }

@@ -3,7 +3,7 @@ import React from 'react';
 class View extends React.PureComponent {
     render() {
         return (
-            <nav className="navigation-footer">
+            <nav className="navigation-footer" aria-label="footer navigation">
                 <ul>
                     {this.props.data.map(
                         (content, index) =>
