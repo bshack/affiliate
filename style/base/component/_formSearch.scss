@@ -1,5 +1,7 @@
 %form-search {
 
+    @extend %padding-medium;
+
     @keyframes spin {
 
         100% {
@@ -7,8 +9,6 @@
         }
 
     }
-
-    padding: rem-calc(15);
 
     &.loading {
 
@@ -79,14 +79,16 @@
         }
 
         ul {
+
             list-style: none;
-            margin: 0;
+            margin: 0 0 $spacing-small;
             padding: 0;
+
         }
 
         a {
 
-            @extend %anchor-base-1;
+            @extend %anchor-standard;
 
             align-items: center;
             display: flex;

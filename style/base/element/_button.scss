@@ -16,3 +16,31 @@
     }
 
 }
+
+%button-standard {
+
+    @extend %button-base-1;
+    @extend %color-background-green-2;
+    @extend %font-open-sans-semi-bold-regular;
+    @extend %font-size-medium;
+
+    @include media-breakpoint-up(md) {
+        font-size: rem-calc(16);
+    }
+
+    align-items: center;
+    border-radius: rem-calc(10);
+    color: $color-white-1;
+    display: inline-flex;
+    justify-content: center;
+    min-height: rem-calc(45);
+    padding: 0 $spacing-medium;
+    text-transform: uppercase;
+
+    &:focus,
+    &:hover {
+        color: $color-white-1;
+        text-decoration: none;
+    }
+
+}

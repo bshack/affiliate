@@ -6,6 +6,10 @@ $spacing-large: 1.875rem; //30px
 $spacing-xlarge: 3.75rem; //60px
 $spacing-xxlarge: 5.625rem; //90px
 
+%margin-center {
+    margin: 0 auto;
+}
+
 %margin-xxsmall {
     margin: $spacing-xxsmall;
 }

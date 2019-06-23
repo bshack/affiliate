@@ -100,18 +100,19 @@ class View extends React.PureComponent {
             <section className="email-sign-up container">
                 <div className="row justify-content-center">
                     <div className="col-10 col-md-8">
-                        <h2>Sign Up For Weekly Deal Emails</h2>
-                        <p>Once a week we will deliver our best deals to you.</p>
+                        <h2>Sign Up For Deals</h2>
+                        <p>We will deliver our best deals to your inbox once weekly
+                            and in special holiday editions.</p>
                         <form
                             id="marketing-email-sign-up"
                             name="marketing-email-sign-up"
                             onSubmit={this.handleSubmit} noValidate
                         >
                             <fieldset>
-                                <legend>provide your email address</legend>
+                                <legend>email address</legend>
                                 <label
                                     id="email-sign-up-label"
-                                    htmlFor="email-sign-up">email</label>
+                                    htmlFor="email-sign-up">provide your email address:</label>
                                 <input
                                     id="email-sign-up"
                                     name="email-sign-up"
@@ -130,7 +131,9 @@ class View extends React.PureComponent {
                                 >sign up</button>
                             </fieldset>
                         </form>
-                        <small>Your privacy is important, we won't share your email with anyone.</small>
+                        <small>
+                            <a href="/privacy-policy.html">Your privacy is important.</a>
+                        </small>
                     </div>
                 </div>
             </section>

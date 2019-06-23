@@ -22,6 +22,10 @@ body {
     @extend %anchor-2;
 }
 
+.button-standard {
+    @extend %button-standard;
+}
+
 .breadcrumbs {
     @extend %breadcrumbs;
 }
@@ -256,6 +260,10 @@ header {
 
 .label-style-standard {
     @extend %label-style-standard;
+}
+
+.margin-center {
+    @extend %margin-center;
 }
 
 .margin-xxsmall {

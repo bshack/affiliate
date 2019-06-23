@@ -473,6 +473,18 @@ class View extends React.PureComponent {
                     </div>
                     <div className="row margin-bottom-large">
                         <div className="col-12">
+                            <h2 className="heading-2 margin-bottom-medium">Button Styles</h2>
+                            <p>
+                                <button type="button" className="button-standard">click here</button>
+                                <br />
+                                <span className="label-style-standard">
+                                    standard<br />button-standard
+                                </span>
+                            </p>
+                        </div>
+                    </div>
+                    <div className="row margin-bottom-large">
+                        <div className="col-12">
                             <h2 className="heading-2 margin-bottom-medium">Images</h2>
                             <h3>Graphics</h3>
                             <div className="row margin-bottom-medium">
