@@ -101,7 +101,7 @@ class View extends React.PureComponent {
                 <div className="row justify-content-center">
                     <div className="col-10 col-md-8">
                         <h2>Sign Up For Deals</h2>
-                        <p>We will deliver our best deals to your inbox once weekly
+                        <p>We&apos;ll deliver our best deals to your inbox once weekly
                             and in special holiday editions.</p>
                         <form
                             id="marketing-email-sign-up"
@@ -112,7 +112,7 @@ class View extends React.PureComponent {
                                 <legend>email address</legend>
                                 <label
                                     id="email-sign-up-label"
-                                    htmlFor="email-sign-up">provide your email address:</label>
+                                    htmlFor="email-sign-up">please provide your email address:</label>
                                 <input
                                     id="email-sign-up"
                                     name="email-sign-up"
@@ -122,7 +122,7 @@ class View extends React.PureComponent {
                                     onChange={this.handleChange}
                                     onKeyUp={this.handleChange}
                                     onInput={this.handleChange}
-                                    placeholder="email" />
+                                    placeholder="email address" />
                                 {this.message()}
                                 <button
                                     id="marketing-email-sign-up-submit"
@@ -132,7 +132,7 @@ class View extends React.PureComponent {
                             </fieldset>
                         </form>
                         <small>
-                            <a href="/privacy-policy.html">Your privacy is important.</a>
+                            <a href="/privacy-policy.html">privacy policy</a>
                         </small>
                     </div>
                 </div>

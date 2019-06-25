@@ -19,8 +19,8 @@ exports.subscribe = function(req, res) {
 
     if (regex.email.test(email)) {
 
-        let mailchimp = new Mailchimp(req.app.get('configPrivate').store.getState().email.apiKey);
-        let list = req.app.get('configPrivate').store.getState().email.lists.default.id;
+        let mailchimp = new Mailchimp(configPrivate.email.apiKey);
+        let list = configPrivate.email.lists.default.id;
 
         mailchimp.put({
             path : '/lists/' + list + '/members/' + makeMD5Hash(email),
@@ -63,8 +63,8 @@ exports.unsubscribe = function(req, res) {
 
     if (regex.email.test(email)) {
 
-        let mailchimp = new Mailchimp(req.app.get('configPrivate').store.getState().email.apiKey);
-        let list = req.app.get('configPrivate').store.getState().email.lists.default.id;
+        let mailchimp = new Mailchimp(configPrivate.email.apiKey);
+        let list = configPrivate.email.lists.default.id;
 
         mailchimp.patch({
             path : '/lists/' + list + '/members/' + makeMD5Hash(email),

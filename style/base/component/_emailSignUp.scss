@@ -44,13 +44,7 @@
     input {
 
         @extend %input-1;
-
-        @include media-breakpoint-up(sm) {
-            display: inline-block;
-            margin: 0 $spacing-small 0 0;
-            text-align: left;
-        }
-
+        
         display: block;
         margin: 0 auto $spacing-small;
         max-width: rem-calc(300);
