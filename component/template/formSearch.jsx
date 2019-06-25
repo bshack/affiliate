@@ -51,8 +51,10 @@ class View extends React.PureComponent {
             return <div className="col-12 results-empty">
                 <p>No results found for <strong>&quot;{this.props.state.data.query}&quot;</strong>.</p>
             </div>;
-        } else if (!brandRows.length && !storeRows.length && !productRows.length) {
-            return null;
+        } else if (this.props.state.data.query === '') {
+            return <div className="col-12 results-initial">
+                <p className="d-sm-none">Please enter a search query.</p>
+            </div>;
         } else {
             return <div className="col-12 results">
                 {brandRows.length?

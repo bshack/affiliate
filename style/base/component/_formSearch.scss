@@ -110,6 +110,7 @@
     }
 
     .results,
+    .results-initial,
     .results-empty {
 
         @include media-breakpoint-only(xs) {
@@ -140,11 +141,9 @@
         }
 
         ul {
-
             list-style: none;
             margin: 0 0 $spacing-xsmall;
             padding: 0;
-
         }
 
         a {
@@ -159,6 +158,7 @@
 
     }
 
+    .results-initial,
     .results-empty {
         @extend %copy-style-standard;
     }
