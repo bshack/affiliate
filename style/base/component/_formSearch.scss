@@ -1,6 +1,36 @@
 %form-search {
 
-    @extend %padding-medium;
+    @include media-breakpoint-up(sm) {
+
+        position: absolute;
+        right: 0;
+        top: rem-calc(-75);
+        width: 50%;
+        z-index: $layer-top;
+
+        &.has-query {
+
+            background-color: $color-white-1;
+            border: rem-calc(1) solid $color-grey-2;
+            border-radius: rem-calc(10);
+            padding-bottom: $spacing-small;
+            top: rem-calc(-76);
+
+            fieldset {
+
+                border-bottom: rem-calc(1) dotted $color-grey-3;
+                padding-left: rem-calc(14);
+                padding-right: rem-calc(14);
+
+                &::before {
+                    left: rem-calc(21);
+                }
+
+            }
+
+        }
+
+    }
 
     @keyframes spin {
 
@@ -25,7 +55,19 @@
 
     fieldset {
 
-        position: relative;
+        @include media-breakpoint-up(sm) {
+            position: relative;
+        }
+
+        @include media-breakpoint-only(xs) {
+            background-color: $color-white-2;
+            border-bottom: rem-calc(1) dotted $color-grey-3;
+        }
+
+        padding: $spacing-small $spacing-medium;
+        position: fixed;
+        width: 100%;
+        z-index: $layer-top;
 
         &::after {
             background-image: url('../image/loader.svg');
@@ -35,8 +77,8 @@
             height: rem-calc(30);
             opacity: 0;
             position: absolute;
-            right: rem-calc(7.5);
-            top: rem-calc(7.5);
+            right: rem-calc(21);
+            top: rem-calc(18);
             transition: opacity $speed-fast ease-in;
             transition-delay: $speed-medium;
             width: rem-calc(30);
@@ -48,31 +90,50 @@
             background-size: rem-calc(30) rem-calc(30);
             content: '';
             height: rem-calc(30);
-            left: rem-calc(7.5);
+            left: rem-calc(22);
             opacity: .5;
             position: absolute;
-            top: rem-calc(7.5);
+            top: rem-calc(17.5);
             width: rem-calc(30);
         }
 
-    }
+        input {
 
-    input {
+            @extend %input-1;
 
-        @extend %input-1;
+            display: inline-block;
+            padding-left: rem-calc(40);
+            width: 100%;
 
-        display: inline-block;
-        padding-left: rem-calc(40);
-        width: 100%;
+        }
 
     }
 
     .results,
     .results-empty {
-        padding: rem-calc(15) 0;
+
+        @include media-breakpoint-only(xs) {
+            background-color: $color-white-1;
+            padding: rem-calc(75) $spacing-medium rem-calc(66);
+        }
+
+        @include media-breakpoint-up(sm) {
+            padding: $spacing-medium $spacing-medium 0;
+        }
+
+
+
     }
 
     .results {
+
+        @include media-breakpoint-up(sm) {
+            // sass-lint:disable no-vendor-prefixes
+            -webkit-overflow-scrolling: touch;
+            // sass-lint:enable no-vendor-prefixes
+            max-height: rem-calc(350);
+            overflow-y: scroll;
+        }
 
         strong {
             @extend %label-style-standard;
@@ -81,7 +142,7 @@
         ul {
 
             list-style: none;
-            margin: 0 0 $spacing-small;
+            margin: 0 0 $spacing-xsmall;
             padding: 0;
 
         }
@@ -99,9 +160,7 @@
     }
 
     .results-empty {
-
         @extend %copy-style-standard;
-
     }
 
 }

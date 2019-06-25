@@ -48,13 +48,13 @@ class View extends React.PureComponent {
         }
 
         if (this.props.state.data.query !== '' && !brandRows.length && !storeRows.length && !productRows.length) {
-            return <div className="results-empty">
+            return <div className="col-12 results-empty">
                 <p>No results found for <strong>&quot;{this.props.state.data.query}&quot;</strong>.</p>
             </div>;
         } else if (!brandRows.length && !storeRows.length && !productRows.length) {
-            return <div className="results"></div>;
+            return null;
         } else {
-            return <div className="results">
+            return <div className="col-12 results">
                 {brandRows.length?
                     <div className="brands">
                         <strong>brands</strong>
@@ -99,9 +99,12 @@ class View extends React.PureComponent {
         return (
             <form
                 onSubmit={this.onSubmitSearch.bind(this)}
-                className={'form-search' + (this.props.state.isLoading? ' loading' : '')}
+                className={'row form-search' +
+                    (this.props.state.isLoading? ' loading' : '') +
+                    ((this.props.state.data.query !== '')? ' has-query' : '')
+                }
             >
-                <fieldset>
+                <fieldset className="col-12">
                     <label
                         htmlFor="brand-store-search"
                         className="accessibility-hidden-element"
@@ -110,12 +113,12 @@ class View extends React.PureComponent {
                         id="site-search-q"
                         name="site-search-q"
                         type="search"
-                        placeholder="search for brands, stores &amp; products"
+                        placeholder="search brands, stores &amp; more"
                         onInput={this.onInputSearch.bind(this)}
                     />
                     <button type="submit" className="accessibility-hidden-element">search</button>
-                    {this.searchResults(this.props.state.data)}
                 </fieldset>
+                {this.searchResults(this.props.state.data)}
             </form>
         );
     }

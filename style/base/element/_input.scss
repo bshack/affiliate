@@ -1,13 +1,16 @@
 %input-1 {
 
-    @extend %accessibility-outline-1;
-
     appearance: none;
     border: rem-calc(1) solid $color-grey-2;
     border-radius: rem-calc(10);
     color: $color-black-1;
     min-height: rem-calc(45);
     padding: 0 rem-calc(15);
+
+    &:focus {
+        border-color: $color-blue-4;
+        outline: 0;
+    }
 
     &::placeholder {
         color: $color-grey-1;
