@@ -1,0 +1,22 @@
+%list-style-standard {
+
+    @extend %font-open-sans-regular;
+    @extend %font-size-medium;
+
+    color: $color-black-1;
+
+    a {
+        @extend %anchor-standard;
+    }
+
+    i,
+    em {
+        @extend %font-open-sans-italic;
+    }
+
+    b,
+    strong {
+        @extend %font-open-sans-bold;
+    }
+
+}

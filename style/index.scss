@@ -262,6 +262,10 @@ header {
     @extend %label-style-standard;
 }
 
+.list-style-standard {
+    @extend %list-style-standard;
+}
+
 .margin-center {
     @extend %margin-center;
 }

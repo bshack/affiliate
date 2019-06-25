@@ -435,6 +435,29 @@ class View extends React.PureComponent {
                     </div>
                     <div className="row margin-bottom-large">
                         <div className="col-12">
+                            <h2 className="heading-2 margin-bottom-medium">List Styles</h2>
+                            <ul className="list-style-standard">
+                                <li>
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus commodo
+                                        velit <a href="javascript:void(0);">vitae quam consecte</a> tur egestas. Proin
+                                        in lacus metus. Vivamus <em>tincidunt tellus in pretium</em> vulputate. Ut
+                                        mattis tortor e t enim tempus bibendum. Quisque id nisi vel libero tempus
+                                        cursus. Sed nisi nibh, viverra id quam qui s, scelerisque mollis dui.
+                                    <strong> Pellentesque consequat</strong> nec ex<sup>1</sup> ut facilisis.
+                                </li>
+                                <li>
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                </li>
+                            </ul>
+                            <p>
+                                <span className="label-style-standard">
+                                        standard<br />list-style-standard
+                                </span>
+                            </p>
+                        </div>
+                    </div>
+                    <div className="row margin-bottom-large">
+                        <div className="col-12">
                             <h2 className="heading-2 margin-bottom-medium">Label Styles</h2>
                             <p>
                                 <span

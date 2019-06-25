@@ -44,7 +44,7 @@
     input {
 
         @extend %input-1;
-        
+
         display: block;
         margin: 0 auto $spacing-small;
         max-width: rem-calc(300);

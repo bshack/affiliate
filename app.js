@@ -89,7 +89,7 @@ app.get('/', utilityCache.routeCacher(), routeIndex.index);
 //content
 app.get('/support.html', utilityCache.routeCacher(), routeContent.index);
 app.get('/privacy-policy.html', utilityCache.routeCacher(), routeContent.index);
-app.get('/terms-of-service.html', utilityCache.routeCacher(), routeContent.index);
+app.get('/terms-and-conditions.html', utilityCache.routeCacher(), routeContent.index);
 app.get('/manage-subscription.html', utilityCache.routeCacher(), routeContent.index);
 app.get('/accessibility.html', utilityCache.routeCacher(), routeContent.index);
 app.get('/search.html', utilityCache.routeCacher(), routeContent.index);
