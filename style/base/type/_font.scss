@@ -117,29 +117,71 @@
 }
 
 %font-size-xxsmall {
-    font-size: rem-calc(10);
+
+    @include media-breakpoint-up(sm) {
+        font-size: rem-calc(10);
+    }
+
+    font-size: rem-calc(8);
+
 }
 
 %font-size-xsmall {
-    font-size: rem-calc(12);
+
+    @include media-breakpoint-up(sm) {
+        font-size: rem-calc(12);
+    }
+
+    font-size: rem-calc(10);
+
 }
 
 %font-size-small {
-    font-size: rem-calc(14);
+
+    @include media-breakpoint-up(sm) {
+        font-size: rem-calc(14);
+    }
+
+    font-size: rem-calc(12);
+
 }
 
 %font-size-medium {
-    font-size: rem-calc(16);
+
+    @include media-breakpoint-up(sm) {
+        font-size: rem-calc(16);
+    }
+
+    font-size: rem-calc(14);
+
 }
 
 %font-size-large {
-    font-size: rem-calc(18);
+
+    @include media-breakpoint-up(sm) {
+        font-size: rem-calc(18);
+    }
+
+    font-size: rem-calc(16);
+
 }
 
 %font-size-xlarge {
-    font-size: rem-calc(22);
+
+    @include media-breakpoint-up(sm) {
+        font-size: rem-calc(22);
+    }
+
+    font-size: rem-calc(20);
+
 }
 
 %font-size-xxlarge {
-    font-size: rem-calc(24);
+
+    @include media-breakpoint-up(sm) {
+        font-size: rem-calc(24);
+    }
+
+    font-size: rem-calc(22);
+
 }

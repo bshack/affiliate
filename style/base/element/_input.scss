@@ -2,14 +2,31 @@
 
     appearance: none;
     border: rem-calc(1) solid $color-grey-2;
-    border-radius: rem-calc(10);
+    border-radius: rem-calc(5);
     color: $color-black-1;
     min-height: rem-calc(45);
-    padding: 0 rem-calc(15);
+    padding: 0 $spacing-medium;
 
     &:focus {
         border-color: $color-blue-4;
+        border-width: rem-calc(2);
         outline: 0;
+        padding: 0 rem-calc(14);
+    }
+
+    &.error,
+    &.confirm {
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+        margin-bottom: 0;
+    }
+
+    &.error {
+        border-color: $color-pink-1;
+    }
+
+    &.confirm {
+        border-color: $color-green-2;
     }
 
     &::placeholder {
@@ -31,5 +48,20 @@
     }
 
     // sass-lint:enable no-vendor-prefixes
+
+    + .error,
+    + .confirm {
+        border-bottom-left-radius: rem-calc(5);
+        border-bottom-right-radius: rem-calc(5);
+        padding: $spacing-xsmall $spacing-medium;
+    }
+
+    + .confirm {
+        background-color: $color-green-2;
+    }
+
+    + .error {
+        background-color: $color-pink-1;
+    }
 
 }

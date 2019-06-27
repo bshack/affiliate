@@ -8,9 +8,9 @@ const makeMD5Hash = (string) => {
     return crypto.createHash('md5').update(string).digest('hex');
 }
 
-const subscribeSuccessMessage = 'Thank you, you have been subscribed successfully.';
+const subscribeSuccessMessage = 'You have been subscribed successfully.';
 const subscribeFailureMessage = 'Sorry there was an error, your email address was not valid.';
-const unsubscribeSuccessMessage = 'Thank you, you have been unsubscribed successfully.';
+const unsubscribeSuccessMessage = 'You have been unsubscribed successfully.';
 const unsubscribeFailureMessage = 'Sorry there was an error, your email address was not found.';
 
 exports.subscribe = function(req, res) {

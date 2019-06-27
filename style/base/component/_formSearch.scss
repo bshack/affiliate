@@ -3,7 +3,7 @@
     @include media-breakpoint-up(sm) {
 
         position: absolute;
-        right: 0;
+        right: $spacing-medium;
         top: rem-calc(-75);
         width: 50%;
         z-index: $layer-top;
@@ -12,7 +12,7 @@
 
             background-color: $color-white-1;
             border: rem-calc(1) solid $color-grey-2;
-            border-radius: rem-calc(10);
+            border-radius: rem-calc(5);
             padding-bottom: $spacing-small;
             top: rem-calc(-76);
 
@@ -105,6 +105,10 @@
             padding-left: rem-calc(40);
             width: 100%;
 
+            &:focus {
+                padding-left: rem-calc(39);
+            }
+
         }
 
     }
@@ -122,8 +126,6 @@
             padding: $spacing-medium $spacing-medium 0;
         }
 
-
-
     }
 
     .results {
@@ -132,6 +134,7 @@
             // sass-lint:disable no-vendor-prefixes
             -webkit-overflow-scrolling: touch;
             // sass-lint:enable no-vendor-prefixes
+            border-bottom: rem-calc(1) dotted $color-grey-3;
             max-height: rem-calc(350);
             overflow-y: scroll;
         }

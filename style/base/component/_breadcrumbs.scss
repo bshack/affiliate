@@ -20,6 +20,10 @@
             font-size: rem-calc(14);
             margin-right: rem-calc(10);
 
+            a {
+                @extend %anchor-standard;
+            }
+
             &::after {
                 content: '>';
                 margin-left: rem-calc(10);

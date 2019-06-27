@@ -100,6 +100,7 @@ class View extends React.PureComponent {
     render() {
         return (
             <form
+                noValidate
                 onSubmit={this.onSubmitSearch.bind(this)}
                 className={'row form-search' +
                     (this.props.state.isLoading? ' loading' : '') +

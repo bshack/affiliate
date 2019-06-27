@@ -295,7 +295,7 @@ class View extends React.PureComponent {
                                 </span>
                                 <br />
                                 <span className="label-style-standard">
-                                    xxsmall (10px)<br />font-size-xxsmall
+                                    xxsmall (8px/10px)<br />font-size-xxsmall
                                 </span>
                             </p>
 
@@ -307,7 +307,7 @@ class View extends React.PureComponent {
                                 </span>
                                 <br />
                                 <span className="label-style-standard">
-                                    xsmall (12px)<br />font-size-xsmall
+                                    xsmall (10px/12px)<br />font-size-xsmall
                                 </span>
                             </p>
 
@@ -319,7 +319,7 @@ class View extends React.PureComponent {
                                 </span>
                                 <br />
                                 <span className="label-style-standard">
-                                    small (14px)<br />font-size-small
+                                    small (12px/14px)<br />font-size-small
                                 </span>
                             </p>
 
@@ -331,7 +331,7 @@ class View extends React.PureComponent {
                                 </span>
                                 <br />
                                 <span className="label-style-standard">
-                                    medium (16px)<br />font-size-medium
+                                    medium (14px/16px)<br />font-size-medium
                                 </span>
                             </p>
 
@@ -343,7 +343,7 @@ class View extends React.PureComponent {
                                 </span>
                                 <br />
                                 <span className="label-style-standard">
-                                    large (18px)<br />font-size-large
+                                    large (16px/18px)<br />font-size-large
                                 </span>
                             </p>
 
@@ -355,7 +355,7 @@ class View extends React.PureComponent {
                                 </span>
                                 <br />
                                 <span className="label-style-standard">
-                                    xlarge (20px)<br />font-size-xlarge
+                                    xlarge (20px/22px)<br />font-size-xlarge
                                 </span>
                             </p>
 
@@ -367,7 +367,7 @@ class View extends React.PureComponent {
                                 </span>
                                 <br />
                                 <span className="label-style-standard">
-                                    xxlarge (22px)<br />font-size-xxlarge
+                                    xxlarge (22px/24px)<br />font-size-xxlarge
                                 </span>
                             </p>
 

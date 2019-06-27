@@ -45,7 +45,6 @@ class View extends React.PureComponent {
     handleSubmit(e) {
         e.preventDefault();
         if (this.isValid()) {
-
             return axios.put('/service/email/subscribe', {
                 email: this.state.value.trim().toLowerCase()
             })
@@ -53,7 +52,7 @@ class View extends React.PureComponent {
                     this.setState({
                         value: '',
                         isValid: true,
-                        successMessage: data.message,
+                        successMessage: data.data.message,
                         errorMessage: false
                     });
                 })
@@ -82,7 +81,7 @@ class View extends React.PureComponent {
     message() {
         if (this.state.isValid === true) {
             if (this.state.successMessage) {
-                return <div className="success">{this.state.successMessage}</div>;
+                return <div className="confirm">{this.state.successMessage}</div>;
             } else {
                 return '';
             }
@@ -96,6 +95,14 @@ class View extends React.PureComponent {
     }
 
     render() {
+
+        let inputClassName = null;
+        if (this.state.isValid === false) {
+            inputClassName = 'error';
+        } else if (this.state.isValid === true && this.state.successMessage) {
+            inputClassName = 'confirm';
+        }
+
         return (
             <section className="email-sign-up container">
                 <div className="row justify-content-center">
@@ -106,6 +113,7 @@ class View extends React.PureComponent {
                         <form
                             id="marketing-email-sign-up"
                             name="marketing-email-sign-up"
+                            noValidate
                             onSubmit={this.handleSubmit} noValidate
                         >
                             <fieldset>
@@ -117,12 +125,14 @@ class View extends React.PureComponent {
                                     id="email-sign-up"
                                     name="email-sign-up"
                                     type="email"
-                                    className={this.state.isValid === false ? 'error' : ''}
+                                    className={inputClassName}
                                     value={this.state.value}
                                     onChange={this.handleChange}
                                     onKeyUp={this.handleChange}
                                     onInput={this.handleChange}
-                                    placeholder="email address" />
+                                    placeholder="email address"
+                                    required
+                                />
                                 {this.message()}
                                 <button
                                     id="marketing-email-sign-up-submit"

@@ -109,8 +109,8 @@ class View extends React.PureComponent {
                         </h3>
                         {programName}
                         {productCondition}
-                        {price}
                     </div>
+                    {price}
                     <div className='cta'>
                         <a className='anchor-2' href={this.props.data.link}>get deal now</a>
                     </div>

@@ -20,7 +20,7 @@
         @extend %copy-style-standard;
 
         color: $color-white-1;
-        margin: 0 auto $spacing-large;
+        margin: 0 auto $spacing-medium;
         max-width: rem-calc(325);
 
     }
@@ -50,6 +50,12 @@
         max-width: rem-calc(300);
         text-align: center;
         width: 100%;
+
+        + .error,
+        + .confirm {
+            margin: 0 auto $spacing-small;
+            max-width: rem-calc(300);
+        }
 
     }
 

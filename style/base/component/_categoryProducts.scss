@@ -1,30 +1,33 @@
 %category-products {
 
-    @extend %font-open-sans-regular;
+    padding-left: $spacing-small;
+    padding-right: $spacing-small;
+
+    .products {
+
+        > div {
+            margin-bottom: $spacing-large;
+        }
+
+    }
 
     .product {
 
-        @extend %color-background-white-1;
-
-        @include media-breakpoint-up(md) {
-            padding-bottom: rem-calc(65);
-        }
-
         height: 100%;
-        padding: 0 rem-calc(5) rem-calc(60);
+        padding: $spacing-none $spacing-xsmall rem-calc(80);
         position: relative;
 
         .image {
 
-            margin-bottom: rem-calc(15);
+            margin-bottom: $spacing-small;
             padding-bottom: 100%;
             position: relative;
 
             picture,
             img {
-                left: 0;
+                left: $spacing-none;
                 position: absolute;
-                top: 0;
+                top: $spacing-none;
                 width: 100%;
             }
 
@@ -35,114 +38,92 @@
             h3 {
 
                 @extend %font-open-sans-semi-bold-regular;
+                @extend %font-size-medium;
 
-                @include media-breakpoint-up(md) {
-                    font-size: rem-calc(16);
+                margin-bottom: $spacing-xsmall;
+
+                a {
+                    @extend %anchor-standard;
                 }
-
-                font-size: rem-calc(14);
-                margin-bottom: rem-calc(5);
 
             }
 
             p {
-
-                @include media-breakpoint-up(md) {
-                    font-size: rem-calc(10);
-                }
-
-                margin-bottom: rem-calc(5);
-
-                &:last-child {
-
-                    @include media-breakpoint-up(md) {
-                        font-size: rem-calc(15);
-                    }
-
-                    margin-bottom: rem-calc(10);
-
-                }
-
+                margin-bottom: 0;
             }
 
             .program {
 
                 @extend %font-open-sans-regular;
-
-                @include media-breakpoint-up(md) {
-                    font-size: rem-calc(12);
-                }
-
-                font-size: rem-calc(10);
+                @extend %font-size-xsmall;
 
                 a {
 
+                    @extend %anchor-standard;
                     @extend %font-open-sans-semi-bold-regular;
-
-                    @include media-breakpoint-up(md) {
-                        font-size: rem-calc(14);
-                    }
-
-                    font-size: rem-calc(12);
+                    @extend %font-size-small;
 
                 }
 
             }
 
-            .price {
+        }
 
-                @extend %font-open-sans-semi-bold-regular;
+        .price {
 
-                @include media-breakpoint-up(md) {
-                    font-size: rem-calc(16);
-                }
+            bottom: rem-calc(45);
+            left: $spacing-none;
+            margin: $spacing-none;
+            padding: $spacing-xsmall;
+            position: absolute;
+            width: 100%;
 
-                font-size: rem-calc(14);
+            span {
 
-                span {
+                &:first-child {
 
-                    @extend %font-open-sans-regular;
-
-                    @include media-breakpoint-up(md) {
-                        font-size: rem-calc(12);
-                    }
-
-                    font-size: rem-calc(10);
+                    @extend %font-open-sans-bold;
+                    @extend %font-size-large;
 
                 }
 
+                &:last-child {
+
+                    @extend %font-open-sans-semi-bold-regular;
+                    @extend %font-size-xsmall;
+
+                }
             }
 
         }
 
         .cta {
 
-            bottom: 0;
-            left: 0;
-            margin-bottom: rem-calc(10);
-            padding: 0 rem-calc(5) rem-calc(10);
+            bottom: $spacing-none;
+            left: $spacing-none;
+            padding: $spacing-none $spacing-xsmall;
             position: absolute;
             width: 100%;
 
-            .anchor-2 {
+            a {
                 display: flex;
             }
 
-        }
+            &::after {
 
-        &::after {
+                border: rem-calc(5) transparent solid;
+                bottom: rem-calc(-15);
+                box-shadow: 0 0 0 rem-calc(1) $color-grey-3 inset;
+                content: '';
+                display: block;
+                height: rem-calc(11);
+                left: 0;
+                padding-left: rem-calc(5);
+                padding-right: rem-calc(5);
+                position: absolute;
+                width: 100%;
 
-            border: rem-calc(5) transparent solid;
-            bottom: rem-calc(5);
-            box-shadow: 0 0 0 rem-calc(1) $color-grey-2 inset;
-            content: '';
-            display: block;
-            height: rem-calc(11);
-            left: 0;
-            padding-left: rem-calc(5);
-            padding-right: rem-calc(5);
-            position: absolute;
-            width: 100%;
+            }
 
         }
 

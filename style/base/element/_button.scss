@@ -24,12 +24,8 @@
     @extend %font-open-sans-semi-bold-regular;
     @extend %font-size-medium;
 
-    @include media-breakpoint-up(md) {
-        font-size: rem-calc(16);
-    }
-
     align-items: center;
-    border-radius: rem-calc(10);
+    border-radius: rem-calc(5);
     color: $color-white-1;
     display: inline-flex;
     justify-content: center;
