@@ -22,6 +22,16 @@
 
 }
 
+%anchor-standard-touch {
+
+    @extend %anchor-standard;
+
+    align-items: center;
+    display: flex;
+    min-height: rem-calc(45);
+
+}
+
 %anchor-2 {
 
     @extend %anchor-base-1;

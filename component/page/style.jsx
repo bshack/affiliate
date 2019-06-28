@@ -485,6 +485,13 @@ class View extends React.PureComponent {
                             </p>
 
                             <p>
+                                <a className="anchor-standard-touch" href="javascript:void(0);">click here</a>
+                                <span className="label-style-standard">
+                                    standard touch<br />anchor-standard-touch
+                                </span>
+                            </p>
+
+                            <p>
                                 <a className="anchor-2" href="javascript:void(0);">get the deal now</a>
                                 <br />
                                 <span className="label-style-standard">

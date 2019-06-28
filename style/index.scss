@@ -18,6 +18,10 @@ body {
     @extend %anchor-standard;
 }
 
+.anchor-standard-touch {
+    @extend %anchor-standard-touch;
+}
+
 .anchor-2 {
     @extend %anchor-2;
 }

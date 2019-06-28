@@ -24,13 +24,11 @@
         }
 
         a {
-            @extend %anchor-standard;
+
+            @extend %anchor-standard-touch;
             @extend %font-open-sans-regular;
             @extend %font-size-medium;
 
-            align-items: center;
-            display: flex;
-            min-height: rem-calc(45);
             padding: 0 rem-calc(7.5);
 
         }

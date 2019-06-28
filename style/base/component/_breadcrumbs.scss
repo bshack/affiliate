@@ -9,24 +9,31 @@
     ul {
 
         list-style: none;
-        margin: 0 0 rem-calc(30);
+        margin: 0 0 $spacing-medium;
         padding: 0;
 
         li  {
 
             @extend %font-open-sans-regular;
+            @extend %font-size-small;
 
             display: inline-flex;
-            font-size: rem-calc(14);
-            margin-right: rem-calc(10);
+            margin-right: $spacing-small;
 
             a {
-                @extend %anchor-standard;
+                @extend %anchor-standard-touch;
+            }
+
+            &::after,
+            &:last-child {
+                align-items: center;
+                display: inline-flex;
+                min-height: rem-calc(45);
             }
 
             &::after {
                 content: '>';
-                margin-left: rem-calc(10);
+                margin-left: $spacing-small;
             }
 
             &:last-child {

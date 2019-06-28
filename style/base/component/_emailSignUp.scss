@@ -6,9 +6,17 @@
     text-align: center;
 
     .row {
+
         @extend %gradient-background-1;
         @extend %padding-bottom-large;
         @extend %padding-top-large;
+
+        @include media-breakpoint-up(sm) {
+            border-radius: rem-calc(5);
+        }
+
+        border-radius: 0;
+
     }
 
     h2 {

@@ -3,6 +3,19 @@
     padding-left: $spacing-small;
     padding-right: $spacing-small;
 
+    h1 {
+
+        @extend %heading-1;
+
+        @include media-breakpoint-up(md) {
+            text-align: left;
+        }
+
+        margin: 0 $spacing-xsmall $spacing-medium;
+        text-align: center;
+
+    }
+
     .products {
 
         > div {

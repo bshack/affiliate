@@ -150,13 +150,7 @@
         }
 
         a {
-
-            @extend %anchor-standard;
-
-            align-items: center;
-            display: flex;
-            min-height: rem-calc(45);
-
+            @extend %anchor-standard-touch;
         }
 
     }
