@@ -1,0 +1,22 @@
+%category-header {
+
+    h1 {
+        @extend %heading-1;
+        @extend %margin-bottom-small;
+    }
+
+    h2 {
+        @extend %heading-2;
+        @extend %margin-bottom-small;
+    }
+
+    @include media-breakpoint-down(md) {
+
+        h1,
+        h2 {
+            text-align: center;
+        }
+
+    }
+
+}

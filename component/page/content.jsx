@@ -22,7 +22,7 @@ import Footer from '../template/footer.jsx';
 class View extends React.PureComponent {
 
     pageContent() {
-        return <div className="wrapper">
+        return <div className="wrapper content">
             <Header />
             <NavigationSearch />
             <NavigationMain />

@@ -4,4 +4,18 @@
         padding-top: rem-calc(66);
     }
 
+    &.plp {
+
+        main {
+
+            @include media-breakpoint-up(lg) {
+                padding-top: 0;
+            }
+
+            padding-top: rem-calc(15);
+
+        }
+
+    }
+
 }

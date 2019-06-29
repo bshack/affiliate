@@ -11,6 +11,7 @@ import Header from '../template/header.jsx';
 import NavigationMain from '../template/navigationMain.jsx';
 import NavigationSearch from '../template/navigationSearch.jsx';
 import Breadcrumbs from '../template/breadcrumbs.jsx';
+import CategoryHeader from '../template/categoryHeader.jsx';
 import CategoryProducts from '../template/categoryProducts.jsx';
 import EmailSignUp from '../template/emailSignUp.jsx';
 import Footer from '../template/footer.jsx';
@@ -19,9 +20,8 @@ import Footer from '../template/footer.jsx';
 *************************************/
 
 class View extends React.PureComponent {
-
     pageContent() {
-        return <div className="wrapper">
+        return <div className="wrapper plp">
             <Header />
             <NavigationSearch />
             <NavigationMain />
@@ -30,6 +30,7 @@ class View extends React.PureComponent {
                 className={(this.props.state.data.isMainContentHidden? 'd-none d-sm-block' : 'd-block')}
             >
                 <Breadcrumbs />
+                <CategoryHeader />
                 <CategoryProducts />
                 <EmailSignUp />
             </main>

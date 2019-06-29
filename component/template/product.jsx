@@ -16,7 +16,7 @@ class View extends React.PureComponent {
                     <a href={'/' + this.props.data.path + '/' + this.props.data.seoFilenamePart + '.html'}>
                         {
                             this.props.isLazy?
-                                <LazyLoad offset={1000}>
+                                <LazyLoad offset={1000} debounce={false} throttle={250}>
                                     <Picture data={this.props.data} config={this.props.config} />
                                 </LazyLoad>
                                 :

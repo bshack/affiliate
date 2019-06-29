@@ -29,7 +29,8 @@ class View extends React.PureComponent {
 const mapStateToProps = (state) => {
     return {
         data: state.data.productRecommendation,
-        config: state.data.config
+        config: state.data.config,
+        state: state
     }
 }
 

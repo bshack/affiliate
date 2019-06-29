@@ -2,6 +2,7 @@
 
     @include media-breakpoint-up(lg) {
         display: flex;
+        margin-bottom: $spacing-small;
     }
 
     display: none;
@@ -9,7 +10,7 @@
     ul {
 
         list-style: none;
-        margin: 0 0 $spacing-medium;
+        margin: 0;
         padding: 0;
 
         li  {
