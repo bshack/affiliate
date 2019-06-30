@@ -1,9 +1,7 @@
 %product-detail {
 
-    @extend %color-background-white-1;
-
-    height: 100%;
-    position: relative;
+    border-bottom: rem-calc(1) solid $color-grey-3;
+    margin-bottom: $spacing-large;
 
     .image {
 
@@ -28,7 +26,7 @@
 
     .images {
 
-        margin-bottom: rem-calc(15);
+        margin-bottom: $spacing-medium;
 
         [role='tablist'] {
 
@@ -60,61 +58,54 @@
         h1 {
 
             @extend %font-open-sans-semi-bold-regular;
+            @extend %font-size-xlarge;
 
-            @include media-breakpoint-up(md) {
-                font-size: rem-calc(22);
-            }
+            margin-bottom: $spacing-xsmall;
 
-            font-size: rem-calc(18);
-            margin-bottom: rem-calc(5);
+        }
+
+        .discription {
+
+            @extend %copy-style-standard;
+
+            margin-bottom: $spacing-medium;
 
         }
 
         .program {
 
             @extend %font-open-sans-regular;
+            @extend %font-size-medium;
 
-            @include media-breakpoint-up(md) {
-                font-size: rem-calc(14);
-            }
-
-            font-size: rem-calc(12);
-            margin-bottom: rem-calc(15);
+            margin-bottom: $spacing-medium;
 
             a {
-
                 @extend %font-open-sans-semi-bold-regular;
-
-                @include media-breakpoint-up(md) {
-                    font-size: rem-calc(16);
-                }
-
-                font-size: rem-calc(14);
-
+                @extend %font-size-medium;
+                @extend %anchor-standard;
             }
 
         }
 
         .price {
 
-            @extend %font-open-sans-bold;
-
-            @include media-breakpoint-up(md) {
-                font-size: rem-calc(22);
-            }
-
-            font-size: rem-calc(20);
-            margin-bottom: rem-calc(15);
+            margin-bottom: $spacing-medium;
 
             span {
 
-                @extend %font-open-sans-regular;
+                &:first-child {
 
-                @include media-breakpoint-up(md) {
-                    font-size: rem-calc(12);
+                    @extend %font-open-sans-bold;
+                    @extend %font-size-xlarge;
+
+                    margin-right: $spacing-xxsmall;
+
                 }
 
-                font-size: rem-calc(10);
+                &:last-child {
+                    @extend %font-open-sans-semi-bold-regular;
+                    @extend %font-size-small;
+                }
 
             }
 
@@ -127,13 +118,17 @@
         .condition {
 
             @extend %font-open-sans-regular;
+            @extend %font-size-medium;
 
-            @include media-breakpoint-up(md) {
-                font-size: rem-calc(16);
+            margin-bottom: $spacing-medium;
+
+            strong {
+                @extend %label-style-standard;
             }
 
-            font-size: rem-calc(14);
-            margin-bottom: rem-calc(15);
+            a {
+                @extend %anchor-standard;
+            }
 
         }
 
@@ -147,8 +142,9 @@
                 max-width: 50%;
             }
 
-            margin-bottom: rem-calc(15);
+            margin-bottom: $spacing-medium;
             width: 100%;
+
         }
 
     }

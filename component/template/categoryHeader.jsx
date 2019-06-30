@@ -7,10 +7,10 @@ class View extends React.PureComponent {
             <section className="category-header container">
                 <div className="row no-gutters">
                     <div className='col-12'>
-                        {this.props.state.data.category[0].title?
-                            <h1>{this.props.state.data.category[0].title}</h1> : null}
-                        {this.props.state.data.category[0].subtitle?
-                            <h2>{this.props.state.data.category[0].subtitle}</h2> : null}
+                        {this.props.h1?
+                            <h1>{this.props.h1}</h1> : null}
+                        {this.props.h2?
+                            <h2>{this.props.h2}</h2> : null}
                     </div>
                 </div>
             </section>

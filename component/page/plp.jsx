@@ -30,7 +30,10 @@ class View extends React.PureComponent {
                 className={(this.props.state.data.isMainContentHidden? 'd-none d-sm-block' : 'd-block')}
             >
                 <Breadcrumbs />
-                <CategoryHeader />
+                <CategoryHeader
+                    h1={this.props.state.data.category[0].title}
+                    h2={this.props.state.data.category[0].subtitle}
+                />
                 <CategoryProducts />
                 <EmailSignUp />
             </main>

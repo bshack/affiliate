@@ -12,6 +12,7 @@ import NavigationMain from '../template/navigationMain.jsx';
 import NavigationSearch from '../template/navigationSearch.jsx';
 import Breadcrumbs from '../template/breadcrumbs.jsx';
 import ProductDetail from '../template/productDetail.jsx';
+import CategoryHeader from '../template/categoryHeader.jsx';
 import RecommendationProducts from '../template/recommendationProducts.jsx';
 import EmailSignUp from '../template/emailSignUp.jsx';
 import Footer from '../template/footer.jsx';
@@ -32,6 +33,9 @@ class View extends React.PureComponent {
             >
                 <Breadcrumbs />
                 <ProductDetail />
+                <CategoryHeader
+                    h2='You Also May Like'
+                />
                 <RecommendationProducts />
                 <EmailSignUp />
             </main>

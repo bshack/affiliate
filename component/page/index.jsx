@@ -12,6 +12,7 @@ import NavigationMain from '../template/navigationMain.jsx';
 import NavigationSearch from '../template/navigationSearch.jsx';
 import Content from '../template/content.jsx';
 import FeaturedProducts from '../template/featuredProducts.jsx';
+import CategoryHeader from '../template/categoryHeader.jsx';
 import CategoryProducts from '../template/categoryProducts.jsx';
 import EmailSignUp from '../template/emailSignUp.jsx';
 import EmailUnsubscribe from '../template/emailUnsubscribe.jsx';
@@ -32,8 +33,14 @@ class View extends React.PureComponent {
                 className={(this.props.state.data.isMainContentHidden? 'd-none d-sm-block' : 'd-block')}
             >
                 <Content />
+                <CategoryHeader
+                    h2='Featured Projects'
+                />
                 <FeaturedProducts />
                 <EmailSignUp />
+                <CategoryHeader
+                    h2='What&apos;s New'
+                />
                 <CategoryProducts />
             </main>
             <Footer />

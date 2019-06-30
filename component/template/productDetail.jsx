@@ -49,12 +49,12 @@ class View extends React.PureComponent {
         if (this.props.data.salePriceUnformatted) {
             price = <p className="price-sale">
                 <del>{numeral(this.props.data.priceUnformatted).format('$0,0[.]00')}</del>
-                {numeral(this.props.data.salePriceUnformatted).format('$0,0.00')}
+                <span>{numeral(this.props.data.salePriceUnformatted).format('$0,0.00')}</span>
                 <span>{this.props.data.salePriceCurrency}</span>
             </p>
         } else {
             price = <p className="price">
-                {numeral(this.props.data.priceUnformatted).format('$0,0[.]00')}
+                <span>{numeral(this.props.data.priceUnformatted).format('$0,0[.]00')}</span>
                 <span>{this.props.data.priceCurrency}</span>
             </p>
         }
@@ -62,7 +62,8 @@ class View extends React.PureComponent {
         let programName = '';
         if (this.props.data.programName !== '') {
             programName = <p className="program">
-                from <a href={'/store/' + this.props.data.programName + '/index.html'}>{this.props.data.programName}</a>
+                sold by <a href={'/store/' +
+                    this.props.data.programName + '/index.html'}>{this.props.data.programName}</a>
             </p>
         }
 
@@ -93,27 +94,28 @@ class View extends React.PureComponent {
 
         let brand = '';
         if (this.props.data.brand !== '') {
-            brand = <p className="brand">
-                <a href={'/brand/' + this.props.data.brand + '/index.html'}>{this.props.data.brand}</a>
-            </p>
+            brand = <div className="brand">
+                <p><strong>brand</strong><br />
+                    <a href={'/brand/' + this.props.data.brand + '/index.html'}>{this.props.data.brand}</a></p>
+            </div>
         }
 
         return (
             <section className="product-detail container">
                 <div className="row">
-                    <div className="col-12 col-md-8">
+                    <div className="col-12 col-md-7">
                         {image}
                     </div>
-                    <aside className="col-12 col-md-4">
+                    <aside className="col-12 col-md-5">
                         <h1>
                             {this.props.data.title}
                         </h1>
                         {programName}
                         {price}
                         {availability}
+                        {brand}
                         {productCondition}
                         <a className="anchor-2" href={this.props.data.link}>get deal now</a>
-                        {brand}
                         {description}
                         {gtin}
                         {mpn}
