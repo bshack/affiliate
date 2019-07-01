@@ -11,7 +11,10 @@
         }
     },
     "cache": {
-        "isEnabled": false
+        "isEnabled": false,
+        "browser": {
+            "maxAge": ""
+        }
     },
     "session": {
         "secret": ""

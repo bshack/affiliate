@@ -32,9 +32,8 @@ class View extends React.PureComponent {
                 id="main-content"
                 className={(this.props.state.data.isMainContentHidden? 'd-none d-sm-block' : 'd-block')}
             >
-                <Content />
                 <CategoryHeader
-                    h2='Featured Projects'
+                    h1='Featured Products'
                 />
                 <FeaturedProducts />
                 <EmailSignUp />

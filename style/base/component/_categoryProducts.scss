@@ -23,6 +23,10 @@
             padding-bottom: 100%;
             position: relative;
 
+            a {
+                @extend %anchor-standard;
+            }
+
             picture,
             img {
                 left: $spacing-none;

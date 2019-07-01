@@ -12,12 +12,18 @@ const utilityCache = require('./utility/cache');
 const UtilityFile = require('./utility/file');
 const staticAssetDirectory = __dirname + '/' + configPublic.static.directory;
 
-/* SETUP VERSIONED ASSET DIRECTORY
+/* SETUP VERSIONED ASSET DIRECTORY LOCATION AND CACHING
 *************************************/
 
 utilityFile = new UtilityFile();
 
 utilityFile.updateStaticAssetVersion(staticAssetDirectory);
+
+let cacheConfigBrowser = {};
+
+if (configPrivate.cache.isEnabled) {
+    cacheConfigBrowser = configPrivate.cache.browser;
+}
 
 
 /* CLEAR BACKEND CACHE IF NOT ENABLED
@@ -68,7 +74,7 @@ app.use(session({
     }
 }));
 app.use(compression());
-app.use(express.static(staticAssetDirectory));
+app.use(express.static(staticAssetDirectory, cacheConfigBrowser));
 app.use(express.json());
 app.engine('jsx', require('express-react-views').createEngine({
     transformViews: false
