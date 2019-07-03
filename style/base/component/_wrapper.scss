@@ -4,15 +4,28 @@
         padding-top: rem-calc(66);
     }
 
-    &.plp {
+    &.index,
+    &.pdp,
+    &.plp,
+    &.content,
+    &.unsubscribe,
+    &.style {
+
+        main {
+            padding-top: rem-calc(15);
+        }
+
+    }
+
+    &.pdp,
+    &.plp,
+    &.content {
 
         main {
 
             @include media-breakpoint-up(lg) {
                 padding-top: 0;
             }
-
-            padding-top: rem-calc(15);
 
         }
 

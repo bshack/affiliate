@@ -14,7 +14,7 @@
     .product {
 
         height: 100%;
-        padding: $spacing-none $spacing-xsmall rem-calc(80);
+        padding: $spacing-none $spacing-xsmall rem-calc(90);
         position: relative;
 
         .image {
@@ -75,7 +75,7 @@
 
         .price {
 
-            bottom: rem-calc(45);
+            bottom: rem-calc(55);
             left: $spacing-none;
             margin: $spacing-none;
             padding: $spacing-xsmall;
@@ -103,8 +103,9 @@
 
         .cta {
 
-            bottom: $spacing-none;
+            bottom: rem-calc(1);
             left: $spacing-none;
+            margin-bottom: $spacing-small;
             padding: $spacing-none $spacing-xsmall;
             position: absolute;
             width: 100%;

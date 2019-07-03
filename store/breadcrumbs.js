@@ -77,31 +77,9 @@ export default class {
                         title: params.brand
                     }
                 ]));
-            } else if (params.filename) {
 
-                params.isActive = true;
+            } else if (params.path) {
 
-                return this.app.get('databaseConnection')
-                    .from('content')
-                    .select(['id', 'title', 'filename'])
-                    .where(params)
-                    .then((data) => {
-                        dispatch(this.handleGetSuccess([
-                            {
-                                id: 'home',
-                                title: 'Home',
-                            },
-                            {
-                                id: data[0].id,
-                                title: data[0].title,
-                                url: data[0].filename
-                            }
-                        ]));
-                    })
-                    .catch((error) => {
-                        dispatch(this.handleGetError(error));
-                    });
-            } else {
                 return this.app.get('databaseConnection')
                     .from('category')
                     .select([
@@ -155,6 +133,31 @@ export default class {
                     })
                     .then((data) => {
                         dispatch(this.handleGetSuccess(data));
+                    })
+                    .catch((error) => {
+                        dispatch(this.handleGetError(error));
+                    });
+
+            } else if (params.filename) {
+
+                params.isActive = true;
+
+                return this.app.get('databaseConnection')
+                    .from('content')
+                    .select(['id', 'title', 'filename'])
+                    .where(params)
+                    .then((data) => {
+                        dispatch(this.handleGetSuccess([
+                            {
+                                id: 'home',
+                                title: 'Home',
+                            },
+                            {
+                                id: data[0].id,
+                                title: data[0].title,
+                                url: data[0].filename
+                            }
+                        ]));
                     })
                     .catch((error) => {
                         dispatch(this.handleGetError(error));

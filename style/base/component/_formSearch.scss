@@ -1,6 +1,6 @@
 %form-search {
 
-    @include media-breakpoint-up(sm) {
+    @include media-breakpoint-up(md) {
 
         position: absolute;
         right: $spacing-medium;
@@ -55,11 +55,11 @@
 
     fieldset {
 
-        @include media-breakpoint-up(sm) {
+        @include media-breakpoint-up(md) {
             position: relative;
         }
 
-        @include media-breakpoint-only(xs) {
+        @include media-breakpoint-down(sm) {
             background-color: $color-white-2;
             border-bottom: rem-calc(1) dotted $color-grey-3;
         }
@@ -117,12 +117,12 @@
     .results-initial,
     .results-empty {
 
-        @include media-breakpoint-only(xs) {
+        @include media-breakpoint-down(sm) {
             background-color: $color-white-1;
             padding: rem-calc(75) $spacing-medium rem-calc(66);
         }
 
-        @include media-breakpoint-up(sm) {
+        @include media-breakpoint-up(md) {
             padding: $spacing-medium $spacing-medium 0;
         }
 
@@ -130,7 +130,7 @@
 
     .results {
 
-        @include media-breakpoint-up(sm) {
+        @include media-breakpoint-up(md) {
             // sass-lint:disable no-vendor-prefixes
             -webkit-overflow-scrolling: touch;
             // sass-lint:enable no-vendor-prefixes

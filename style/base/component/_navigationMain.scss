@@ -1,48 +1,83 @@
 %navigation-main {
 
-    @include media-breakpoint-only(xs) {
+    @include media-breakpoint-down(sm) {
+
         background-color: $color-white-1;
         height: 100%;
+        overflow-y: scroll;
         position: fixed;
-        width: 100%;
-        z-index: 1000;
-    }
-
-    background-color: $color-black-1;
-
-    &.fixed {
-        position: fixed;
-        top: 0;
         width: 100%;
         z-index: $layer-top;
-    }
 
-    .col-12 {
+        ul {
 
-        [aria-expanded='false'] {
+            margin: $spacing-none;
+            padding: $spacing-none;
 
-            ul {
-                display: none;
+            li {
+
+                display: block;
+                list-style: none;
+
+                button {
+                    appearance: none;
+                }
+
+                button,
+                a {
+                    align-items: center;
+                    border-bottom: rem-calc(1) dotted $color-grey-2;
+                    display: flex;
+                    justify-content: flex-start;
+                    min-height: rem-calc(45);
+                    padding: rem-calc(5) rem-calc(15);
+                }
+
             }
 
         }
 
-        > ul {
+    }
 
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            position: relative;
+    @include media-breakpoint-up(md) {
 
-            > li {
+        background-color: $color-black-1;
 
-                display: inline-flex;
-                padding: 0 rem-calc(10);
+        &.fixed {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: $layer-top;
+        }
 
-                > a {
-                    align-items: center;
-                    display: flex;
-                    min-height: rem-calc(45);
+        .col-12 {
+
+            [aria-expanded='false'] {
+
+                ul {
+                    display: none;
+                }
+
+            }
+
+            > ul {
+
+                list-style: none;
+                margin: 0;
+                padding: 0;
+                position: relative;
+
+                > li {
+
+                    display: inline-flex;
+                    padding: 0 rem-calc(10);
+
+                    > a {
+                        align-items: center;
+                        display: flex;
+                        min-height: rem-calc(45);
+                    }
+
                 }
 
             }

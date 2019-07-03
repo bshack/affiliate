@@ -69,7 +69,7 @@ export default class {
         return (dispatch, getState) => {
 
             let whereData = {
-                isActive: true
+                'product.isActive': true
             };
             return this.app.get('databaseConnection')
                 .from('product')
@@ -120,9 +120,9 @@ export default class {
                             }
                             categoryAll = _.merge(categoryAll, categoryLevel);
                         }
-                        categoryFeatured['asdfsadf'] = {
+                        categoryFeatured['all'] = {
                             title: 'All Categories',
-                            path: '',
+                            path: false,
                             id: 0,
                             children: categoryAll.children,
                             isFeatured: 1

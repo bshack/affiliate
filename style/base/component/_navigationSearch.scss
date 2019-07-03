@@ -1,12 +1,12 @@
 %navigation-search {
 
-    @include media-breakpoint-only(xs) {
+    @include media-breakpoint-down(sm) {
         background-color: $color-white-1;
         height: 100%;
         width: 100%;
     }
 
-    @include media-breakpoint-up(sm) {
+    @include media-breakpoint-up(md) {
         position: relative;
     }
 

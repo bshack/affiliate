@@ -55,7 +55,7 @@ class View extends React.PureComponent {
 
         let programName = '';
         if (this.props.data.programName !== '') {
-            programName = <p className='program'>from <a href={'/store/'
+            programName = <p className='program'>sold by <a href={'/store/'
                 + this.props.data.programName + '/index.html'}>{this.props.data.programName}</a></p>
         }
 

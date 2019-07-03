@@ -21,7 +21,7 @@ class View extends React.PureComponent {
     }
 
     ctaBuilder(data) {
-        if (data.path === '') {
+        if (data.path === false) {
             return <button
                 className={this.props.state.data.isCategoryMenuOpen? 'open' : null}
                 type="button"
