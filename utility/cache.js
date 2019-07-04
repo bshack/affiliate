@@ -21,13 +21,11 @@ class Cache {
     }
 
     initialize() {
-        if (configPrivate.cache.isEnabled === false) {
-            return this.flush()
-                .then((data) => {
-                    console.log('backend cache flushed', data);
-                })
-                .catch(console.error);
-        }
+        return this.flush()
+            .then((data) => {
+                console.log('backend cache flushed', data);
+            })
+            .catch(console.error);
     }
 
     routeCacher(time) {
