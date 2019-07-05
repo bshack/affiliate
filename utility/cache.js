@@ -4,15 +4,6 @@ import crypto from 'crypto';
 import configPrivate from '../configPrivate';
 
 const client = redis.createClient();
-const routeCacher = apicache.options({
-    debug: false,
-    defaultDuration: '1 hour',
-    redisClient: client,
-    enabled: configPrivate.cache.isEnabled,
-    statusCodes: {
-        exclude: [404, 403, 500],
-    }
-}).middleware;
 
 class Cache {
 
@@ -26,14 +17,6 @@ class Cache {
                 console.log('backend cache flushed', data);
             })
             .catch(console.error);
-    }
-
-    routeCacher(time) {
-        if (time) {
-            return routeCacher(time);
-        } else {
-            return routeCacher();
-        }
     }
 
     flush() {

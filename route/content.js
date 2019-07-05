@@ -24,10 +24,11 @@ exports.index = function(req, res) {
             })
         )
     ]).then(() => {
-        res.render('content', {
-            store: storePage.store,
-            fullDocumentRender: true
-        });
+        res.header(configPrivate.header.html)
+            .render('content', {
+                store: storePage.store,
+                fullDocumentRender: true
+            });
     });
 
 };

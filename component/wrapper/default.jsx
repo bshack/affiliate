@@ -55,8 +55,17 @@ class WrapperLayout extends React.PureComponent {
                     <link rel="canonical" href={this.props.data.meta.canonical} />
                     <link rel="stylesheet" type="text/css" media="all" href={'/'
                         + config.static.version + '/style/global.css'} />
+                    <script dangerouslySetInnerHTML={{
+                        __html: "(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','" + config.analytics.gtm.id + "');"// eslint-disable-line
+                    }} />
                 </head>
                 <body>
+                    <noscript>
+                        <iframe
+                            src="https://www.googletagmanager.com/ns.html?id=GTM-5X2BS23"
+                            className="accessibility-hidden-1"
+                        ></iframe>
+                    </noscript>
                     <a className="accessibility-skip-to-element" href="#main-content">skip to content</a>
                     <div id="app">
                         {this.props.children}

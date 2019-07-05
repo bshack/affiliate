@@ -22,10 +22,11 @@ exports.index = function(req, res) {
             })
         )
     ]).then(() => {
-        res.render('unsubscribe', {
-            store: storePage.store,
-            fullDocumentRender: true
-        });
+        res.header(configPrivate.header.html)
+            .render('unsubscribe', {
+                store: storePage.store,
+                fullDocumentRender: true
+            });
     });
 
 };

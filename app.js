@@ -90,41 +90,41 @@ app.get('/sitemap.xml', routeSitemap.index);
 app.get('/merchant.xml', routeMerchant.index);
 
 //home
-app.get('/', utilityCache.routeCacher(), routeIndex.index);
+app.get('/', routeIndex.index);
 
 //content
-app.get('/support.html', utilityCache.routeCacher(), routeContent.index);
-app.get('/privacy-policy.html', utilityCache.routeCacher(), routeContent.index);
-app.get('/terms-and-conditions.html', utilityCache.routeCacher(), routeContent.index);
-app.get('/manage-subscription.html', utilityCache.routeCacher(), routeContent.index);
-app.get('/accessibility.html', utilityCache.routeCacher(), routeContent.index);
-app.get('/search.html', utilityCache.routeCacher(), routeContent.index);
-app.get('/error-404.html', utilityCache.routeCacher(), routeContent.index);
+app.get('/support.html', routeContent.index);
+app.get('/privacy-policy.html', routeContent.index);
+app.get('/terms-and-conditions.html', routeContent.index);
+app.get('/manage-subscription.html', routeContent.index);
+app.get('/accessibility.html', routeContent.index);
+app.get('/search.html', routeContent.index);
+app.get('/error-404.html', routeContent.index);
 
 //email marketing
-app.get('/unsubscribe.html', utilityCache.routeCacher(), routeUnsubscribe.index);
+app.get('/unsubscribe.html', routeUnsubscribe.index);
 
 //plp
-app.get('/brand/:brand/index.html', utilityCache.routeCacher(), routePLP.index);
-app.get('/store/:store/index.html', utilityCache.routeCacher(), routePLP.index);
-app.get('/**/index.html', utilityCache.routeCacher(), routePLP.index);
+app.get('/brand/:brand/index.html', routePLP.index);
+app.get('/store/:store/index.html', routePLP.index);
+app.get('/**/index.html', routePLP.index);
 
 //pdp
-app.get('/**/*.html', utilityCache.routeCacher(), routePDP.index);
+app.get('/**/*.html', routePDP.index);
 
 //style guide
-app.get('/style.html', utilityCache.routeCacher(), routeStyle.index);
+app.get('/style.html', routeStyle.index);
 
 //services
-app.get('/service/search', utilityCache.routeCacher(), routeServiceSearch.get);
+app.get('/service/search', routeServiceSearch.get);
 app.put('/service/email/subscribe', routeServiceEmail.subscribe);
 app.patch('/service/email/unsubscribe', routeServiceEmail.unsubscribe);
-app.get('/service/page/index', utilityCache.routeCacher(), routeServicePageIndex.get);
-app.get('/service/page/content', utilityCache.routeCacher(), routeServicePageContent.get);
-app.get('/service/page/plp', utilityCache.routeCacher(), routeServicePagePLP.get);
-app.get('/service/page/pdp', utilityCache.routeCacher(), routeServicePagePDP.get);
+app.get('/service/page/index', routeServicePageIndex.get);
+app.get('/service/page/content', routeServicePageContent.get);
+app.get('/service/page/plp', routeServicePagePLP.get);
+app.get('/service/page/pdp', routeServicePagePDP.get);
 app.get('/service/page/unsubscribe', routeServicePageUnsubscribe.get);
-app.get('/service/page/style', utilityCache.routeCacher(), routeServicePageStyle.get);
+app.get('/service/page/style', routeServicePageStyle.get);
 
 
 /* SERVER STARTUP

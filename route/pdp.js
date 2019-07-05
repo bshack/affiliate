@@ -34,10 +34,11 @@ exports.index = function(req, res) {
             })
         )
     ]).then(() => {
-        res.render('pdp', {
-            store: storePage.store,
-            fullDocumentRender: true
-        });
+        res.header(configPrivate.header.html)
+            .render('pdp', {
+                store: storePage.store,
+                fullDocumentRender: true
+            });
     });
 
 };

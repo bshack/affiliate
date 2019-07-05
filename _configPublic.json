@@ -16,6 +16,11 @@
         "directory": "dist",
         "version": ""
     },
+    "analytics": {
+        "gtm": {
+            "id": ""
+        }
+    },
     "social": {
         "image": "image/social.png",
         "facebook": {

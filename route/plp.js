@@ -45,10 +45,11 @@ exports.index = function(req, res) {
             })
         )
     ]).then(() => {
-        res.render('plp', {
-            store: storePage.store,
-            fullDocumentRender: true
-        });
+        res.header(configPrivate.header.html)
+            .render('plp', {
+                store: storePage.store,
+                fullDocumentRender: true
+            });
     });
 
 };

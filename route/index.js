@@ -20,10 +20,11 @@ exports.index = function(req, res) {
             storePage.getAll()
         )
     ]).then(() => {
-        res.render('index', {
-            store: storePage.store,
-            fullDocumentRender: true
-        });
+        res.header(configPrivate.header.html)
+            .render('index', {
+                store: storePage.store,
+                fullDocumentRender: true
+            });
     });
 
 };
