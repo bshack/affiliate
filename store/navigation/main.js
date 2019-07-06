@@ -23,16 +23,13 @@ const getCategoryDetails = (data) => {
         let fullPathsList = [];
         let i;
         for (i = 0; i < data.length; i++) {
-            let newPath = '';
             let productCategoryPathData = data[i].path.split('/');
-            let ii;
-            for (ii = 0; ii < productCategoryPathData.length; ii++) {
-                if (newPath === '') {
-                    newPath = productCategoryPathData[ii];
-                } else {
-                    newPath = newPath + '/' + productCategoryPathData[ii];
-                }
-                fullPathsList.push(newPath);
+            if (productCategoryPathData.length > 1 &&
+                    fullPathsList.indexOf(productCategoryPathData[0]) === -1) {
+                fullPathsList.push(productCategoryPathData[0]);
+            }
+            if (fullPathsList.indexOf(data[i].path) === -1) {
+                fullPathsList.push(data[i].path);
             }
 
         }
@@ -94,40 +91,33 @@ export default class {
                 })
                 .then((data) => {
                     return new Promise((resolve, reject) => {
-                        let categoryAll = {};
-                        let categoryFeatured = {};
                         let i;
+                        let normalized = [];
+                        let normalizedCategories = [];
+                        let activeFeatured = false;
                         for (i = 0; i < data.length; i++) {
-                            let categoryLevel = {
-                                children: {}
-                            };
-                            let directories = data[i].path.split('/');
-                            let tmp = categoryLevel;
-                            let path = '';
-                            let ii;
-                            for (ii = 0; ii < directories.length; ii++) {
-                                if (path === '') {
-                                    path = directories[ii];
-                                } else {
-                                    path = path + '/' + directories[ii];
-                                }
-                                tmp.children[directories[ii]] = data[data.findIndex(obj => obj.path === path)];
-                                tmp.children[directories[ii]].children = {};
-                                tmp = tmp.children[directories[ii]];
-                                if (tmp.isFeatured) {
-                                    categoryFeatured[tmp.path] = tmp;
+                            let pathParts = data[i].path.split('/');
+                            if (data[i].isFeatured === 1) {
+                                data[i].children = [];
+                                normalized.push(data[i]);
+                                activeFeatured = (normalized.length - 1);
+                            } else if (pathParts.length === 1) {
+                                normalizedCategories.push(data[i]);
+                            } else {
+                                if (activeFeatured !== false &&
+                                        normalized[activeFeatured].path === pathParts[0]) {
+                                    normalized[activeFeatured].children.push(data[i]);
                                 }
                             }
-                            categoryAll = _.merge(categoryAll, categoryLevel);
                         }
-                        categoryFeatured['all'] = {
+                        normalized.push({
                             title: 'All Categories',
                             path: false,
                             id: 0,
-                            children: categoryAll.children,
+                            children: normalizedCategories,
                             isFeatured: 1
-                        };
-                        resolve(categoryFeatured);
+                        });
+                        resolve(normalized);
                     })
                 })
                 .then((data) => {
