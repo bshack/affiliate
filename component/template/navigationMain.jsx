@@ -7,29 +7,50 @@ const utilityJSONLD = new UtilityJSONLD();
 
 class View extends React.PureComponent {
 
-    openCategoryMenu(e) {
+    closeCategoryMenu(e) {
         e.preventDefault();
-        if (this.props.state.data.isCategoryMenuOpen) {
-            this.props.state.data.isCategoryMenuOpen = false;
-        } else {
-            this.props.state.data.isCategoryMenuOpen = true;
-        }
         this.props.dispatch({
-            type: 'GET_DATA',
-            data: _.extend({}, this.props.state)
+            type: 'UPDATE_DATA',
+            data: {
+                data: {
+                    isMainMenuOpen: false,
+                    isMainContentHidden: false,
+                    categoryMenuItemOpen: false
+                }
+            }
         });
+    }
+
+    openCategoryMenu(e) {
+        if (e.target.parentNode.hasAttribute('aria-expanded')) {
+            e.preventDefault();
+            if (this.props.state.data.categoryMenuItemOpen === e.target.id) {
+                this.props.state.data.categoryMenuItemOpen = false;
+            } else {
+                this.props.state.data.categoryMenuItemOpen = e.target.id;
+            }
+            this.props.dispatch({
+                type: 'GET_DATA',
+                data: _.extend({}, this.props.state)
+            });
+        }
     }
 
     ctaBuilder(data) {
         if (data.path === false) {
             return <button
+                id={'category-link-' + data.id}
                 className={this.props.state.data.isCategoryMenuOpen? 'open' : null}
                 type="button"
-                aria-expanded='false'
                 onClick={this.openCategoryMenu.bind(this)}
             >{data.title}</button>;
         } else {
-            return <a href={'/' + data.path + '/index.html'} role="menuitem">{data.title}</a>;
+            return <a
+                id={'category-link-' + data.id}
+                href={'/' + data.path + '/index.html'}
+                role="menuitem"
+                onClick={this.openCategoryMenu.bind(this)}
+            >{data.title}</a>;
         }
     }
 
@@ -39,7 +60,14 @@ class View extends React.PureComponent {
         for (key in data) {
             if (_.size(data[key].children)) {
                 links.push(
-                    <li key={data[key].id} aria-expanded='false'>
+                    <li
+                        key={data[key].id}
+                        aria-expanded={
+                            (this.props.state.data.categoryMenuItemOpen &&
+                            this.props.state.data.categoryMenuItemOpen ===
+                                ('category-link-' + data[key].id)? true : false)
+                        }
+                    >
                         {this.ctaBuilder(data[key])}
                         {this.recursiveBuilder(data[key].children)}
                     </li>
@@ -71,6 +99,13 @@ class View extends React.PureComponent {
                             {utilityJSONLD.siteNavigationElement(this.props.state.data.navigationMain)}
                         </div>
                     </div>
+                </div>
+                <div className="close d-sm-none">
+                    <button
+                        type="button"
+                        className="button-standard"
+                        onClick={this.closeCategoryMenu.bind(this)}
+                    >close menu</button>
                 </div>
             </nav>
         );

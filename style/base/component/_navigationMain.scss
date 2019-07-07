@@ -1,13 +1,8 @@
 %navigation-main {
 
-    @include media-breakpoint-down(sm) {
+    background-color: $color-white-1;
 
-        background-color: $color-white-1;
-        height: 100%;
-        overflow-y: scroll;
-        position: fixed;
-        width: 100%;
-        z-index: $layer-top;
+    .col-12 {
 
         ul {
 
@@ -15,67 +10,100 @@
             padding: $spacing-none;
 
             li {
-
                 display: block;
                 list-style: none;
+            }
+
+        }
+
+        > ul {
+
+            margin: $spacing-none rem-calc(-15);
+            padding-bottom: rem-calc(65);
+
+            > li {
+
+                > button,
+                > a {
+
+                    overflow: hidden;
+
+                    &::after {
+
+                        @extend %font-open-sans-regular;
+                        @extend %font-size-xxlarge;
+
+                        align-items: center;
+                        content: '+';
+                        display: flex;
+                        height: rem-calc(45);
+                        justify-content: center;
+                        position: absolute;
+                        right: $spacing-medium;
+                        top: 0;
+                        width: rem-calc(45);
+
+                    }
+
+                }
+
+                &[aria-expanded='false'] {
+
+                    > button,
+                    > a {
+                        border-bottom-style: solid;
+                    }
+
+                    ul {
+                        display: none;
+                    }
+
+                }
+
+                &[aria-expanded='true'] {
+
+                    > button,
+                    > a {
+
+                        border-bottom-style: dotted;
+
+                        &::after {
+                            content: '\2013';
+                            top: rem-calc(-2);
+                        }
+
+                    }
+
+                }
 
                 button {
-                    appearance: none;
+                    background-color: transparent;
+                    border: 0;
+                    width: 100%;
                 }
 
                 button,
                 a {
-                    align-items: center;
-                    border-bottom: rem-calc(1) dotted $color-grey-2;
-                    display: flex;
-                    justify-content: flex-start;
-                    min-height: rem-calc(45);
-                    padding: rem-calc(5) rem-calc(15);
+
+                    @extend %anchor-standard-touch;
+
+                    border-bottom: rem-calc(1) $color-grey-3;
+                    padding-left: $spacing-medium;
+                    padding-right: $spacing-medium;
+                    position: relative;
+
                 }
 
-            }
+                > ul {
 
-        }
+                    border-bottom: rem-calc(1) solid $color-grey-3;
+                    padding-bottom: $spacing-xsmall;
+                    padding-top: $spacing-xsmall;
 
-    }
-
-    @include media-breakpoint-up(md) {
-
-        background-color: $color-black-1;
-
-        &.fixed {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: $layer-top;
-        }
-
-        .col-12 {
-
-            [aria-expanded='false'] {
-
-                ul {
-                    display: none;
-                }
-
-            }
-
-            > ul {
-
-                list-style: none;
-                margin: 0;
-                padding: 0;
-                position: relative;
-
-                > li {
-
-                    display: inline-flex;
-                    padding: 0 rem-calc(10);
-
-                    > a {
-                        align-items: center;
-                        display: flex;
-                        min-height: rem-calc(45);
+                    a,
+                    button {
+                        border-bottom-style: none;
+                        padding-left: $spacing-large;
                     }
 
                 }
@@ -84,6 +112,17 @@
 
         }
 
+    }
+
+    .close {
+        background-color: $color-white-2;
+        border-top: rem-calc(1) dotted $color-grey-3;
+        bottom: 0;
+        left: 0;
+        padding: $spacing-small $spacing-medium;
+        position: fixed;
+        text-align: center;
+        width: 100%;
     }
 
 }

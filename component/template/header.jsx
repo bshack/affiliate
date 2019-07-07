@@ -22,6 +22,7 @@ class View extends React.PureComponent {
         if (this.props.state.data.isMainMenuOpen) {
             menuState.data.isMainMenuOpen = false;
             menuState.data.isMainContentHidden = false;
+            menuState.data.categoryMenuItemOpen = false;
         } else {
             menuState.data.isMainMenuOpen = true;
             menuState.data.isMainContentHidden = true;
@@ -45,6 +46,7 @@ class View extends React.PureComponent {
         } else {
             menuState.data.isSearchMenuOpen = true;
             menuState.data.isMainContentHidden = true;
+            menuState.data.categoryMenuItemOpen = false;
             window.setTimeout(() => {
                 document.querySelector('#site-search-q').focus();
             }, 100);
