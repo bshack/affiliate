@@ -53,7 +53,7 @@ class View extends React.PureComponent {
             </div>;
         } else if (this.props.state.data.query === '') {
             return <div className="col-12 results-initial">
-                <p className="d-sm-none">Please enter a search query.</p>
+                <p>Please enter a search query.</p>
             </div>;
         } else {
             return <div className="col-12 results">

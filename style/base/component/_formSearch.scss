@@ -4,7 +4,7 @@
 
         position: absolute;
         right: $spacing-medium;
-        top: rem-calc(-75);
+        top: rem-calc(-60);
         width: 50%;
         z-index: $layer-top;
 
@@ -14,7 +14,7 @@
             border: rem-calc(1) solid $color-grey-2;
             border-radius: rem-calc(5);
             padding-bottom: $spacing-small;
-            top: rem-calc(-76);
+            top: rem-calc(-61);
 
             fieldset {
 
@@ -158,6 +158,18 @@
     .results-initial,
     .results-empty {
         @extend %copy-style-standard;
+    }
+
+    .results-initial {
+
+        p {
+
+            @include media-breakpoint-up(md) {
+                display: none;
+            }
+
+        }
+
     }
 
 }

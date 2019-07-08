@@ -1,9 +1,16 @@
 %navigation-search {
 
     @include media-breakpoint-down(sm) {
+
         background-color: $color-white-1;
+        display: none;
         height: 100%;
         width: 100%;
+
+        &.open {
+            display: block;
+        }
+
     }
 
     @include media-breakpoint-up(md) {
@@ -19,6 +26,11 @@
         position: fixed;
         text-align: center;
         width: 100%;
+
+        @include media-breakpoint-up(md) {
+            display: none;
+        }
+
     }
 
 }

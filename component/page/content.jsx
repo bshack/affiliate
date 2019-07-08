@@ -29,7 +29,7 @@ class View extends React.PureComponent {
             <NavigationMain />
             <main
                 id="main-content"
-                className={(this.props.state.data.isMainContentHidden? 'd-none d-sm-block' : 'd-block')}
+                className={(this.props.state.data.isMainContentHidden? 'closed' : null)}
             >
                 <Breadcrumbs />
                 <Content />

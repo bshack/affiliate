@@ -31,10 +31,10 @@ class View extends React.PureComponent {
     render() {
         return (
             <section className={'container navigation-search' +
-                (this.props.state.data.isSearchMenuOpen? ' d-block' : ' d-none d-sm-block' )}>
+                (this.props.state.data.isSearchMenuOpen? ' open' : '' )}>
                 <Provider store={storeSearch.store}>
                     <SearchForm />
-                    <div className="close d-sm-none">
+                    <div className="close">
                         <button
                             type="button"
                             className="button-standard"

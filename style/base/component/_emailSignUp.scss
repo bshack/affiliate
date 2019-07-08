@@ -11,7 +11,7 @@
         @extend %padding-bottom-large;
         @extend %padding-top-large;
 
-        @include media-breakpoint-up(sm) {
+        @include media-breakpoint-up(lg) {
             border-radius: rem-calc(5);
         }
 

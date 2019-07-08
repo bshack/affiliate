@@ -1,6 +1,15 @@
 %navigation-main {
 
     background-color: $color-white-1;
+    display: none;
+
+    @include media-breakpoint-down(sm) {
+
+        &.open {
+            display: block;
+        }
+
+    }
 
     .col-12 {
 
@@ -26,6 +35,9 @@
                 > button,
                 > a {
 
+                    @extend %font-open-sans-semi-bold-regular;
+
+                    font-size: rem-calc(16);
                     overflow: hidden;
 
                     &::after {
@@ -85,12 +97,23 @@
                 button,
                 a {
 
-                    @extend %anchor-standard-touch;
+                    @extend %anchor-base-1;
 
+                    align-items: center;
                     border-bottom: rem-calc(1) $color-grey-3;
+                    color: $color-blue-4;
+                    display: flex;
+                    min-height: rem-calc(45);
                     padding-left: $spacing-medium;
                     padding-right: $spacing-medium;
                     position: relative;
+                    text-decoration: none;
+
+                    &:hover,
+                    &:focus {
+                        color: $color-blue-4;
+                        text-decoration: none;
+                    }
 
                 }
 
@@ -115,6 +138,7 @@
     }
 
     .close {
+
         background-color: $color-white-2;
         border-top: rem-calc(1) dotted $color-grey-3;
         bottom: 0;
@@ -123,6 +147,103 @@
         position: fixed;
         text-align: center;
         width: 100%;
+
+        @include media-breakpoint-up(md) {
+            display: none;
+        }
+
+    }
+
+    @include media-breakpoint-up(md) {
+
+        display: block;
+
+        .col-12 {
+
+            > ul {
+
+                border-bottom: rem-calc(2) solid $color-grey-3;
+                padding-bottom: 0;
+
+                > li {
+
+                    display: inline-flex;
+
+                    &:hover,
+                    &:focus {
+
+                        ul {
+                            display: block;
+                        }
+
+                        > a,
+                        > button {
+                            color: $color-black-1;
+                        }
+
+                    }
+
+                    &[aria-expanded='false'],
+                    &[aria-expanded='true'] {
+
+                        ul {
+
+                            background-color: $color-white-2;
+                            border-bottom-width: rem-calc(2);
+                            border-top: rem-calc(1) dotted $color-grey-3;
+                            left: 0;
+                            padding-bottom: $spacing-large;
+                            padding-top: $spacing-medium;
+                            position: absolute;
+                            top: rem-calc(45);
+                            width: 100%;
+                            z-index: $layer-middle;
+
+                            a,
+                            button {
+
+                                color: $color-black-1;
+                                display: inline-flex;
+                                font-size: rem-calc(14);
+                                min-height: rem-calc(32);
+                                padding-left: $spacing-medium;
+
+                                &:hover,
+                                &:focus {
+                                    color: $color-black-1;
+                                    text-decoration: underline;
+                                }
+
+                            }
+
+                        }
+
+                        > a,
+                        > button {
+
+                            border-bottom: 0;
+                            padding-right: rem-calc(22);
+
+                            &::after {
+                                content: '\2039';
+                                height: rem-calc(13);
+                                padding-bottom: rem-calc(6);
+                                right: rem-calc(8);
+                                top: rem-calc(18);
+                                transform: rotate(-90deg);
+                                width: rem-calc(8);
+                            }
+
+                        }
+
+                    }
+
+                }
+
+            }
+
+        }
+
     }
 
 }

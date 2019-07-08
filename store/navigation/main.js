@@ -111,7 +111,7 @@ export default class {
                             }
                         }
                         normalized.push({
-                            title: 'All Categories',
+                            title: 'View All Categories',
                             path: false,
                             id: 0,
                             children: normalizedCategories,

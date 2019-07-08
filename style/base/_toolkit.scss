@@ -1,4 +1,11 @@
-$font-family-sans-serif: 'open_sansregular', 'Helvetica Neue', Arial, sans-serif !default;
+$container-max-widths: (
+    sm: 100%,
+    md: 100%,
+    lg: 960px,
+    xl: 1140px
+);
+
+$font-family-sans-serif: 'open_sansregular', 'Helvetica Neue', Arial, sans-serif;
 
 @import 'type/fontFace';
 @import '../../node_modules/bootstrap/scss/bootstrap-reboot';

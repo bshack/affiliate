@@ -1,5 +1,13 @@
 %footer {
 
+    &.closed {
+
+        @include media-breakpoint-down(sm) {
+            display: none;
+        }
+
+    }
+
     .row {
         @extend %padding-bottom-large;
     }

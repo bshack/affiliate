@@ -1,6 +1,6 @@
 %wrapper {
 
-    @include media-breakpoint-only(xs) {
+    @include media-breakpoint-down(sm) {
         padding-top: rem-calc(66);
     }
 
@@ -25,6 +25,18 @@
 
             @include media-breakpoint-up(lg) {
                 padding-top: 0;
+            }
+
+        }
+
+    }
+
+    main {
+
+        &.closed {
+
+            @include media-breakpoint-down(sm) {
+                display: none;
             }
 
         }

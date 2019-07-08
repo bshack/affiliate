@@ -88,7 +88,7 @@ class View extends React.PureComponent {
             <nav
                 id="navigation-main"
                 className={'navigation-main' +
-                    (this.props.state.data.isMainMenuOpen? ' d-block' : ' d-none d-sm-block' )}
+                    (this.props.state.data.isMainMenuOpen? ' open' : '')}
                 role="menu"
                 aria-labelledby="navigation-main-toggle"
             >
@@ -100,7 +100,7 @@ class View extends React.PureComponent {
                         </div>
                     </div>
                 </div>
-                <div className="close d-sm-none">
+                <div className="close">
                     <button
                         type="button"
                         className="button-standard"
