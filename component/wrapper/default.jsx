@@ -28,6 +28,7 @@ class WrapperLayout extends React.PureComponent {
                     <meta httpEquiv="x-ua-compatible" content="IE=edge" />
                     <meta name="viewport" content="width=device-width, initial-scale=1" />
                     <meta name="format-detection" content="telephone=no,date=no,address=no,email=no,url=no" />
+                    <meta name="google-site-verification" content="5i2qlRrWhsoSwV6gSWsh69Xl9CoIbomfImzHP4rMess" />
                     {descriptionSEO}
                     <meta name="twitter:card" content={config.social.twitter.card} />
                     <meta name="twitter:site" content={config.social.twitter.name} />
@@ -62,7 +63,7 @@ class WrapperLayout extends React.PureComponent {
                 <body>
                     <noscript>
                         <iframe
-                            src={'https://www.googletagmanager.com/ns.html?id=' + config.analytics.gtm.id}
+                            src={"https://www.googletagmanager.com/ns.html?id=" + config.analytics.gtm.id}
                             className="accessibility-hidden-1"
                         ></iframe>
                     </noscript>
