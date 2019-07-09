@@ -22,7 +22,10 @@ class View extends React.PureComponent {
     }
 
     openCategoryMenu(e) {
-        if (e.target.parentNode.hasAttribute('aria-expanded')) {
+        if (
+            window.Modernizr.touchevents &&
+            e.target.parentNode.hasAttribute('aria-expanded')
+        ) {
             e.preventDefault();
             if (this.props.state.data.categoryMenuItemOpen === e.target.id) {
                 this.props.state.data.categoryMenuItemOpen = false;

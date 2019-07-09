@@ -3,6 +3,7 @@ import '../image/social.png';
 import '../image/favicon.png';
 import '../image/apple-touch-icon.png';
 import 'picturefill';
+import '../utility/modernizr';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Page from '../component/page/index.jsx';

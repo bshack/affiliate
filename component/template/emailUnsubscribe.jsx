@@ -53,7 +53,7 @@ class View extends React.PureComponent {
                     this.setState({
                         value: '',
                         isValid: true,
-                        successMessage: data.message,
+                        successMessage: data.data.message,
                         errorMessage: false
                     });
                 })
@@ -82,7 +82,7 @@ class View extends React.PureComponent {
     message() {
         if (this.state.isValid === true) {
             if (this.state.successMessage) {
-                return <div className="success">{this.state.successMessage}</div>;
+                return <div className="confirm">{this.state.successMessage}</div>;
             } else {
                 return '';
             }
@@ -96,11 +96,19 @@ class View extends React.PureComponent {
     }
 
     render() {
+
+        let inputClassName = null;
+        if (this.state.isValid === false) {
+            inputClassName = 'error';
+        } else if (this.state.isValid === true && this.state.successMessage) {
+            inputClassName = 'confirm';
+        }
+
         return (
             <section className="email-unsubscribe container">
                 <div className="row justify-content-center">
                     <div className="col-10 col-md-8">
-                        <h2>Unsubscribe From Weekly Deal Emails</h2>
+                        <h1>Unsubscribe From Emails</h1>
                         <p>Sorry to see you go.</p>
                         <form
                             id="marketing-email-unsubscribe"
@@ -108,20 +116,22 @@ class View extends React.PureComponent {
                             onSubmit={this.handleSubmit} noValidate
                         >
                             <fieldset>
-                                <legend>provide your email address</legend>
+                                <legend>unsubscribe from newsletter form</legend>
                                 <label
                                     id="email-unsubscribe-label"
-                                    htmlFor="email-unsubscribe">email</label>
+                                    htmlFor="email-unsubscribe">please provide your email address:</label>
                                 <input
                                     id="email-unsubscribe"
                                     name="email-unsubscribe"
                                     type="email"
-                                    className={this.state.isValid === false ? 'error' : ''}
+                                    className={inputClassName}
                                     value={this.state.value}
                                     onChange={this.handleChange}
                                     onKeyUp={this.handleChange}
                                     onInput={this.handleChange}
-                                    placeholder="email" />
+                                    placeholder="email address"
+                                    required
+                                />
                                 {this.message()}
                                 <button
                                     id="marketing-email-unsubscribe-submit"

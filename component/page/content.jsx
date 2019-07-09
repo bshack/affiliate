@@ -35,7 +35,7 @@ class View extends React.PureComponent {
                 <Content />
                 <EmailSignUp />
                 <CategoryHeader
-                    h2='Featured Projects'
+                    h2='Featured Products'
                 />
                 <FeaturedProducts />
             </main>

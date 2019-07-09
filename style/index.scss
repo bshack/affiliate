@@ -182,6 +182,10 @@ body {
     @extend %email-sign-up;
 }
 
+.email-unsubscribe  {
+    @extend %email-unsubscribe;
+}
+
 footer {
     @extend %footer;
 }

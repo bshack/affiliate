@@ -1,5 +1,6 @@
 import '../style/index.scss';
 import 'picturefill';
+import '../utility/modernizr';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Page from '../component/page/style.jsx';

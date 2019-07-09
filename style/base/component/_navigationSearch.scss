@@ -18,6 +18,11 @@
     }
 
     .close {
+
+        @include media-breakpoint-up(md) {
+            display: none;
+        }
+
         background-color: $color-white-2;
         border-top: rem-calc(1) dotted $color-grey-3;
         bottom: 0;
@@ -26,10 +31,6 @@
         position: fixed;
         text-align: center;
         width: 100%;
-
-        @include media-breakpoint-up(md) {
-            display: none;
-        }
 
     }
 

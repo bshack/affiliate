@@ -1,8 +1,5 @@
 %navigation-main {
 
-    background-color: $color-white-1;
-    display: none;
-
     @include media-breakpoint-down(sm) {
 
         &.open {
@@ -10,6 +7,9 @@
         }
 
     }
+
+    background-color: $color-white-1;
+    display: none;
 
     .col-12 {
 
@@ -88,12 +88,6 @@
 
                 }
 
-                button {
-                    background-color: transparent;
-                    border: 0;
-                    width: 100%;
-                }
-
                 button,
                 a {
 
@@ -115,6 +109,13 @@
                         text-decoration: none;
                     }
 
+                }
+
+                button {
+                    background-color: transparent;
+                    border: 0;
+                    cursor: default;
+                    width: 100%;
                 }
 
                 > ul {
@@ -139,6 +140,10 @@
 
     .close {
 
+        @include media-breakpoint-up(md) {
+            display: none;
+        }
+
         background-color: $color-white-2;
         border-top: rem-calc(1) dotted $color-grey-3;
         bottom: 0;
@@ -147,10 +152,6 @@
         position: fixed;
         text-align: center;
         width: 100%;
-
-        @include media-breakpoint-up(md) {
-            display: none;
-        }
 
     }
 
@@ -204,7 +205,6 @@
 
                                 color: $color-black-1;
                                 display: inline-flex;
-                                font-size: rem-calc(14);
                                 min-height: rem-calc(32);
                                 padding-left: $spacing-medium;
 

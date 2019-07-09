@@ -1,4 +1,4 @@
-%email-sign-up {
+%email-unsubscribe {
 
     @extend %margin-bottom-large;
 
@@ -19,7 +19,7 @@
 
     }
 
-    h2 {
+    h1 {
         @extend %heading-1;
     }
 
@@ -72,25 +72,6 @@
 
         button {
             @extend %button-standard;
-        }
-
-    }
-
-    small {
-
-        @extend %font-size-small;
-
-        a {
-
-            @extend %anchor-standard;
-
-            color: $color-white-1;
-
-            &:hover,
-            &:focus {
-                color: $color-white-1;
-            }
-
         }
 
     }
