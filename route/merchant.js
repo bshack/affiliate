@@ -47,7 +47,7 @@ exports.index = function(req, res) {
 <g:condition><![CDATA[` + (products[i].condition? products[i].condition : '') + `]]></g:condition>
 <g:gtin><![CDATA[` + (products[i].gtin? products[i].gtin : '') + `]]></g:gtin>
 <g:mpn><![CDATA[` + products[i].mpn + `]]></g:mpn>
-<g:identifier_exists><![CDATA[` + products[i].identifierExists + `]]></g:identifier_exists>
+<g:identifier_exists><![CDATA[` + (products[i].identifierExists? 'yes' : 'no') + `]]></g:identifier_exists>
 <g:custom_label_0><![CDATA[` + products[i].customLabel0 + `]]></g:custom_label_0>
 <g:custom_label_1><![CDATA[` + products[i].customLabel1 + `]]></g:custom_label_1>
 <g:custom_label_2><![CDATA[` + products[i].customLabel2 + `]]></g:custom_label_2>

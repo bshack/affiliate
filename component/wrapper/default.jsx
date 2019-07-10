@@ -63,7 +63,7 @@ class WrapperLayout extends React.PureComponent {
                 <body>
                     <noscript>
                         <iframe
-                            src={"https://www.googletagmanager.com/ns.html?id=" + config.analytics.gtm.id}
+                            src={'https://www.googletagmanager.com/ns.html?id=' + config.analytics.gtm.id}
                             className="accessibility-hidden-1"
                         ></iframe>
                     </noscript>
