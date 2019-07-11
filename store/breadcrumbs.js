@@ -108,7 +108,8 @@ export default class {
                                     .select()
                                     .where({
                                         isActive: true,
-                                        seoFilenamePart: params.filename
+                                        seoFilenamePart: params.filename,
+                                        isImageLinkProcessed: true
                                     })
                                     .then((productData) => {
                                         categoryData.push({

@@ -21,7 +21,8 @@ export default class {
                 .select(['brand'])
                 .where('brand', 'like', '%' + params.q + '%')
                 .where({
-                    isActive: params.isActive
+                    isActive: params.isActive,
+                    isImageLinkProcessed: true
                 })
                 .groupBy('brand')
                 .limit(resultLimit)
@@ -42,7 +43,8 @@ export default class {
                 .select(['programName'])
                 .where('programName', 'like', '%' + params.q + '%')
                 .where({
-                    isActive: params.isActive
+                    isActive: params.isActive,
+                    isImageLinkProcessed: true
                 })
                 .groupBy('programName')
                 .limit(resultLimit)
@@ -67,7 +69,8 @@ export default class {
                 ])
                 .where('product.title', 'like', '%' + params.q + '%')
                 .where({
-                    'product.isActive': params.isActive
+                    'product.isActive': params.isActive,
+                    'product.isImageLinkProcessed': true
                 })
                 .innerJoin('category', 'product.googleProductCategory', 'category.googleid')
                 .groupBy('product.title')

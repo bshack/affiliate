@@ -33,7 +33,8 @@ export default class {
         return (dispatch, getState) => {
 
             let whereParams = {
-                isActive: true
+                isActive: true,
+                isImageLinkProcessed: true
             };
 
             let offsetParam = 0;
