@@ -31,15 +31,23 @@ export default class {
 
     getAll(params) {
         return (dispatch, getState) => {
-            return axios.get(endPoint, {
-                params: params
-            })
-                .then((response) => {
-                    dispatch(this.handleGetSuccess(response));
+
+            if (typeof window !== 'undefined' && window.initialState) {
+                dispatch(this.handleGetSuccess({
+                    data: window.initialState
+                }));
+            } else {
+                return axios.get(endPoint, {
+                    params: params
                 })
-                .catch((error) => {
-                    dispatch(this.handleGetError(error));
-                });
+                    .then((response) => {
+                        dispatch(this.handleGetSuccess(response));
+                    })
+                    .catch((error) => {
+                        dispatch(this.handleGetError(error));
+                    });
+            }
+
         };
 
     }
