@@ -5,21 +5,21 @@ import reducerStandard from '../../reducer/standard';
 
 const getCategoryDetails = (data) => {
     return new Promise((resolve, reject) => {
-        data[1] = {
-            path: 'vehicles-and-parts'
-        };
-        data[2] = {
-            path: 'vehicles-and-parts/vehicles/watercraft/yachts'
-        };
-        data[3] = {
-            path: 'toys-and-games/toys/riding-toys/hobby-horses'
-        };
-        data[4] = {
-            path: 'food-beverages-and-tobacco/food-items/bakery'
-        };
-        data[5] = {
-            path: 'food-beverages-and-tobacco/food-items'
-        };
+        // data[1] = {
+        //     path: 'vehicles-and-parts'
+        // };
+        // data[2] = {
+        //     path: 'vehicles-and-parts/vehicles/watercraft/yachts'
+        // };
+        // data[3] = {
+        //     path: 'toys-and-games/toys/riding-toys/hobby-horses'
+        // };
+        // data[4] = {
+        //     path: 'food-beverages-and-tobacco/food-items/bakery'
+        // };
+        // data[5] = {
+        //     path: 'food-beverages-and-tobacco/food-items'
+        // };
         let fullPathsList = [];
         let i;
         for (i = 0; i < data.length; i++) {

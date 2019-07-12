@@ -33,12 +33,12 @@ export default class {
         return (dispatch, getState) => {
 
             let whereParams = {
-                isActive: true,
-                isImageLinkProcessed: true
+                'product.isActive': true,
+                'product.isImageLinkProcessed': true
             };
 
             let offsetParam = 0;
-            let limitParam = 1000;
+            let limitParam = 300;
             let skipParam = false;
             let oldestProductCreationDate = moment(new Date()).subtract(productMaxDaysOld, 'days').format('YYYY-MM-DD HH:mm:ss');
 
@@ -48,10 +48,6 @@ export default class {
 
             if (params.id) {
                 whereParams.id = parseInt(params.id);
-            }
-
-            if (params.path) {
-                whereParams.path = params.path;
             }
 
             if (params.filename) {
@@ -94,13 +90,16 @@ export default class {
                             builder
                                 .where(whereParams)
                                 .where('product.timestamp', '>', oldestProductCreationDate)
-                                .orWhere('path', 'like', '%' + whereParams.path)
+                                .where('category.path', 'like', '%' + whereParams.path)
                                 .whereNot('product.seoFilenamePart', skipParam);
                         } else {
                             builder
-                                .where(whereParams)
+                                .where({
+                                    'product.isActive': true,
+                                    'product.isImageLinkProcessed': true
+                                })
                                 .where('product.timestamp', '>', oldestProductCreationDate)
-                                .orWhere('path', 'like', '%' + whereParams.path);
+                                .where('category.path', 'like', whereParams.path + '%');
                         }
                     } else {
                         builder
@@ -109,6 +108,7 @@ export default class {
                     }
                 })
                 .offset(offsetParam)
+                .orderBy('product.isImageLinkProcessed', 'asc')
                 .orderBy('product.isFeatured', 'desc')
                 .orderBy('category.isFeatured', 'desc')
                 .orderBy('product.timestamp', 'desc')
