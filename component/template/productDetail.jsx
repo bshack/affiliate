@@ -45,41 +45,46 @@ class View extends React.PureComponent {
             </div>;
         }
 
+        let availability = '';
+        if (this.props.data.availability !== '') {
+            availability = <span className="availability">{this.props.data.availability}</span>
+        }
+
         let price = '';
         if (this.props.data.salePriceUnformatted) {
             price = <p className="price-sale">
-                <del>{numeral(this.props.data.priceUnformatted).format('$0,0[.]00')}</del>
-                <span>{numeral(this.props.data.salePriceUnformatted).format('$0,0.00')}</span>
-                <span>{this.props.data.salePriceCurrency}</span>
+                <del>{numeral(this.props.data.priceUnformatted).format('$0,0[.]00')}</del> <span>
+                    {numeral(this.props.data.salePriceUnformatted).format('$0,0[.]00')}
+                </span> {availability}
             </p>
         } else {
             price = <p className="price">
-                <span>{numeral(this.props.data.priceUnformatted).format('$0,0[.]00')}</span>
-                <span>{this.props.data.priceCurrency}</span>
+                <span>{numeral(this.props.data.priceUnformatted).format('$0,0[.]00')}
+                </span> {availability}
             </p>
         }
 
         let programName = '';
         if (this.props.data.programName !== '') {
-            programName = <p className="program">
-                sold by <a href={'/store/' +
+            programName = <p className="program"><span>sold by</span> <a href={'/store/' +
                     this.props.data.programName + '/index.html'}>{this.props.data.programName}</a>
             </p>
         }
 
-        let availability = '';
-        if (this.props.data.availability !== '') {
-            availability = <p className="availability">{this.props.data.availability}</p>
-        }
-
         let gtin = '';
         if (this.props.data.gtin) {
-            gtin = <p className="gtin">gtin: {this.props.data.gtin}</p>
+            gtin = <div className="gtin">
+                <strong>gtin</strong>
+                <p>{this.props.data.gtin}</p>
+            </div>;
         }
 
         let mpn = '';
         if (this.props.data.mpn !== '') {
-            mpn = <p className="mpn">mpn: {this.props.data.mpn}</p>
+            mpn = <div className="mpn">
+                <strong>mpn</strong>
+                <p>{this.props.data.mpn}</p>
+            </div>;
         }
 
         let productCondition = '';
@@ -95,9 +100,9 @@ class View extends React.PureComponent {
         let brand = '';
         if (this.props.data.brand !== '') {
             brand = <div className="brand">
-                <p><strong>brand</strong><br />
-                    <a href={'/brand/' + this.props.data.brand + '/index.html'}>{this.props.data.brand}</a></p>
-            </div>
+                <strong>brand</strong>
+                <p><a href={'/brand/' + this.props.data.brand + '/index.html'}>{this.props.data.brand}</a></p>
+            </div>;
         }
 
         return (
@@ -112,11 +117,10 @@ class View extends React.PureComponent {
                         </h1>
                         {programName}
                         {price}
-                        {availability}
-                        {brand}
                         {productCondition}
                         <a className="anchor-2" href={this.props.data.link}>get deal now</a>
                         {description}
+                        {brand}
                         {gtin}
                         {mpn}
                     </aside>

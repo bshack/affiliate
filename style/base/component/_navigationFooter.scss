@@ -2,7 +2,7 @@
 
     ul {
 
-        @include media-breakpoint-up(md) {
+        @include media-breakpoint-up(lg) {
             margin-left: rem-calc(-5);
         }
 
@@ -12,12 +12,12 @@
 
         li {
 
-            @include media-breakpoint-down(sm) {
+            @include media-breakpoint-down(md) {
                 display: flex;
                 justify-content: center;
             }
 
-            @include media-breakpoint-up(md) {
+            @include media-breakpoint-up(lg) {
                 display: inline-flex;
             }
 

@@ -1,12 +1,15 @@
 %category-products {
 
+    margin-bottom: $spacing-medium;
     padding-left: $spacing-small;
     padding-right: $spacing-small;
 
     .products {
 
+        justify-content: center;
+
         > div {
-            margin-bottom: $spacing-large;
+            margin-bottom: $spacing-medium;
         }
 
     }
@@ -14,7 +17,7 @@
     .product {
 
         height: 100%;
-        padding: $spacing-none $spacing-xsmall rem-calc(90);
+        padding: $spacing-none $spacing-xsmall rem-calc(92);
         position: relative;
 
         .image {
@@ -58,8 +61,14 @@
 
             .program {
 
-                @extend %font-open-sans-regular;
-                @extend %font-size-xsmall;
+                span {
+
+                    @extend %font-open-sans-regular;
+                    @extend %font-size-small;
+
+                    color: $color-black-1;
+
+                }
 
                 a {
 
@@ -73,30 +82,71 @@
 
         }
 
-        .price {
+        .condition {
 
-            bottom: rem-calc(55);
+            @extend %font-open-sans-regular;
+            @extend %font-size-xsmall;
+
+            color: $color-black-1;
+
+        }
+
+        .price,
+        .price-sale {
+
+            bottom: $spacing-xlarge;
             left: $spacing-none;
             margin: $spacing-none;
-            padding: $spacing-xsmall;
+            padding: $spacing-none $spacing-xsmall;
             position: absolute;
             width: 100%;
+
+        }
+
+        .price {
 
             span {
 
                 &:first-child {
 
                     @extend %font-open-sans-bold;
-                    @extend %font-size-large;
+                    @extend %font-size-xlarge;
+
+                    color: $color-pink-1;
 
                 }
 
                 &:last-child {
 
                     @extend %font-open-sans-semi-bold-regular;
-                    @extend %font-size-xsmall;
+                    @extend %font-size-small;
+
+                    color: $color-black-1;
+                    margin-left: $spacing-xsmall;
 
                 }
+            }
+
+        }
+
+        .price-sale {
+
+            del {
+
+                @extend %font-open-sans-semi-bold-regular;
+                @extend %font-size-medium;
+
+                color: $color-grey-1;
+
+            }
+
+            span {
+
+                @extend %font-open-sans-bold;
+                @extend %font-size-large;
+
+                color: $color-pink-1;
+
             }
 
         }

@@ -145,12 +145,18 @@
 
         ul {
             list-style: none;
-            margin: 0 0 $spacing-xsmall;
+            margin: 0 0 $spacing-small;
             padding: 0;
         }
 
         a {
+
             @extend %anchor-standard-touch;
+
+            min-height: rem-calc(32);
+            padding-bottom: $spacing-xsmall;
+            padding-top: $spacing-xsmall;
+
         }
 
     }

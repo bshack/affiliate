@@ -2,10 +2,11 @@
 
     @include media-breakpoint-up(lg) {
         display: flex;
-        margin-bottom: $spacing-small;
     }
 
     display: none;
+    margin-bottom: $spacing-large;
+    margin-top: $spacing-medium;
 
     ul {
 
@@ -22,14 +23,13 @@
             margin-right: $spacing-small;
 
             a {
-                @extend %anchor-standard-touch;
+                @extend %anchor-standard;
             }
 
             &::after,
             &:last-child {
                 align-items: center;
                 display: inline-flex;
-                min-height: rem-calc(45);
             }
 
             &::after {

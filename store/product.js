@@ -50,6 +50,10 @@ export default class {
                 whereParams.id = parseInt(params.id);
             }
 
+            if (params.path) {
+                whereParams.path = params.path;
+            }
+
             if (params.filename) {
                 whereParams.seoFilenamePart = params.filename;
             }
@@ -93,6 +97,7 @@ export default class {
                                 .where('category.path', 'like', '%' + whereParams.path)
                                 .whereNot('product.seoFilenamePart', skipParam);
                         } else {
+
                             builder
                                 .where({
                                     'product.isActive': true,

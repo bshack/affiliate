@@ -65,6 +65,7 @@
             @extend %font-open-sans-semi-bold-regular;
             @extend %font-size-xlarge;
 
+            color: $color-black-1;
             margin-bottom: $spacing-xsmall;
 
         }
@@ -73,16 +74,23 @@
 
             @extend %copy-style-standard;
 
+            color: $color-black-1;
             margin-bottom: $spacing-medium;
 
         }
 
         .program {
 
-            @extend %font-open-sans-regular;
-            @extend %font-size-medium;
-
             margin-bottom: $spacing-medium;
+
+            span {
+
+                @extend %font-open-sans-regular;
+                @extend %font-size-small;
+
+                color: $color-black-1;
+
+            }
 
             a {
                 @extend %font-open-sans-semi-bold-regular;
@@ -92,43 +100,87 @@
 
         }
 
-        .price {
-
+        .price,
+        .price-sale {
             margin-bottom: $spacing-medium;
+        }
+
+        .price {
 
             span {
 
                 &:first-child {
 
-                    @extend %font-open-sans-bold;
+                    @extend %font-open-sans-semi-bold-regular;
                     @extend %font-size-xlarge;
 
-                    margin-right: $spacing-xxsmall;
+                    color: $color-pink-1;
 
                 }
 
                 &:last-child {
+
                     @extend %font-open-sans-semi-bold-regular;
                     @extend %font-size-small;
+
+                    color: $color-black-1;
+
+
+                }
+            }
+
+        }
+
+        .price-sale {
+
+            del {
+
+                @extend %font-open-sans-semi-bold-regular;
+                @extend %font-size-medium;
+
+                color: $color-grey-1;
+
+            }
+
+            span {
+
+                &:nth-child(2) {
+
+                    @extend %font-open-sans-semi-bold-regular;
+                    @extend %font-size-xlarge;
+
+                    color: $color-pink-1;
+
                 }
 
+                &:last-child {
+
+                    @extend %font-open-sans-semi-bold-regular;
+                    @extend %font-size-small;
+
+                    color: $color-black-1;
+                    margin-left: $spacing-xsmall;
+
+                }
             }
 
         }
 
         .brand,
-        .availability,
         .gtin,
         .mpn,
         .condition {
 
-            @extend %font-open-sans-regular;
-            @extend %font-size-medium;
-
-            margin-bottom: $spacing-medium;
-
             strong {
                 @extend %label-style-standard;
+            }
+
+            p {
+                
+                @extend %font-open-sans-regular;
+                @extend %font-size-medium;
+
+                margin-bottom: $spacing-medium;
             }
 
             a {

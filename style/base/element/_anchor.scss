@@ -37,12 +37,16 @@
     @extend %anchor-base-1;
     @extend %color-background-green-2;
     @extend %font-open-sans-semi-bold-regular;
-    @extend %font-size-medium;
+
+    @include media-breakpoint-up(sm) {
+        font-size: rem-calc(16);
+    }
 
     align-items: center;
     border-radius: rem-calc(5);
     color: $color-white-1;
     display: inline-flex;
+    font-size: rem-calc(14);
     justify-content: center;
     min-height: rem-calc(45);
     padding: 0 $spacing-medium;

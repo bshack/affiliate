@@ -17,7 +17,9 @@
         @extend %font-open-sans-regular;
         @extend %font-size-small;
 
-        @include media-breakpoint-down(sm) {
+        color: $color-black-1;
+
+        @include media-breakpoint-down(md) {
 
             align-items: center;
             display: flex;
