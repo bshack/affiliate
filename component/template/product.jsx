@@ -17,10 +17,34 @@ class View extends React.PureComponent {
                         {
                             this.props.isLazy?
                                 <LazyLoad offset={1000} debounce={false} throttle={250}>
-                                    <Picture data={this.props.data} config={this.props.config} />
+                                    <Picture
+                                        data={this.props.data}
+                                        small={this.props.data.path + '/' + this.props.data.seoFilenamePart
+                                            + '-medium'}
+                                        medium={this.props.data.path + '/' + this.props.data.seoFilenamePart
+                                            + '-medium'}
+                                        large={this.props.data.path + '/' + this.props.data.seoFilenamePart
+                                            + '-medium'}
+                                        xlarge={this.props.data.path + '/' + this.props.data.seoFilenamePart
+                                            + '-medium'}
+                                        xxlarge={this.props.data.path + '/' + this.props.data.seoFilenamePart
+                                            + '-medium'}
+                                    />
                                 </LazyLoad>
                                 :
-                                <Picture data={this.props.data} config={this.props.config} />
+                                <Picture
+                                    data={this.props.data}
+                                    small={this.props.data.path + '/' + this.props.data.seoFilenamePart
+                                        + '-medium'}
+                                    medium={this.props.data.path + '/' + this.props.data.seoFilenamePart
+                                        + '-medium'}
+                                    large={this.props.data.path + '/' + this.props.data.seoFilenamePart
+                                        + '-medium'}
+                                    xlarge={this.props.data.path + '/' + this.props.data.seoFilenamePart
+                                        + '-medium'}
+                                    xxlarge={this.props.data.path + '/' + this.props.data.seoFilenamePart
+                                        + '-medium'}
+                                />
                         }
                     </a>
                 </div>

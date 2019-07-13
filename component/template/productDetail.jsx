@@ -17,31 +17,91 @@ class View extends React.PureComponent {
                 <ul role="tablist" className="col-2">
                     <li key="main" id="tab-1" role="tab" aria-controls="panel-1" aria-selected="true" tabIndex="0">
                         <div className="image">
-                            <Picture data={this.props.data} config={this.props.config} />
+                            <Picture
+                                data={this.props.data}
+                                small={this.props.data.path + '/' + this.props.data.seoFilenamePart
+                                    + '-small'}
+                                medium={this.props.data.path + '/' + this.props.data.seoFilenamePart
+                                    + '-small'}
+                                large={this.props.data.path + '/' + this.props.data.seoFilenamePart
+                                    + '-small'}
+                                xlarge={this.props.data.path + '/' + this.props.data.seoFilenamePart
+                                    + '-small'}
+                                xxlarge={this.props.data.path + '/' + this.props.data.seoFilenamePart
+                                    + '-small'}
+                            />
                         </div>
                     </li>
                     <li key="additional" id="tab-2" role="tab" aria-controls="panel-2"
                         aria-selected="false" tabIndex="-1">
                         <div className="image">
-                            <Picture data={this.props.data} config={this.props.config} slug="additional" />
+                            <Picture
+                                data={this.props.data}
+                                small={this.props.data.path + '/' + this.props.data.seoFilenamePart
+                                    + '-additional-small'}
+                                medium={this.props.data.path + '/' + this.props.data.seoFilenamePart
+                                    + '-additional-small'}
+                                large={this.props.data.path + '/' + this.props.data.seoFilenamePart
+                                    + '-additional-small'}
+                                xlarge={this.props.data.path + '/' + this.props.data.seoFilenamePart
+                                    + '-additional-small'}
+                                xxlarge={this.props.data.path + '/' + this.props.data.seoFilenamePart
+                                    + '-additional-small'}
+                            />
                         </div>
                     </li>
                 </ul>
                 <div  id="panel-1" aria-labelledby="tab-1" role="tabpanel" aria-hidden="false" className="col-10">
                     <div className="image">
-                        <Picture data={this.props.data} config={this.props.config} />
+                        <Picture
+                            data={this.props.data}
+                            small={this.props.data.path + '/' + this.props.data.seoFilenamePart
+                                + '-large'}
+                            medium={this.props.data.path + '/' + this.props.data.seoFilenamePart
+                                + '-large'}
+                            large={this.props.data.path + '/' + this.props.data.seoFilenamePart
+                                + '-large'}
+                            xlarge={this.props.data.path + '/' + this.props.data.seoFilenamePart
+                                + '-large'}
+                            xxlarge={this.props.data.path + '/' + this.props.data.seoFilenamePart
+                                + '-large'}
+                        />
                     </div>
                 </div>
                 <div id="panel-2" aria-labelledby="tab-2" role="tabpanel" aria-hidden="true" className="col-10">
                     <div className="image">
-                        <Picture data={this.props.data} config={this.props.config} slug="additional" />
+                        <Picture
+                            data={this.props.data}
+                            small={this.props.data.path + '/' + this.props.data.seoFilenamePart
+                                + '-additional-large'}
+                            medium={this.props.data.path + '/' + this.props.data.seoFilenamePart
+                                + '-additional-large'}
+                            large={this.props.data.path + '/' + this.props.data.seoFilenamePart
+                                + '-additional-large'}
+                            xlarge={this.props.data.path + '/' + this.props.data.seoFilenamePart
+                                + '-additional-large'}
+                            xxlarge={this.props.data.path + '/' + this.props.data.seoFilenamePart
+                                + '-additional-large'}
+                        />
                     </div>
                 </div>
             </div>;
         } else {
             image =
             <div className="image">
-                <Picture data={this.props.data} config={this.props.config} />
+                <Picture
+                    data={this.props.data}
+                    small={this.props.data.path + '/' + this.props.data.seoFilenamePart
+                        + '-large'}
+                    medium={this.props.data.path + '/' + this.props.data.seoFilenamePart
+                        + '-large'}
+                    large={this.props.data.path + '/' + this.props.data.seoFilenamePart
+                        + '-large'}
+                    xlarge={this.props.data.path + '/' + this.props.data.seoFilenamePart
+                        + '-large'}
+                    xxlarge={this.props.data.path + '/' + this.props.data.seoFilenamePart
+                        + '-large'}
+                />
             </div>;
         }
 
@@ -125,7 +185,7 @@ class View extends React.PureComponent {
                         {mpn}
                     </aside>
                 </div>
-                {utilityJSONLD.product(this.props.data, this.props.config)}
+                {utilityJSONLD.product(this.props.data)}
             </section>
         );
     }
@@ -133,8 +193,7 @@ class View extends React.PureComponent {
 
 const mapStateToProps = (state) => {
     return {
-        data: state.data.product[0],
-        config: state.data.config
+        data: state.data.product[0]
     }
 }
 

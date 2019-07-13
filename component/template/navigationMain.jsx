@@ -23,7 +23,6 @@ class View extends React.PureComponent {
 
     openCategoryMenu(e) {
         if (
-            window.Modernizr.touchevents &&
             e.target.parentNode.hasAttribute('aria-expanded')
         ) {
             e.preventDefault();
@@ -57,7 +56,7 @@ class View extends React.PureComponent {
         }
     }
 
-    recursiveBuilder(data) {
+    recursiveBuilder(data, depth) {
         let key;
         let links = [];
         for (key in data) {
@@ -72,7 +71,7 @@ class View extends React.PureComponent {
                         }
                     >
                         {this.ctaBuilder(data[key])}
-                        {this.recursiveBuilder(data[key].children)}
+                        {this.recursiveBuilder(data[key].children, (depth + 1))}
                     </li>
                 );
             } else {
@@ -83,7 +82,9 @@ class View extends React.PureComponent {
                 );
             }
         }
-        return <ul>{links}</ul>;
+        return <ul>
+            {links}
+        </ul>;
     }
 
     render() {
@@ -98,7 +99,7 @@ class View extends React.PureComponent {
                 <div className="container">
                     <div className="row">
                         <div className="col-12">
-                            {this.recursiveBuilder(this.props.state.data.navigationMain)}
+                            {this.recursiveBuilder(this.props.state.data.navigationMain, 1)}
                             {utilityJSONLD.siteNavigationElement(this.props.state.data.navigationMain)}
                         </div>
                     </div>

@@ -5,21 +5,6 @@ import reducerStandard from '../../reducer/standard';
 
 const getCategoryDetails = (data) => {
     return new Promise((resolve, reject) => {
-        // data[1] = {
-        //     path: 'vehicles-and-parts'
-        // };
-        // data[2] = {
-        //     path: 'vehicles-and-parts/vehicles/watercraft/yachts'
-        // };
-        // data[3] = {
-        //     path: 'toys-and-games/toys/riding-toys/hobby-horses'
-        // };
-        // data[4] = {
-        //     path: 'food-beverages-and-tobacco/food-items/bakery'
-        // };
-        // data[5] = {
-        //     path: 'food-beverages-and-tobacco/food-items'
-        // };
         let fullPathsList = [];
         let i;
         for (i = 0; i < data.length; i++) {
@@ -66,17 +51,15 @@ export default class {
         return (dispatch, getState) => {
 
             let whereData = {
-                'product.isActive': true
+                isFeatured: true
             };
+
             return this.app.get('databaseConnection')
-                .from('product')
+                .from('category')
                 .select([
-                    'category.path'
+                    'path'
                 ])
                 .where(whereData)
-                .orderBy('category.path', 'asc')
-                .innerJoin('category', 'product.googleProductCategory', 'category.googleid')
-                .distinct('category.path')
                 .then(getCategoryDetails)
                 .then((paths) => {
                     return new Promise((resolve, reject) => {
