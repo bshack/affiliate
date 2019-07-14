@@ -17,8 +17,6 @@
         @extend %font-open-sans-regular;
         @extend %font-size-small;
 
-        color: $color-black-1;
-
         @include media-breakpoint-down(md) {
 
             align-items: center;
@@ -27,6 +25,8 @@
             min-height: rem-calc(45);
 
         }
+
+        color: $color-black-1;
 
     }
 

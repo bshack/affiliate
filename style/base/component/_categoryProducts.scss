@@ -59,7 +59,7 @@
                 margin-bottom: 0;
             }
 
-            .program {
+            .store {
 
                 span {
 
@@ -109,7 +109,7 @@
 
                 &:first-child {
 
-                    @extend %font-open-sans-bold;
+                    @extend %font-open-sans-semi-bold-regular;
                     @extend %font-size-xlarge;
 
                     color: $color-pink-1;
@@ -142,7 +142,7 @@
 
             span {
 
-                @extend %font-open-sans-bold;
+                @extend %font-open-sans-semi-bold-regular;
                 @extend %font-size-large;
 
                 color: $color-pink-1;

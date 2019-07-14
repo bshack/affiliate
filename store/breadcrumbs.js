@@ -56,27 +56,50 @@ export default class {
 
         return (dispatch, getState) => {
             if (params.programName) {
-                dispatch(this.handleGetSuccess([
-                    {
-                        id: 'home',
-                        title: 'Home'
-                    },
-                    {
-                        id: params.programName,
-                        title: params.programName
-                    }
-                ]));
+
+                return this.app.get('databaseConnection')
+                    .from('store')
+                    .select(['label'])
+                    .where({
+                        value: params.programName
+                    })
+                    .then((data) => {
+                        dispatch(this.handleGetSuccess([
+                            {
+                                id: 'home',
+                                title: 'Home'
+                            },
+                            {
+                                title: data[0].label
+                            }
+                        ]));
+                    })
+                    .catch((error) => {
+                        dispatch(this.handleGetError(error));
+                    });
+
             } else if (params.brand) {
-                dispatch(this.handleGetSuccess([
-                    {
-                        id: 'home',
-                        title: 'Home'
-                    },
-                    {
-                        id: params.brand,
-                        title: params.brand
-                    }
-                ]));
+
+                return this.app.get('databaseConnection')
+                    .from('brand')
+                    .select(['label'])
+                    .where({
+                        value: params.brand
+                    })
+                    .then((data) => {
+                        dispatch(this.handleGetSuccess([
+                            {
+                                id: 'home',
+                                title: 'Home'
+                            },
+                            {
+                                title: data[0].label
+                            }
+                        ]));
+                    })
+                    .catch((error) => {
+                        dispatch(this.handleGetError(error));
+                    });
 
             } else if (params.path) {
 

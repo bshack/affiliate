@@ -25,7 +25,8 @@ exports.index = function(req, res) {
         ),
         storeProduct.store.dispatch(
             storeProduct.getAll({
-                isActive: true
+                isActive: true,
+                limit: false
             })
         )
     ]).then(() => {

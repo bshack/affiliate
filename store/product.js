@@ -70,7 +70,9 @@ export default class {
                 whereParams['product.isFeatured'] = true;
             }
 
-            if (params.limit && (parseInt(params.limit, 10) <= limitParam)) {
+            if (typeof params.limit !== 'undefined' && params.limit === false) {
+                limitParam = '';
+            } else if (params.limit) {
                 limitParam = parseInt(params.limit, 10);
             }
 
@@ -82,12 +84,16 @@ export default class {
                 .from('product')
                 .select([
                     'product.*',
+                    'brand.label AS brandName',
+                    'store.label AS storeName',
                     'category.isFeatured',
                     'category.path',
                     'category.title AS categoryTitle'
                 ])
                 .limit(limitParam)
                 .innerJoin('category', 'product.googleProductCategory', 'category.googleid')
+                .innerJoin('brand', 'product.brand', 'brand.value')
+                .innerJoin('store', 'product.programName', 'store.value')
                 .where((builder) => {
                     if (whereParams.path && !whereParams.seoFilenamePart) {
                         if (skipParam) {

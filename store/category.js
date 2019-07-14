@@ -32,31 +32,59 @@ export default class {
             let whereParams = {};
 
             if (params.brand) {
-                return dispatch(this.handleGetSuccess([
-                    {
-                        title: params.brand
-                    }
-                ]));
-            } else if (params.programName) {
-                return dispatch(this.handleGetSuccess([
-                    {
-                        title: params.programName
-                    }
-                ]));
-            } else if (params.path) {
-                whereParams.path = params.path;
-            }
 
-            return this.app.get('databaseConnection')
-                .from('category')
-                .select()
-                .where(whereParams)
-                .then((data) => {
-                    dispatch(this.handleGetSuccess(data));
-                })
-                .catch((error) => {
-                    dispatch(this.handleGetError(error));
-                });
+                return this.app.get('databaseConnection')
+                    .from('brand')
+                    .select(['label'])
+                    .where({
+                        value: params.brand
+                    })
+                    .then((data) => {
+                        dispatch(this.handleGetSuccess([
+                            {
+                                title: data[0].label
+                            }
+                        ]));
+                    })
+                    .catch((error) => {
+                        dispatch(this.handleGetError(error));
+                    });
+
+            } else if (params.programName) {
+
+                return this.app.get('databaseConnection')
+                    .from('store')
+                    .select(['label'])
+                    .where({
+                        value: params.programName
+                    })
+                    .then((data) => {
+                        dispatch(this.handleGetSuccess([
+                            {
+                                title: data[0].label
+                            }
+                        ]));
+                    })
+                    .catch((error) => {
+                        dispatch(this.handleGetError(error));
+                    });
+
+            } else if (params.path) {
+
+                whereParams.path = params.path;
+
+                return this.app.get('databaseConnection')
+                    .from('category')
+                    .select()
+                    .where(whereParams)
+                    .then((data) => {
+                        dispatch(this.handleGetSuccess(data));
+                    })
+                    .catch((error) => {
+                        dispatch(this.handleGetError(error));
+                    });
+
+            }
 
         };
 

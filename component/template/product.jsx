@@ -60,10 +60,10 @@ class View extends React.PureComponent {
                 .format('$0,0[.]00')}</span></p>
         }
 
-        let programName = '';
-        if (this.props.data.programName !== '') {
-            programName = <p className='program'><span>sold by</span> <a href={'/store/'
-                + this.props.data.programName + '/index.html'}>{this.props.data.programName}</a></p>
+        let storeName = '';
+        if (this.props.data.storeName !== '') {
+            storeName = <p className='store'><span>sold by</span> <a href={'/store/'
+                + this.props.data.programName + '/index.html'}>{this.props.data.storeName}</a></p>
         }
 
         let productCondition = '';
@@ -80,7 +80,7 @@ class View extends React.PureComponent {
                             <a href={'/' + this.props.data.path + '/'
                             + this.props.data.seoFilenamePart + '.html'}>{this.props.data.title}</a>
                         </h3>
-                        {programName}
+                        {storeName}
                         {productCondition}
                         {price}
                     </div>
@@ -97,7 +97,7 @@ class View extends React.PureComponent {
                             <a href={'/' + this.props.data.path + '/'
                             + this.props.data.seoFilenamePart + '.html'}>{this.props.data.title}</a>
                         </h3>
-                        {programName}
+                        {storeName}
                         {productCondition}
                     </div>
                     {price}

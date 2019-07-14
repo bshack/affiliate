@@ -124,10 +124,10 @@ class View extends React.PureComponent {
             </p>
         }
 
-        let programName = '';
-        if (this.props.data.programName !== '') {
-            programName = <p className="program"><span>sold by</span> <a href={'/store/' +
-                    this.props.data.programName + '/index.html'}>{this.props.data.programName}</a>
+        let storeName = '';
+        if (this.props.data.storeName !== '') {
+            storeName = <p className="program"><span>sold by</span> <a href={'/store/' +
+                    this.props.data.programName + '/index.html'}>{this.props.data.storeName}</a>
             </p>
         }
 
@@ -161,7 +161,7 @@ class View extends React.PureComponent {
         if (this.props.data.brand !== '') {
             brand = <div className="brand">
                 <strong>brand</strong>
-                <p><a href={'/brand/' + this.props.data.brand + '/index.html'}>{this.props.data.brand}</a></p>
+                <p><a href={'/brand/' + this.props.data.brand + '/index.html'}>{this.props.data.brandName}</a></p>
             </div>;
         }
 
@@ -175,7 +175,7 @@ class View extends React.PureComponent {
                         <h1>
                             {this.props.data.title}
                         </h1>
-                        {programName}
+                        {storeName}
                         {price}
                         {productCondition}
                         <a className="anchor-2" href={this.props.data.link}>get deal now</a>

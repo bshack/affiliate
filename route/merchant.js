@@ -16,7 +16,8 @@ exports.index = function(req, res) {
     Promise.all([
         storeProduct.store.dispatch(
             storeProduct.getAll({
-                isActive: true
+                isActive: true,
+                limit: false
             })
         )
     ]).then(() => {
@@ -36,7 +37,7 @@ exports.index = function(req, res) {
 <g:sale_price><![CDATA[` + products[i].salePrice + `]]></g:sale_price>
 <g:google_product_category><![CDATA[` + products[i].googleProductCategory + `]]></g:google_product_category>
 <g:product_type><![CDATA[` + products[i].productType + `]]></g:product_type>
-<g:brand><![CDATA[` + products[i].brand + `]]></g:brand>
+<g:brand><![CDATA[` + products[i].brandName + `]]></g:brand>
 <g:color><![CDATA[` + products[i].color + `]]></g:color>
 <g:gender><![CDATA[` + products[i].gender + `]]></g:gender>
 <g:material><![CDATA[` + products[i].material + `]]></g:material>
