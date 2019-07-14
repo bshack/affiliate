@@ -111,7 +111,10 @@ class View extends React.PureComponent {
         }
 
         let price = '';
-        if (this.props.data.salePriceUnformatted) {
+        if (this.props.data.salePriceUnformatted &&
+            (this.props.data.salePriceUnformatted !== this.props.data.priceUnformatted) &&
+            (this.props.data.salePriceUnformatted < this.props.data.priceUnformatted)
+        ) {
             price = <p className="price-sale">
                 <del>{numeral(this.props.data.priceUnformatted).format('$0,0[.]00')}</del> <span>
                     {numeral(this.props.data.salePriceUnformatted).format('$0,0[.]00')}

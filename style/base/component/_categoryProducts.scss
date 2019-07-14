@@ -107,24 +107,11 @@
 
             span {
 
-                &:first-child {
+                @extend %font-open-sans-semi-bold-regular;
+                @extend %font-size-large;
 
-                    @extend %font-open-sans-semi-bold-regular;
-                    @extend %font-size-xlarge;
+                color: $color-pink-1;
 
-                    color: $color-pink-1;
-
-                }
-
-                &:last-child {
-
-                    @extend %font-open-sans-semi-bold-regular;
-                    @extend %font-size-small;
-
-                    color: $color-black-1;
-                    margin-left: $spacing-xsmall;
-
-                }
             }
 
         }
