@@ -121,6 +121,7 @@ export default class {
                 .offset(offsetParam)
                 .orderBy('product.timestamp', 'desc')
                 .orderBy('product.isFeatured', 'desc')
+                .groupBy('product.title')
                 .then((data) => {
                     dispatch(this.handleGetSuccess(data));
                 })
