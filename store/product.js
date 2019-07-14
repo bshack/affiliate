@@ -119,10 +119,8 @@ export default class {
                     }
                 })
                 .offset(offsetParam)
-                .orderBy('product.isImageLinkProcessed', 'asc')
-                .orderBy('product.isFeatured', 'desc')
-                .orderBy('category.isFeatured', 'desc')
                 .orderBy('product.timestamp', 'desc')
+                .orderBy('product.isFeatured', 'desc')
                 .then((data) => {
                     dispatch(this.handleGetSuccess(data));
                 })

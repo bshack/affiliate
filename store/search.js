@@ -18,15 +18,19 @@ export default class {
         return new Promise((resolve, reject) => {
             this.app.get('databaseConnection')
                 .from('product')
-                .select(['brand'])
+                .select([
+                    'product.brand',
+                    'brand.label as brandName'
+                ])
                 .where('brand', 'like', '%' + params.q + '%')
                 .where({
-                    isActive: params.isActive,
-                    isImageLinkProcessed: true
+                    'product.isActive': true,
+                    'product.isImageLinkProcessed': true
                 })
+                .innerJoin('brand', 'product.brand', 'brand.value')
                 .groupBy('brand')
                 .limit(resultLimit)
-                .orderBy('brand', 'desc')
+                .orderBy('brand', 'asc')
                 .then((data) => {
                     resolve(data);
                 })
@@ -40,15 +44,19 @@ export default class {
         return new Promise((resolve, reject) => {
             this.app.get('databaseConnection')
                 .from('product')
-                .select(['programName'])
+                .select([
+                    'product.programName',
+                    'store.label as storeName'
+                ])
                 .where('programName', 'like', '%' + params.q + '%')
                 .where({
-                    isActive: params.isActive,
-                    isImageLinkProcessed: true
+                    'product.isActive': true,
+                    'product.isImageLinkProcessed': true
                 })
+                .innerJoin('store', 'product.programName', 'store.value')
                 .groupBy('programName')
                 .limit(resultLimit)
-                .orderBy('programName', 'desc')
+                .orderBy('programName', 'asc')
                 .then((data) => {
                     resolve(data);
                 })
@@ -69,13 +77,13 @@ export default class {
                 ])
                 .where('product.title', 'like', '%' + params.q + '%')
                 .where({
-                    'product.isActive': params.isActive,
+                    'product.isActive': true,
                     'product.isImageLinkProcessed': true
                 })
                 .innerJoin('category', 'product.googleProductCategory', 'category.googleid')
                 .groupBy('product.title')
                 .limit(resultLimit)
-                .orderBy('product.title', 'desc')
+                .orderBy('product.title', 'asc')
                 .then((data) => {
                     resolve(data);
                 })
