@@ -29,6 +29,7 @@ class WrapperLayout extends React.PureComponent {
                     <meta name="viewport" content="width=device-width, initial-scale=1" />
                     <meta name="format-detection" content="telephone=no,date=no,address=no,email=no,url=no" />
                     <meta name="google-site-verification" content="5i2qlRrWhsoSwV6gSWsh69Xl9CoIbomfImzHP4rMess" />
+                    <meta name="msvalidate.01" content="6580EA946DE7B2F8FB73E2AA783D14B4" />
                     {descriptionSEO}
                     <meta name="twitter:card" content={config.social.twitter.card} />
                     <meta name="twitter:site" content={config.social.twitter.name} />
