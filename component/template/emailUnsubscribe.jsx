@@ -109,7 +109,7 @@ class View extends React.PureComponent {
                 <div className="row justify-content-center">
                     <div className="col-10 col-md-8">
                         <h1>Unsubscribe From Emails</h1>
-                        <p>Sorry to see you go.</p>
+                        <p>Sorry to see you go!</p>
                         <form
                             id="marketing-email-unsubscribe"
                             name="marketing-email-unsubscribe"

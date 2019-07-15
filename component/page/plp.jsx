@@ -13,6 +13,7 @@ import NavigationSearch from '../template/navigationSearch.jsx';
 import Breadcrumbs from '../template/breadcrumbs.jsx';
 import CategoryHeader from '../template/categoryHeader.jsx';
 import CategoryProducts from '../template/categoryProducts.jsx';
+import CategoryCampaigns from '../template/categoryCampaigns.jsx';
 import EmailSignUp from '../template/emailSignUp.jsx';
 import Footer from '../template/footer.jsx';
 

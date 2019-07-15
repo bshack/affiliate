@@ -7,6 +7,7 @@ import configPrivate from '../../../configPrivate.json';
  *************************************/
 
 import StoreProduct from '../../../store/product';
+import StoreCampaign from '../../../store/campaign';
 import StoreCategory from '../../../store/category';
 import StoreNavigationMain from '../../../store/navigation/main';
 import StoreNavigationFooter from '../../../store/navigation/footer';
@@ -18,10 +19,12 @@ import StoreBreadcrumbs from '../../../store/breadcrumbs';
 exports.get = function(req, res) {
 
     let productParams = JSON.parse(req.query.product);
+    let campaignParams = JSON.parse(req.query.category);
     let categoryParams = JSON.parse(req.query.category);
     let breadcrumbParams = JSON.parse(req.query.breadcrumbs);
 
     let storeProduct = new StoreProduct(req.app);
+    let storeCampaign = new StoreCampaign(req.app);
     let storeCategory = new StoreCategory(req.app);
     let storeNavigationMain = new StoreNavigationMain(req.app);
     let storeBreadcrumbs = new StoreBreadcrumbs(req.app);
@@ -30,6 +33,12 @@ exports.get = function(req, res) {
     Promise.all([
         storeProduct.store.dispatch(
             storeProduct.getAll(productParams)
+        ),
+        storeCampaign.store.dispatch(
+            storeCampaign.getAll(campaignParams)
+        ),
+        storeCategory.store.dispatch(
+            storeCategory.getAll(categoryParams)
         ),
         storeCategory.store.dispatch(
             storeCategory.getAll(categoryParams)
@@ -60,7 +69,8 @@ exports.get = function(req, res) {
                 navigationFooter: storeNavigationFooter.store.getState(),
                 breadcrumb: storeBreadcrumbs.store.getState(),
                 category: storeCategoryData,
-                product: storeProduct.store.getState({})
+                product: storeProduct.store.getState({}),
+                campaign: storeCampaign.store.getState({})
             });
 
     })

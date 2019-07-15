@@ -34,7 +34,7 @@ exports.index = function(req, res) {
 <g:image_link><![CDATA[` + config.cdn.origin + '/' + products[i].path + '/' + products[i].seoFilenamePart + '-source.jpg' + `]]></g:image_link>
 <g:availability><![CDATA[` + products[i].availability + `]]></g:availability>
 <g:price><![CDATA[` + products[i].price + `]]></g:price>
-<g:sale_price><![CDATA[` + products[i].salePrice + `]]></g:sale_price>
+<g:sale_price><![CDATA[` + ((products[i].salePrice < products[i].price)? products[i].salePrice : ``)  + `]]></g:sale_price>
 <g:google_product_category><![CDATA[` + products[i].googleProductCategory + `]]></g:google_product_category>
 <g:product_type><![CDATA[` + products[i].productType + `]]></g:product_type>
 <g:brand><![CDATA[` + products[i].brandName + `]]></g:brand>

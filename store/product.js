@@ -103,7 +103,6 @@ export default class {
                                 .where('category.path', 'like', '%' + whereParams.path)
                                 .whereNot('product.seoFilenamePart', skipParam);
                         } else {
-
                             builder
                                 .where({
                                     'product.isActive': true,
