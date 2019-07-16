@@ -35,6 +35,7 @@ class View extends React.PureComponent {
                     h1={this.props.state.data.category[0].title}
                     h2={this.props.state.data.category[0].subtitle}
                 />
+                <CategoryCampaigns />
                 <CategoryProducts />
                 <EmailSignUp />
             </main>

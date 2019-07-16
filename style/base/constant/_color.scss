@@ -6,6 +6,7 @@ $color-blue-4: #007bff;
 $color-grey-1: #444;
 $color-grey-2: #afafaf;
 $color-grey-3: #e2e2e2;
+$color-grey-4: #f1f1f1;
 $color-green-1: #00ff9c;
 $color-green-2: #11d37f;
 $color-pink-1: #ff3c91;
@@ -93,6 +94,14 @@ $color-white-2: rgba(255, 255, 255, .95);
 
 %color-background-grey-3 {
     background-color: $color-grey-3;
+}
+
+%color-grey-4 {
+    color: $color-grey-4;
+}
+
+%color-background-grey-4 {
+    background-color: $color-grey-4;
 }
 
 %color-green-1 {

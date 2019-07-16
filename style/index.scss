@@ -34,6 +34,10 @@ body {
     @extend %breadcrumbs;
 }
 
+.category-campaigns {
+    @extend %category-campaigns;
+}
+
 .category-header {
     @extend %category-header;
 }
@@ -104,6 +108,14 @@ body {
 
 .color-background-grey-3 {
     @extend %color-background-grey-3;
+}
+
+.color-grey-4 {
+    @extend %color-grey-4;
+}
+
+.color-background-grey-4 {
+    @extend %color-background-grey-4;
 }
 
 .color-green-1 {

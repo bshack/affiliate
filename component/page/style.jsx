@@ -115,6 +115,12 @@ class View extends React.PureComponent {
                                                 grey-3 (#e2e2e2)
                                             </p>
                                         </div>
+                                        <div className="col-6 col-md-4 col-lg-3 col-xl-2">
+                                            <div className="swatch color-background-grey-4"></div>
+                                            <p className="label-style-standard">
+                                                grey-4 (#f1f1f1)
+                                            </p>
+                                        </div>
                                     </div>
                                     <h3>Other</h3>
                                     <div className="row">

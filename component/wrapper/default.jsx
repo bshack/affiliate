@@ -28,8 +28,6 @@ class WrapperLayout extends React.PureComponent {
                     <meta httpEquiv="x-ua-compatible" content="IE=edge" />
                     <meta name="viewport" content="width=device-width, initial-scale=1" />
                     <meta name="format-detection" content="telephone=no,date=no,address=no,email=no,url=no" />
-                    <meta name="google-site-verification" content="5i2qlRrWhsoSwV6gSWsh69Xl9CoIbomfImzHP4rMess" />
-                    <meta name="msvalidate.01" content="6580EA946DE7B2F8FB73E2AA783D14B4" />
                     {descriptionSEO}
                     <meta name="twitter:card" content={config.social.twitter.card} />
                     <meta name="twitter:site" content={config.social.twitter.name} />
@@ -37,13 +35,13 @@ class WrapperLayout extends React.PureComponent {
                     <meta name="twitter:title" content={this.props.state.data.meta.title} />
                     <meta name="twitter:description" content={descriptionSocial} />
                     <meta name="twitter:image" content={'/' + config.static.version
-                        + this.props.state.data.meta.image} />
+                        + '/' + this.props.state.data.meta.image} />
                     <meta name="twitter:image:alt" content={this.props.state.data.meta.title} />
                     <meta property="og:title" content={this.props.state.data.meta.title} />
                     <meta property="og:type" content={config.social.facebook.type} />
                     <meta property="og:url" content={this.props.state.data.meta.canonical} />
                     <meta property="og:image:url" content={'/' + config.static.version
-                        + this.props.state.data.meta.image} />
+                        + '/' + this.props.state.data.meta.image} />
                     <meta property="og:image:height" content={config.social.facebook.imageHeight} />
                     <meta property="og:image:width" content={config.social.facebook.imageWidth} />
                     <meta property="og:image:alt" content={this.props.state.data.meta.title} />

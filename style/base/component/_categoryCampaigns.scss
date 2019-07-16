@@ -1,0 +1,118 @@
+%category-campaigns {
+
+    border-bottom: rem-calc(1) solid $color-grey-3;
+    display: none;
+    margin-bottom: $spacing-large;
+
+    .campaigns {
+        margin: 0 (-$spacing-xsmall);
+    }
+
+    .campaign {
+
+        margin-bottom: $spacing-small;
+        padding: 0 $spacing-xsmall;
+        position: relative;
+        text-align: center;
+
+        .inner {
+            background-color: $color-grey-4;
+            border-radius: $spacing-xsmall;
+            padding: $spacing-small;
+        }
+
+        .title {
+
+            margin-bottom: $spacing-xsmall;
+
+            strong {
+
+                @extend %font-open-sans-semi-bold-regular;
+                @extend %font-size-medium;
+
+                color: $color-black-1;
+
+            }
+
+        }
+
+        .store {
+
+            text-align: center;
+
+            span {
+
+                @extend %font-open-sans-regular;
+                @extend %font-size-small;
+
+                color: $color-black-1;
+
+            }
+
+            a {
+                @extend %anchor-standard;
+            }
+
+        }
+
+        .code {
+
+            text-align: center;
+
+            span {
+
+                @extend %font-open-sans-regular;
+                @extend %font-size-small;
+
+                color: $color-black-1;
+
+            }
+
+            strong {
+
+                @extend %font-open-sans-semi-bold-regular;
+                @extend %font-size-large;
+
+                color: $color-pink-1;
+                display: inline-block;
+                margin-bottom: $spacing-xsmall;
+                margin-top: -$spacing-xsmall;
+
+            }
+
+        }
+
+        .copy-to-clipboard {
+
+            display: block;
+            margin: 0 auto $spacing-small;
+            position: relative;
+
+            &.copied {
+
+                &::after {
+
+                    @extend %font-open-sans-semi-bold-regular;
+                    @extend %font-size-xxlarge;
+
+                    @include media-breakpoint-up(sm) {
+                        left: rem-calc(100);
+                    }
+
+                    color: $color-pink-1;
+                    content: '\2713';
+                    display: block;
+                    height: rem-calc(45);
+                    left: rem-calc(90);
+                    position: absolute;
+                    top: 0;
+
+                }
+
+            }
+
+        }
+
+    }
+
+}
