@@ -40,9 +40,6 @@ exports.get = function(req, res) {
         storeCategory.store.dispatch(
             storeCategory.getAll(categoryParams)
         ),
-        storeCategory.store.dispatch(
-            storeCategory.getAll(categoryParams)
-        ),
         storeNavigationMain.store.dispatch(
             storeNavigationMain.getAll({})
         ),

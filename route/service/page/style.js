@@ -38,10 +38,7 @@ exports.get = function(req, res) {
             .status(200)
             .send({
                 meta: {
-                    title: 'Style Guide',
-                    description: 'yo description',
-                    image: 'yo image',
-                    canonical: 'yo canonical'
+                    title: 'Style Guide'
                 },
                 unsubscribe: emailParams,
                 navigationMain: storeNavigationMain.store.getState(),

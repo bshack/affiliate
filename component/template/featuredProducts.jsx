@@ -20,7 +20,7 @@ class View extends React.PureComponent {
                     {this.props.data.map(
                         (product, index) =>
                             <div key={index} className='col-6 col-md-4 col-lg-3'>
-                                <Product data={product} key={index} config={this.props.config} />
+                                <Product product={product} key={index} config={this.props.config} />
                             </div>
                     )}
                 </div>

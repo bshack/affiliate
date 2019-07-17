@@ -10,39 +10,39 @@ class View extends React.PureComponent {
 
     render() {
         let image = '';
-        if (this.props.data.isImageLinkProcessed) {
+        if (this.props.product.isImageLinkProcessed) {
             image =
                 <div className='image'>
-                    <a href={'/' + this.props.data.path + '/' + this.props.data.seoFilenamePart + '.html'}>
+                    <a href={'/' + this.props.product.path + '/' + this.props.product.seoFilenamePart + '.html'}>
                         {
                             this.props.isLazy?
                                 <LazyLoad offset={1000} debounce={false} throttle={250}>
                                     <Picture
-                                        data={this.props.data}
-                                        small={this.props.data.path + '/' + this.props.data.seoFilenamePart
+                                        data={this.props.product}
+                                        small={this.props.product.path + '/' + this.props.product.seoFilenamePart
                                             + '-medium'}
-                                        medium={this.props.data.path + '/' + this.props.data.seoFilenamePart
+                                        medium={this.props.product.path + '/' + this.props.product.seoFilenamePart
                                             + '-medium'}
-                                        large={this.props.data.path + '/' + this.props.data.seoFilenamePart
+                                        large={this.props.product.path + '/' + this.props.product.seoFilenamePart
                                             + '-medium'}
-                                        xlarge={this.props.data.path + '/' + this.props.data.seoFilenamePart
+                                        xlarge={this.props.product.path + '/' + this.props.product.seoFilenamePart
                                             + '-medium'}
-                                        xxlarge={this.props.data.path + '/' + this.props.data.seoFilenamePart
+                                        xxlarge={this.props.product.path + '/' + this.props.product.seoFilenamePart
                                             + '-medium'}
                                     />
                                 </LazyLoad>
                                 :
                                 <Picture
-                                    data={this.props.data}
-                                    small={this.props.data.path + '/' + this.props.data.seoFilenamePart
+                                    data={this.props.product}
+                                    small={this.props.product.path + '/' + this.props.product.seoFilenamePart
                                         + '-medium'}
-                                    medium={this.props.data.path + '/' + this.props.data.seoFilenamePart
+                                    medium={this.props.product.path + '/' + this.props.product.seoFilenamePart
                                         + '-medium'}
-                                    large={this.props.data.path + '/' + this.props.data.seoFilenamePart
+                                    large={this.props.product.path + '/' + this.props.product.seoFilenamePart
                                         + '-medium'}
-                                    xlarge={this.props.data.path + '/' + this.props.data.seoFilenamePart
+                                    xlarge={this.props.product.path + '/' + this.props.product.seoFilenamePart
                                         + '-medium'}
-                                    xxlarge={this.props.data.path + '/' + this.props.data.seoFilenamePart
+                                    xxlarge={this.props.product.path + '/' + this.props.product.seoFilenamePart
                                         + '-medium'}
                                 />
                         }
@@ -51,27 +51,27 @@ class View extends React.PureComponent {
         }
 
         let price = '';
-        if (this.props.data.salePriceUnformatted &&
-            (this.props.data.salePriceUnformatted !== this.props.data.priceUnformatted) &&
-            (this.props.data.salePriceUnformatted < this.props.data.priceUnformatted)
+        if (this.props.product.salePriceUnformatted &&
+            (this.props.product.salePriceUnformatted !== this.props.product.priceUnformatted) &&
+            (this.props.product.salePriceUnformatted < this.props.product.priceUnformatted)
         ) {
-            price = <p className='price-sale'><del>{numeral(this.props.data.priceUnformatted)
-                .format('$0,0[.]00')}</del> <span>{numeral(this.props.data.salePriceUnformatted)
+            price = <p className='price-sale'><del>{numeral(this.props.product.priceUnformatted)
+                .format('$0,0[.]00')}</del> <span>{numeral(this.props.product.salePriceUnformatted)
                 .format('$0,0[.]00')}</span></p>
         } else {
-            price = <p className='price'><span>{numeral(this.props.data.priceUnformatted)
+            price = <p className='price'><span>{numeral(this.props.product.priceUnformatted)
                 .format('$0,0[.]00')}</span></p>
         }
 
         let storeName = '';
-        if (this.props.data.storeName !== '') {
+        if (this.props.product.storeName !== '') {
             storeName = <p className='store'><span>sold by</span> <a href={'/store/'
-                + this.props.data.programName + '/index.html'}>{this.props.data.storeName}</a></p>
+                + this.props.product.programName + '/index.html'}>{this.props.product.storeName}</a></p>
         }
 
         let productCondition = '';
-        if (this.props.data.productCondition !== '' && this.props.data.productCondition !== 'new') {
-            productCondition = <p class="condition">{this.props.data.productCondition}</p>
+        if (this.props.product.productCondition !== '' && this.props.product.productCondition !== 'new') {
+            productCondition = <p class="condition">{this.props.product.productCondition}</p>
         }
 
         return (
@@ -80,34 +80,34 @@ class View extends React.PureComponent {
                     {image}
                     <div className='detail'>
                         <h3>
-                            <a href={'/' + this.props.data.path + '/'
-                            + this.props.data.seoFilenamePart + '.html'}>{this.props.data.title}</a>
+                            <a href={'/' + this.props.product.path + '/'
+                            + this.props.product.seoFilenamePart + '.html'}>{this.props.product.title}</a>
                         </h3>
                         {storeName}
                         {productCondition}
                         {price}
                     </div>
                     <div className='cta'>
-                        <a className='anchor-2' href={this.props.data.link}>get deal now</a>
+                        <a className='anchor-2' href={this.props.product.link}>get deal now</a>
                     </div>
-                    {utilityJSONLD.product(this.props.data, this.props.config)}
+                    {utilityJSONLD.product(this.props.product, this.props.config)}
                 </div>
                 :
                 <div className='product'>
                     {image}
                     <div className='detail'>
                         <h3>
-                            <a href={'/' + this.props.data.path + '/'
-                            + this.props.data.seoFilenamePart + '.html'}>{this.props.data.title}</a>
+                            <a href={'/' + this.props.product.path + '/'
+                            + this.props.product.seoFilenamePart + '.html'}>{this.props.product.title}</a>
                         </h3>
                         {storeName}
                         {productCondition}
                     </div>
                     {price}
                     <div className='cta'>
-                        <a className='anchor-2' href={this.props.data.link}>get deal now</a>
+                        <a className='anchor-2' href={this.props.product.link}>get deal now</a>
                     </div>
-                    {utilityJSONLD.product(this.props.data, this.props.config)}
+                    {utilityJSONLD.product(this.props.product, this.props.config)}
                 </div>
         );
     }

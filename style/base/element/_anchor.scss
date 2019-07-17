@@ -43,6 +43,8 @@
     }
 
     align-items: center;
+    appearance: none;
+    border: 0;
     border-radius: rem-calc(5);
     color: $color-white-1;
     display: inline-flex;

@@ -34,6 +34,10 @@ body {
     @extend %breadcrumbs;
 }
 
+.campaign {
+    @extend %campaign;
+}
+
 .category-campaigns {
     @extend %category-campaigns;
 }

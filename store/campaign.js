@@ -33,7 +33,7 @@ export default class {
             let now = moment().format('YYYY/MM/DD HH:mm:ss');
 
             let whereParams = {
-                isActive: true
+                'campaign.isActive': true
             };
 
             let limitParam = 300;
@@ -50,6 +50,10 @@ export default class {
                 whereParams.store = params.programName;
             }
 
+            if (params.path) {
+                whereParams.path = params.path;
+            }
+
             if (typeof params.limit !== 'undefined' && params.limit === false) {
                 limitParam = '';
             } else if (params.limit) {
@@ -61,14 +65,27 @@ export default class {
                 .select([
                     'campaign.*',
                     'brand.label AS brandName',
-                    'store.label AS storeName'
+                    'store.label AS storeName',
+                    'category.path AS path'
                 ])
                 .limit(limitParam)
+                .innerJoin('category', 'campaign.category', 'category.googleid')
                 .innerJoin('brand', 'campaign.brand', 'brand.value')
                 .innerJoin('store', 'campaign.store', 'store.value')
-                .where(whereParams)
-                .where('campaign.startDate', '<', now)
-                .where('campaign.endDate', '>', now)
+                .where((builder) => {
+                    if (whereParams.path) {
+                        builder
+                            .where(whereParams)
+                            .where('campaign.startDate', '<', now)
+                            .where('campaign.endDate', '>', now)
+                            .where('path', 'like', whereParams.path + '%');
+                    } else {
+                        builder
+                            .where(whereParams)
+                            .where('campaign.startDate', '<', now)
+                            .where('campaign.endDate', '>', now);
+                    }
+                })
                 .orderBy('campaign.isExclusive', 'desc')
                 .orderBy('campaign.timestamp', 'desc')
                 .groupBy('campaign.title')

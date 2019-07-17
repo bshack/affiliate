@@ -25,7 +25,7 @@ class View extends React.PureComponent {
     render() {
         return (
             <button
-                className={'copy-to-clipboard anchor-2' + (this.state.copied? ' copied' : '')}
+                className={'copy-to-clipboard button-standard' + (this.state.copied? ' copied' : '')}
                 data-clipboard-text={this.props.content}
                 onClick={this.eventClickCode.bind(this)}
             >{(this.state.copied? ' Copied' : 'Copy')}</button>

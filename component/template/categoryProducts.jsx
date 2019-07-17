@@ -1,4 +1,5 @@
 import React from 'react';
+import Campaign from './campaign.jsx';
 import Product from './product.jsx';
 import {connect} from 'react-redux';
 
@@ -7,10 +8,10 @@ class View extends React.PureComponent {
         return (
             <section className="category-products container">
                 <div className="products row no-gutters">
-                    {this.props.data.map(
+                    {this.props.state.data.product.map(
                         (product, index) =>
                             <div key={index} className='col-6 col-md-4 col-lg-3'>
-                                <Product isLazy={(index > 12)? true : false} data={product} key={index} />
+                                <Product isLazy={(index > 12)? true : false} product={product} />
                             </div>
                     )}
                 </div>
@@ -21,9 +22,7 @@ class View extends React.PureComponent {
 
 const mapStateToProps = (state) => {
     return {
-        data: state.data.product,
-        category: state.data.category,
-        config: state.data.config
+        state: state
     }
 }
 
