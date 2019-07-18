@@ -24,7 +24,7 @@ exports.get = function(req, res) {
         limit: 8
     };
     let productFeaturedParams = {
-        'product.isFeatured': false,
+        'product.isFeatured': true,
         limit: 8
     };
 
