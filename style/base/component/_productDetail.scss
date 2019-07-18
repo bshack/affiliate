@@ -10,6 +10,11 @@
 
     .image {
 
+        @include media-breakpoint-up(md) {
+            position: sticky;
+            top: $spacing-medium;
+        }
+
         padding-bottom: 100%;
         position: relative;
 
@@ -30,6 +35,11 @@
     }
 
     .images {
+
+        @include media-breakpoint-up(md) {
+            position: sticky;
+            top: $spacing-medium;
+        }
 
         margin-bottom: $spacing-medium;
 
