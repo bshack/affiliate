@@ -21,10 +21,11 @@ exports.get = function(req, res) {
     };
     let productParams = {
         'product.isFeatured': false,
+        offset: 8,
         limit: 8
     };
     let productFeaturedParams = {
-        'product.isFeatured': true,
+        // 'product.isFeatured': true,
         limit: 8
     };
 

@@ -119,6 +119,7 @@ export default class {
                 })
                 .offset(offsetParam)
                 .orderBy('product.isFeatured', 'desc')
+                .orderBy('product.discountPercent', 'desc')
                 .orderBy('product.timestamp', 'desc')
                 .groupBy('product.title')
                 .then((data) => {
