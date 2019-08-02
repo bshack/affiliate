@@ -47,15 +47,15 @@ class View extends React.PureComponent {
                             <Picture
                                 data={this.props.data}
                                 small={this.props.data.path + '/' + this.props.data.seoFilenamePart
-                                    + '-small'}
+                                    + '-large'}
                                 medium={this.props.data.path + '/' + this.props.data.seoFilenamePart
-                                    + '-small'}
+                                    + '-large'}
                                 large={this.props.data.path + '/' + this.props.data.seoFilenamePart
-                                    + '-small'}
+                                    + '-large'}
                                 xlarge={this.props.data.path + '/' + this.props.data.seoFilenamePart
-                                    + '-small'}
+                                    + '-large'}
                                 xxlarge={this.props.data.path + '/' + this.props.data.seoFilenamePart
-                                    + '-small'}
+                                    + '-large'}
                             />
                         </div>
                     </li>
