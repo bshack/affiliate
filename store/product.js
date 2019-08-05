@@ -120,7 +120,8 @@ export default class {
                 .offset(offsetParam)
                 .orderBy('product.isFeatured', 'desc')
                 .orderBy('product.discountPercent', 'desc')
-                .orderBy('product.timestamp', 'desc')
+                .orderBy('product.salePriceUnformatted', 'asc')
+                .orderBy('product.priceUnformatted', 'asc')
                 .groupBy('product.title')
                 .then((data) => {
                     dispatch(this.handleGetSuccess(data));
