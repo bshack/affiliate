@@ -14,7 +14,7 @@ class View extends React.PureComponent {
                                 data={this.props.state.data.navigationFooter}
                                 configPublic={config} />
                             <small>{String.fromCharCode(169) + ' ' + (new Date().getFullYear()) +
-                                ' ' + config.name}, LLC</small>
+                                ' ' + config.name + ', LLC'}</small>
                         </div>
                     </div>
                 </div>
