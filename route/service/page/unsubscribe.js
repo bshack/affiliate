@@ -43,10 +43,9 @@ exports.get = function(req, res) {
             .status(200)
             .send({
                 meta: {
-                    title: 'yo title',
-                    description: 'yo description',
-                    image: 'yo image',
-                    canonical: 'yo canonical'
+                    title: 'Email Unsubscribe',
+                    image: configPublic.social.image,
+                    description: 'Unsubscribe from Val Foundry emails.'
                 },
                 unsubscribe: emailParams,
                 navigationMain: storeNavigationMain.store.getState(),

@@ -60,7 +60,8 @@ exports.get = function(req, res) {
                 meta: {
                     title: storeCategoryData[0].title + ' - ' + configPublic.name,
                     image: configPublic.social.image,
-                    canonical: configPublic.www.origin + '/' + storeCategoryData[0].path + '/index.html'
+                    canonical: configPublic.www.origin + '/' + storeCategoryData[0].path + '/index.html',
+                    description: storeCategoryData[0].title + ' on Val Foundry. ' + configPublic.description
                 },
                 navigationMain: storeNavigationMain.store.getState(),
                 navigationFooter: storeNavigationFooter.store.getState(),

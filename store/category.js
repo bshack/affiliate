@@ -42,7 +42,8 @@ export default class {
                     .then((data) => {
                         dispatch(this.handleGetSuccess([
                             {
-                                title: data[0].label
+                                title: data[0].label + ' Brand Store',
+                                path: 'brand/' + data[0].label.toLowerCase()
                             }
                         ]));
                     })
@@ -61,7 +62,8 @@ export default class {
                     .then((data) => {
                         dispatch(this.handleGetSuccess([
                             {
-                                title: data[0].label
+                                title: data[0].label + ' Retailer Store',
+                                path: 'store/' + data[0].label.toLowerCase()
                             }
                         ]));
                     })

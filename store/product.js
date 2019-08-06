@@ -34,7 +34,8 @@ export default class {
 
             let whereParams = {
                 'product.isActive': true,
-                'product.isImageLinkProcessed': true
+                'product.isImageLinkProcessed': true,
+                'product.isBlacklisted': false
             };
 
             let offsetParam = 0;
@@ -60,6 +61,12 @@ export default class {
 
             if (params.brand) {
                 whereParams.brand = params.brand;
+            }
+
+            if (params.availability) {
+                whereParams.availability = params.availability;
+            } else {
+                whereParams.availability = 'in stock';
             }
 
             if (params.programName) {
@@ -106,7 +113,9 @@ export default class {
                             builder
                                 .where({
                                     'product.isActive': true,
-                                    'product.isImageLinkProcessed': true
+                                    'product.isImageLinkProcessed': true,
+                                    'product.availability': 'in stock',
+                                    'product.isBlacklisted': false
                                 })
                                 .where('product.timestamp', '>', oldestProductCreationDate)
                                 .where('category.path', 'like', whereParams.path + '%');

@@ -34,7 +34,7 @@ class View extends React.PureComponent {
                 <Breadcrumbs />
                 <ProductDetail />
                 <CategoryHeader
-                    h2='You Also May Like'
+                    h2={'More ' + this.props.state.data.product[0].categoryTitle}
                 />
                 <RecommendationProducts />
                 <EmailSignUp />
