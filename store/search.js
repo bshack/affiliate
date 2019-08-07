@@ -57,6 +57,7 @@ export default class {
                 })
                 .orderBy('category.title', 'asc')
                 .groupBy('category.title')
+                .limit(resultLimit)
                 .then((data) => {
                     resolve(data);
                 })
