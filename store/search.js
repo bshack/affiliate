@@ -40,6 +40,32 @@ export default class {
         });
     }
 
+    searchCategories(params) {
+        return new Promise((resolve, reject) => {
+            this.app.get('databaseConnection')
+                .from('product')
+                .innerJoin('category', 'product.googleProductCategory', 'category.googleid')
+                .select([
+                    'category.title',
+                    'category.path'
+                ])
+                .where('category.title', 'like', '%' + params.q + '%')
+                .where({
+                    'category.isActive': true,
+                    'product.isActive': true,
+                    'product.isImageLinkProcessed': true
+                })
+                .orderBy('category.title', 'asc')
+                .groupBy('category.title')
+                .then((data) => {
+                    resolve(data);
+                })
+                .catch((error) => {
+                    reject(data);
+                });
+        });
+    }
+
     searchPrograms(params) {
         return new Promise((resolve, reject) => {
             this.app.get('databaseConnection')
@@ -121,6 +147,7 @@ export default class {
             return Promise.all([
                 this.searchBrands(whereParams),
                 this.searchPrograms(whereParams),
+                this.searchCategories(whereParams),
                 this.searchProducts(whereParams)
             ])
                 .then((data) => {
@@ -128,7 +155,8 @@ export default class {
                         query: whereParams.q || '',
                         brands: data[0],
                         programs: data[1],
-                        products: data[2]
+                        categories: data[2],
+                        products: data[3]
                     }));
                 })
                 .catch((error) => {

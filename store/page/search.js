@@ -10,6 +10,7 @@ export default class {
                 data: {
                     query: '',
                     brands: [],
+                    categories: [],
                     programs: [],
                     products: []
                 }

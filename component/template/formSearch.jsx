@@ -36,6 +36,18 @@ class View extends React.PureComponent {
             );
         }
 
+        let categoryRows = [];
+        let categoryIndex;
+        for (categoryIndex = 0; categoryIndex < this.props.state.data.categories.length; categoryIndex++) {
+            categoryRows.push(
+                <li key={categoryIndex}>
+                    <a
+                        href={'/' + this.props.state.data.categories[categoryIndex].path + '/index.html'}
+                    >{this.props.state.data.categories[categoryIndex].title}</a>
+                </li>
+            );
+        }
+
         let productRows = [];
         let productIndex;
         for (productIndex = 0; productIndex < this.props.state.data.products.length; productIndex++) {
@@ -47,7 +59,8 @@ class View extends React.PureComponent {
                     >{this.props.state.data.products[productIndex].title}</a></li>);
         }
 
-        if (this.props.state.data.query !== '' && !brandRows.length && !storeRows.length && !productRows.length) {
+        if (this.props.state.data.query !== '' && !categoryRows.length
+            && !brandRows.length && !storeRows.length && !productRows.length) {
             return <div className="col-12 results-empty">
                 <p>No results found for <strong>&quot;{this.props.state.data.query}&quot;</strong>.</p>
             </div>;
@@ -70,6 +83,14 @@ class View extends React.PureComponent {
                         <strong>stores</strong>
                         <ul>
                             {storeRows}
+                        </ul>
+                    </div> : null
+                }
+                {categoryRows.length?
+                    <div className="categories">
+                        <strong>categories</strong>
+                        <ul>
+                            {categoryRows}
                         </ul>
                     </div> : null
                 }

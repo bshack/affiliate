@@ -78,17 +78,20 @@ class View extends React.PureComponent {
             </div>;
         }
 
-        let productCondition = '';
-        if (this.props.data.productCondition !== '' && this.props.data.productCondition !== 'new') {
-            productCondition = <p className="condition">{this.props.data.productCondition}</p>
-        }
-
         let description = '';
         if (this.props.data.description !== '') {
             description = <div className="description">
                 <strong>description</strong>
                 <p>{this.props.data.description}</p>
-            </div>
+            </div>;
+        }
+
+        let productCondition = '';
+        if (this.props.data.productCondition !== '' && this.props.data.productCondition !== 'new') {
+            productCondition = <div className="col-6 condition">
+                <strong>condition</strong>
+                <p>{this.props.data.productCondition}</p>
+            </div>;
         }
 
         let brand = '';
@@ -96,6 +99,14 @@ class View extends React.PureComponent {
             brand = <div className="col-6 brand">
                 <strong>brand</strong>
                 <p><a href={'/brand/' + this.props.data.brand + '/index.html'}>{this.props.data.brandName}</a></p>
+            </div>;
+        }
+
+        let category = '';
+        if (this.props.data.categoryTitle !== '') {
+            category = <div className="col-6 category">
+                <strong>category</strong>
+                <p><a href={'/' + this.props.data.path + '/index.html'}>{this.props.data.categoryTitle}</a></p>
             </div>;
         }
 
@@ -111,10 +122,11 @@ class View extends React.PureComponent {
                         </h1>
                         {storeName}
                         {price}
-                        {productCondition}
                         <a className="anchor-2" href={this.props.data.link}>get deal now</a>
                         <div className="specifications row">
+                            {productCondition}
                             {brand}
+                            {category}
                             {gtin}
                             {mpn}
                             <div className="col-6 vf-id">

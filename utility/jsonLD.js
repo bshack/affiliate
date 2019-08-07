@@ -76,6 +76,8 @@ class JSONLD {
             defaultProductData.offers.priceCurrency = data.salePriceCurrency;
         } else if (data.priceCurrency) {
             defaultProductData.offers.priceCurrency = data.priceCurrency;
+        } else {
+            defaultProductData.offers.priceCurrency = 'USD';
         }
         if (data.salePriceUnformatted) {
             defaultProductData.offers.price = data.salePriceUnformatted;

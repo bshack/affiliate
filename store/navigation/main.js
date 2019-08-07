@@ -3,25 +3,6 @@ import thunk from 'redux-thunk';
 import _ from 'lodash';
 import reducerStandard from '../../reducer/standard';
 
-const getCategoryDetails = (data) => {
-    return new Promise((resolve, reject) => {
-        let fullPathsList = [];
-        let i;
-        for (i = 0; i < data.length; i++) {
-            let productCategoryPathData = data[i].path.split('/');
-            if (productCategoryPathData.length > 1 &&
-                    fullPathsList.indexOf(productCategoryPathData[0]) === -1) {
-                fullPathsList.push(productCategoryPathData[0]);
-            }
-            if (fullPathsList.indexOf(data[i].path) === -1) {
-                fullPathsList.push(data[i].path);
-            }
-
-        }
-        resolve(fullPathsList);
-    })
-};
-
 export default class {
 
     constructor(app) {
@@ -50,56 +31,33 @@ export default class {
 
         return (dispatch, getState) => {
 
-            let whereData = {
-                isFeatured: true
-            };
-
             return this.app.get('databaseConnection')
                 .from('category')
                 .select([
-                    'path'
+                    'id',
+                    'path',
+                    'title',
+                    'isFeatured'
                 ])
-                .where(whereData)
-                .then(getCategoryDetails)
-                .then((paths) => {
-                    return new Promise((resolve, reject) => {
-                        this.app.get('databaseConnection')
-                            .from('category')
-                            .select()
-                            .whereIn('path', paths)
-                            .orderBy('path', 'asc')
-                            .then(resolve)
-                            .catch(reject);
-                    });
+                .where({
+                    isFeatured: true,
+                    isActive: true
                 })
                 .then((data) => {
                     return new Promise((resolve, reject) => {
                         let i;
                         let normalized = [];
-                        let normalizedCategories = [];
-                        let activeFeatured = false;
                         for (i = 0; i < data.length; i++) {
-                            let pathParts = data[i].path.split('/');
-                            if (data[i].isFeatured === 1) {
-                                data[i].children = [];
-                                normalized.push(data[i]);
-                                activeFeatured = (normalized.length - 1);
-                            } else if (pathParts.length === 1) {
-                                normalizedCategories.push(data[i]);
-                            } else {
-                                if (activeFeatured !== false &&
-                                        normalized[activeFeatured].path === pathParts[0]) {
-                                    normalized[activeFeatured].children.push(data[i]);
-                                }
-                            }
+                            data[i].children = [];
+                            normalized.push(data[i]);
                         }
-                        normalized.push({
-                            title: 'View All Categories',
-                            path: false,
-                            id: 0,
-                            children: normalizedCategories,
-                            isFeatured: 1
-                        });
+                        // normalized.push({
+                        //     title: 'View All Categories',
+                        //     path: false,
+                        //     id: 0,
+                        //     children: [],
+                        //     isFeatured: 1
+                        // });
                         resolve(normalized);
                     })
                 })
