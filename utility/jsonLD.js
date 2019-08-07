@@ -77,6 +77,9 @@ class JSONLD {
         if (data.material !== '') {
             defaultProductData.material = data.material;
         }
+        if (data.id) {
+            defaultProductData.sku = data.id;
+        }
         if (data.mpn !== '') {
             defaultProductData.mpn = data.mpn;
         }

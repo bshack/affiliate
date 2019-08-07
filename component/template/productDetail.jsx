@@ -129,8 +129,8 @@ class View extends React.PureComponent {
                             {category}
                             {gtin}
                             {mpn}
-                            <div className="col-6 vf-id">
-                                <strong>vf id</strong>
+                            <div className="col-6 sku">
+                                <strong>sku</strong>
                                 <p>{this.props.data.id}</p>
                             </div>
                         </div>
