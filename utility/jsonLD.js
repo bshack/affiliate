@@ -5,6 +5,34 @@ import config from '../configPublic';
 
 class JSONLD {
 
+    corporation() {
+
+        return <script
+            type = 'application/ld+json'
+            dangerouslySetInnerHTML = {
+                {
+                    __html: JSON.stringify({
+                        '@context': 'http://schema.org',
+                        '@type': 'Corporation',
+                        '@id': config.www.origin + '#Corporation',
+                        'name': config.name,
+                        'legalName': 'Val Foundry, LLC',
+                        'url': config.www.origin,
+                        'logo': config.www.origin + '/default/' + config.social.image,
+                        'description': config.description,
+                        'email': 'help@valfoundry.io',
+                        'slogan': 'Val Foundry, we know what the deal is.',
+                        'sameAs': [
+                            'https://www.facebook.com/valfoundry',
+                            'https://twitter.com/valfoundry'
+                        ]
+                    })
+                }
+            }
+        />
+
+    }
+
     product(data) {
         let defaultJSONLD = {
             '@context': 'http://schema.org/',

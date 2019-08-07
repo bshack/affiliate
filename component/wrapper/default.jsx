@@ -1,7 +1,10 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import NavigationFooter from '../template/navigationFooter.jsx';
+import UtilityJSONLD from '../../utility/jsonLD';
 import config from '../../configPublic';
+
+const utilityJSONLD = new UtilityJSONLD();
 
 /* COMPONENT
 *************************************/
@@ -70,6 +73,7 @@ class WrapperLayout extends React.PureComponent {
                     <div id="app">
                         {this.props.children}
                     </div>
+                    {utilityJSONLD.corporation()}
                     <script dangerouslySetInnerHTML={{
                         __html: "var initialState = " + JSON.stringify(this.props.state.data) + ";"// eslint-disable-line
                     }} />
