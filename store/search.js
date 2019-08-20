@@ -24,6 +24,7 @@ export default class {
                 ])
                 .where('brand', 'like', '%' + params.q + '%')
                 .where({
+                    'product.availability': 'in stock',
                     'product.isActive': true,
                     'product.isImageLinkProcessed': true
                 })
@@ -53,6 +54,7 @@ export default class {
                 .where({
                     'category.isActive': true,
                     'product.isActive': true,
+                    'product.availability': 'in stock',
                     'product.isImageLinkProcessed': true
                 })
                 .orderBy('category.title', 'asc')
@@ -77,6 +79,7 @@ export default class {
                 ])
                 .where('programName', 'like', '%' + params.q + '%')
                 .where({
+                    'product.availability': 'in stock',
                     'product.isActive': true,
                     'product.isImageLinkProcessed': true
                 })
@@ -104,6 +107,7 @@ export default class {
                 ])
                 .where('product.title', 'like', '%' + params.q + '%')
                 .where({
+                    'product.availability': 'in stock',
                     'product.isActive': true,
                     'product.isImageLinkProcessed': true
                 })

@@ -19,6 +19,9 @@ exports.get = function(req, res) {
     let productParams = JSON.parse(req.query.product);
     let productRecommendationsParams = JSON.parse(req.query.recommendations);
 
+    productRecommendationsParams.isActive = true;
+    productRecommendationsParams.availability = 'in stock';
+
     let storeProduct = new StoreProduct(req.app);
     let storeProductRecommendations = new StoreProduct(req.app);
     let storeNavigationMain = new StoreNavigationMain(req.app);

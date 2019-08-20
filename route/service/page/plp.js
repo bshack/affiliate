@@ -23,6 +23,9 @@ exports.get = function(req, res) {
     let categoryParams = JSON.parse(req.query.category);
     let breadcrumbParams = JSON.parse(req.query.breadcrumbs);
 
+    productParams.isActive = true;
+    productParams.availability = 'in stock';
+
     let storeProduct = new StoreProduct(req.app);
     let storeCampaign = new StoreCampaign(req.app);
     let storeCategory = new StoreCategory(req.app);

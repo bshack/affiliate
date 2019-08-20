@@ -25,6 +25,7 @@ exports.index = function(req, res) {
         ),
         storeProduct.store.dispatch(
             storeProduct.getAll({
+                availability: 'in stock',
                 isActive: true,
                 limit: false
             })

@@ -21,6 +21,12 @@ exports.get = function(req, res) {
         filename: req.query.filename
     };
 
+    let productParams = {
+        limit: 8,
+        isActive: true,
+        availability: 'in stock'
+    };
+
     let storeContent = new StoreContent(req.app);
     let storeProduct = new StoreProduct(req.app);
     let storeNavigationMain = new StoreNavigationMain(req.app);
@@ -32,9 +38,7 @@ exports.get = function(req, res) {
             storeContent.getAll(contentParams)
         ),
         storeProduct.store.dispatch(
-            storeProduct.getAll({
-                limit: 8
-            })
+            storeProduct.getAll(productParams)
         ),
         storeNavigationMain.store.dispatch(
             storeNavigationMain.getAll({})

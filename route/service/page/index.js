@@ -22,11 +22,14 @@ exports.get = function(req, res) {
     let productParams = {
         'product.isFeatured': false,
         offset: 8,
-        limit: 8
+        limit: 8,
+        isActive: true,
+        availability: 'in stock'
     };
     let productFeaturedParams = {
-        // 'product.isFeatured': true,
-        limit: 8
+        limit: 8,
+        isActive: true,
+        availability: 'in stock'
     };
 
     let storeContent = new StoreContent(req.app);

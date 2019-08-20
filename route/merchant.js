@@ -16,6 +16,7 @@ exports.index = function(req, res) {
     Promise.all([
         storeProduct.store.dispatch(
             storeProduct.getAll({
+                availability: 'in stock',
                 isActive: true,
                 limit: false
             })

@@ -16,7 +16,9 @@ exports.get = function(req, res) {
 
     let productParams = {
         'product.isFeatured': false,
-        limit: 8
+        limit: 8,
+        isActive: true,
+        availability: 'in stock'
     };
     let emailParams = {
         email: req.query.email

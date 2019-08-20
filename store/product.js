@@ -33,7 +33,6 @@ export default class {
         return (dispatch, getState) => {
 
             let whereParams = {
-                'product.isActive': true,
                 'product.isImageLinkProcessed': true,
                 'product.isBlacklisted': false
             };
@@ -45,6 +44,12 @@ export default class {
 
             if (params.offset && (parseInt(params.offset, 10) > offsetParam)) {
                 offsetParam = parseInt(params.offset, 10);
+            }
+
+            if (params.isActive === true) {
+                whereParams['product.isActive'] = true;
+            } else if (params.isActive === false) {
+                whereParams['product.isActive'] = false;
             }
 
             if (params.id) {
@@ -65,8 +70,6 @@ export default class {
 
             if (params.availability) {
                 whereParams.availability = params.availability;
-            } else {
-                whereParams.availability = 'in stock';
             }
 
             if (params.programName) {
@@ -114,7 +117,6 @@ export default class {
                                 .where({
                                     'product.isActive': true,
                                     'product.isImageLinkProcessed': true,
-                                    'product.availability': 'in stock',
                                     'product.isBlacklisted': false
                                 })
                                 .where('product.timestamp', '>', oldestProductCreationDate)
