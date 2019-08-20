@@ -16,6 +16,7 @@ class JSONLD {
                         '@type': 'Corporation',
                         '@id': config.www.origin + '#Corporation',
                         'name': config.name,
+                        'additionalType': 'Brand',
                         'legalName': 'Val Foundry, LLC',
                         'url': config.www.origin,
                         'logo': config.www.origin + '/default/' + config.social.image,
