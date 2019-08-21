@@ -204,19 +204,18 @@
                             display: none;
                         }
 
+                        &:hover,
+                        &:focus {
+                            color: $color-black-1;
+                        }
+
                     }
 
-                    &:hover,
-                    &:focus {
+                    &:hover {
 
                         ul {
                             border-bottom: rem-calc(1) solid $color-grey-3;
                             display: block;
-                        }
-
-                        > a,
-                        > button {
-                            color: $color-black-1;
                         }
 
                     }

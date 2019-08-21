@@ -27,14 +27,17 @@
             position: relative;
 
             a {
+
                 @extend %anchor-standard;
+
+                left: $spacing-none;
+                position: absolute;
+                top: $spacing-none;
+
             }
 
             picture,
             img {
-                left: $spacing-none;
-                position: absolute;
-                top: $spacing-none;
                 width: 100%;
             }
 
