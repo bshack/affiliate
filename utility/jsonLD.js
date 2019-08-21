@@ -84,11 +84,11 @@ class JSONLD {
         if (data.mpn !== '') {
             defaultProductData.mpn = data.mpn;
         }
-        if (data.brand !== '') {
-            defaultProductData.brand.name = data.brand;
+        if (data.brandName !== '') {
+            defaultProductData.brand.name = data.brandName;
         }
-        if (data.programName !== '') {
-            defaultProductData.offers.seller.name = data.programName;
+        if (data.storeName !== '') {
+            defaultProductData.offers.seller.name = data.storeName;
         }
         if (data.availability === 'in stock') {
             defaultProductData.offers.availability = 'http://schema.org/InStock';

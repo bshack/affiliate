@@ -70,6 +70,14 @@ class View extends React.PureComponent {
             </div>;
         } else {
             return <div className="col-12 results">
+                {categoryRows.length?
+                    <div className="categories">
+                        <strong>categories</strong>
+                        <ul>
+                            {categoryRows}
+                        </ul>
+                    </div> : null
+                }
                 {brandRows.length?
                     <div className="brands">
                         <strong>brands</strong>
@@ -83,14 +91,6 @@ class View extends React.PureComponent {
                         <strong>stores</strong>
                         <ul>
                             {storeRows}
-                        </ul>
-                    </div> : null
-                }
-                {categoryRows.length?
-                    <div className="categories">
-                        <strong>categories</strong>
-                        <ul>
-                            {categoryRows}
                         </ul>
                     </div> : null
                 }
