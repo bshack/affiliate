@@ -133,7 +133,7 @@ class View extends React.PureComponent {
                                         <div className="col-6 col-md-4 col-lg-3 col-xl-2">
                                             <div className="swatch color-background-blue-4"></div>
                                             <p className="label-style-standard">
-                                                blue-4 (#007bff)
+                                                blue-4 (#0071eb)
                                             </p>
                                         </div>
                                         <div className="col-6 col-md-4 col-lg-3 col-xl-2">
