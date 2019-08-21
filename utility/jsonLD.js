@@ -194,7 +194,7 @@ class JSONLD {
                     'position': position,
                     'item': {
                         '@id': config.www.origin + '/' + (data[key].path? data[key].path +
-                                '/index.html' : data[key].url + '.html'),
+                                '/index.html' : data[key].filename + '.html'),
                         'name': data[key].title
                     }
                 });

@@ -59,7 +59,7 @@ export default class {
 
                 return this.app.get('databaseConnection')
                     .from('store')
-                    .select(['label'])
+                    .select(['label', 'value'])
                     .where({
                         value: params.programName
                     })
@@ -67,10 +67,12 @@ export default class {
                         dispatch(this.handleGetSuccess([
                             {
                                 id: 'home',
-                                title: 'Home'
+                                title: 'Home',
+                                filename: 'index'
                             },
                             {
-                                title: data[0].label
+                                title: data[0].label,
+                                filename: 'store/' + data[0].value + '/index'
                             }
                         ]));
                     })
@@ -82,7 +84,7 @@ export default class {
 
                 return this.app.get('databaseConnection')
                     .from('brand')
-                    .select(['label'])
+                    .select(['label', 'value'])
                     .where({
                         value: params.brand
                     })
@@ -90,10 +92,12 @@ export default class {
                         dispatch(this.handleGetSuccess([
                             {
                                 id: 'home',
-                                title: 'Home'
+                                title: 'Home',
+                                filename: 'index'
                             },
                             {
-                                title: data[0].label
+                                title: data[0].label,
+                                filename: 'brand/' + data[0].value + '/index'
                             }
                         ]));
                     })
@@ -136,8 +140,9 @@ export default class {
                                     })
                                     .then((productData) => {
                                         categoryData.push({
+                                            id:  productData[0].id,
                                             title: productData[0].title,
-                                            id: productData[0].seoFilenamePart
+                                            filename: productData[0].seoFilenamePart
                                         });
                                         resolve(categoryData);
                                     })
@@ -151,7 +156,8 @@ export default class {
                     .then((data) => {
                         data.unshift({
                             id: 'home',
-                            title: 'Home'
+                            title: 'Home',
+                            filename: 'index'
                         });
                         return data;
                     })
@@ -175,11 +181,12 @@ export default class {
                             {
                                 id: 'home',
                                 title: 'Home',
+                                filename: 'index'
                             },
                             {
                                 id: data[0].id,
                                 title: data[0].title,
-                                url: data[0].filename
+                                filename: data[0].filename
                             }
                         ]));
                     })
