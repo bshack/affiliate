@@ -2,6 +2,8 @@
     "name": "Val Foundry",
     "description": "We know what the deal is.",
     "locale": "en-US",
+    "themeColor": "",
+    "appleTouchIcon": "image/apple-touch-icon.png",
     "www": {
         "origin": "https://dev.valfoundry.io:3000"
     },

@@ -66,7 +66,7 @@ exports.get = function(req, res) {
                 meta: {
                     title: storeContentData[0].metatitle + ' - ' + configPublic.name,
                     description: storeContentData[0].metadescription,
-                    image: configPublic.social.image,
+                    image: '/' + configPublic.static.version + '/' + configPublic.social.image,
                     canonical: configPublic.www.origin
                 },
                 navigationMain: storeNavigationMain.store.getState(),

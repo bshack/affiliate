@@ -62,7 +62,7 @@ exports.get = function(req, res) {
             .send({
                 meta: {
                     title: storeCategoryData[0].title + ' - ' + configPublic.name,
-                    image: configPublic.social.image,
+                    image: '/' + configPublic.static.version + '/' + configPublic.social.image,
                     canonical: configPublic.www.origin + '/' + storeCategoryData[0].path + '/index.html',
                     description: storeCategoryData[0].title + ' on Val Foundry. ' + configPublic.description
                 },

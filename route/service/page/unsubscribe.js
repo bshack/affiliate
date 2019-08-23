@@ -46,7 +46,7 @@ exports.get = function(req, res) {
             .send({
                 meta: {
                     title: 'Email Unsubscribe',
-                    image: configPublic.social.image,
+                    image: '/' + configPublic.static.version + '/' + configPublic.social.image,
                     description: 'Unsubscribe from Val Foundry emails.'
                 },
                 unsubscribe: emailParams,

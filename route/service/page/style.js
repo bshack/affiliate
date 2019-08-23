@@ -38,7 +38,10 @@ exports.get = function(req, res) {
             .status(200)
             .send({
                 meta: {
-                    title: 'Style Guide'
+                    title: 'Style Guide',
+                    description: 'Val Foundry style guide.',
+                    image: '/' + configPublic.static.version + '/' + configPublic.social.image,
+                    canonical: configPublic.www.origin + '/' + 'style.html'
                 },
                 unsubscribe: emailParams,
                 navigationMain: storeNavigationMain.store.getState(),

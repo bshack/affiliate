@@ -32,19 +32,18 @@ class WrapperLayout extends React.PureComponent {
                     <meta name="viewport" content="width=device-width, initial-scale=1" />
                     <meta name="format-detection" content="telephone=no,date=no,address=no,email=no,url=no" />
                     {descriptionSEO}
+                    <meta name="theme-color" content={config.themeColor} />
                     <meta name="twitter:card" content={config.social.twitter.card} />
                     <meta name="twitter:site" content={config.social.twitter.name} />
                     <meta name="twitter:url" content={this.props.state.data.meta.canonical} />
                     <meta name="twitter:title" content={this.props.state.data.meta.title} />
                     <meta name="twitter:description" content={descriptionSocial} />
-                    <meta name="twitter:image" content={'/' + config.static.version
-                        + '/' + this.props.state.data.meta.image} />
+                    <meta name="twitter:image" content={this.props.state.data.meta.image} />
                     <meta name="twitter:image:alt" content={this.props.state.data.meta.title} />
                     <meta property="og:title" content={this.props.state.data.meta.title} />
                     <meta property="og:type" content={config.social.facebook.type} />
                     <meta property="og:url" content={this.props.state.data.meta.canonical} />
-                    <meta property="og:image:url" content={'/' + config.static.version
-                        + '/' + this.props.state.data.meta.image} />
+                    <meta property="og:image:url" content={this.props.state.data.meta.image} />
                     <meta property="og:image:height" content={config.social.facebook.imageHeight} />
                     <meta property="og:image:width" content={config.social.facebook.imageWidth} />
                     <meta property="og:image:alt" content={this.props.state.data.meta.title} />
@@ -53,8 +52,12 @@ class WrapperLayout extends React.PureComponent {
                     <meta property="og:locale" content={config.locale} />
                     <meta property="fb:admins" content={config.social.facebook.admins} />
                     <meta property="fb:app_id" content={config.social.facebook.app_id} />
-                    <link rel="icon" type="image/x-icon" href={'/' + config.static.version
+                    <link rel="shortcut icon" type="image/png" href={'/' + config.static.version
                         + '/' + config.favicon} />
+                    <link rel="shortcut icon" sizes="196x196" href={'/' + config.static.version
+                        + '/' + config.appleTouchIcon} />
+                    <link rel="apple-touch-icon" href={'/' + config.static.version
+                        + '/' + config.appleTouchIcon} />
                     <link rel="canonical" href={this.props.state.data.meta.canonical} />
                     <link rel="stylesheet" type="text/css" media="all" href={'/'
                         + config.static.version + '/style/global.css'} />
