@@ -60,7 +60,7 @@
     "mysql2": "^1.5.3",
     "newrelic": "^5.9.0",
     "node-product-catalog-feed": "^1.0.0",
-    "node-sass": "^4.11.0",
+    "node-sass": "^7.0.0",
     "numeral": "^2.0.6",
     "picturefill": "^3.0.3",
     "popper.js": "^1.15.0",
